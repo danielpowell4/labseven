@@ -3,6 +3,7 @@ import Layout from "../../components/layout";
 import { getAllProducts } from "../../lib/products";
 
 import utilStyles from "../../styles/utils.module.css";
+import productsStyles from "./styles/products.module.css";
 
 export async function getStaticProps() {
   const allProductData = await getAllProducts();
@@ -47,7 +48,7 @@ const Products = ({ allProductData }) => {
       </aside>
       <main>
         <h1>Shop our products</h1>
-        <details>
+        <details className={productsStyles.details}>
           <summary>
             products WITH categories {productsWithCats.length}
           </summary>
@@ -86,7 +87,7 @@ const Products = ({ allProductData }) => {
             </table>
           </div>
         </details>
-        <details>
+        <details className={productsStyles.details}>
           <summary>
             products without categories {productsWithoutCats.length}
           </summary>
@@ -117,7 +118,7 @@ const Products = ({ allProductData }) => {
             </table>
           </div>
         </details>
-        <details>
+        <details className={productsStyles.details}>
           <summary>
             raw products:{" "}
             {JSON.stringify(allProductData.length, null, 2)}
