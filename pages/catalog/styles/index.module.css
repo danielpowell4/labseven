@@ -1,0 +1,40 @@
+.subcategories {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  box-sizing: border-box;
+}
+
+.subcategories__item {
+  margin-top: 16px;
+  margin-left: 16px;
+  padding: 16px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  align-items: center;
+  display: flex;
+  position: relative;
+  text-align: left;
+  border-radius: 2px;
+  box-shadow: rgb(6 45 33 / 10%) 0px 2px 3px;
+  transition: box-shadow 500ms ease 0s, transform 500ms ease 0s;
+}
+
+@media (min-width: 768px) {
+  .subcategories__item {
+    padding: 24px;
+    width: 50%;
+  }
+
+  .subcategories__item:hover {
+    box-shadow: rgb(6 45 33 / 10%) 0px 10px 10px -6px;
+    transform: scale(1.025);
+  }
+}
+
+@media (min-width: 1140px) {
+  .subcategories__item {
+    width: 33.3333%;
+  }
+}

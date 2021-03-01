@@ -1,60 +1,16 @@
-.capWidth {
-  max-width: 36rem;
-  padding: 0 1rem;
-  margin: auto;
+
+.flexInline {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: baseline;
 }
 
-.heading2Xl {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  font-weight: 800;
-  letter-spacing: -0.05rem;
-  margin: 1rem 0;
+.flexInline > * {
+  margin-left: 1rem;
 }
 
-.headingXl {
-  font-size: 2rem;
-  line-height: 1.3;
-  font-weight: 800;
-  letter-spacing: -0.05rem;
-  margin: 1rem 0;
-}
-
-.headingLg {
-  font-size: 1.5rem;
-  line-height: 1.4;
-  margin: 1rem 0;
-}
-
-.headingMd {
-  font-size: 1.2rem;
-  line-height: 1.5;
-}
-
-.borderCircle {
-  border: 1px solid rgba(0,0,0,.0975);
-  border-radius: 50%;
-}
-
-.colorInherit {
-  color: inherit;
-}
-
-.centerPadding {
-  padding: 10px;
-  margin: 0 auto;
-}
-
-.list {
-  list-style: none;
-  padding: 0;
+.zeroList {
   margin: 0;
-}
-
-.listItem {
-  margin: 0 0 1.25rem;
-}
-
-.lightText {
-  color: #999;
+  padding: 0;
 }

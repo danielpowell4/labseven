@@ -1,6 +1,5 @@
 import styles from './layout.module.css'
 import Head from "next/head"
-import Link from 'next/link'
 
 export const siteTitle = "Denver Screen Printing & Custom T-Shirt Printing | Lab Seven Screen Printing Co.";
 const description = "Lab Seven Screen Printing Co. is the leader in Denver Screen Printing,  Custom T-shirt Printing, Graphic Design, and Embroidery in Colorado.  Design your own t-shirt in our design studio or work with one of our artists to bring your custom tee to life."
