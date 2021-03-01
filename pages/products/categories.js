@@ -21,9 +21,18 @@ const products = ({ allProductCategoryData }) => {
         <title>Shop our products</title>
       </Head>
       <h1>Shop our products</h1>
+      <nav>
+        <ul>
+          {allProductCategoryData.map(projectCategory => (
+            <li key={projectCategory.ID}>
+              <a href={`#${projectCategory.ID}`}>{projectCategory.Name}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <ul className={utilStyles.zeroList}>
         {allProductCategoryData.map(projectCategory => (
-          <li key={projectCategory.ID}>
+          <li key={projectCategory.ID} id={projectCategory.ID}>
             <span className={utilStyles.flexInline}>
               <h2>Shop {projectCategory.Name}</h2>
               <p>Items: {projectCategory.ItemCount}</p>

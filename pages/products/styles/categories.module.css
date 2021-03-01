@@ -7,6 +7,7 @@
 }
 
 .subcategories__item {
+  scroll-margin-top: 16px;
   margin-top: 16px;
   margin-left: 16px;
   padding: 16px;
