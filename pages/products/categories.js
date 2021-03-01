@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout from "../../components/layout";
 import { getProductCategoryData } from "../../lib/products";
 
-import productsStyles from './styles/index.module.css'
+import categoriesStyles from './styles/categories.module.css'
 import utilStyles from '../../styles/utils.module.css'
 
 export async function getStaticProps() {
@@ -16,7 +16,7 @@ export async function getStaticProps() {
 
 const products = ({ allProductCategoryData }) => {
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>Shop our products</title>
       </Head>
@@ -29,11 +29,11 @@ const products = ({ allProductCategoryData }) => {
               <p>Items: {projectCategory.ItemCount}</p>
             </span>
             {projectCategory.HasSubCategories ? (
-              <ul className={productsStyles.subcategories}>
+              <ul className={categoriesStyles.subcategories}>
                 {projectCategory.SubCategories.map((subCat) => (
-                  <li key={subCat.ID} className={productsStyles.subcategories__item}>
+                  <li key={subCat.ID} className={categoriesStyles.subcategories__item}>
                     <img src={subCat.CoverArtUrl} />
-                    <div className={productsStyles.subcategories__item__words}>
+                    <div className={categoriesStyles.subcategories__item__words}>
                       <p><strong>{subCat.Name}</strong></p>
                       <p>Items: {subCat.ItemCount}</p>
                     </div>
