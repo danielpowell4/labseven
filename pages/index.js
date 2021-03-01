@@ -19,9 +19,14 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <a href="/catalog" className={styles.card}>
-            <h3>Catalog &rarr;</h3>
+          <a href="/products" className={styles.card}>
+            <h3>Products &rarr;</h3>
             <p>Look through your items, see things from API.</p>
+          </a>
+
+          <a href="/products/categories" className={styles.card}>
+            <h3>Product Categories &rarr;</h3>
+            <p>Look through categories from the API.</p>
           </a>
 
           <a href="#" className={styles.card}>

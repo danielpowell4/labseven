@@ -1,6 +1,6 @@
 .container {
   margin: 1rem auto 0;
-  min-height: calc(100vh - 132px);
+  min-height: calc(100vh - 14px);
 }
 
 .header {
