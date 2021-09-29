@@ -111,7 +111,11 @@ const Products = ({ allProductData }) => {
               <tbody>
                 {productsWithoutCats.map((product) => (
                   <tr key={product.ID}>
-                    <td>{product.ID}</td>
+                    <td>
+                      <Link href={`/products/${product.ID}`}>
+                        <a>{product.ID}</a>
+                      </Link>
+                    </td>
                     <td>{product.Name}</td>
                     <td>{product.Supplier}</td>
                     <td>{product.Manufacturer}</td>
