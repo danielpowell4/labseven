@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from 'next/link'
 import Layout from "../../components/layout";
 import { getAllProducts } from "../../lib/products";
 
@@ -67,7 +68,11 @@ const Products = ({ allProductData }) => {
               <tbody>
                 {productsWithCats.map((product) => (
                   <tr key={product.ID}>
-                    <td>{product.ID}</td>
+                    <td>
+                      <Link href={`/products/${product.ID}`}>
+                        <a>{product.ID}</a>
+                      </Link>
+                    </td>
                     <td>{product.Name}</td>
                     <td>{product.Supplier}</td>
                     <td>
