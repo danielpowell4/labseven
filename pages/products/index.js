@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Link from 'next/link'
+import Link from "next/link";
 import Layout from "../../components/layout";
 import { getAllProducts } from "../../lib/products";
 
@@ -50,9 +50,7 @@ const Products = ({ allProductData }) => {
       <main>
         <h1>Shop our products</h1>
         <details className={productsStyles.details}>
-          <summary>
-            products WITH categories {productsWithCats.length}
-          </summary>
+          <summary>products WITH categories {productsWithCats.length}</summary>
           <div>
             <table className={utilStyles.table}>
               <thead>
@@ -68,24 +66,36 @@ const Products = ({ allProductData }) => {
               <tbody>
                 {productsWithCats.map((product) => (
                   <tr key={product.ID}>
-                    <td>
-                      <Link href={`/products/${product.ID}`}>
-                        <a>{product.ID}</a>
-                      </Link>
-                    </td>
                     <td>{product.Name}</td>
                     <td>{product.Supplier}</td>
                     <td>
                       {product.Manufacturer}
-                      <br/>
+                      <br />
                       {product.ManufacturerSku}
                     </td>
                     <td>
                       <ul>
-                        {product.Categories.map(cat => <li key={cat.ID}>{cat.Name} ({cat.ID})</li>)}
+                        {product.Categories.map((cat) => (
+                          <li key={cat.ID}>
+                            {cat.Name} ({cat.ID})
+                          </li>
+                        ))}
                       </ul>
                     </td>
                     <td>{product.UnitPrice}</td>
+                    <td>
+                      <ul>
+                        {product.Styles.map((style) => (
+                          <li key={style.id}>
+                            <Link
+                              href={`/products/${product.manufacturerSkuCode}/${style.nameCode}`}
+                            >
+                              <a>{style.Name}</a>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -129,8 +139,7 @@ const Products = ({ allProductData }) => {
         </details>
         <details className={productsStyles.details}>
           <summary>
-            raw products:{" "}
-            {JSON.stringify(allProductData.length, null, 2)}
+            raw products: {JSON.stringify(allProductData.length, null, 2)}
           </summary>
           <pre>allProductData: {JSON.stringify(allProductData, null, 2)}</pre>
         </details>
