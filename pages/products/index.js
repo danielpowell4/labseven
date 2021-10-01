@@ -55,12 +55,12 @@ const Products = ({ allProductData }) => {
             <table className={utilStyles.table}>
               <thead>
                 <tr>
-                  <th>Product ID</th>
                   <th style={{ width: 320 }}>Product Name</th>
                   <th>Supplier</th>
                   <th>Manufacturer + Sku</th>
                   <th>Categories</th>
                   <th>UnitPrice</th>
+                  <th>Styles</th>
                 </tr>
               </thead>
               <tbody>
@@ -110,27 +110,43 @@ const Products = ({ allProductData }) => {
             <table className={utilStyles.table}>
               <thead>
                 <tr>
-                  <th>Product ID</th>
                   <th style={{ width: 320 }}>Product Name</th>
                   <th>Supplier</th>
-                  <th>Manufacturer</th>
-                  <th>ManufacturerSku</th>
+                  <th>Manufacturer + Sku</th>
+                  <th>Categories</th>
                   <th>UnitPrice</th>
+                  <th>Styles</th>
                 </tr>
               </thead>
               <tbody>
                 {productsWithoutCats.map((product) => (
                   <tr key={product.ID}>
-                    <td>
-                      <Link href={`/products/${product.ID}`}>
-                        <a>{product.ID}</a>
-                      </Link>
-                    </td>
+
                     <td>{product.Name}</td>
                     <td>{product.Supplier}</td>
-                    <td>{product.Manufacturer}</td>
-                    <td>{product.ManufacturerSku}</td>
+                    <td>
+                      {product.Manufacturer}
+                      <br />
+                      {product.ManufacturerSku}
+                    </td>
+                    <td>
+                      Not added in InkSoft
+                    </td>
                     <td>{product.UnitPrice}</td>
+                    <td>
+                      <ul>
+                        {product.Styles.map((style) => (
+                          <li key={style.id}>
+                            <Link
+                              href={`/products/${product.manufacturerSkuCode}/${style.nameCode}`}
+                            >
+                              <a>{style.Name}</a>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </td>
+
                   </tr>
                 ))}
               </tbody>
