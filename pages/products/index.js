@@ -146,7 +146,6 @@ const Products = ({ allProductData }) => {
                         ))}
                       </ul>
                     </td>
-
                   </tr>
                 ))}
               </tbody>

@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 
 import Layout from "../../../components/layout";
@@ -13,14 +14,12 @@ export async function getStaticPaths() {
 
   for (const product of allProducts) {
     for (const style of product.Styles) {
-      paths.push(
-        {
-          params: {
-            manufacturerSkuCode: product.manufacturerSkuCode,
-            styleNameCode: style.nameCode
-          },
-        }
-      )
+      paths.push({
+        params: {
+          manufacturerSkuCode: product.manufacturerSkuCode,
+          styleNameCode: style.nameCode,
+        },
+      });
     }
   }
 
@@ -31,7 +30,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const productData = await getProductByStyle(params.manufacturerSkuCode, params.styleNameCode);
+  const productData = await getProductByStyle(
+    params.manufacturerSkuCode,
+    params.styleNameCode
+  );
   return {
     props: {
       productData,
@@ -88,7 +90,9 @@ const Product = ({ productData }) => {
             <ul style={{ display: "flex", flexFlow: "row wrap", gap: "1rem" }}>
               {productData.Styles.map((style) => (
                 <li key={style.ID}>
-                  <Link href={`/products/${productData.manufacturerSkuCode}/${style.nameCode}`}>
+                  <Link
+                    href={`/products/${productData.manufacturerSkuCode}/${style.nameCode}`}
+                  >
                     <a>
                       <div
                         style={{
@@ -108,15 +112,44 @@ const Product = ({ productData }) => {
         <hr />
         <div>
           <h2>{activeStyle.Name}</h2>
-          <div className="gallery" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridGap: "2rem" }}>
-            {activeStyle.hasMainImage ? <img src={activeStyle.mainImageUrl} alt={`Sample of ${productData.Name} in ${activeStyle.Name} style`} />: <p>Missing image!</p>}
+          <div
+            className="gallery"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gridGap: "2rem",
+            }}
+          >
+            {activeStyle.hasMainImage ? (
+              <Image
+                src={activeStyle.mainImageUrl}
+                objectFit="cover"
+                objectPosition="center"
+                width={400}
+                height={400}
+                alt={`Sample of ${productData.Name} in ${activeStyle.Name} style`}
+              />
+            ) : (
+              <p>Missing image!</p>
+            )}
             <div>
               <h4>Sides</h4>
               <ul>
                 {activeStyle.Sides.map((side, sideIndex) => (
                   <li key={sideIndex}>
                     {side.Side}
-                    {side.hasImage ? <img src={side.imageUrl} width={200} height="auto" alt={`Sample of ${productData.Name} in ${activeStyle.Name} from side ${side.Side}`} />: <p>Missing image</p>}
+                    {side.hasImage ? (
+                      <Image
+                        src={side.imageUrl}
+                        objectFit="cover"
+                        objectPosition="center"
+                        width={200}
+                        height={200}
+                        alt={`Sample of ${productData.Name} in ${activeStyle.Name} from side ${side.Side}`}
+                      />
+                    ) : (
+                      <p>Missing image</p>
+                    )}
                   </li>
                 ))}
               </ul>
