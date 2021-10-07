@@ -163,7 +163,7 @@ const Product = ({ productData }) => {
             </ul>
           </div>
           <hr />
-          {!!productData.Keywords.length && (
+          {!!productData.Keywords?.length && (
             <div className={productStyles.detailsBox}>
               <h3>Keywords</h3>
               {productData.Keywords.join(", ")}
