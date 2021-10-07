@@ -1,0 +1,109 @@
+
+.pageContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin-left: 1rem;
+  padding: 10px;
+  grid-gap: 2rem;
+}
+
+.gallery {
+  overflow: hidden;
+  height: calc(100vh - 5rem);
+  position: sticky;
+  top: 1.75rem;
+  padding: 1rem;
+  background-color: rgb(245, 246, 247);
+
+  display: grid;
+  grid-template-columns: minmax(4rem, auto) minmax(420px, 1fr);
+  grid-gap: 2rem;
+}
+
+.gallery__sides {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.gallery__sides__item button {
+  background: rgb(245, 246, 247);
+  border-radius: 3px;
+  cursor: pointer;
+  display: block;
+  opacity: 0.4;
+  overflow: hidden;
+  position: relative;
+  transition: opacity 100ms ease-in-out 0s;
+  padding: 0;
+}
+
+.gallery__sides__item button:hover,
+.gallery__sides__item button:focus {
+  opacity: 1;
+}
+
+.details hr {
+  border-top: 1px solid rgb(215, 220, 221);
+  margin: 2rem 0px;
+}
+
+.style__label {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.style__label span {
+  font-size: 0.95rem;
+  font-weight: normal;
+  margin-left: 0.575rem;
+}
+
+.style__options {
+  margin: 0.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  gap: .25rem;
+}
+
+.styleOption {
+   width: 1.75rem;
+   height: 1.75rem;
+   align-items: center;
+   cursor: pointer;
+   display: flex;
+   justify-content: center;
+   border-radius: 3;
+}
+
+.styleOption.styleOptionActive {
+  border: 1px solid rgb(157, 168, 171);
+}
+
+.styleOption:hover .styleOption__color {
+  box-shadow: rgb(8 36 42 / 15%) 0px 2px 8px;
+  transform: scale(1.4);
+}
+
+.styleOption__color {
+  background-size: 100% 100%;
+  height: 1.25rem;
+  position: relative;
+  transition: transform 150ms cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+  width: 1.25rem;
+}
+
+.detailsList {
+  padding-left: 1.25rem;
+}
+
+/* TODO: remove me when prod ready */
+.details {
+  margin: 1rem auto;
+  max-width: 100%;
+}

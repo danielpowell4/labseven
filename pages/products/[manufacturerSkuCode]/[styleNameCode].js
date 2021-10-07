@@ -1,3 +1,4 @@
+import * as React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,8 +6,7 @@ import Link from "next/link";
 import Layout from "../../../components/layout";
 import { getAllProducts, getProductByStyle } from "../../../lib/products";
 
-import utilStyles from "../../../styles/utils.module.css";
-import productsStyles from "../styles/products.module.css";
+import productStyles from "../styles/product.module.css";
 
 export async function getStaticPaths() {
   const allProducts = await getAllProducts();
@@ -43,128 +43,115 @@ export async function getStaticProps({ params }) {
 
 const Product = ({ productData }) => {
   const activeStyle = productData.activeStyle;
+  const [activeSide, setActiveSide] = React.useState();
 
   return (
     <Layout>
-      <Head>
+      <Head hideHome>
         <title>Shop our products</title>
       </Head>
       <div>
         <Link href="/products">
-          <a>View All Products</a>
+          <a>{`⬅ All Products`}</a>
         </Link>
       </div>
-      <div>
-        <ul>
-          <li>
-            <strong>ID</strong> {productData.ID}
-          </li>
-          <li>
-            <strong>Name</strong> {productData.Name}
-          </li>
-          <li>
-            <strong>Supplier</strong> {productData.Supplier}
-          </li>
-          <li>
-            <strong>Manufacturer</strong>
-            <span>
-              {productData.Manufacturer}-{productData.ManufacturerSku}
-            </span>
-          </li>
-          <li>
-            <strong>Categories</strong>
-            <ul>
-              {productData.Categories.map((cat) => (
-                <li key={cat.ID}>
-                  {cat.Name} ({cat.ID})
-                </li>
-              ))}
-            </ul>
-          </li>
-          <li>
-            <strong>UnitPrice</strong>
-            {productData.UnitPrice}
-          </li>
-          <li>
-            <strong>Styles</strong>
-            <ul style={{ display: "flex", flexFlow: "row wrap", gap: "1rem" }}>
-              {productData.Styles.map((style) => (
-                <li key={style.ID}>
-                  <Link
-                    href={`/products/${productData.manufacturerSkuCode}/${style.nameCode}`}
-                  >
-                    <a>
-                      <div
-                        style={{
-                          width: 40,
-                          height: 40,
-                          backgroundColor: `#${style.HtmlColor1}`,
-                        }}
-                      />
-                      {style.Name}
-                    </a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </li>
-        </ul>
-        <hr />
-        <div>
-          <h2>{activeStyle.Name}</h2>
-          <div
-            className="gallery"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gridGap: "2rem",
-            }}
-          >
-            {activeStyle.hasMainImage ? (
-              <Image
-                src={activeStyle.mainImageUrl}
-                objectFit="cover"
-                objectPosition="center"
-                width={400}
-                height={400}
-                alt={`Sample of ${productData.Name} in ${activeStyle.Name} style`}
-              />
-            ) : (
-              <p>Missing image!</p>
-            )}
-            <div>
-              <h4>Sides</h4>
-              <ul>
-                {activeStyle.Sides.map((side, sideIndex) => (
-                  <li key={sideIndex}>
-                    {side.Side}
-                    {side.hasImage ? (
-                      <Image
-                        src={side.imageUrl}
-                        objectFit="cover"
-                        objectPosition="center"
-                        width={200}
-                        height={200}
-                        alt={`Sample of ${productData.Name} in ${activeStyle.Name} from side ${side.Side}`}
-                      />
-                    ) : (
-                      <p>Missing image</p>
-                    )}
+      <div className={productStyles.pageContainer}>
+        <div className={productStyles.gallery}>
+          <ul className={productStyles.gallery__sides}>
+            {activeStyle.Sides.map((side, sideIndex) => (
+              <li key={sideIndex} className={productStyles.gallery__sides__item}>
+                {side.hasImage ? (
+                  <button onClick={() => setActiveSide(side)}>
+                    <Image
+                      src={side.imageUrl}
+                      objectFit="cover"
+                      objectPosition="center"
+                      width={80}
+                      height={80}
+                      alt={`Sample of ${productData.Name} in ${activeStyle.Name} from side ${side.Side}`}
+                    />
+                  </button>
+                ) : (
+                  <p>Missing image for {side.Side}</p>
+                )}
+              </li>
+            ))}
+          </ul>
+          {!!activeSide ? <Image
+              src={activeSide.imageUrl}
+              objectFit="contain"
+              objectPosition="center"
+              width={800}
+              height={800}
+              alt={`Sample of ${productData.Name} in ${activeStyle.Name} from side ${activeSide.Side}`}
+            /> : activeStyle.hasMainImage ? (
+            <Image
+              src={activeStyle.mainImageUrl}
+              objectFit="contain"
+              objectPosition="center"
+              width={800}
+              height={800}
+              alt={`Sample of ${productData.Name} in ${activeStyle.Name} style`}
+            />
+          ) : (
+            <p>Missing image!</p>
+          )}
+        </div>
+        <div className={productStyles.details}>
+          <div className={productStyles.detailsBox}>
+            <div className={productStyles.title}>
+              <h1>{productData.Name}</h1>
+              <h3>{productData.Manufacturer} {productData.ManufacturerSku}</h3>
+            </div>
+            <div className="detailsBox__styles">
+              <label className={productStyles.style__label}>
+                Color Shown
+                <span>{activeStyle.Name}</span>
+              </label>
+              <ul className={productStyles.style__options}>
+                {productData.Styles.map((style) => (
+                  <li key={style.ID}>
+                    <Link
+                      href={`/products/${productData.manufacturerSkuCode}/${style.nameCode}`}
+                    >
+                      <a title={style.Name} className={`${productStyles.styleOption}${style.ID == activeStyle.ID ? ` ${productStyles.styleOptionActive}` : ""}`}>
+                        <div
+                          className={productStyles.styleOption__color}
+                          style={{
+                            backgroundColor: `#${style.HtmlColor1}`,
+                          }}
+                        />
+                      </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-          <details className={productsStyles.details}>
-            <summary>View full activeStyle</summary>
-            <pre>{JSON.stringify(activeStyle, null, 2)}</pre>
-          </details>
+          <hr />
+          <div className={productStyles.detailsBox}>
+            <h3>Pricing</h3>
+            <pre>TODO: add instant calculator</pre>
+            <p>{`$ ${productData.UnitPrice.toFixed(2)}`} / shirt</p>
+            <p>{`$ ${(productData.UnitPrice * 100).toFixed(0)}`} total</p>
+          </div>
+          <hr />
+          <div className={productStyles.detailsBox}>
+            <h3>Details</h3>
+            <ul className={productStyles.detailsList}>
+              <li>{productData.CanScreenPrint ? `✅` : `⚪️`} Screen Print</li>
+              <li>{productData.CanDigitalPrint ? `✅` : `⚪️`} Digital Print</li>
+              <li>{productData.CanPrint ? `✅` : `⚪️`} Print</li>
+              <li>{productData.CanEmbroider ? `✅` : `⚪️`} Embroider</li>
+              <li>{productData.BuyBlank ? `✅` : `⚪️`} Buy Blank</li>
+            </ul>
+          </div>
+          <hr />
+          <div className={productStyles.detailsBox}>
+            <h3>Keywords</h3>
+            {productData.Keywords.join(', ')}
+          </div>
         </div>
-        <hr />
-        <details className={productsStyles.details}>
-          <summary>View full productData</summary>
-          <pre>{JSON.stringify(productData, null, 2)}</pre>
-        </details>
       </div>
     </Layout>
   );
