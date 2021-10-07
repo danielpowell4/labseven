@@ -45,6 +45,13 @@ const Product = ({ productData }) => {
   const activeStyle = productData.activeStyle;
   const [activeSide, setActiveSide] = React.useState();
 
+  // on style change
+  // show same clicked-to side Image if possible
+  React.useEffect(() => {
+    const matchingSide = activeStyle.Sides.find(side => side.Side === activeSide?.Side);
+    setActiveSide(matchingSide);
+  }, [activeStyle, activeSide])
+
   return (
     <Layout>
       <Head hideHome>
