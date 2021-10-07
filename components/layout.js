@@ -20,7 +20,7 @@ export default function Layout({ children, hideHome = false }) {
           <meta name="og:title" content={siteTitle} />
           <meta name="og:description" content={description} />
         </Head>
-        {hideHome && (<a href="/">← Back to home</a>)}
+        {!hideHome && (<a href="/">← Back to home</a>)}
         <main>{children}</main>
       </div>
       <footer className={styles.footer}>Footer content from the 🏔 of Colorado</footer>
