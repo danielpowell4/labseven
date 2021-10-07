@@ -154,17 +154,21 @@ const Product = ({ productData }) => {
             <h3>Options</h3>
             <ul className={productStyles.detailsList}>
               <li>{productData.CanScreenPrint ? `✅` : `⚪️`} Screen Print</li>
-              <li>{productData.CanDigitalPrint ? `✅` : `⚪️`} Digital Print</li>
+              <li>
+                {productData.CanDigitalPrint ? `✅` : `⚪️`} Digital Print
+              </li>
               <li>{productData.CanPrint ? `✅` : `⚪️`} Print</li>
               <li>{productData.CanEmbroider ? `✅` : `⚪️`} Embroider</li>
               <li>{productData.BuyBlank ? `✅` : `⚪️`} Buy Blank</li>
             </ul>
           </div>
           <hr />
-          <div className={productStyles.detailsBox}>
-            <h3>Keywords</h3>
-            {productData.Keywords.join(', ')}
-          </div>
+          {!!productData.Keywords.length && (
+            <div className={productStyles.detailsBox}>
+              <h3>Keywords</h3>
+              {productData.Keywords.join(", ")}
+            </div>
+          )}
         </div>
       </div>
     </Layout>
