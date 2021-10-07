@@ -59,7 +59,10 @@ const Product = ({ productData }) => {
         <div className={productStyles.gallery}>
           <ul className={productStyles.gallery__sides}>
             {activeStyle.Sides.map((side, sideIndex) => (
-              <li key={sideIndex} className={productStyles.gallery__sides__item}>
+              <li
+                key={sideIndex}
+                className={productStyles.gallery__sides__item}
+              >
                 {side.hasImage ? (
                   <button onClick={() => setActiveSide(side)}>
                     <Image
@@ -77,14 +80,16 @@ const Product = ({ productData }) => {
               </li>
             ))}
           </ul>
-          {!!activeSide ? <Image
+          {!!activeSide ? (
+            <Image
               src={activeSide.imageUrl}
               objectFit="contain"
               objectPosition="center"
               width={800}
               height={800}
               alt={`Sample of ${productData.Name} in ${activeStyle.Name} from side ${activeSide.Side}`}
-            /> : activeStyle.hasMainImage ? (
+            />
+          ) : activeStyle.hasMainImage ? (
             <Image
               src={activeStyle.mainImageUrl}
               objectFit="contain"
@@ -101,7 +106,9 @@ const Product = ({ productData }) => {
           <div className={productStyles.detailsBox}>
             <div className={productStyles.title}>
               <h1>{productData.Name}</h1>
-              <h3>{productData.Manufacturer} {productData.ManufacturerSku}</h3>
+              <h3>
+                {productData.Manufacturer} {productData.ManufacturerSku}
+              </h3>
             </div>
             <div className="detailsBox__styles">
               <label className={productStyles.style__label}>
@@ -114,7 +121,14 @@ const Product = ({ productData }) => {
                     <Link
                       href={`/products/${productData.manufacturerSkuCode}/${style.nameCode}`}
                     >
-                      <a title={style.Name} className={`${productStyles.styleOption}${style.ID == activeStyle.ID ? ` ${productStyles.styleOptionActive}` : ""}`}>
+                      <a
+                        title={style.Name}
+                        className={`${productStyles.styleOption}${
+                          style.ID == activeStyle.ID
+                            ? ` ${productStyles.styleOptionActive}`
+                            : ""
+                        }`}
+                      >
                         <div
                           className={productStyles.styleOption__color}
                           style={{
