@@ -8,7 +8,7 @@ const description = "Lab Seven Screen Printing Co. is the leader in Denver Scree
 const sample = arr => arr[Math.floor(Math.random() * arr.length)];
 const EMOJI_OF_BUILD = ["🐕", "👨‍🚀", "👨‍💻", "🖼", "🚀"];
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, hideHome = false }) {
   return (
     <>
       <div className={styles.container}>
@@ -20,11 +20,7 @@ export default function Layout({ children, home }) {
           <meta name="og:title" content={siteTitle} />
           <meta name="og:description" content={description} />
         </Head>
-        {!home && (
-          <header>
-            <a href="/">← Back to home</a>
-          </header>
-        )}
+        {hideHome && (<a href="/">← Back to home</a>)}
         <main>{children}</main>
       </div>
       <footer className={styles.footer}>Footer content from the 🏔 of Colorado</footer>

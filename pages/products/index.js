@@ -40,7 +40,7 @@ const Products = ({ allProductData }) => {
     });
 
   return (
-    <Layout>
+    <Layout hideHome>
       <Head>
         <title>Shop our products</title>
       </Head>
