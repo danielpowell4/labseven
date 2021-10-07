@@ -62,6 +62,7 @@ const Product = ({ productData }) => {
         <meta name="og:title" content={pageTitle} />
         <meta name="description" content={pageDescription} />
         <meta name="og:description" content={pageDescription} />
+        {!!activeStyle.mainImageUrl && <meta property="og:image" content={activeStyle.mainImageUrl} />}
       </Head>
       <div>
         <Link href="/products">
