@@ -137,7 +137,7 @@ const Product = ({ productData }) => {
           </div>
           <hr />
           <div className={productStyles.detailsBox}>
-            <h3>Details</h3>
+            <h3>Options</h3>
             <ul className={productStyles.detailsList}>
               <li>{productData.CanScreenPrint ? `✅` : `⚪️`} Screen Print</li>
               <li>{productData.CanDigitalPrint ? `✅` : `⚪️`} Digital Print</li>
