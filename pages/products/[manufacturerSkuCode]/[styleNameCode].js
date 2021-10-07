@@ -52,10 +52,16 @@ const Product = ({ productData }) => {
     setActiveSide(matchingSide);
   }, [activeStyle, activeSide])
 
+  const pageTitle = `${productData.Manufacturer} - ${productData.ManufacturerSku} // ${activeStyle.Name}`
+  const pageDescription = `Design your own ${productData.Name} (${productData.Manufacturer} ${productData.ManufacturerSku}) in ${activeStyle.Name} with help from Lab Seven`
+
   return (
-    <Layout>
-      <Head hideHome>
-        <title>Shop our products</title>
+    <Layout hideHome>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="og:title" content={pageTitle} />
+        <meta name="description" content={pageDescription} />
+        <meta name="og:description" content={pageDescription} />
       </Head>
       <div>
         <Link href="/products">
