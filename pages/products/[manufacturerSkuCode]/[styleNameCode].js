@@ -34,26 +34,33 @@ export async function getStaticProps({ params }) {
     params.manufacturerSkuCode,
     params.styleNameCode
   );
+  const defaultStyle = productData.Styles[0];
+  const canonicalHref =
+    !!defaultStyle?.nameCode &&
+    `/products/${params.manufacturerSkuCode}/${defaultStyle.nameCode}`;
   return {
     props: {
       productData,
+      canonicalHref, // TODO: make absolute to include domain (?)
     },
   };
 }
 
-const Product = ({ productData }) => {
+const Product = ({ productData, canonicalHref }) => {
   const activeStyle = productData.activeStyle;
   const [activeSide, setActiveSide] = React.useState();
 
   // on style change
   // show same clicked-to side Image if possible
   React.useEffect(() => {
-    const matchingSide = activeStyle.Sides.find(side => side.Side === activeSide?.Side);
+    const matchingSide = activeStyle.Sides.find(
+      (side) => side.Side === activeSide?.Side
+    );
     setActiveSide(matchingSide);
-  }, [activeStyle, activeSide])
+  }, [activeStyle, activeSide]);
 
-  const pageTitle = `${productData.Manufacturer} - ${productData.ManufacturerSku} // ${activeStyle.Name}`
-  const pageDescription = `Design your own ${productData.Name} (${productData.Manufacturer} ${productData.ManufacturerSku}) in ${activeStyle.Name} with help from Lab Seven`
+  const pageTitle = `${productData.Manufacturer} - ${productData.ManufacturerSku} // ${activeStyle.Name}`;
+  const pageDescription = `Design your own ${productData.Name} (${productData.Manufacturer} ${productData.ManufacturerSku}) in ${activeStyle.Name} with help from Lab Seven`;
 
   return (
     <Layout hideHome>
@@ -62,7 +69,10 @@ const Product = ({ productData }) => {
         <meta name="og:title" content={pageTitle} />
         <meta name="description" content={pageDescription} />
         <meta name="og:description" content={pageDescription} />
-        {!!activeStyle.mainImageUrl && <meta property="og:image" content={activeStyle.mainImageUrl} />}
+        {!!activeStyle.mainImageUrl && (
+          <meta property="og:image" content={activeStyle.mainImageUrl} />
+        )}
+        {!!canonicalHref && <link rel="canonical" href={canonicalHref} />}
       </Head>
       <div>
         <Link href="/products">
