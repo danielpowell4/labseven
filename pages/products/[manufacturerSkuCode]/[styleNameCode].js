@@ -34,19 +34,14 @@ export async function getStaticProps({ params }) {
     params.manufacturerSkuCode,
     params.styleNameCode
   );
-  const defaultStyle = productData.Styles[0];
-  const canonicalHref =
-    !!defaultStyle?.nameCode &&
-    `/products/${params.manufacturerSkuCode}/${defaultStyle.nameCode}`;
   return {
     props: {
       productData,
-      canonicalHref, // TODO: make absolute to include domain (?)
     },
   };
 }
 
-const Product = ({ productData, canonicalHref }) => {
+const Product = ({ productData }) => {
   const activeStyle = productData.activeStyle;
   const [activeSide, setActiveSide] = React.useState();
 
@@ -72,7 +67,7 @@ const Product = ({ productData, canonicalHref }) => {
         {!!activeStyle.mainImageUrl && (
           <meta property="og:image" content={activeStyle.mainImageUrl} />
         )}
-        {!!canonicalHref && <link rel="canonical" href={canonicalHref} />}
+        {!!productData.defaultHref && <link rel="canonical" href={productData.defaultHref} />}
       </Head>
       <div>
         <Link href="/products">
@@ -142,9 +137,7 @@ const Product = ({ productData, canonicalHref }) => {
               <ul className={productStyles.style__options}>
                 {productData.Styles.map((style) => (
                   <li key={style.ID}>
-                    <Link
-                      href={`/products/${productData.manufacturerSkuCode}/${style.nameCode}`}
-                    >
+                    <Link href={style.href}>
                       <a
                         title={style.Name}
                         className={`${productStyles.styleOption}${
