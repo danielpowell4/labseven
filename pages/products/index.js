@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { ColorOption, Layout } from "../../components";
-import { getAllProducts } from "../../lib/products";
+import { getAllProductCategories, getAllProducts } from "../../lib/products";
 
 import productsStyles from "./styles/products.module.css";
 
@@ -20,10 +20,12 @@ export async function getStaticProps() {
 
       return a.ManufacturerSku.localeCompare(b.ManufacturerSku);
     });
+  const allProductCategories = await getAllProductCategories();
 
   return {
     props: {
       allProductData,
+      allProductCategories,
     },
   };
 }
@@ -87,7 +89,7 @@ const ProductCard = ({ product }) => {
   );
 };
 
-const Products = ({ allProductData }) => {
+const Products = ({ allProductData, allProductCategories }) => {
   return (
     <Layout>
       <Head>
@@ -96,7 +98,20 @@ const Products = ({ allProductData }) => {
       <div className={productsStyles.searchContainer}>
         <aside className={productsStyles.searchContainer__aside}>
           <h1>Apparel</h1>
-          <pre>TODO: add filters</pre>
+          <nav>
+            <ul className={productsStyles.categoriesList}>
+              {allProductCategories.map((category) => (
+                <li
+                  key={category.ID}
+                  className={productsStyles.categoriesList__option}
+                >
+                  <Link href={category.href}>
+                    <a>{category.Name}</a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </aside>
         <main className={productsStyles.searchContainer__main}>
           <div className={productsStyles.ProductList}>

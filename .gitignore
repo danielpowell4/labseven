@@ -32,6 +32,7 @@ yarn-error.log*
 
 # data cache
 products_cache.json
+product_categories_cache.json
 
 # vercel
 .vercel
