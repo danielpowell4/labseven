@@ -1,0 +1,16 @@
+.categoriesList {
+  margin: 0;
+  padding: 0;
+}
+
+.categoriesList__option {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 0.625rem;
+  margin-left: 0;
+}
+
+.categoriesList__option a {
+  color: var(--mediumText);
+  font-weight: bold;
+}
