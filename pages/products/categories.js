@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layout";
 import { getProductCategoryData } from "../../lib/products";
 
 import categoriesStyles from './styles/categories.module.css'

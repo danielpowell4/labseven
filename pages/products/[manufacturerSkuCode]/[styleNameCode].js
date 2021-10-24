@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-import Layout from "../../../components/layout";
+import { ColorOptions, Layout } from "../../../components";
 import { getAllProducts, getProductByStyle } from "../../../lib/products";
 
 import productStyles from "../styles/product.module.css";
@@ -134,29 +134,7 @@ const Product = ({ productData }) => {
                 Color Shown
                 <span>{activeStyle.Name}</span>
               </label>
-              <ul className={productStyles.style__options}>
-                {productData.Styles.map((style) => (
-                  <li key={style.ID}>
-                    <Link href={style.href}>
-                      <a
-                        title={style.Name}
-                        className={`${productStyles.styleOption}${
-                          style.ID == activeStyle.ID
-                            ? ` ${productStyles.styleOptionActive}`
-                            : ""
-                        }`}
-                      >
-                        <div
-                          className={productStyles.styleOption__color}
-                          style={{
-                            backgroundColor: `#${style.HtmlColor1}`,
-                          }}
-                        />
-                      </a>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <ColorOptions Styles={productData.Styles} activeStyle={activeStyle} />
             </div>
           </div>
           <hr />
