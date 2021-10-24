@@ -66,6 +66,14 @@
   padding-left: 1.25rem;
 }
 
+.colorOptions {
+  margin: 0.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.25rem;
+}
+
 /* TODO: remove me when prod ready */
 .details {
   margin: 1rem auto;

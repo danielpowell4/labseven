@@ -20,7 +20,8 @@ a:hover {
   text-decoration: underline;
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
 }
 
@@ -30,4 +31,7 @@ ul, li {
 
 :root {
   --hr: grey;
+  --darkText: rgb(8, 36, 42);
+  --mediumText: rgb(80, 101, 105);
+  --lightText: rgb(157, 168, 171);
 }

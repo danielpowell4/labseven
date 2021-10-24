@@ -1,23 +1,15 @@
-.options {
-  margin: 0.25rem 0 0;
-  padding: 0;
-  display: flex;
-  flex-flow: row wrap;
-  gap: .25rem;
-}
-
 .styleOption {
-   width: 1.75rem;
-   height: 1.75rem;
-   align-items: center;
-   cursor: pointer;
-   display: flex;
-   justify-content: center;
-   border-radius: 3;
+  width: 1.75rem;
+  height: 1.75rem;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  border-radius: 3;
 }
 
 .styleOption.styleOptionActive {
-  border: 1px solid rgb(157, 168, 171);
+  border: 1px solid var(--lightText);
 }
 
 .styleOption:hover .styleOption__color {
