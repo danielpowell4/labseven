@@ -1,7 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
-import { ColorOption, Layout } from "../../components";
+import { Layout, ProductList } from "../../components";
 import { getAllProductCategories, getAllProducts } from "../../lib/products";
 
 import productsStyles from "./styles/products.module.css";
@@ -30,65 +29,6 @@ export async function getStaticProps() {
   };
 }
 
-const ProductCard = ({ product }) => {
-  const activeStyle = product.Styles[0];
-  const showMoreStyles = product.Styles.length > 7;
-
-  return (
-    <Link href={product.defaultHref}>
-      <a className={productsStyles.ProductCard}>
-        <div className={productsStyles.ProductCard__frame} />
-        <div className={productsStyles.ProductCard__description}>
-          {activeStyle.hasMainImage ? (
-            <Image
-              src={activeStyle.mainImageUrl}
-              objectFit="contain"
-              objectPosition="center"
-              width={290}
-              height={320}
-              alt={`Sample of ${product.Name} in ${activeStyle.Name} style`}
-            />
-          ) : (
-            <p>Missing image!</p>
-          )}
-          <div>
-            <h4>
-              {product.Manufacturer} <br />
-              {product.ManufacturerSku}
-            </h4>
-            <p>{product.Name}</p>
-            <p className={productsStyles.ProductCard__extraDetail}>
-              {`$${product.UnitPrice.toFixed(2)}`} |{" "}
-              {product.Styles.length > 1
-                ? `${product.Styles.length} Colors`
-                : "1 Color"}
-            </p>
-            {product.Styles.length > 1 && (
-              <ul
-                className={`${productsStyles.colorOptions} ${
-                  showMoreStyles ? productsStyles.colorOptions__ShowMore : ""
-                }`}
-              >
-                {product.Styles.map((style, styleIndex) => {
-                  if (styleIndex > 6) return null;
-
-                  return (
-                    <ColorOption
-                      key={styleIndex}
-                      style={style}
-                      isActive={styleIndex === 0}
-                    />
-                  );
-                })}
-              </ul>
-            )}
-          </div>
-        </div>
-      </a>
-    </Link>
-  );
-};
-
 const Products = ({ allProductData, allProductCategories }) => {
   return (
     <Layout>
@@ -114,11 +54,7 @@ const Products = ({ allProductData, allProductCategories }) => {
           </nav>
         </aside>
         <main className={productsStyles.searchContainer__main}>
-          <div className={productsStyles.ProductList}>
-            {allProductData.map((product) => (
-              <ProductCard key={product.ID} product={product} />
-            ))}
-          </div>
+          <ProductList products={allProductData} />
         </main>
       </div>
     </Layout>
