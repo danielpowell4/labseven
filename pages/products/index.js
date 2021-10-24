@@ -9,7 +9,8 @@ import productsStyles from "./styles/products.module.css";
 export async function getStaticProps() {
   const allProducts = await getAllProducts();
   // Hide products without categories!
-  const allProductData = allProducts.filter((product) => !!product.Categories.length)
+  const allProductData = allProducts
+    .filter((product) => !!product.Categories.length)
     .sort((a, b) => {
       const supplierCompare = a.Supplier.localeCompare(b.Supplier);
       if (supplierCompare !== 0) return supplierCompare;
@@ -30,29 +31,40 @@ export async function getStaticProps() {
 const ProductCard = ({ product }) => {
   const activeStyle = product.Styles[0];
 
-  return <li className={productsStyles.ProductCard}>
-    <Link href={product.defaultHref}>
-      <a>
-        { activeStyle.hasMainImage ? (
-                <Image
-                  src={activeStyle.mainImageUrl}
-                  objectFit="contain"
-                  objectPosition="center"
-                  width={380}
-                  height={410}
-                  alt={`Sample of ${product.Name} in ${activeStyle.Name} style`}
-                />
-              ) : (
-                <p>Missing image!</p>
-              )}
-        <h4>{product.Manufacturer} {product.ManufacturerSku}</h4>
-        <p>{product.Name}</p>
-        <p>{`$${product.UnitPrice.toFixed(2)}`} | {product.Styles.length > 1 ? `${product.Styles.length} Colors` : "1 Color"}</p>
-        {product.Styles.length > 1 && <ColorOptions Styles={product.Styles} activeStyle={activeStyle} />}
-      </a>
+  return (
+    <li className={productsStyles.ProductCard}>
+      <Link href={product.defaultHref}>
+        <a>
+          {activeStyle.hasMainImage ? (
+            <Image
+              src={activeStyle.mainImageUrl}
+              objectFit="contain"
+              objectPosition="center"
+              width={380}
+              height={410}
+              alt={`Sample of ${product.Name} in ${activeStyle.Name} style`}
+            />
+          ) : (
+            <p>Missing image!</p>
+          )}
+          <h4>
+            {product.Manufacturer} {product.ManufacturerSku}
+          </h4>
+          <p>{product.Name}</p>
+          <p>
+            {`$${product.UnitPrice.toFixed(2)}`} |{" "}
+            {product.Styles.length > 1
+              ? `${product.Styles.length} Colors`
+              : "1 Color"}
+          </p>
+          {product.Styles.length > 1 && (
+            <ColorOptions Styles={product.Styles} activeStyle={activeStyle} />
+          )}
+        </a>
       </Link>
-  </li>
-}
+    </li>
+  );
+};
 
 const Products = ({ allProductData }) => {
   return (

@@ -1,7 +1,7 @@
 .container {
   margin: 1rem auto 0;
   min-height: calc(100vh - 14px);
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .header {

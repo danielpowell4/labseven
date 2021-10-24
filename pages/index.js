@@ -1,5 +1,6 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Link from "/next/link";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -14,22 +15,28 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <a href="/products" className={styles.card}>
-            <h3>Products &rarr;</h3>
-            <p>Look through your items, see things from API.</p>
-          </a>
+          <Link href="/products" className={styles.card}>
+            <a>
+              <h3>{`Products →`}</h3>
+              <p>Look through your items, see things from API.</p>
+            </a>
+          </Link>
 
-          <a href="/products/categories" className={styles.card}>
-            <h3>Product Categories &rarr;</h3>
-            <p>Look through categories from the API.</p>
-          </a>
+          <Link href="/products/categories" className={styles.card}>
+            <a>
+              <h3>{`Product Categories →`}</h3>
+              <p>Look through categories from the API.</p>
+            </a>
+          </Link>
 
-          <a href="#" className={styles.card}>
-            <h3>Any day now &rarr;</h3>
-            <p>Good things come with time. At least that's what I'll keep saying</p>
-          </a>
+          <Link href="/#" className={styles.card}>
+            <a>
+              <h3>{`Any day now →`}</h3>
+              <p>{`Good things come with time. At least that's what I'll keep saying`}</p>
+            </a>
+          </Link>
         </div>
       </main>
     </div>
-  )
+  );
 }

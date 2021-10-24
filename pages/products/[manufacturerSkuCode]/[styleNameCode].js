@@ -67,7 +67,9 @@ const Product = ({ productData }) => {
         {!!activeStyle.mainImageUrl && (
           <meta property="og:image" content={activeStyle.mainImageUrl} />
         )}
-        {!!productData.defaultHref && <link rel="canonical" href={productData.defaultHref} />}
+        {!!productData.defaultHref && (
+          <link rel="canonical" href={productData.defaultHref} />
+        )}
       </Head>
       <div>
         <Link href="/products">
@@ -134,7 +136,10 @@ const Product = ({ productData }) => {
                 Color Shown
                 <span>{activeStyle.Name}</span>
               </label>
-              <ColorOptions Styles={productData.Styles} activeStyle={activeStyle} />
+              <ColorOptions
+                Styles={productData.Styles}
+                activeStyle={activeStyle}
+              />
             </div>
           </div>
           <hr />
