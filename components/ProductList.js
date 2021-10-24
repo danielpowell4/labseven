@@ -64,6 +64,10 @@ const ProductCard = ({ product }) => {
 };
 
 const ProductList = ({ products }) => {
+  if (!products.length) {
+    return <p className={styles.NoContentMessage}>No matching products</p>;
+  }
+
   return (
     <div className={styles.ProductList}>
       {products.map((product) => (

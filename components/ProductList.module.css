@@ -5,6 +5,11 @@
   padding: 0.25rem 1rem 1.375rem;
 }
 
+.NoContentMessage {
+  color: var(--mediumText);
+  padding: 4rem;
+}
+
 .ProductCard {
   padding: 1rem;
   position: relative;
