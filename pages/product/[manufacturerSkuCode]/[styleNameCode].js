@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ColorOption, Layout } from "../../../components";
 import { getAllProducts, getProductByStyle } from "../../../lib/products";
 
-import productStyles from "../styles/product.module.css";
+import productStyles from "./product.module.css";
 
 export async function getStaticPaths() {
   const allProducts = await getAllProducts();
