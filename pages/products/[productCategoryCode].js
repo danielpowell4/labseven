@@ -35,9 +35,7 @@ export async function getStaticProps({ params }) {
   const allProducts = await getAllProducts();
   // filter matches
   const categoryProductData = allProducts
-    .filter((product) =>
-      product.Categories.some((cat) => cat.ID === categoryData.ID)
-    )
+    .filter((product) => categoryData.ItemIds.includes(product.ID))
     .sort(sortProducts);
 
   return {
