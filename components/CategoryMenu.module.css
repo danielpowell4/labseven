@@ -27,6 +27,11 @@
   color: var(--mediumText);
 }
 
+.subcategoriesList__activeOption h2 {
+  font-size: inherit;
+  margin: inherit;
+}
+
 .activeHelperLink,
 .activeHelperLink:visited {
   text-decoration: underline;

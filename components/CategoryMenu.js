@@ -2,7 +2,11 @@ import Link from "next/link";
 
 import styles from "./CategoryMenu.module.css";
 
-const CategoryMenu = ({ categories, activeCategory }) => {
+const CategoryMenu = ({
+  categories,
+  activeCategory,
+  activeSubCategory = {},
+}) => {
   if (!!activeCategory) {
     return (
       <nav className={styles.nav}>
@@ -12,15 +16,25 @@ const CategoryMenu = ({ categories, activeCategory }) => {
         <h1>{activeCategory.Name}</h1>
         {activeCategory.hasSubCategories && (
           <ul className={styles.subcategoriesList}>
-            {activeCategory.SubCategories.map((subCat) => (
-              <li key={subCat.ID} className={styles.subcategoriesList__option}>
-                <Link
-                  href={`${activeCategory.href}?subcategoryID=${subCat.ID}`}
+            {activeCategory.SubCategories.map((subCat) =>
+              subCat.ID === activeSubCategory.ID ? (
+                <li
+                  key={subCat.ID}
+                  className={`${styles.subcategoriesList__option} ${styles.subcategoriesList__activeOption}`}
                 >
-                  <a>{subCat.Name}</a>
-                </Link>
-              </li>
-            ))}
+                  <h2>{subCat.Name}</h2>
+                </li>
+              ) : (
+                <li
+                  key={subCat.ID}
+                  className={styles.subcategoriesList__option}
+                >
+                  <Link href={subCat.href}>
+                    <a>{subCat.Name}</a>
+                  </Link>
+                </li>
+              )
+            )}
           </ul>
         )}
       </nav>

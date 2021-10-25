@@ -1,15 +1,15 @@
 import * as React from "react";
 import Head from "next/head";
 
-import { Layout, CategoryMenu, ProductList } from "../../components";
+import { Layout, CategoryMenu, ProductList } from "../../../components";
 import {
   getAllProductCategories,
   getProductCategory,
   getAllProducts,
   sortProducts,
-} from "../../lib/products";
+} from "../../../lib/products";
 
-import productsStyles from "./styles/products.module.css";
+import productsStyles from "../styles/products.module.css";
 
 export async function getStaticPaths() {
   const allCategories = await getAllProductCategories();
