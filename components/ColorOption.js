@@ -1,10 +1,10 @@
 import Link from "next/link";
 import styles from "./ColorOption.module.css";
 
-const ColorOption = ({ style, isActive = false }) => {
+const ColorOption = ({ style, isActive = false, replace = false }) => {
   return (
     <li key={style.ID}>
-      <Link href={style.href}>
+      <Link href={style.href} replace={replace}>
         <a
           title={style.Name}
           className={`${styles.styleOption}${

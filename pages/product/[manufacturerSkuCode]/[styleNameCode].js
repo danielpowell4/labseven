@@ -142,6 +142,7 @@ const Product = ({ productData }) => {
                     key={style.ID}
                     style={style}
                     isActive={style.ID == activeStyle.ID}
+                    replace
                   />
                 ))}
               </ul>
