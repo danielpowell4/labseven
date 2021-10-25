@@ -10,7 +10,7 @@ const description =
 const sample = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const EMOJI_OF_BUILD = ["🐕", "👨‍🚀", "👨‍💻", "🖼", "🚀"];
 
-export default function Layout({ children, hideHome = false }) {
+export default function Layout({ children }) {
   return (
     <>
       <div className={styles.container}>
@@ -27,7 +27,6 @@ export default function Layout({ children, hideHome = false }) {
           <meta name="og:title" content={siteTitle} />
           <meta name="og:description" content={description} />
         </Head>
-        {!hideHome && <a href="/">← Back to home</a>}
         <main>{children}</main>
       </div>
       <footer className={styles.footer}>

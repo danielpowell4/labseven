@@ -58,7 +58,7 @@ const Product = ({ productData }) => {
   const pageDescription = `Design your own ${productData.Name} (${productData.Manufacturer} ${productData.ManufacturerSku}) in ${activeStyle.Name} with help from Lab Seven`;
 
   return (
-    <Layout hideHome>
+    <Layout>
       <Head>
         <title>{pageTitle}</title>
         <meta name="og:title" content={pageTitle} />
