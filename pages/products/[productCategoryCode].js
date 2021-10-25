@@ -49,7 +49,11 @@ export async function getStaticProps({ params }) {
   };
 }
 
-const Category = ({ categoryProductData, allProductCategoryData }) => {
+const Category = ({
+  categoryData,
+  categoryProductData,
+  allProductCategoryData,
+}) => {
   return (
     <Layout>
       <Head>
@@ -57,8 +61,10 @@ const Category = ({ categoryProductData, allProductCategoryData }) => {
       </Head>
       <div className={productsStyles.searchContainer}>
         <aside className={productsStyles.searchContainer__aside}>
-          <h1>Apparel</h1>
-          <CategoryMenu categories={allProductCategoryData} />
+          <CategoryMenu
+            categories={allProductCategoryData}
+            activeCategory={categoryData}
+          />
         </aside>
         <main className={productsStyles.searchContainer__main}>
           <ProductList products={categoryProductData} />
