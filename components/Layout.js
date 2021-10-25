@@ -10,7 +10,7 @@ const description =
 const sample = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const EMOJI_OF_BUILD = ["🐕", "👨‍🚀", "👨‍💻", "🖼", "🚀"];
 
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
   return (
     <>
       <div className={styles.container}>
@@ -34,4 +34,6 @@ export default function Layout({ children }) {
       </footer>
     </>
   );
-}
+};
+
+export default Layout;
