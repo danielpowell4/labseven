@@ -1,5 +1,4 @@
-import Head from "next/head";
-import Link from "/next/link";
+import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -15,10 +14,10 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <Link href="/products" className={styles.card}>
-            <a>
+          <Link href="/products">
+            <a className={styles.card}>
               <h3>{`Products →`}</h3>
-              <p>Look through your items, see things from API.</p>
+              <p>Look through products gathered from API.</p>
             </a>
           </Link>
         </div>
