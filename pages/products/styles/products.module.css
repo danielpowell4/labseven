@@ -10,4 +10,7 @@
 
 .searchContainer__aside {
   padding: 1rem;
+  position: sticky;
+  top: 1.15rem;
+  align-self: start; /* for 'sticky' in grid */
 }
