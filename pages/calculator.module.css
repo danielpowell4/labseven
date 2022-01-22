@@ -1,0 +1,14 @@
+.pageContainer {
+
+}
+
+.form {
+
+}
+
+.formEl {
+  display: flex;
+  flex-direction: column;
+  max-width: 260px;
+  margin-bottom: 1rem;
+}
