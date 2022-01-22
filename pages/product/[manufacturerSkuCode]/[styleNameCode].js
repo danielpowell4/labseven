@@ -175,6 +175,14 @@ const Product = ({ productData }) => {
               {productData.Keywords.join(", ")}
             </div>
           )}
+          {process.env.NODE_ENV === "development" && (
+            <>
+              <hr />
+              <details>
+                <pre>{JSON.stringify(productData, null, 2)}</pre>
+              </details>
+            </>
+          )}
         </div>
       </div>
     </Layout>
