@@ -1,10 +1,4 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
-import useSWR from "swr";
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
-import { stringify } from "querystring";
-
 import {
   Layout,
   ProductList,
@@ -13,6 +7,7 @@ import {
 } from "../../components";
 import { getAllProductCategories, getAllProducts } from "../../lib/products";
 import { paginate } from "../../lib/utils";
+import { usePaginatedProducts } from "../../lib/customHooks";
 
 import productsStyles from "./styles/products.module.css";
 
@@ -30,16 +25,11 @@ export async function getStaticProps() {
   };
 }
 
-const Products = ({
-  productData: serverProductData,
-  pagination: serverPagination,
-  allProductCategoryData,
-}) => {
-  const { query } = useRouter();
-  const { data, error } = useSWR("/api/products?" + stringify(query), fetcher);
-  const productData = data?.products || serverProductData;
-  const pagination = data?.pagination || serverPagination;
-  const isLoading = !error && !data;
+const Products = ({ productData, pagination, allProductCategoryData }) => {
+  const { data, error, isLoading } = usePaginatedProducts(
+    productData,
+    pagination
+  );
 
   return (
     <Layout>
@@ -56,9 +46,9 @@ const Products = ({
             <ErrorAlert error={error} />
           ) : (
             <ProductList
-              products={productData}
+              products={data.products}
+              pagination={data.pagination}
               isLoading={isLoading}
-              pagination={pagination}
             />
           )}
         </main>
