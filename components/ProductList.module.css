@@ -5,6 +5,10 @@
   padding: 0.25rem 1rem 1.375rem;
 }
 
+.ProductListIsLoading {
+  opacity: 0.8;
+}
+
 .NoContentMessage {
   color: var(--mediumText);
   padding: 4rem;

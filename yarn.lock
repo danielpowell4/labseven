@@ -1470,7 +1470,7 @@ querystring@0.2.0:
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
-querystring@^0.2.0:
+querystring@^0.2.0, querystring@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.1.tgz#40d77615bb09d16902a85c3e38aa8b5ed761c2dd"
   integrity sha512-wkvS7mL/JMugcup3/rMitHmd9ecIGd2lhFhK9N3UUQ450h66d1r3Y9nvXzQAW1Lq+wyx61k/1pfKS5KuKiyEbg==
@@ -1805,6 +1805,11 @@ supports-color@^8.0.0:
   integrity sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q==
   dependencies:
     has-flag "^4.0.0"
+
+swr@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-1.2.1.tgz#c21a4fe2139cb1c4630450589b5b5add947a9d41"
+  integrity sha512-1cuWXqJqXcFwbgONGCY4PHZ8v05009JdHsC3CIC6u7d00kgbMswNr1sHnnhseOBxtzVqcCNpOHEgVDciRer45w==
 
 timers-browserify@2.0.12, timers-browserify@^2.0.4:
   version "2.0.12"

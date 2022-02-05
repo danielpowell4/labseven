@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ColorOption, Pagination } from ".";
+import { ColorOption, Pagination, ThreeDotLoader } from ".";
 
 import styles from "./ProductList.module.css";
 
@@ -63,18 +63,27 @@ const ProductCard = ({ product }) => {
   );
 };
 
-const ProductList = ({ products, pagination }) => {
+const ProductList = ({ products, isLoading, pagination }) => {
   if (!products.length) {
     return <p className={styles.NoContentMessage}>No matching products</p>;
   }
 
   return (
-    <div className={styles.ProductList}>
-      {products.map((product) => (
-        <ProductCard key={product.ID} product={product} />
-      ))}
-      <Pagination pagination={pagination} inGrid />
-    </div>
+    <>
+      <div
+        className={`${styles.ProductList} ${
+          isLoading ? styles.ProductListIsLoading : ""
+        }`}
+      >
+        {products.map((product) => (
+          <ProductCard key={product.ID} product={product} />
+        ))}
+      </div>
+      <div>
+        <Pagination pagination={pagination} />
+        {isLoading && <ThreeDotLoader />}
+      </div>
+    </>
   );
 };
 

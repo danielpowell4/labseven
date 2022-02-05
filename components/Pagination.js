@@ -39,23 +39,23 @@ const PageNumber = ({ pageNumber, currentPage }) => {
   );
 };
 
-const Pagination = ({ pagination, inGrid = false }) => {
+const Pagination = ({ pagination }) => {
   // hide if page undefined or irrelevant
   if (!pagination || !pagination.totalPages || pagination.totalPages === 1) {
     return null;
   }
 
   return (
-    <ul
-      className={pageStyles.pagination}
-      style={inGrid ? { gridColumn: "1/-1" } : {}}
-    >
+    <ul className={pageStyles.pagination}>
       {/* back arrow */}
-      <PageItem pageNumber={pagination.prevPage || 1}>
-        <span role="img" aria-label="Previous Page">
-          ⬅️
-        </span>
-      </PageItem>
+      {pagination.currentPage != 1 && (
+        <PageItem pageNumber={pagination.prevPage}>
+          <span role="img" aria-label="Previous Page">
+            ⬅️
+          </span>
+        </PageItem>
+      )}
+
       {/* first page */}
       <PageNumber pageNumber={1} currentPage={pagination.currentPage} />
       {/* build range of pageNumbers from start + 1 --> end - 1 */}
@@ -103,11 +103,13 @@ const Pagination = ({ pagination, inGrid = false }) => {
         currentPage={pagination.currentPage}
       />
       {/* next page */}
-      <PageItem pageNumber={pagination.nextPage || pagination.totalPages}>
-        <span role="img" aria-label="Next Page">
-          ➡️
-        </span>
-      </PageItem>
+      {pagination.currentPage != pagination.totalPages && (
+        <PageItem pageNumber={pagination.nextPage || pagination.totalPages}>
+          <span role="img" aria-label="Next Page">
+            ➡️
+          </span>
+        </PageItem>
+      )}
     </ul>
   );
 };
