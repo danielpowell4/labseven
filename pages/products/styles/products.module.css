@@ -2,13 +2,13 @@
   margin: 1rem auto;
 }
 
-.searchContainer {
+.grid {
   display: grid;
   grid-template-columns: 18rem 1fr;
   grid-gap: 1rem;
 }
 
-.searchContainer__aside {
+.grid__aside {
   padding: 1rem;
   position: sticky;
   top: 1.15rem;

@@ -63,15 +63,15 @@ const SubCategory = ({
       <Head>
         <title>Shop our products</title>
       </Head>
-      <div className={productsStyles.searchContainer}>
-        <aside className={productsStyles.searchContainer__aside}>
+      <div className={productsStyles.grid}>
+        <aside className={productsStyles.grid__aside}>
           <CategoryMenu
             categories={allProductCategoryData}
             activeCategory={categoryData}
             activeSubCategory={subcategoryData}
           />
         </aside>
-        <main className={productsStyles.searchContainer__main}>
+        <main className={productsStyles.grid__main}>
           <ProductList products={categoryProductData} />
         </main>
       </div>

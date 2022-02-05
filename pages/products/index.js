@@ -46,12 +46,12 @@ const Products = ({
       <Head>
         <title>Shop our products</title>
       </Head>
-      <div className={productsStyles.searchContainer}>
-        <aside className={productsStyles.searchContainer__aside}>
+      <div className={productsStyles.grid}>
+        <aside className={productsStyles.grid__aside}>
           <h1>Apparel</h1>
           <CategoryMenu categories={allProductCategoryData} />
         </aside>
-        <main className={productsStyles.searchContainer__main}>
+        <main className={productsStyles.grid__main}>
           {!!error ? (
             <ErrorAlert error={error} />
           ) : (
