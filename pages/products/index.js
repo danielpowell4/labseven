@@ -3,17 +3,12 @@ import { Layout, ProductList, CategoryMenu } from "../../components";
 import {
   getAllProductCategories,
   getAllProducts,
-  sortProducts,
 } from "../../lib/products";
 
 import productsStyles from "./styles/products.module.css";
 
 export async function getStaticProps() {
-  const allProducts = await getAllProducts();
-  // Hide products without categories!
-  const allProductData = allProducts
-    .filter((product) => !!product.Categories.length)
-    .sort(sortProducts);
+  const allProductData = await getAllProducts();
   const allProductCategoryData = await getAllProductCategories();
 
   return {

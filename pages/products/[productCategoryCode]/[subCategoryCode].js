@@ -6,7 +6,6 @@ import {
   getAllProductCategories,
   getProductCategory,
   getAllProducts,
-  sortProducts,
 } from "../../../lib/products";
 
 import productsStyles from "../styles/products.module.css";
@@ -42,7 +41,6 @@ export async function getStaticProps({ params }) {
   // filter matches
   const categoryProductData = allProducts
     .filter((product) => subcategoryData.ItemIds.includes(product.ID))
-    .sort(sortProducts);
 
   return {
     props: {
