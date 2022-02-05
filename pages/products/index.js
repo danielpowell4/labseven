@@ -2,24 +2,40 @@ import Head from "next/head";
 import { Layout, ProductList, CategoryMenu } from "../../components";
 import {
   getAllProductCategories,
-  getAllProducts,
+  getPaginatedProducts,
 } from "../../lib/products";
 
 import productsStyles from "./styles/products.module.css";
 
 export async function getStaticProps() {
-  const allProductData = await getAllProducts();
+  const [productData, pagination] = await getPaginatedProducts(1);
   const allProductCategoryData = await getAllProductCategories();
 
   return {
     props: {
-      allProductData,
+      productData,
+      pagination,
       allProductCategoryData,
     },
   };
 }
 
-const Products = ({ allProductData, allProductCategoryData }) => {
+// export async function getServerSideProps(context) {
+//   const productData = await getPaginatedProducts(
+//     context.query.page,
+//     context.query.perPage
+//   );
+//   const allProductCategoryData = await getAllProductCategories();
+
+//   return {
+//     props: {
+//       productData,
+//       allProductCategoryData,
+//     },
+//   };
+// }
+
+const Products = ({ productData, pagination, allProductCategoryData }) => {
   return (
     <Layout>
       <Head>
@@ -31,7 +47,7 @@ const Products = ({ allProductData, allProductCategoryData }) => {
           <CategoryMenu categories={allProductCategoryData} />
         </aside>
         <main className={productsStyles.searchContainer__main}>
-          <ProductList products={allProductData} />
+          <ProductList products={productData} pagination={pagination} />
         </main>
       </div>
     </Layout>

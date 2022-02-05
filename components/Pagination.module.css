@@ -1,0 +1,67 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  justify-content: center;
+  border: 1px solid var(--hr);
+  border-radius: 4px;
+  padding: 0;
+  margin: 1rem auto;
+  vertical-align: middle;
+  width: fit-content;
+  margin: auto;
+}
+.pageItem {
+  min-width: 3em;
+  min-height: 3em;
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  text-align: center;
+  background: var(--background--alt);
+  user-select: none;
+  cursor: pointer;
+  transition: ease color 100ms, ease background-color 100ms;
+}
+.pageItem a {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+.pageItem:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 1px;
+  background: var(--hr);
+}
+.pageItem:last-child:before {
+  display: none;
+}
+.pageItem:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.pageItem:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.pageItemIsActive {
+  background: var(--background);
+}
+.pageItemIsActive a {
+  color: var(--primary--dark);
+}
+.pageItemWithNoAction {
+  cursor: not-allowed;
+}
+.pageItemWithNoAction a {
+  cursor: not-allowed;
+  text-decoration: none;
+}
+.pageItemWithNoAction a:hover {
+  color: var(--primary--light);
+}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ColorOption } from ".";
+import { ColorOption, Pagination } from ".";
 
 import styles from "./ProductList.module.css";
 
@@ -63,7 +63,7 @@ const ProductCard = ({ product }) => {
   );
 };
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, pagination }) => {
   if (!products.length) {
     return <p className={styles.NoContentMessage}>No matching products</p>;
   }
@@ -73,6 +73,7 @@ const ProductList = ({ products }) => {
       {products.map((product) => (
         <ProductCard key={product.ID} product={product} />
       ))}
+      <Pagination pagination={pagination} inGrid />
     </div>
   );
 };
