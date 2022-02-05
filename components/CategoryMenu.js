@@ -7,13 +7,23 @@ const CategoryMenu = ({
   activeCategory,
   activeSubCategory = {},
 }) => {
+  const hasActiveSubCategory = !!activeSubCategory.ID;
+
   if (!!activeCategory) {
     return (
       <nav className={styles.nav}>
         <Link href="/products">
           <a className={styles.activeHelperLink}>Products</a>
         </Link>
-        <h1>{activeCategory.Name}</h1>
+        <h1>
+          {hasActiveSubCategory ? (
+            <Link href={activeCategory.href}>
+              <a>{activeCategory.Name}</a>
+            </Link>
+          ) : (
+            activeCategory.Name
+          )}
+        </h1>
         {activeCategory.hasSubCategories && (
           <ul className={styles.subcategoriesList}>
             {activeCategory.SubCategories.map((subCat) =>
