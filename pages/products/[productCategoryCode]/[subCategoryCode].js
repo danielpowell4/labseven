@@ -39,8 +39,9 @@ export async function getStaticProps({ params }) {
   );
   const allProducts = await getAllProducts();
   // filter matches
-  const categoryProductData = allProducts
-    .filter((product) => subcategoryData.ItemIds.includes(product.ID))
+  const categoryProductData = allProducts.filter((product) =>
+    subcategoryData.ItemIds.includes(product.ID)
+  );
 
   return {
     props: {
