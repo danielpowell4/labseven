@@ -1,10 +1,5 @@
 import Head from "next/head";
-import {
-  Layout,
-  ProductList,
-  CategoryMenu,
-  ErrorAlert,
-} from "../../components";
+import { Layout, ProductList, CategoryMenu } from "../../components";
 import { getAllProductCategories, getAllProducts } from "../../lib/products";
 import { paginate } from "../../lib/utils";
 import { usePaginatedProducts } from "../../lib/customHooks";
@@ -42,15 +37,12 @@ const Products = ({ productData, pagination, allProductCategoryData }) => {
           <CategoryMenu categories={allProductCategoryData} />
         </aside>
         <main className={productsStyles.grid__main}>
-          {!!error ? (
-            <ErrorAlert error={error} />
-          ) : (
-            <ProductList
-              products={data.products}
-              pagination={data.pagination}
-              isLoading={isLoading}
-            />
-          )}
+          <ProductList
+            products={data.products}
+            pagination={data.pagination}
+            isLoading={isLoading}
+            error={error}
+          />
         </main>
       </div>
     </Layout>

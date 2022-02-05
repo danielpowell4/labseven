@@ -7,6 +7,8 @@ import {
   getProductCategory,
   getAllProducts,
 } from "../../../lib/products";
+import { paginate } from "../../../lib/utils";
+import { usePaginatedProducts } from "../../../lib/customHooks";
 
 import productsStyles from "../styles/products.module.css";
 
@@ -42,13 +44,15 @@ export async function getStaticProps({ params }) {
   const categoryProductData = allProducts.filter((product) =>
     subcategoryData.ItemIds.includes(product.ID)
   );
+  const [productData, pagination] = paginate(categoryProductData, 1, 15);
 
   return {
     props: {
       categoryData,
       subcategoryData,
-      categoryProductData,
       allProductCategoryData,
+      productData,
+      pagination,
     },
   };
 }
@@ -56,9 +60,15 @@ export async function getStaticProps({ params }) {
 const SubCategory = ({
   categoryData,
   subcategoryData,
-  categoryProductData,
   allProductCategoryData,
+  productData,
+  pagination,
 }) => {
+  const { data, error, isLoading } = usePaginatedProducts(
+    productData,
+    pagination
+  );
+
   return (
     <Layout>
       <Head>
@@ -73,7 +83,12 @@ const SubCategory = ({
           />
         </aside>
         <main className={productsStyles.grid__main}>
-          <ProductList products={categoryProductData} />
+          <ProductList
+            products={data.products}
+            pagination={data.pagination}
+            isLoading={isLoading}
+            error={error}
+          />
         </main>
       </div>
     </Layout>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ColorOption, Pagination, ThreeDotLoader } from ".";
+import { ColorOption, ErrorAlert, Pagination, ThreeDotLoader } from ".";
 
 import styles from "./ProductList.module.css";
 
@@ -63,7 +63,11 @@ const ProductCard = ({ product }) => {
   );
 };
 
-const ProductList = ({ products, isLoading, pagination }) => {
+const ProductList = ({ error, products, isLoading, pagination }) => {
+  if (error) {
+    return <ErrorAlert error={error} />;
+  }
+
   if (!products.length) {
     return <p className={styles.NoContentMessage}>No matching products</p>;
   }
