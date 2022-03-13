@@ -85,35 +85,25 @@ const Calculator = () => {
 
   const products = [
     {
-      ID: 1002945,
-      Name: "American Apparel 24321OW Unisex Organic Fine Jersey Short-Sleeve Classic V-Neck",
-      Sku: "24321OW",
-      Supplier: "alphabroder",
-      ManufacturerSku: "24321OW",
-      Manufacturer: "American Apparel",
-      manufacturerSkuCode: "american apparel-24321ow",
-      styleNameCode: "neptune",
-      defaultHref: "/product/american%20apparel-24321ow/neptune",
+      Created: "2022-01-19T14:22:19.253Z",
+      TaxExempt: false,
+      HasProductArt: false,
+      DesignDetailsForm: false,
+      DesignOnline: true,
+      BuyBlank: false,
+      IsStatic: false,
+      CanEmbroider: false,
       CanScreenPrint: true,
+      CanDigitalPrint: false,
       CanPrint: true,
       Active: true,
-      ManufacturerId: 1000024,
-      activeStyle: {
-        ID: 1022799,
-        Sides: [
-          {
-            Colorway: null,
-            Height: null,
-            Width: null,
-            ImageFilePath:
-              "/images/products/2728/products/24321OW/NEPTUNE/front/500.png",
-            Side: "front",
-            hasImage: true,
-            imageUrl:
-              "https://stores.labseven.co/images/products/2728/products/24321OW/NEPTUNE/front/500.png",
-          },
-        ],
-      },
+      StyleCount: 0,
+      SupplierId: 1000002,
+      ManufacturerId: 1000075,
+      ID: 1003429,
+      Keywords: ["NEA100", "Era Heritage Blend Crew Tee", "New Era Apparel"],
+      DecoratedProductSides: null,
+      PriceRuleDiscount: null,
       Categories: [
         {
           ID: 1000004,
@@ -121,6 +111,128 @@ const Calculator = () => {
           Name: "Mens/Unisex",
         },
       ],
+      Styles: [
+        {
+          IsHeathered: false,
+          IsDarkColor: false,
+          IsLightColor: false,
+          Active: true,
+          IsDefault: true,
+          CanEmbroider: false,
+          CanScreenPrint: false,
+          CanDigitalPrint: false,
+          CanPrint: false,
+          ID: 1027173,
+          Sides: [
+            {
+              Colorway: null,
+              Height: null,
+              Width: null,
+              ImageFilePath:
+                "/images/products/756/products/NEA100/Black/front/500.png",
+              Side: "front",
+              hasImage: true,
+              imageUrl:
+                "https://stores.labseven.co/images/products/756/products/NEA100/Black/front/500.png",
+            },
+            {
+              Colorway: null,
+              Height: null,
+              Width: null,
+              ImageFilePath:
+                "/images/products/756/products/NEA100/Black/back/500.png",
+              Side: "back",
+              hasImage: true,
+              imageUrl:
+                "https://stores.labseven.co/images/products/756/products/NEA100/Black/back/500.png",
+            },
+          ],
+          Sizes: null,
+          AvailableQuantityPacks: [],
+          ColorwayImageFilePath_Front: null,
+          ImageFilePath_Front:
+            "/images/products/756/products/NEA100/Black/front/500.png",
+          Name: "Black",
+          HtmlColor2: null,
+          HtmlColor1: "000000",
+          nameCode: "black",
+          href: "/product/new era apparel-nea100/black",
+          hasMainImage: true,
+          mainImageUrl:
+            "https://stores.labseven.co/images/products/756/products/NEA100/Black/front/500.png",
+        },
+      ],
+      StoreIds: null,
+      Personalizations: [],
+      ProductType: "Standard",
+      SalePrice: null,
+      UnitPrice: 8.5,
+      UnitCost: null,
+      EnforceProductInventoriesSupplier: null,
+      EnforceProductInventoriesLocal: null,
+      StaticDesignId: null,
+      MaxColors: null,
+      SourceProductId: null,
+      SizeChartUrl: null,
+      SizeUnit: null,
+      PersonalizationType: "none",
+      Name: "Era Heritage Blend Crew Tee",
+      Sku: "NEA100",
+      Supplier: "Sanmar",
+      ManufacturerSku: "NEA100",
+      Manufacturer: "New Era Apparel",
+      manufacturerSkuCode: "new era apparel-nea100",
+      defaultHref: "/product/new era apparel-nea100/black",
+      activeStyle: {
+        IsHeathered: false,
+        IsDarkColor: false,
+        IsLightColor: false,
+        Active: true,
+        IsDefault: true,
+        CanEmbroider: false,
+        CanScreenPrint: false,
+        CanDigitalPrint: false,
+        CanPrint: false,
+        ID: 1027173,
+        Sides: [
+          {
+            Colorway: null,
+            Height: null,
+            Width: null,
+            ImageFilePath:
+              "/images/products/756/products/NEA100/Black/front/500.png",
+            Side: "front",
+            hasImage: true,
+            imageUrl:
+              "https://stores.labseven.co/images/products/756/products/NEA100/Black/front/500.png",
+          },
+          {
+            Colorway: null,
+            Height: null,
+            Width: null,
+            ImageFilePath:
+              "/images/products/756/products/NEA100/Black/back/500.png",
+            Side: "back",
+            hasImage: true,
+            imageUrl:
+              "https://stores.labseven.co/images/products/756/products/NEA100/Black/back/500.png",
+          },
+        ],
+        Sizes: null,
+        AvailableQuantityPacks: [],
+        ColorwayImageFilePath_Front: null,
+        ImageFilePath_Front:
+          "/images/products/756/products/NEA100/Black/front/500.png",
+        Name: "Black",
+        HtmlColor2: null,
+        HtmlColor1: "000000",
+        nameCode: "black",
+        href: "/product/new era apparel-nea100/black",
+        hasMainImage: true,
+        mainImageUrl:
+          "https://stores.labseven.co/images/products/756/products/NEA100/Black/front/500.png",
+      },
+      styleNameCode: "black",
     },
   ];
 
@@ -130,19 +242,6 @@ const Calculator = () => {
         <title>Calculator Prototype</title>
       </Head>
       <div className={calcStyles.pageContainer}>
-        <details open>
-          <summary>
-            <strong>Products</strong>
-          </summary>
-          <ul>
-            {products.map((product) => (
-              <li key={product.ID}>
-                <a href={product.defaultHref}>{`View ${product.Name}`}</a>
-              </li>
-            ))}
-          </ul>
-          <pre>{JSON.stringify(products, null, 2)}</pre>
-        </details>
         <h1>Calculator</h1>
         <Formik
           initialValues={{ Quantity: 50, NumColors: 2 }}
@@ -179,6 +278,22 @@ const Calculator = () => {
             </Form>
           )}
         </Formik>
+        <hr />
+        <div>
+          <h2 style={{ display: "inline" }}>Products</h2>
+          <ul>
+            {products.map((product) => (
+              <li key={product.ID}>
+                <a href={product.defaultHref}>{`View ${product.Name}`}</a>
+                <details>
+                  <summary>view data</summary>
+                  <pre>{JSON.stringify(products, null, 2)}</pre>
+                </details>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <hr />
         <div>
           <h2>Endpoint</h2>
           <p>{QUOTE_ENDPOINT}</p>
