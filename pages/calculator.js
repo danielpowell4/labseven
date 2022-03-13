@@ -86,6 +86,18 @@ const Calculator = () => {
   const products = [
     {
       ID: 1002945,
+      Name: "American Apparel 24321OW Unisex Organic Fine Jersey Short-Sleeve Classic V-Neck",
+      Sku: "24321OW",
+      Supplier: "alphabroder",
+      ManufacturerSku: "24321OW",
+      Manufacturer: "American Apparel",
+      manufacturerSkuCode: "american apparel-24321ow",
+      styleNameCode: "neptune",
+      defaultHref: "/product/american%20apparel-24321ow/neptune",
+      CanScreenPrint: true,
+      CanPrint: true,
+      Active: true,
+      ManufacturerId: 1000024,
       activeStyle: {
         ID: 1022799,
         Sides: [
@@ -102,6 +114,13 @@ const Calculator = () => {
           },
         ],
       },
+      Categories: [
+        {
+          ID: 1000004,
+          Path: "T-Shirts / Mens/Unisex",
+          Name: "Mens/Unisex",
+        },
+      ],
     },
   ];
 
@@ -115,6 +134,13 @@ const Calculator = () => {
           <summary>
             <strong>Products</strong>
           </summary>
+          <ul>
+            {products.map((product) => (
+              <li key={product.ID}>
+                <a href={product.defaultHref}>{`View ${product.Name}`}</a>
+              </li>
+            ))}
+          </ul>
           <pre>{JSON.stringify(products, null, 2)}</pre>
         </details>
         <h1>Calculator</h1>
