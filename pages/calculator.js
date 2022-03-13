@@ -46,15 +46,14 @@ const buildQuoteItem = (productData, values) => ({
   ],
 });
 
-const getQuote = async (products, values) => {
-  const payload = {
-    Format: "JSON",
-    QuoteItems: products.map((product) => buildQuoteItem(product, values)),
-    OverridePricingError: true,
-  };
+const buildPayload = (products, values) => ({
+  Format: "JSON",
+  QuoteItems: products.map((product) => buildQuoteItem(product, values)),
+  OverridePricingError: true,
+});
 
-  console.log(stringify(payload));
-  console.log(decodeURI(stringify(payload)));
+const getQuote = async (products, values) => {
+  const payload = buildPayload(products, values);
 
   let response = await fetch(QUOTE_ENDPOINT, {
     headers: {
@@ -125,14 +124,8 @@ const Calculator = () => {
           onSubmit={async (values) => {
             setError(); // clear last error
 
-            // TODO: remove me after DEV
-            setQuote({
-              Format: "JSON",
-              QuoteItems: products.map((product) =>
-                buildQuoteItem(product, values)
-              ),
-              OverridePricingError: true,
-            });
+            // TODO: remove me after DEV - helps w/ debugging
+            setQuote(buildPayload(products, values));
 
             const res = await getQuote(products, values);
             if (res.OK) {
@@ -161,9 +154,23 @@ const Calculator = () => {
           )}
         </Formik>
         <div>
-          <h2>Quote</h2>
-          <pre>{JSON.stringify(quote, null, 2)}</pre>
+          <h2>Endpoint</h2>
+          <p>{QUOTE_ENDPOINT}</p>
         </div>
+        <hr />
+        <div>
+          <h2>Quote Payload</h2>
+          <p>As JSON</p>
+          <pre>{JSON.stringify(quote, null, 2)}</pre>
+          <p>
+            Stringified via{" "}
+            <a href="https://www.npmjs.com/package/qs">
+              https://www.npmjs.com/package/qs
+            </a>
+          </p>
+          <pre>{stringify(quote)}</pre>
+        </div>
+        <hr />
         <div>
           <h2>Error</h2>
           <pre>{JSON.stringify(error, null, 2)}</pre>
