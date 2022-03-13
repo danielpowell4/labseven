@@ -3,6 +3,8 @@ import Head from "next/head";
 import { Layout } from "../components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
+import { stringify } from "qs";
+
 import calcStyles from "./calculator.module.css";
 
 // https://demo.inksoft.com/demo?Page=Api2#methods_GetQuote
@@ -26,38 +28,41 @@ const QUOTE_ENDPOINT =
   "https://stores.labseven.co/Lab_Seven_Screen_Printing_Co/Api2/GetQuote";
 
 // see https://demo.inksoft.com/demo?Page=Api2#viewModels_PricedQuoteItem
-const buildQuoteItem = (productData, values) => {
-  return {
-    ProductId: productData.ID,
-    ProductStyleId: productData.activeStyle.ID,
-    // ProductStyleSizeId: null, // size => null
-    Quantity: values.Quantity,
-    Sides: [
-      {
-        SideId: "front",
-        NumColors: values.NumColors,
-        IsFullColor: true,
-        ArtIdentifier: "one setup",
-        OverrideDecorationMethod: "ScreenPrint",
-        // SetupPriceOverride: 3.14,
-        // PrintPriceOverrideEach: 3.14,
-      },
-    ],
-  };
-};
+const buildQuoteItem = (productData, values) => ({
+  ProductId: productData.ID,
+  ProductStyleId: productData.activeStyle.ID,
+  // ProductStyleSizeId: null, // size => null
+  Quantity: values.Quantity,
+  Sides: [
+    {
+      SideId: "front",
+      NumColors: values.NumColors,
+      IsFullColor: true,
+      ArtIdentifier: "one setup",
+      OverrideDecorationMethod: "ScreenPrint",
+      // SetupPriceOverride: 3.14,
+      // PrintPriceOverrideEach: 3.14,
+    },
+  ],
+});
 
 const getQuote = async (products, values) => {
   const payload = {
     Format: "JSON",
-    QuoteItems: JSON.stringify(
-      products.map((product) => buildQuoteItem(product, values))
-    ),
+    QuoteItems: products.map((product) => buildQuoteItem(product, values)),
     OverridePricingError: true,
   };
 
+  console.log(stringify(payload));
+  console.log(decodeURI(stringify(payload)));
+
   let response = await fetch(QUOTE_ENDPOINT, {
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      // Accept: "application/json",
+    },
     method: "POST",
-    body: JSON.stringify(payload),
+    body: stringify(payload),
   });
   let json = await response.json();
 
@@ -81,20 +86,20 @@ const Calculator = () => {
 
   const products = [
     {
-      ID: 1001650,
+      ID: 1002945,
       activeStyle: {
-        ID: 1018595,
+        ID: 1022799,
         Sides: [
           {
             Colorway: null,
             Height: null,
             Width: null,
             ImageFilePath:
-              "/images/products/2728/products/G728/RED/front/500.png",
+              "/images/products/2728/products/24321OW/NEPTUNE/front/500.png",
             Side: "front",
             hasImage: true,
             imageUrl:
-              "https://stores.labseven.co/images/products/2728/products/G728/RED/front/500.png",
+              "https://stores.labseven.co/images/products/2728/products/24321OW/NEPTUNE/front/500.png",
           },
         ],
       },
