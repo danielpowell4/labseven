@@ -3,7 +3,7 @@ import Head from "next/head";
 import { Layout } from "../components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-import { stringify } from "qs";
+import axios from "axios";
 
 import calcStyles from "./calculator.module.css";
 
@@ -46,26 +46,27 @@ const buildQuoteItem = (productData, values) => ({
   ],
 });
 
-const buildPayload = (products, values) => ({
-  Format: "JSON",
-  QuoteItems: products.map((product) => buildQuoteItem(product, values)),
-  OverridePricingError: true,
-});
+const buildPayload = (products, values) => {
+  let formData = new FormData();
+
+  formData.append(
+    "QuoteItems",
+    JSON.stringify(products.map((product) => buildQuoteItem(product, values)))
+  );
+
+  return formData;
+};
 
 const getQuote = async (products, values) => {
   const payload = buildPayload(products, values);
 
-  let response = await fetch(QUOTE_ENDPOINT, {
+  const response = await axios.post(QUOTE_ENDPOINT, payload, {
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      // Accept: "application/json",
+      "Content-Type": "application/x-www-form-urlencoded; charset='utf-8'",
     },
-    method: "POST",
-    body: stringify(payload),
   });
-  let json = await response.json();
 
-  return json;
+  return response.data;
 };
 
 const validateCalculator = (values) => {
@@ -1804,15 +1805,11 @@ const Calculator = () => {
           validate={validateCalculator}
           onSubmit={async (values) => {
             setError(); // clear last error
-
-            // TODO: remove me after DEV - helps w/ debugging
-            setQuote(buildPayload(products, values));
-
-            const res = await getQuote(products, values);
-            if (res.OK) {
+            try {
+              const res = await getQuote(products, values);
               setQuote(res);
-            } else {
-              setError(res);
+            } catch (err) {
+              setError(err.toJSON());
             }
           }}
         >
@@ -1851,27 +1848,17 @@ const Calculator = () => {
         </div>
         <hr />
         <div>
-          <h2>Endpoint</h2>
-          <p>{QUOTE_ENDPOINT}</p>
-        </div>
-        <hr />
-        <div>
-          <h2>Quote Payload</h2>
+          <h2>Quote</h2>
           <p>As JSON</p>
           <pre>{JSON.stringify(quote, null, 2)}</pre>
-          <p>
-            Stringified via{" "}
-            <a href="https://www.npmjs.com/package/qs">
-              https://www.npmjs.com/package/qs
-            </a>
-          </p>
-          <pre>{stringify(quote)}</pre>
         </div>
         <hr />
-        <div>
-          <h2>Error</h2>
-          <pre>{JSON.stringify(error, null, 2)}</pre>
-        </div>
+        {!!error && (
+          <div>
+            <h2>Error</h2>
+            <pre>{JSON.stringify(error, null, 2)}</pre>
+          </div>
+        )}
       </div>
     </Layout>
   );
