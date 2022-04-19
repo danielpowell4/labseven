@@ -8,22 +8,6 @@ import axios from "axios";
 import calcStyles from "./calculator.module.css";
 
 // https://demo.inksoft.com/demo?Page=Api2#methods_GetQuote
-
-// $.ajax({
-//   type: "POST",
-//   url: "https://demo.inksoft.com/demo/Api2/GetQuote",
-//   dataType: "text",
-//   data: "QuoteItems={{QuoteItems}}&Format=JSON&OverridePricingError=false",
-//   processData: false,
-//   crossDomain: true,
-//   success: function (res) {
-//     success(res);
-//   },
-//   error: function (jqXHR, textStatus, ex) {
-//     error(jqXHR, textStatus, ex);
-//   },
-// });
-
 const QUOTE_ENDPOINT =
   "https://stores.labseven.co/Lab_Seven_Screen_Printing_Co/Api2/GetQuote";
 
@@ -39,9 +23,6 @@ const buildQuoteItem = (productData, values) => ({
       NumColors: values.NumColors,
       ArtIdentifier: "one setup",
       IsFullColor: false,
-      // OverrideDecorationMethod: "screen print",
-      // SetupPriceOverride: 3.14,
-      // PrintPriceOverrideEach: 3.14,
     },
   ],
 });
