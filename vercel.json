@@ -1,7 +1,7 @@
 {
   "functions": {
     "pages/api/products.js": {
-      "includeFiles": "data/**"
+      "includeFiles": "project_*.json"
     }
   }
 }
