@@ -1,20 +1,11 @@
 import * as React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
+
+import { titleize, formatUSD } from "../lib/utils";
 
 import axios from "axios";
 
 import calcStyles from "./ProductCalculator.module.css";
-
-const roundNumber = (value) => Number(Number(value).toFixed(2));
-const formatUSD = (value) => {
-  const rounded = roundNumber(value);
-  if (Number.isNaN(rounded)) return "-";
-
-  return rounded.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
-};
 
 // https://demo.inksoft.com/demo?Page=Api2#methods_GetQuote
 const QUOTE_ENDPOINT =
@@ -26,14 +17,12 @@ const buildQuoteItem = (productData, values) => ({
   ProductStyleId: productData.activeStyle.ID,
   ProductStyleSizeId: productData.activeStyle.Sizes[0].ID, // assume first
   Quantity: values.Quantity,
-  Sides: [
-    {
-      SideId: "front",
-      NumColors: values.NumColors,
-      ArtIdentifier: "one setup",
-      IsFullColor: false,
-    },
-  ],
+  Sides: values.Sides.map(({ SideId, NumColors }) => ({
+    SideId,
+    NumColors,
+    ArtIdentifier: "one setup",
+    IsFullColor: false,
+  })),
 });
 
 const buildPayload = (productData, values) => {
@@ -62,17 +51,28 @@ const getQuote = async (productData, values) => {
 const validateCalculator = (values) => {
   const errors = {};
   if (Number(values.Quantity) < 1) {
-    errors.Quantity = "Required";
+    errors.Quantity = "Must order at least 1 shirt";
   }
-  if (Number(values.Quantity) > 9999) {
+  const sideValues = values.Sides || [];
+  const sideCount = sideValues.length;
+  if (Number(values.Quantity) * sideCount > 10000) {
     errors.Quantity = "For large orders, contact our shop!";
   }
-  if (Number(values.NumColors) < 1) {
-    errors.NumColors = "Required";
+
+  let sideErrors = [];
+  sideValues.forEach((side, sideIndex) => {
+    if (Number(side.NumColors) < 1) {
+      sideErrors[sideIndex] = "Must pick at least 1 color";
+    }
+    if (Number(side.NumColors) > 8) {
+      sideErrors[sideIndex] =
+        "For quotes on more than 8 colors, contact our shop!";
+    }
+  });
+  if (sideErrors.length) {
+    errors["Sides"] = sideErrors;
   }
-  if (Number(values.NumColors) > 8) {
-    errors.NumColors = "For quotes on more than 8 colors, contact our shop!";
-  }
+
   return errors;
 };
 
@@ -84,6 +84,14 @@ const ProductCalculator = ({ productData }) => {
     (q) => q.ProductId === productData.ID
   );
 
+  const allSides = productData.activeStyle.Sides;
+  const defaultSide = allSides.find((s) => s.Side === "front") || allSides[0];
+
+  const initialValues = {
+    Quantity: 50,
+    Sides: [{ SideId: defaultSide.Side, NumColors: 2 }],
+  };
+
   return (
     <div className={calcStyles.pageContainer}>
       <h3>Instant Quote</h3>
@@ -94,7 +102,7 @@ const ProductCalculator = ({ productData }) => {
         </ul>
       )}
       <Formik
-        initialValues={{ Quantity: 50, NumColors: 2 }}
+        initialValues={initialValues}
         validate={validateCalculator}
         onSubmit={async (values) => {
           setError(); // clear last error
@@ -102,25 +110,89 @@ const ProductCalculator = ({ productData }) => {
             const res = await getQuote(productData, values);
             setQuote(res);
           } catch (err) {
-            setError(err.toJSON());
+            setError(err);
           }
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, values, setFieldValue }) => (
           <Form className={calcStyles.form}>
             <div className={calcStyles.formEl}>
               <label htmlFor="Quantity">Shirts</label>
               <Field id="Quantity" name="Quantity" type="number" step="1" />
               <ErrorMessage name="Quantity" component="div" />
             </div>
-            <div className={calcStyles.formEl}>
-              <label htmlFor="NumColors">Colors</label>
-              <Field id="NumColors" name="NumColors" type="number" step="1" />
-              <ErrorMessage name="NumColors" component="div" />
+            <FieldArray
+              name="Sides"
+              render={(arrayHelpers) => (
+                <div className={calcStyles.formEl}>
+                  Colors per Location
+                  {values.Sides &&
+                    values.Sides.length > 0 &&
+                    values.Sides.map((side, sideIndex) => {
+                      const fieldId = `Sides.${sideIndex}`;
+                      const sideName = titleize(side.SideId);
+                      const onValueChange = (event) => {
+                        setFieldValue(fieldId, {
+                          ...side,
+                          NumColors: event.target.value,
+                        });
+                      };
+
+                      return (
+                        <>
+                          <div
+                            key={sideIndex}
+                            className={calcStyles.formSideGrid}
+                          >
+                            <label htmlFor={fieldId}>{sideName}</label>
+                            <Field
+                              id={fieldId}
+                              name={fieldId}
+                              type="number"
+                              step="1"
+                              value={side.NumColors}
+                              onChange={onValueChange}
+                            />
+
+                            <button
+                              type="button"
+                              onClick={() => arrayHelpers.remove(sideIndex)} // remove a friend from the list
+                            >
+                              🗑
+                            </button>
+                          </div>
+                          <ErrorMessage name={fieldId} component="div" />
+                        </>
+                      );
+                    })}
+                  {allSides
+                    .filter(
+                      (side) =>
+                        !values.Sides.some((s) => s.SideId === side.Side)
+                    )
+                    .map((side) => (
+                      <button
+                        key={side.Side}
+                        type="button"
+                        className={calcStyles.addFormSideBtn}
+                        onClick={() =>
+                          arrayHelpers.push({
+                            SideId: side.Side,
+                            NumColors: 2,
+                          })
+                        }
+                      >
+                        Add {titleize(side.Side)} +
+                      </button>
+                    ))}
+                </div>
+              )}
+            />
+            <div className={calcStyles.formActions}>
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "..." : "Get Quote"}
+              </button>
             </div>
-            <button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "..." : "Get Quote"}
-            </button>
           </Form>
         )}
       </Formik>
