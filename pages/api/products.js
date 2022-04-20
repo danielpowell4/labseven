@@ -1,5 +1,5 @@
-import { getAllProducts, getProductCategory } from "../../../lib/products";
-import { paginate } from "../../../lib/utils";
+import { getAllProducts, getProductCategory } from "../../lib/products";
+import { paginate } from "../../lib/utils";
 
 export default async (req, res) => {
   const currentPage = req.query.page || 1;
