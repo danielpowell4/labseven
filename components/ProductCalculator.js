@@ -64,8 +64,14 @@ const validateCalculator = (values) => {
   if (Number(values.Quantity) < 1) {
     errors.Quantity = "Required";
   }
+  if (Number(values.Quantity) > 9999) {
+    errors.Quantity = "For large orders, contact our shop!";
+  }
   if (Number(values.NumColors) < 1) {
     errors.NumColors = "Required";
+  }
+  if (Number(values.NumColors) > 8) {
+    errors.NumColors = "For quotes on more than 8 colors, contact our shop!";
   }
   return errors;
 };
