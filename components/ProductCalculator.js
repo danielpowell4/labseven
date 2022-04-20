@@ -50,8 +50,8 @@ const getQuote = async (productData, values) => {
 
 const validateCalculator = (values) => {
   const errors = {};
-  if (Number(values.Quantity) < 1) {
-    errors.Quantity = "Must order at least 1 shirt";
+  if (Number(values.Quantity) < 12) {
+    errors.Quantity = "Minimum quantity of 12";
   }
   const sideValues = values.Sides || [];
   const sideCount = sideValues.length;
