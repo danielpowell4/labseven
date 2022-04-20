@@ -1,0 +1,14 @@
+.form {
+}
+
+.formEl {
+  display: flex;
+  flex-direction: column;
+  max-width: 260px;
+  margin-bottom: 1rem;
+}
+
+.quoteList {
+  list-style: none;
+  padding-left: 1.25rem;
+}

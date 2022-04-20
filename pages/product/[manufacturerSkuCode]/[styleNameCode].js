@@ -7,6 +7,7 @@ import { ColorOption, Layout } from "../../../components";
 import { getAllProducts, getProductByStyle } from "../../../lib/products";
 
 import productStyles from "./product.module.css";
+import ProductCalculator from "../../../components/ProductCalculator";
 
 export async function getStaticPaths() {
   const allProducts = await getAllProducts();
@@ -150,10 +151,7 @@ const Product = ({ productData }) => {
           </div>
           <hr />
           <div className={productStyles.detailsBox}>
-            <h3>Pricing</h3>
-            <pre>TODO: add instant calculator</pre>
-            <p>{`$ ${productData.UnitPrice.toFixed(2)}`} / shirt</p>
-            <p>{`$ ${(productData.UnitPrice * 100).toFixed(0)}`} total</p>
+            <ProductCalculator productData={productData} />
           </div>
           <hr />
           <div className={productStyles.detailsBox}>
