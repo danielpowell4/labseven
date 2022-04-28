@@ -139,11 +139,8 @@ const ProductCalculator = ({ productData }) => {
                       };
 
                       return (
-                        <>
-                          <div
-                            key={sideIndex}
-                            className={calcStyles.formSideGrid}
-                          >
+                        <React.Fragment key={sideIndex}>
+                          <div className={calcStyles.formSideGrid}>
                             <label htmlFor={fieldId}>{sideName}</label>
                             <Field
                               id={fieldId}
@@ -162,7 +159,7 @@ const ProductCalculator = ({ productData }) => {
                             </button>
                           </div>
                           <ErrorMessage name={fieldId} component="div" />
-                        </>
+                        </React.Fragment>
                       );
                     })}
                   {allSides
