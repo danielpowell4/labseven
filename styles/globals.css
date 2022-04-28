@@ -34,4 +34,6 @@ li {
   --darkText: rgb(8, 36, 42);
   --mediumText: rgb(80, 101, 105);
   --lightText: rgb(157, 168, 171);
+
+  --danger: #ce0c1b;
 }

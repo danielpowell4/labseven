@@ -17,12 +17,14 @@ const buildQuoteItem = (productData, values) => ({
   ProductStyleId: productData.activeStyle.ID,
   ProductStyleSizeId: productData.activeStyle.Sizes[0].ID, // assume first
   Quantity: values.Quantity,
-  Sides: values.Sides.map(({ SideId, NumColors }) => ({
-    SideId,
-    NumColors,
-    ArtIdentifier: "one setup",
-    IsFullColor: false,
-  })),
+  Sides: values.Sides.filter(({ NumColors }) => NumColors > 0).map(
+    ({ SideId, NumColors }) => ({
+      SideId,
+      NumColors,
+      ArtIdentifier: "one setup",
+      IsFullColor: false,
+    })
+  ),
 });
 
 const buildPayload = (productData, values) => {
@@ -48,25 +50,38 @@ const getQuote = async (productData, values) => {
   return response.data;
 };
 
+const ITEM_COLOR_LIMITS = [
+  { itemMin: 12, itemMax: 23, colors: 2 },
+  { itemMin: 24, itemMax: 49, colors: 4 },
+];
+
 const validateCalculator = (values) => {
   const errors = {};
-  if (Number(values.Quantity) < 12) {
+  const Quantity = Number(values.Quantity);
+
+  if (Quantity < 12) {
     errors.Quantity = "Minimum quantity of 12";
   }
   const sideValues = values.Sides || [];
   const sideCount = sideValues.length;
-  if (Number(values.Quantity) * sideCount > 10000) {
+  if (Quantity * sideCount > 10000) {
     errors.Quantity = "For large orders, contact our shop!";
   }
 
+  const colorLimit = ITEM_COLOR_LIMITS.find(
+    (set) => Quantity >= set.itemMin && Quantity <= set.itemMax
+  );
+
+  const colorMax = colorLimit?.colors || 8;
+
   let sideErrors = [];
   sideValues.forEach((side, sideIndex) => {
-    if (Number(side.NumColors) < 1) {
-      sideErrors[sideIndex] = "Must pick at least 1 color";
-    }
-    if (Number(side.NumColors) > 8) {
-      sideErrors[sideIndex] =
-        "For quotes on more than 8 colors, contact our shop!";
+    if (Number(side.NumColors) < 0) {
+      sideErrors[sideIndex] = `Cannot be negative`;
+    } else if (Number(side.NumColors) > colorMax) {
+      sideErrors[sideIndex] = colorLimit
+        ? `We have a ${colorMax} color limit for orders between ${colorLimit.itemMin} and ${colorLimit.itemMax} items.`
+        : `For quotes on more than ${colorMax} colors, contact our shop!`;
     }
   });
   if (sideErrors.length) {
@@ -86,10 +101,14 @@ const ProductCalculator = ({ productData }) => {
 
   const allSides = productData.activeStyle.Sides;
   const defaultSide = allSides.find((s) => s.Side === "front") || allSides[0];
+  const otherSides = allSides.filter((s) => s.Side !== defaultSide.Side);
 
   const initialValues = {
     Quantity: 50,
-    Sides: [{ SideId: defaultSide.Side, NumColors: 2 }],
+    Sides: [
+      { SideId: defaultSide.Side, NumColors: 2 },
+      ...otherSides.map((s) => ({ SideId: s.Side, NumColors: 0 })),
+    ],
   };
 
   return (
@@ -117,13 +136,25 @@ const ProductCalculator = ({ productData }) => {
         {({ isSubmitting, values, setFieldValue }) => (
           <Form className={calcStyles.form}>
             <div className={calcStyles.formEl}>
-              <label htmlFor="Quantity">Shirts</label>
-              <Field id="Quantity" name="Quantity" type="number" step="1" />
-              <ErrorMessage name="Quantity" component="div" />
+              <div className={calcStyles.formSideGrid}>
+                <label htmlFor="Quantity">Shirts</label>
+                <Field
+                  id="Quantity"
+                  name="Quantity"
+                  type="number"
+                  step="1"
+                  min="0"
+                />
+              </div>
+              <ErrorMessage
+                name="Quantity"
+                component="div"
+                className={calcStyles.errorMessage}
+              />
             </div>
             <FieldArray
               name="Sides"
-              render={(arrayHelpers) => (
+              render={(_arrayHelpers) => (
                 <div className={calcStyles.formEl}>
                   Colors per Location
                   {values.Sides &&
@@ -147,41 +178,19 @@ const ProductCalculator = ({ productData }) => {
                               name={fieldId}
                               type="number"
                               step="1"
+                              min="0"
                               value={side.NumColors}
                               onChange={onValueChange}
                             />
-
-                            <button
-                              type="button"
-                              onClick={() => arrayHelpers.remove(sideIndex)} // remove a friend from the list
-                            >
-                              🗑
-                            </button>
                           </div>
-                          <ErrorMessage name={fieldId} component="div" />
+                          <ErrorMessage
+                            name={fieldId}
+                            component="div"
+                            className={calcStyles.errorMessage}
+                          />
                         </React.Fragment>
                       );
                     })}
-                  {allSides
-                    .filter(
-                      (side) =>
-                        !values.Sides.some((s) => s.SideId === side.Side)
-                    )
-                    .map((side) => (
-                      <button
-                        key={side.Side}
-                        type="button"
-                        className={calcStyles.addFormSideBtn}
-                        onClick={() =>
-                          arrayHelpers.push({
-                            SideId: side.Side,
-                            NumColors: 2,
-                          })
-                        }
-                      >
-                        Add {titleize(side.Side)} +
-                      </button>
-                    ))}
                 </div>
               )}
             />
