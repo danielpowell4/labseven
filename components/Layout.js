@@ -26,6 +26,14 @@ const Layout = ({ children }) => {
           <meta property="og:type" content="website" />
           <meta name="og:title" content={siteTitle} />
           <meta name="og:description" content={description} />
+          {/* fonts tied to Justin's account */}
+          <link rel="stylesheet" href="https://use.typekit.net/fqt7rom.css" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <main>{children}</main>
       </div>
