@@ -1,5 +1,6 @@
 const { readFileSync, writeFileSync } = require("fs");
 const { join } = require("path");
+const fetch = require("cross-fetch");
 
 const camelize = (str) => {
   return str
