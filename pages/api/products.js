@@ -1,4 +1,4 @@
-import { getAllProducts, getProductCategory } from "../../lib/products";
+import { getProductCategory, getAllProducts } from "../../lib/products";
 import { paginate } from "../../lib/utils";
 
 export default async (req, res) => {
