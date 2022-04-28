@@ -1,12 +1,7 @@
 import { getProductCategory } from "../../lib/products";
 import { paginate } from "../../lib/utils";
 
-import { readFileSync } from "fs";
-import { join } from "path";
-const file = readFileSync(
-  join(process.cwd(), "public", "products_cache.json"),
-  "utf8"
-);
+import data from "../../public/products_cache.json";
 
 export default async (req, res) => {
   const currentPage = req.query.page || 1;
@@ -14,7 +9,7 @@ export default async (req, res) => {
   const categoryCode = req.query.productCategoryCode;
   const subCategoryCode = req.query.subCategoryCode;
 
-  let allProducts = JSON.parse(file);
+  let allProducts = data;
 
   // filter matches
   if (categoryCode) {
