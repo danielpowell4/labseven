@@ -1,7 +1,7 @@
 {
   "functions": {
     "pages/api/products.js": {
-      "includeFiles": "products_cache.json"
+      "includeFiles": "lib/_files/*"
     }
   }
 }
