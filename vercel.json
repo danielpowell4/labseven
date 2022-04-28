@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "pages/api/products.js": {
-      "includeFiles": "_files/*"
-    }
-  }
-}
