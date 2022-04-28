@@ -1,7 +1,16 @@
-import { readFileSync, writeFileSync } from "fs";
-import { join } from "path";
+const { readFileSync, writeFileSync } = require("fs");
+const { join } = require("path");
 
-import { camelize } from "./utils";
+const camelize = (str) => {
+  return str
+    .toLowerCase()
+    .replace(/\/|-/, " ")
+    .replace(/'/, "")
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+      return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    })
+    .replace(/\s+/g, "");
+};
 
 const loadOrBuildCache = async (filename, fetcher) => {
   const filepath = join(process.cwd(), "public", filename);
@@ -31,7 +40,7 @@ const loadOrBuildCache = async (filename, fetcher) => {
 
 // START - products
 // fetch all products and save in .gitignore'd JSON cache file
-export function sortProducts(a, b) {
+function sortProducts(a, b) {
   const supplierCompare = a.Supplier.localeCompare(b.Supplier);
   if (supplierCompare !== 0) return supplierCompare;
 
@@ -43,7 +52,7 @@ export function sortProducts(a, b) {
 
 const PRODUCTS_CACHE_PATH = "products_cache.json";
 
-export async function getAllProducts() {
+async function getAllProducts() {
   const allProducts = await loadOrBuildCache(
     PRODUCTS_CACHE_PATH,
     fetchAllProducts
@@ -177,21 +186,6 @@ async function fetchAllProducts() {
   return products;
 }
 
-export async function getProductByStyle(manufacturerSkuCode, styleNameCode) {
-  const products = await getAllProducts();
-  const product =
-    products.find((p) => p.manufacturerSkuCode === manufacturerSkuCode) || {};
-  const activeStyle = product.Styles.find(
-    (style) => style.nameCode == styleNameCode
-  );
-
-  return {
-    ...product,
-    activeStyle,
-    manufacturerSkuCode,
-    styleNameCode,
-  };
-}
 // END - products
 
 // START - categories
@@ -201,16 +195,11 @@ const PRODUCT_CATEGORY_ENDPOINT =
   "https://stores.labseven.co/Lab_Seven_Screen_Printing_Co/Api2/GetProductCategories?BlankProducts=false&Format=JSON&GetProductIds=true&HierarchicalItemCount=true&IncludeAllPublisherCategories=false&ProductType=standard&StaticProducts=false";
 const IMAGE_PREFIX = "https://stores.labseven.co";
 
-export function getAllProductCategories() {
+function getAllProductCategories() {
   return loadOrBuildCache(
     PRODUCT_CATEGORIES_CACHE_PATH,
     fetchAllProductCategories
   );
-}
-
-export async function getProductCategory(productCategoryCode) {
-  const productCategories = await getAllProductCategories();
-  return productCategories.find((cat) => cat.code === productCategoryCode);
 }
 
 async function fetchAllProductCategories() {
@@ -277,3 +266,10 @@ async function fetchAllProductCategories() {
 }
 
 // END - categories
+
+const main = async () => {
+  await getAllProductCategories();
+  await getAllProducts();
+};
+
+main().then(() => console.log("Loaded Data!"));

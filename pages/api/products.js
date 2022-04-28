@@ -1,7 +1,5 @@
-import { getProductCategory } from "../../lib/products";
+import { getProductCategory, getAllProducts } from "../../lib/products";
 import { paginate } from "../../lib/utils";
-
-import data from "../../public/products_cache.json";
 
 export default async (req, res) => {
   const currentPage = req.query.page || 1;
@@ -9,7 +7,7 @@ export default async (req, res) => {
   const categoryCode = req.query.productCategoryCode;
   const subCategoryCode = req.query.subCategoryCode;
 
-  let allProducts = data;
+  let allProducts = await getAllProducts();
 
   // filter matches
   if (categoryCode) {
