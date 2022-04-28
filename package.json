@@ -5,8 +5,7 @@
   "scripts": {
     "predev": "node ./scripts/loadData",
     "dev": "next dev",
-    "prebuild": "node ./scripts/loadData",
-    "build": "next build",
+    "build": "node ./scripts/loadData && next build",
     "start": "next start",
     "lint": "next lint"
   },
