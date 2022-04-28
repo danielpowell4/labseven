@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "pages/api/projects.js": {
+      "includeFiles": "public/*.json"
+    }
+  }
+}
