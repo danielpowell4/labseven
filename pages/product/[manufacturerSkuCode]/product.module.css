@@ -12,7 +12,9 @@
   position: sticky;
   top: 1.75rem;
   padding: 1rem;
-  background-color: rgb(245, 246, 247);
+  background-color: var(--background);
+  border: 1px solid var(--hr);
+  border-radius: 0.25rem;
 
   display: grid;
   grid-template-columns: minmax(4rem, auto) minmax(420px, 1fr);
@@ -31,6 +33,7 @@
 .gallery__sides__item button {
   background: rgb(245, 246, 247);
   border-radius: 3px;
+  border: 1px solid var(--hr);
   cursor: pointer;
   display: block;
   opacity: 0.4;
