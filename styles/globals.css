@@ -47,6 +47,7 @@ body {
   margin: 0;
   font-family: var(--bodyFont);
   background-color: var(--background);
+  color: var(--darkText);
 }
 
 h1,
