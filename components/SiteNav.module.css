@@ -1,0 +1,38 @@
+.header {
+  display: grid;
+  grid-template-columns: 200px auto 200px;
+  border-bottom: 1px solid var(--hr);
+}
+
+.logo,
+.locales {
+  background-color: var(--primary);
+  color: var(--background);
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--headingFont);
+  font-weight: var(--headingWeight);
+}
+
+.nav {
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  padding: 0 4rem 0 2rem;
+  justify-content: flex-end;
+  font-size: 1.15rem;
+}
+
+.nav a {
+  color: var(--mediumText);
+}
+
+.nav a:hover,
+.nav a:active {
+  color: var(--primary);
+}
