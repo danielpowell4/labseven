@@ -37,9 +37,7 @@ const Layout = ({ children }) => {
         </Head>
         <main>{children}</main>
       </div>
-      <footer className={styles.footer}>
-        Footer content from the 🏔 of Colorado
-      </footer>
+      <footer className={styles.footer}> Colorado Proud 🏔</footer>
     </>
   );
 };

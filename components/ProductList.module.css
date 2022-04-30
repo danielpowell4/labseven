@@ -3,6 +3,7 @@
   row-gap: 0.25rem;
   grid-template-columns: repeat(3, 1fr);
   padding: 0.25rem 1rem 1.375rem;
+  border-left: 1px solid var(--hr);
 }
 
 .ProductListIsLoading {
