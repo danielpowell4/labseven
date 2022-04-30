@@ -91,6 +91,13 @@ const validateCalculator = (values) => {
   return errors;
 };
 
+const SideLabel = ({ sideName }) => {
+  if (sideName === "Sleeveleft") return "Left Sleeve";
+  if (sideName === "Sleeveright") return "Right Sleeve";
+
+  return sideName;
+};
+
 const ProductCalculator = ({ productData }) => {
   const [quote, setQuote] = React.useState();
   const [error, setError] = React.useState();
@@ -172,7 +179,9 @@ const ProductCalculator = ({ productData }) => {
                       return (
                         <React.Fragment key={sideIndex}>
                           <div className={calcStyles.formSideGrid}>
-                            <label htmlFor={fieldId}>{sideName}</label>
+                            <label htmlFor={fieldId}>
+                              <SideLabel sideName={sideName} />
+                            </label>
                             <Field
                               id={fieldId}
                               name={fieldId}
