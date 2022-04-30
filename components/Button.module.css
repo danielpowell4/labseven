@@ -1,0 +1,20 @@
+.Button {
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background-color: var(--primary);
+  color: var(--background);
+  font-family: var(--headingFont);
+  font-weight: var(--headingWeight);
+  cursor: pointer;
+}
+
+.Button:hover,
+.Button:focus {
+  transition: transform 0.25s ease;
+  transform: scale(1.15);
+}
+
+.Button:disabled {
+  cursor: not-allowed;
+}

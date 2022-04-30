@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
-
+import { Button } from ".";
 import { titleize, formatUSD } from "../lib/utils";
 
 import axios from "axios";
@@ -204,9 +204,9 @@ const ProductCalculator = ({ productData }) => {
               )}
             />
             <div className={calcStyles.formActions}>
-              <button type="submit" disabled={isSubmitting}>
+              <Button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? "..." : "Get Quote"}
-              </button>
+              </Button>
             </div>
           </Form>
         )}
