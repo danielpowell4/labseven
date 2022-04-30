@@ -75,15 +75,21 @@ const validateCalculator = (values) => {
   const colorMax = colorLimit?.colors || 8;
 
   let sideErrors = [];
+  let totalColors = 0;
   sideValues.forEach((side, sideIndex) => {
-    if (Number(side.NumColors) < 0) {
+    const sideColors = Number(side.NumColors);
+    totalColors += sideColors;
+    if (sideColors < 0) {
       sideErrors[sideIndex] = `Cannot be negative`;
-    } else if (Number(side.NumColors) > colorMax) {
+    } else if (sideColors > colorMax) {
       sideErrors[sideIndex] = colorLimit
         ? `We have a ${colorMax} color limit for orders between ${colorLimit.itemMin} and ${colorLimit.itemMax} items.`
         : `For quotes on more than ${colorMax} colors, contact our shop!`;
     }
   });
+  if (totalColors === 0) {
+    sideErrors[sideValues.length - 1] = "At least 1 side must have color";
+  }
   if (sideErrors.length) {
     errors["Sides"] = sideErrors;
   }
