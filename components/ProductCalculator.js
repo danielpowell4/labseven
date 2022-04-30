@@ -150,7 +150,7 @@ const ProductCalculator = ({ productData }) => {
           <Form className={calcStyles.form}>
             <div className={calcStyles.formEl}>
               <div className={calcStyles.formSideGrid}>
-                <label htmlFor="Quantity">Shirts</label>
+                <label htmlFor="Quantity">Total Quantity</label>
                 <Field
                   id="Quantity"
                   name="Quantity"
@@ -169,7 +169,7 @@ const ProductCalculator = ({ productData }) => {
               name="Sides"
               render={(_arrayHelpers) => (
                 <div className={calcStyles.formEl}>
-                  Colors per Location
+                  Number of Ink Colors
                   {values.Sides &&
                     values.Sides.length > 0 &&
                     values.Sides.map((side, sideIndex) => {
