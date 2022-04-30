@@ -64,6 +64,7 @@ async function getAllProducts() {
     .sort(sortProducts);
 }
 
+// https://demo.inksoft.com/demo?Page=Api2#methods_GetProductBaseList
 const PRODUCT_LIST_ENDPOINT =
   "https://stores.labseven.co/Lab_Seven_Screen_Printing_Co/Api2/GetProductBaseList";
 const PRODUCT_LIST_PAGE_SIZE = 25; // to keep requests snappy, default == 100
@@ -73,7 +74,7 @@ const PRODUCT_LIST_CONDITIONS = {
   IncludeActiveProducts: true,
   IncludeActiveStyles: true,
   IncludeAllPublisherProducts: false,
-  IncludeAllSides: false,
+  IncludeAllSides: true,
   IncludeAllStyles: true,
   IncludeCategories: true,
   IncludeCosts: false,
