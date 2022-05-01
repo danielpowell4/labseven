@@ -210,8 +210,12 @@ const ProductCalculator = ({ productData }) => {
               )}
             />
             <div className={calcStyles.formActions}>
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "..." : "Get Quote"}
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                isSubmitting={isSubmitting}
+              >
+                Get Quote
               </Button>
             </div>
           </Form>
