@@ -71,6 +71,7 @@ const Product = ({ productData }) => {
         {!!productData.defaultHref && (
           <link rel="canonical" href={productData.defaultHref} />
         )}
+        <meta name="keywords" content={productData.Keywords.join(", ")} />
       </Head>
       <div>
         <Link href="/products">
@@ -155,24 +156,9 @@ const Product = ({ productData }) => {
           </div>
           <hr />
           <div className={productStyles.detailsBox}>
-            <h3>Options</h3>
-            <ul className={productStyles.detailsList}>
-              <li>{productData.CanScreenPrint ? `✅` : `⚪️`} Screen Print</li>
-              <li>
-                {productData.CanDigitalPrint ? `✅` : `⚪️`} Digital Print
-              </li>
-              <li>{productData.CanPrint ? `✅` : `⚪️`} Print</li>
-              <li>{productData.CanEmbroider ? `✅` : `⚪️`} Embroider</li>
-              <li>{productData.BuyBlank ? `✅` : `⚪️`} Buy Blank</li>
-            </ul>
+            <h3>Product Information</h3>
+            <pre>TODO: find and add me from API</pre>
           </div>
-          <hr />
-          {!!productData.Keywords?.length && (
-            <div className={productStyles.detailsBox}>
-              <h3>Keywords</h3>
-              {productData.Keywords.join(", ")}
-            </div>
-          )}
           {process.env.NODE_ENV === "development" && (
             <>
               <hr />
