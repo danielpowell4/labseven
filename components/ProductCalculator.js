@@ -223,8 +223,12 @@ const ProductCalculator = ({ productData }) => {
       </Formik>
       {!!error && (
         <div>
-          <h5>Oh no! An error occurred: {error.message}</h5>
+          <h5>
+            Oh no! An error occurred:{" "}
+            <span style={{ color: "var(--danger)" }}>{error.message}</span>
+          </h5>
           <details>
+            <summary>Full Details</summary>
             <pre>{JSON.stringify(error, null, 2)}</pre>
           </details>
         </div>
