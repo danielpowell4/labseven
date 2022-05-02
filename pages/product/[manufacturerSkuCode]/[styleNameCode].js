@@ -7,7 +7,7 @@ import { ColorOption, Layout } from "../../../components";
 import { getAllProducts, getProductByStyle } from "../../../lib/products";
 
 import productStyles from "./product.module.css";
-import ProductCalculator from "../../../components/ProductCalculator";
+import { ProductCalculator } from "../../../components";
 
 export async function getStaticPaths() {
   const allProducts = await getAllProducts();

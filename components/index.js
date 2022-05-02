@@ -4,6 +4,8 @@ export { default as ColorOption } from "./ColorOption";
 export { default as ErrorAlert } from "./ErrorAlert";
 export { default as Layout } from "./Layout";
 export { default as Pagination } from "./Pagination";
+export { default as ProductCalculator } from "./ProductCalculator";
+export { default as ProductsCalculator } from "./ProductsCalculator";
 export { default as ProductList } from "./ProductList";
 export { default as SiteNav } from "./SiteNav";
 export { default as ThreeDotLoader } from "./ThreeDotLoader";
