@@ -165,11 +165,12 @@ const ProductCalculator = ({ productData }) => {
                 className={calcStyles.errorMessage}
               />
             </div>
+
             <FieldArray
               name="Sides"
               render={(_arrayHelpers) => (
                 <div className={calcStyles.formEl}>
-                  Number of Ink Colors
+                  <h4>Number of Ink Colors</h4>
                   {values.Sides &&
                     values.Sides.length > 0 &&
                     values.Sides.map((side, sideIndex) => {

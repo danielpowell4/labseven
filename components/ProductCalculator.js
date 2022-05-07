@@ -180,11 +180,12 @@ const ProductCalculator = ({ productData }) => {
                 className={calcStyles.errorMessage}
               />
             </div>
+            <hr style={{ margin: "1.5rem 0 0.5rem", maxWidth: "16rem" }} />
             <FieldArray
               name="Sides"
               render={(_arrayHelpers) => (
                 <div className={calcStyles.formEl}>
-                  Number of Ink Colors
+                  <h4>Number of Ink Colors</h4>
                   {values.Sides &&
                     values.Sides.length > 0 &&
                     values.Sides.map((side, sideIndex) => {

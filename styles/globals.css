@@ -31,6 +31,7 @@ li {
   --danger: #ce0c1b;
   --primary: #13c798;
   --alternate: #5545ff;
+  --highlight: yellow;
 
   --bodyFont: "proxima-nova", -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,

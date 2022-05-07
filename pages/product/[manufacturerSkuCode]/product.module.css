@@ -69,6 +69,12 @@
   padding-left: 1.25rem;
 }
 
+.sku {
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-decoration-color: var(--highlight);
+}
+
 .colorOptions {
   margin: 0.25rem 0 0;
   padding: 0;
