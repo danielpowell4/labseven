@@ -127,12 +127,7 @@ const ProductCalculator = ({ productData }) => {
   return (
     <div className={calcStyles.pageContainer}>
       <h3>Instant Quote</h3>
-      {!!productQuote && (
-        <ul className={calcStyles.quoteList}>
-          <li>{formatUSD(productQuote["EachProductTotal"])} Each</li>
-          <li>{formatUSD(productQuote["ProductAndPrintingTotal"])} Total</li>
-        </ul>
-      )}
+
       <Formik
         initialValues={initialValues}
         validate={validateCalculator}
@@ -151,13 +146,33 @@ const ProductCalculator = ({ productData }) => {
             <div className={calcStyles.formEl}>
               <div className={calcStyles.formSideGrid}>
                 <label htmlFor="Quantity">Total Quantity</label>
-                <Field
-                  id="Quantity"
-                  name="Quantity"
-                  type="number"
-                  step="1"
-                  min="0"
-                />
+                <div className={calcStyles.sideInputs}>
+                  <button
+                    type="button"
+                    className={calcStyles.incrementButton}
+                    onClick={() =>
+                      setFieldValue("Quantity", Number(values["Quantity"]) + 1)
+                    }
+                  >
+                    +
+                  </button>
+                  <Field
+                    id="Quantity"
+                    name="Quantity"
+                    type="number"
+                    step="1"
+                    min="0"
+                  />
+                  <button
+                    type="button"
+                    className={calcStyles.incrementButton}
+                    onClick={() =>
+                      setFieldValue("Quantity", Number(values["Quantity"]) - 1)
+                    }
+                  >
+                    -
+                  </button>
+                </div>
               </div>
               <ErrorMessage
                 name="Quantity"
@@ -181,6 +196,12 @@ const ProductCalculator = ({ productData }) => {
                           NumColors: event.target.value,
                         });
                       };
+                      const onButtonClick = (change) => {
+                        setFieldValue(fieldId, {
+                          ...side,
+                          NumColors: Number(side.NumColors) + change,
+                        });
+                      };
 
                       return (
                         <React.Fragment key={sideIndex}>
@@ -188,15 +209,31 @@ const ProductCalculator = ({ productData }) => {
                             <label htmlFor={fieldId}>
                               <SideLabel sideName={sideName} />
                             </label>
-                            <Field
-                              id={fieldId}
-                              name={fieldId}
-                              type="number"
-                              step="1"
-                              min="0"
-                              value={side.NumColors}
-                              onChange={onValueChange}
-                            />
+                            <div className={calcStyles.sideInputs}>
+                              <button
+                                type="button"
+                                className={calcStyles.incrementButton}
+                                onClick={() => onButtonClick(1)}
+                              >
+                                +
+                              </button>
+                              <Field
+                                id={fieldId}
+                                name={fieldId}
+                                type="number"
+                                step="1"
+                                min="0"
+                                value={side.NumColors}
+                                onChange={onValueChange}
+                              />
+                              <button
+                                type="button"
+                                className={calcStyles.incrementButton}
+                                onClick={() => onButtonClick(-1)}
+                              >
+                                -
+                              </button>
+                            </div>
                           </div>
                           <ErrorMessage
                             name={fieldId}
@@ -218,21 +255,46 @@ const ProductCalculator = ({ productData }) => {
                 Get Quote
               </Button>
             </div>
+            {!!error && (
+              <div>
+                <h5>
+                  Oh no! An error occurred:{" "}
+                  <span style={{ color: "var(--danger)" }}>
+                    {error.message}
+                  </span>
+                </h5>
+                <details>
+                  <summary>Full Details</summary>
+                  <pre>{JSON.stringify(error, null, 2)}</pre>
+                </details>
+              </div>
+            )}
+            {!!productQuote && (
+              <div className={calcStyles.quoteGrid}>
+                <ul className={calcStyles.quoteList}>
+                  <li>{formatUSD(productQuote["EachProductTotal"])} each</li>
+                  <hr style={{ margin: "0.5rem 0" }} />
+                  <li>
+                    {formatUSD(productQuote["ProductAndPrintingTotal"])} total
+                  </li>
+                </ul>
+                <div className={calcStyles.incentiveIncrease}>
+                  <p>Want a better price?</p>
+                  <Button
+                    type="submit"
+                    className="ButtonAlternate"
+                    onClick={() =>
+                      setFieldValue("Quantity", Number(values["Quantity"]) + 10)
+                    }
+                  >
+                    + 10 Pieces
+                  </Button>
+                </div>
+              </div>
+            )}
           </Form>
         )}
       </Formik>
-      {!!error && (
-        <div>
-          <h5>
-            Oh no! An error occurred:{" "}
-            <span style={{ color: "var(--danger)" }}>{error.message}</span>
-          </h5>
-          <details>
-            <summary>Full Details</summary>
-            <pre>{JSON.stringify(error, null, 2)}</pre>
-          </details>
-        </div>
-      )}
     </div>
   );
 };

@@ -59,3 +59,13 @@ h6 {
   font-family: var(--headingFont);
   font-weight: var(--headingWeight);
 }
+
+hr {
+  background-color: var(--hr);
+  border: 0;
+  height: 1px;
+}
+
+input:focus {
+  outline-color: var(--primary);
+}

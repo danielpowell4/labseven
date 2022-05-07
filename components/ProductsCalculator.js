@@ -129,8 +129,8 @@ const ProductCalculator = ({ productData }) => {
       <h3>Instant Quote</h3>
       {!!productQuote && (
         <ul className={calcStyles.quoteList}>
-          <li>{formatUSD(productQuote["EachProductTotal"])} Each</li>
-          <li>{formatUSD(productQuote["ProductAndPrintingTotal"])} Total</li>
+          <li>{formatUSD(productQuote["EachProductTotal"])} each</li>
+          <li>{formatUSD(productQuote["ProductAndPrintingTotal"])} total</li>
         </ul>
       )}
       <Formik

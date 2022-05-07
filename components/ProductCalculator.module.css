@@ -7,11 +7,33 @@
 
 .formSideGrid {
   display: grid;
-  grid-template-columns: auto 4rem;
+  grid-template-columns: auto 8.5rem;
   align-items: center;
   grid-gap: 0.5rem;
-  max-width: 12rem;
+  max-width: 16rem;
   margin-bottom: 0.5rem;
+}
+
+.sideInputs {
+  display: grid;
+  grid-gap: 0.25rem;
+  grid-template-columns: 2rem 4rem 2rem;
+}
+
+.incrementButton {
+  cursor: pointer;
+  font-family: var(--headingFont);
+  font-size: 1.15rem;
+  color: var(--primary);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.incrementButton:hover,
+.incrementButton:focus {
+  filter: brightness(115%);
+  outline: 1px solid var(--primary);
 }
 
 .errorMessage {
@@ -42,11 +64,30 @@
   opacity: 0.1;
 }
 
-.addFormSideBtn {
-  margin-bottom: 0.5rem;
+.quoteGrid {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .quoteList {
   list-style: none;
-  padding-left: 1.25rem;
+  padding: 0;
+}
+
+.quoteList li {
+  font-family: var(--headingFont);
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.incentiveIncrease {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.incentiveIncrease p {
+  font-size: 12px;
 }
