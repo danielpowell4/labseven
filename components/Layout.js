@@ -29,7 +29,11 @@ const Layout = ({ children, hideNav = false }) => {
         {/* fonts tied to Justin's account */}
         <link rel="stylesheet" href="https://use.typekit.net/fqt7rom.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap"
           rel="stylesheet"
