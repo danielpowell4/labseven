@@ -151,10 +151,10 @@ const ProductCalculator = ({ productData }) => {
                     type="button"
                     className={calcStyles.incrementButton}
                     onClick={() =>
-                      setFieldValue("Quantity", Number(values["Quantity"]) + 1)
+                      setFieldValue("Quantity", Number(values["Quantity"]) - 1)
                     }
                   >
-                    +
+                    -
                   </button>
                   <Field
                     id="Quantity"
@@ -167,10 +167,10 @@ const ProductCalculator = ({ productData }) => {
                     type="button"
                     className={calcStyles.incrementButton}
                     onClick={() =>
-                      setFieldValue("Quantity", Number(values["Quantity"]) - 1)
+                      setFieldValue("Quantity", Number(values["Quantity"]) + 1)
                     }
                   >
-                    -
+                    +
                   </button>
                 </div>
               </div>
@@ -214,9 +214,9 @@ const ProductCalculator = ({ productData }) => {
                               <button
                                 type="button"
                                 className={calcStyles.incrementButton}
-                                onClick={() => onButtonClick(1)}
+                                onClick={() => onButtonClick(-1)}
                               >
-                                +
+                                -
                               </button>
                               <Field
                                 id={fieldId}
@@ -230,9 +230,9 @@ const ProductCalculator = ({ productData }) => {
                               <button
                                 type="button"
                                 className={calcStyles.incrementButton}
-                                onClick={() => onButtonClick(-1)}
+                                onClick={() => onButtonClick(1)}
                               >
-                                -
+                                +
                               </button>
                             </div>
                           </div>
