@@ -284,6 +284,7 @@ const ProductCalculator = ({ productData }) => {
                   <Button
                     type="submit"
                     className="ButtonAlternate"
+                    isSubmitting={isSubmitting}
                     onClick={() =>
                       setFieldValue("Quantity", Number(values["Quantity"]) + 10)
                     }
