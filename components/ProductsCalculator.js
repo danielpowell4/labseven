@@ -1,21 +1,20 @@
 import * as React from "react";
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
 import { Button } from ".";
-import { titleize, formatUSD } from "../lib/utils";
-
-import axios from "axios";
+import { titleize } from "../lib/utils";
+import { validateCalculator, SideLabel } from "./ProductCalculator";
 
 import calcStyles from "./ProductCalculator.module.css";
+
+import axios from "axios";
 
 // https://demo.inksoft.com/demo?Page=Api2#methods_GetQuote
 const QUOTE_ENDPOINT =
   "https://stores.labseven.co/Lab_Seven_Screen_Printing_Co/Api2/GetQuote";
 
 // see https://demo.inksoft.com/demo?Page=Api2#viewModels_PricedQuoteItem
-const buildQuoteItem = (productData, values) => ({
-  ProductId: productData.ID,
-  ProductStyleId: productData.activeStyle.ID,
-  ProductStyleSizeId: productData.activeStyle.Sizes[0].ID, // assume first
+const buildQuoteItem = (productParam, values) => ({
+  ...productParam,
   Quantity: values.Quantity,
   Sides: values.Sides.filter(({ NumColors }) => NumColors > 0).map(
     ({ SideId, NumColors }) => ({
@@ -27,92 +26,51 @@ const buildQuoteItem = (productData, values) => ({
   ),
 });
 
-const buildPayload = (productData, values) => {
+const productsToParams = (products) =>
+  products.map((productData) => {
+    const defaultStyle = productData.Styles[0];
+    return {
+      ProductId: productData.ID,
+      ProductStyleId: defaultStyle.ID,
+      ProductStyleSizeId: defaultStyle.Sizes[0].ID, // assume first
+    };
+  });
+
+const buildPayload = (products, values) => {
   let formData = new FormData();
 
   formData.append(
     "QuoteItems",
-    JSON.stringify([buildQuoteItem(productData, values)])
+    JSON.stringify(
+      productsToParams(products).map((p) => buildQuoteItem(p, values))
+    )
   );
 
   return formData;
 };
 
-const getQuote = async (productData, values) => {
-  const payload = buildPayload(productData, values);
+const getQuote = (products, values) => {
+  const payload = buildPayload(products, values);
 
-  const response = await axios.post(QUOTE_ENDPOINT, payload, {
+  return axios.post(QUOTE_ENDPOINT, payload, {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded; charset='utf-8'",
     },
   });
-
-  return response.data;
 };
 
-const ITEM_COLOR_LIMITS = [
-  { itemMin: 12, itemMax: 23, colors: 2 },
-  { itemMin: 24, itemMax: 49, colors: 4 },
-];
-
-const validateCalculator = (values) => {
-  const errors = {};
-  const Quantity = Number(values.Quantity);
-
-  if (Quantity < 12) {
-    errors.Quantity = "Minimum quantity of 12";
-  }
-  const sideValues = values.Sides || [];
-  const sideCount = sideValues.length;
-  if (Quantity * sideCount > 10000) {
-    errors.Quantity = "For large orders, contact our shop!";
-  }
-
-  const colorLimit = ITEM_COLOR_LIMITS.find(
-    (set) => Quantity >= set.itemMin && Quantity <= set.itemMax
-  );
-
-  const colorMax = colorLimit?.colors || 8;
-
-  let sideErrors = [];
-  let totalColors = 0;
-  sideValues.forEach((side, sideIndex) => {
-    const sideColors = Number(side.NumColors);
-    totalColors += sideColors;
-    if (sideColors < 0) {
-      sideErrors[sideIndex] = `Cannot be negative`;
-    } else if (sideColors > colorMax) {
-      sideErrors[sideIndex] = colorLimit
-        ? `We have a ${colorMax} color limit for orders between ${colorLimit.itemMin} and ${colorLimit.itemMax} items.`
-        : `For quotes on more than ${colorMax} colors, contact our shop!`;
-    }
-  });
-  if (totalColors === 0) {
-    sideErrors[sideValues.length - 1] = "At least 1 side must have color";
-  }
-  if (sideErrors.length) {
-    errors["Sides"] = sideErrors;
-  }
-
-  return errors;
-};
-
-const SideLabel = ({ sideName }) => {
-  if (sideName === "Sleeveleft") return "Left Sleeve";
-  if (sideName === "Sleeveright") return "Right Sleeve";
-
-  return sideName;
-};
-
-const ProductCalculator = ({ productData }) => {
-  const [quote, setQuote] = React.useState();
+const ProductsCalculator = ({ products, setQuote, isLoading }) => {
   const [error, setError] = React.useState();
 
-  const productQuote = (quote?.Data || []).find(
-    (q) => q.ProductId === productData.ID
-  );
+  const allSides = products.reduce((collection, product) => {
+    for (let Side of product.Sides) {
+      if (!collection.some((s) => s.Side == Side.Name)) {
+        collection.push({ Side: Side.Name });
+      }
+    }
+    return collection;
+  }, []);
 
-  const allSides = productData.activeStyle.Sides;
   const defaultSide = allSides.find((s) => s.Side === "front") || allSides[0];
   const otherSides = allSides.filter((s) => s.Side !== defaultSide.Side);
 
@@ -127,27 +85,21 @@ const ProductCalculator = ({ productData }) => {
   return (
     <div className={calcStyles.pageContainer}>
       <h3>Instant Quote</h3>
-      {!!productQuote && (
-        <ul className={calcStyles.quoteList}>
-          <li>{formatUSD(productQuote["EachProductTotal"])} each</li>
-          <li>{formatUSD(productQuote["ProductAndPrintingTotal"])} total</li>
-        </ul>
-      )}
       <Formik
         initialValues={initialValues}
         validate={validateCalculator}
         onSubmit={async (values) => {
           setError(); // clear last error
           try {
-            const res = await getQuote(productData, values);
-            setQuote(res);
+            const res = await getQuote(products, values);
+            setQuote(res.data);
           } catch (err) {
             setError(err);
           }
         }}
       >
-        {({ isSubmitting, values, setFieldValue }) => (
-          <Form className={calcStyles.form}>
+        {({ isSubmitting, values, setFieldValue, handleSubmit }) => (
+          <Form className={calcStyles.form} onSubmit={handleSubmit}>
             <div className={calcStyles.formEl}>
               <div className={calcStyles.formSideGrid}>
                 <label htmlFor="Quantity">Total Quantity</label>
@@ -213,8 +165,8 @@ const ProductCalculator = ({ productData }) => {
             <div className={calcStyles.formActions}>
               <Button
                 type="submit"
-                disabled={isSubmitting}
-                isSubmitting={isSubmitting}
+                disabled={isSubmitting || isLoading}
+                isSubmitting={isSubmitting || isLoading}
               >
                 Get Quote
               </Button>
@@ -238,4 +190,4 @@ const ProductCalculator = ({ productData }) => {
   );
 };
 
-export default ProductCalculator;
+export default ProductsCalculator;

@@ -1,7 +1,12 @@
 import * as React from "react";
 import Head from "next/head";
 
-import { Layout, CategoryMenu, ProductList } from "../../../components";
+import {
+  Layout,
+  CategoryMenu,
+  ProductsCalculator,
+  ProductList,
+} from "../../../components";
 import {
   getAllProductCategories,
   getProductCategory,
@@ -64,7 +69,7 @@ const SubCategory = ({
   productData,
   pagination,
 }) => {
-  const { data, error, isLoading } = usePaginatedProducts(
+  const { data, error, isLoading, setQuote } = usePaginatedProducts(
     productData,
     pagination
   );
@@ -80,6 +85,11 @@ const SubCategory = ({
             categories={allProductCategoryData}
             activeCategory={categoryData}
             activeSubCategory={subcategoryData}
+          />
+          <ProductsCalculator
+            products={data.products}
+            setQuote={setQuote}
+            isLoading={isLoading}
           />
         </aside>
         <main className={productsStyles.grid__main}>

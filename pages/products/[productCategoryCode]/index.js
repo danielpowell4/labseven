@@ -1,14 +1,19 @@
 import * as React from "react";
 import Head from "next/head";
 
-import { Layout, CategoryMenu, ProductList } from "../../../components";
+import {
+  Layout,
+  CategoryMenu,
+  ProductList,
+  ProductsCalculator,
+} from "../../../components";
 import {
   getAllProductCategories,
   getProductCategory,
   getAllProducts,
 } from "../../../lib/products";
 import { paginate } from "../../../lib/utils";
-import { usePaginatedProducts } from "../../../lib/customHooks";
+import { usePaginatedProducts, useQuotes } from "../../../lib/customHooks";
 
 import productsStyles from "../styles/products.module.css";
 
@@ -56,7 +61,7 @@ const Category = ({
   categoryData,
   allProductCategoryData,
 }) => {
-  const { data, error, isLoading } = usePaginatedProducts(
+  const { data, error, isLoading, setQuote } = usePaginatedProducts(
     productData,
     pagination
   );
@@ -71,6 +76,11 @@ const Category = ({
           <CategoryMenu
             categories={allProductCategoryData}
             activeCategory={categoryData}
+          />
+          <ProductsCalculator
+            products={data.products}
+            setQuote={setQuote}
+            isLoading={isLoading}
           />
         </aside>
         <main className={productsStyles.grid__main}>

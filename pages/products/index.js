@@ -1,5 +1,10 @@
 import Head from "next/head";
-import { Layout, ProductList, CategoryMenu } from "../../components";
+import {
+  Layout,
+  ProductList,
+  ProductsCalculator,
+  CategoryMenu,
+} from "../../components";
 import { getAllProductCategories, getAllProducts } from "../../lib/products";
 import { paginate } from "../../lib/utils";
 import { usePaginatedProducts } from "../../lib/customHooks";
@@ -21,7 +26,7 @@ export async function getStaticProps() {
 }
 
 const Products = ({ productData, pagination, allProductCategoryData }) => {
-  const { data, error, isLoading } = usePaginatedProducts(
+  const { data, error, isLoading, setQuote } = usePaginatedProducts(
     productData,
     pagination
   );
@@ -35,6 +40,11 @@ const Products = ({ productData, pagination, allProductCategoryData }) => {
         <aside className={productsStyles.grid__aside}>
           <h1>Apparel</h1>
           <CategoryMenu categories={allProductCategoryData} />
+          <ProductsCalculator
+            products={data.products}
+            setQuote={setQuote}
+            isLoading={isLoading}
+          />
         </aside>
         <main className={productsStyles.grid__main}>
           <ProductList

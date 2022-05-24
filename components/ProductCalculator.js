@@ -55,7 +55,7 @@ const ITEM_COLOR_LIMITS = [
   { itemMin: 24, itemMax: 49, colors: 4 },
 ];
 
-const validateCalculator = (values) => {
+export const validateCalculator = (values) => {
   const errors = {};
   const Quantity = Number(values.Quantity);
 
@@ -97,7 +97,7 @@ const validateCalculator = (values) => {
   return errors;
 };
 
-const SideLabel = ({ sideName }) => {
+export const SideLabel = ({ sideName }) => {
   if (sideName === "Sleeveleft") return "Left Sleeve";
   if (sideName === "Sleeveright") return "Right Sleeve";
 
