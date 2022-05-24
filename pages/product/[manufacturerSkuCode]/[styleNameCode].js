@@ -56,7 +56,9 @@ const Product = ({ productData }) => {
   }, [activeStyle, activeSide]);
 
   const pageTitle = `${productData.Manufacturer} - ${productData.ManufacturerSku} // ${activeStyle.Name}`;
-  const pageDescription = `Design your own ${productData.Name} (${productData.Manufacturer} ${productData.ManufacturerSku}) in ${activeStyle.Name} with help from Lab Seven`;
+  const pageDescription =
+    productData.LongDescription ||
+    `Design your own ${productData.Name} (${productData.Manufacturer} ${productData.ManufacturerSku}) in ${activeStyle.Name} with help from Lab Seven`;
 
   return (
     <Layout>
@@ -157,11 +159,15 @@ const Product = ({ productData }) => {
           <div className={productStyles.detailsBox}>
             <ProductCalculator productData={productData} />
           </div>
-          <hr />
-          <div className={productStyles.detailsBox}>
-            <h3>Product Information</h3>
-            <pre>TODO: find and add me from API</pre>
-          </div>
+          {!!productData.LongDescription && (
+            <>
+              <hr />
+              <div className={productStyles.detailsBox}>
+                <h3>Product Information</h3>
+                <p>{productData.LongDescription}</p>
+              </div>
+            </>
+          )}
           {process.env.NODE_ENV === "development" && (
             <>
               <hr />

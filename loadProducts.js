@@ -115,6 +115,18 @@ async function getPageOfProducts(startingIndex) {
   return json;
 }
 
+// https://demo.inksoft.com/demo?Page=Api2#methods_GetProduct
+const PRODUCT_DETAIL_ENDPOINT =
+  "https://stores.labseven.co/Lab_Seven_Screen_Printing_Co/Api2/GetProduct";
+
+async function getProductDetail(product) {
+  const response = await fetch(
+    `${PRODUCT_DETAIL_ENDPOINT}?Format=JSON&ProductId=${product.ID}`
+  );
+  const json = await response.json();
+  return json;
+}
+
 async function fetchAllProducts() {
   console.log("fetching all products...");
   let products = [];
@@ -130,44 +142,48 @@ async function fetchAllProducts() {
     const json = await getPageOfProducts(fetchedProductIndex);
     const parsedProducts = json.Data;
 
-    const formattedProducts = parsedProducts.map((product) => {
-      const manufacturerSkuCode =
-        `${product.Manufacturer}-${product.ManufacturerSku}`.toLowerCase();
-      const defaultStyle = (product.Styles || [])[0]; // first
+    const formattedProducts = await Promise.all(
+      parsedProducts.map(async (product) => {
+        const manufacturerSkuCode =
+          `${product.Manufacturer}-${product.ManufacturerSku}`.toLowerCase();
+        const defaultStyle = (product.Styles || [])[0]; // first
+        const additionalDetails = await getProductDetail(product);
 
-      return {
-        ...product,
-        manufacturerSkuCode,
-        defaultHref: defaultStyle
-          ? encodeURI(
-              `/product/${manufacturerSkuCode}/${camelize(defaultStyle.Name)}`
-            )
-          : "",
-        Styles: (product.Styles || []).map((style) => {
-          const hasMainImage = !!style.ImageFilePath_Front;
-          const nameCode = camelize(style.Name);
+        return {
+          ...product,
+          manufacturerSkuCode,
+          LongDescription: additionalDetails.Data.LongDescription,
+          defaultHref: defaultStyle
+            ? encodeURI(
+                `/product/${manufacturerSkuCode}/${camelize(defaultStyle.Name)}`
+              )
+            : "",
+          Styles: (product.Styles || []).map((style) => {
+            const hasMainImage = !!style.ImageFilePath_Front;
+            const nameCode = camelize(style.Name);
 
-          return {
-            ...style,
-            nameCode,
-            href: encodeURI(`/product/${manufacturerSkuCode}/${nameCode}`),
-            hasMainImage,
-            mainImageUrl: hasMainImage
-              ? IMAGE_PREFIX + style.ImageFilePath_Front
-              : "",
-            Sides: (style.Sides || []).map((side) => {
-              const hasImage = !!side.ImageFilePath;
+            return {
+              ...style,
+              nameCode,
+              href: encodeURI(`/product/${manufacturerSkuCode}/${nameCode}`),
+              hasMainImage,
+              mainImageUrl: hasMainImage
+                ? IMAGE_PREFIX + style.ImageFilePath_Front
+                : "",
+              Sides: (style.Sides || []).map((side) => {
+                const hasImage = !!side.ImageFilePath;
 
-              return {
-                ...side,
-                hasImage,
-                imageUrl: hasImage ? IMAGE_PREFIX + side.ImageFilePath : "",
-              };
-            }),
-          };
-        }),
-      };
-    });
+                return {
+                  ...side,
+                  hasImage,
+                  imageUrl: hasImage ? IMAGE_PREFIX + side.ImageFilePath : "",
+                };
+              }),
+            };
+          }),
+        };
+      })
+    );
 
     if (parsedProducts.length) {
       products.push(...formattedProducts);
