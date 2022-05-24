@@ -27,14 +27,16 @@ const buildQuoteItem = (productParam, values) => ({
 });
 
 const productsToParams = (products) =>
-  products.map((productData) => {
-    const defaultStyle = productData.Styles[0];
-    return {
-      ProductId: productData.ID,
-      ProductStyleId: defaultStyle.ID,
-      ProductStyleSizeId: defaultStyle.Sizes[0].ID, // assume first
-    };
-  });
+  products
+    .filter((productData) => !!productData.Styles.length)
+    .map((productData) => {
+      const defaultStyle = productData.Styles[0];
+      return {
+        ProductId: productData.ID,
+        ProductStyleId: defaultStyle.ID,
+        ProductStyleSizeId: defaultStyle.Sizes[0].ID, // assume first
+      };
+    });
 
 const buildPayload = (products, values) => {
   let formData = new FormData();
@@ -72,8 +74,9 @@ const ProductsCalculator = ({ products, setQuote, isLoading }) => {
   }, []);
 
   const defaultSide = allSides.find((s) => s.Side === "front") || allSides[0];
-  const otherSides = allSides.filter((s) => s.Side !== defaultSide.Side);
+  if (!defaultSide) return null; // no sides, hide calculator
 
+  const otherSides = allSides.filter((s) => s.Side !== defaultSide.Side);
   const initialValues = {
     Quantity: 50,
     Sides: [
