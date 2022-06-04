@@ -151,8 +151,8 @@ async function fetchAllProducts() {
 
         return {
           ...product,
-          manufacturerSkuCode,
           LongDescription: additionalDetails.Data.LongDescription,
+          manufacturerSkuCode,
           defaultHref: defaultStyle
             ? encodeURI(
                 `/product/${manufacturerSkuCode}/${camelize(defaultStyle.Name)}`
