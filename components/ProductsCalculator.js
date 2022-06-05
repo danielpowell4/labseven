@@ -109,13 +109,33 @@ const ProductsCalculator = ({ products, setQuote, isLoading }) => {
             <div className={calcStyles.formEl}>
               <div className={calcStyles.formSideGrid}>
                 <label htmlFor="Quantity">Total Quantity</label>
-                <Field
-                  id="Quantity"
-                  name="Quantity"
-                  type="number"
-                  step="1"
-                  min="0"
-                />
+                <div className={calcStyles.sideInputs}>
+                  <button
+                    type="button"
+                    className={calcStyles.incrementButton}
+                    onClick={() =>
+                      setFieldValue("Quantity", Number(values["Quantity"]) - 1)
+                    }
+                  >
+                    -
+                  </button>
+                  <Field
+                    id="Quantity"
+                    name="Quantity"
+                    type="number"
+                    step="1"
+                    min="0"
+                  />
+                  <button
+                    type="button"
+                    className={calcStyles.incrementButton}
+                    onClick={() =>
+                      setFieldValue("Quantity", Number(values["Quantity"]) + 1)
+                    }
+                  >
+                    +
+                  </button>
+                </div>
               </div>
               <ErrorMessage
                 name="Quantity"
@@ -140,6 +160,12 @@ const ProductsCalculator = ({ products, setQuote, isLoading }) => {
                           NumColors: event.target.value,
                         });
                       };
+                      const onButtonClick = (change) => {
+                        setFieldValue(fieldId, {
+                          ...side,
+                          NumColors: Number(side.NumColors) + change,
+                        });
+                      };
 
                       return (
                         <React.Fragment key={sideIndex}>
@@ -147,15 +173,31 @@ const ProductsCalculator = ({ products, setQuote, isLoading }) => {
                             <label htmlFor={fieldId}>
                               <SideLabel sideName={sideName} />
                             </label>
-                            <Field
-                              id={fieldId}
-                              name={fieldId}
-                              type="number"
-                              step="1"
-                              min="0"
-                              value={side.NumColors}
-                              onChange={onValueChange}
-                            />
+                            <div className={calcStyles.sideInputs}>
+                              <button
+                                type="button"
+                                className={calcStyles.incrementButton}
+                                onClick={() => onButtonClick(-1)}
+                              >
+                                -
+                              </button>
+                              <Field
+                                id={fieldId}
+                                name={fieldId}
+                                type="number"
+                                step="1"
+                                min="0"
+                                value={side.NumColors}
+                                onChange={onValueChange}
+                              />
+                              <button
+                                type="button"
+                                className={calcStyles.incrementButton}
+                                onClick={() => onButtonClick(1)}
+                              >
+                                +
+                              </button>
+                            </div>
                           </div>
                           <ErrorMessage
                             name={fieldId}

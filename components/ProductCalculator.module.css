@@ -24,7 +24,7 @@
   cursor: pointer;
   font-family: var(--headingFont);
   font-size: 1.15rem;
-  color: var(--hr);
+  color: var(--lightText);
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 4px;

@@ -16,16 +16,19 @@
   font-weight: var(--headingWeight);
 }
 
-.nav {
+.nav ul {
+  display: none;
 }
 
-.nav ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  padding: 0 4rem 0 2rem;
-  justify-content: flex-end;
-  font-size: 1.15rem;
+@media (min-width: 880px) {
+  .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    padding: 0 4rem 0 2rem;
+    justify-content: flex-end;
+    font-size: 1.15rem;
+  }
 }
 
 .nav a {

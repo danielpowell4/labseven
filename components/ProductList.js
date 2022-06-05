@@ -32,7 +32,12 @@ const ProductCard = ({ product }) => {
             </h4>
             <p>{product.Name}</p>
             <p className={styles.ProductCard__extraDetail}>
-              {product.showPrice && `$${product.UnitPrice.toFixed(2)} each | `}
+              {product.showPrice && (
+                <>
+                  <span>{`$${product.UnitPrice.toFixed(2)} each`}</span>
+                  {` | `}
+                </>
+              )}
               {product.Styles.length > 1
                 ? `${product.Styles.length} Colors`
                 : "1 Color"}
