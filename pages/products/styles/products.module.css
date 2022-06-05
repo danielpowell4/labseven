@@ -17,5 +17,5 @@
   height: 100vh;
   overflow-y: auto;
 
-  border-right: 2px solid rgb(236, 238, 238);
+  border-right: 2px solid var(--hr);
 }

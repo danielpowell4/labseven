@@ -23,10 +23,10 @@ li {
 :root {
   --background: #fff;
 
-  --hr: #a6a6a6;
+  --hr: rgb(236, 238, 238);
   --darkText: #282828;
   --mediumText: rgb(80, 101, 105);
-  --lightText: var(--hr);
+  --lightText: #a6a6a6;
 
   --danger: #ce0c1b;
   --primary: #13c798;
