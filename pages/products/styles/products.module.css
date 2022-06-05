@@ -9,7 +9,7 @@
 }
 
 .grid__aside {
-  padding: 1.4rem;
+  padding: 1rem 1.4rem 5rem;
   position: sticky;
   top: 1.15rem;
   align-self: start; /* for 'sticky' in grid */
