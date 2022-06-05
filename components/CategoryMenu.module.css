@@ -7,6 +7,7 @@
 .categoriesList__option {
   display: block;
   font-size: 20px;
+  line-height: 1.15rem;
   margin-bottom: 0.625rem;
   margin-left: 0;
 }
