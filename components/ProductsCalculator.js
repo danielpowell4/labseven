@@ -90,7 +90,7 @@ const ProductsCalculator = ({ products, setQuote, isLoading }) => {
 
   return (
     <div className={calcStyles.pageContainer}>
-      <h3>Instant Quote</h3>
+      <h3 className="highlight">Instant Quote</h3>
       <Formik
         initialValues={initialValues}
         validate={validateCalculator}

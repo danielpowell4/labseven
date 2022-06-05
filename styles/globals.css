@@ -70,3 +70,9 @@ hr {
 input:focus {
   outline-color: var(--primary);
 }
+
+.highlight {
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-decoration-color: var(--highlight);
+}

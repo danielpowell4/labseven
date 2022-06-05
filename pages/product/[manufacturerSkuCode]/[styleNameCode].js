@@ -133,9 +133,7 @@ const Product = ({ productData }) => {
               <h1>{productData.Name}</h1>
               <h3>
                 {productData.Manufacturer}{" "}
-                <span className={productStyles.sku}>
-                  {productData.ManufacturerSku}
-                </span>
+                <span className="highlight">{productData.ManufacturerSku}</span>
               </h3>
             </div>
             <div className="detailsBox__styles">
