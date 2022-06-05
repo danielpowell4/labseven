@@ -145,7 +145,10 @@ async function fetchAllProducts() {
     const formattedProducts = await Promise.all(
       parsedProducts.map(async (product) => {
         const manufacturerSkuCode =
-          `${product.Manufacturer}-${product.ManufacturerSku}`.toLowerCase();
+          `${product.Manufacturer} ${product.ManufacturerSku}`
+            .split(" ")
+            .join("-")
+            .toLowerCase();
         const defaultStyle = (product.Styles || [])[0]; // first
         const additionalDetails = await getProductDetail(product);
 
