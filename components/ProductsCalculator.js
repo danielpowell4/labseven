@@ -66,7 +66,10 @@ const ProductsCalculator = ({ products, setQuote, isLoading }) => {
 
   const allSides = products.reduce((collection, product) => {
     for (let Side of product.Sides) {
-      if (!collection.some((s) => s.Side == Side.Name)) {
+      if (
+        !collection.some((s) => s.Side == Side.Name) &&
+        ["front", "back"].includes(Side.Name) // per Justin's suggestion May '22
+      ) {
         collection.push({ Side: Side.Name });
       }
     }

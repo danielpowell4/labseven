@@ -9,8 +9,13 @@
 }
 
 .grid__aside {
-  padding: 1rem;
+  padding: 2rem;
   position: sticky;
   top: 1.15rem;
   align-self: start; /* for 'sticky' in grid */
+
+  height: 100vh;
+  overflow-y: auto;
+
+  border-right: 2px solid rgb(236, 238, 238);
 }

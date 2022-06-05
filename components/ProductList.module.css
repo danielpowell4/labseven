@@ -1,9 +1,44 @@
 .ProductList {
+  place-items: start center;
+  align-self: start;
   display: grid;
-  row-gap: 0.25rem;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 0.25rem 1rem 1.375rem;
-  border-left: 1px solid var(--hr);
+  gap: 1.25rem;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0px 1.25rem 1.375rem;
+}
+
+@media (min-width: 45rem) {
+  .ProductList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 60rem) {
+  .ProductList {
+    row-gap: 0.25rem;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0.25rem 2rem 1.375rem;
+  }
+}
+@media (min-width: 80rem) {
+  .ProductList {
+    column-gap: 0.5rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 95rem) {
+  .ProductList {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 100rem) {
+  .ProductList {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 120rem) {
+  .ProductList {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 
 .ProductListIsLoading {
