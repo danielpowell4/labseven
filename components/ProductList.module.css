@@ -83,10 +83,6 @@
   z-index: 1;
 }
 
-.ProductCard__extraDetail {
-  color: var(--lightText);
-}
-
 .colorOptions {
   position: relative;
   z-index: 1;

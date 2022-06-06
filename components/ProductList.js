@@ -31,17 +31,15 @@ const ProductCard = ({ product }) => {
               {product.ManufacturerSku}
             </h4>
             <p>{product.Name}</p>
-            <p className={styles.ProductCard__extraDetail}>
-              {product.showPrice && (
-                <>
+
+            {product.showPrice && (
+              <p className="highlight">
+                <strong>
                   <span>{`$${product.UnitPrice.toFixed(2)} each`}</span>
-                  {` | `}
-                </>
-              )}
-              {product.Styles.length > 1
-                ? `${product.Styles.length} Colors`
-                : "1 Color"}
-            </p>
+                </strong>
+              </p>
+            )}
+
             {product.Styles.length > 1 && (
               <ul
                 className={`${styles.colorOptions} ${
