@@ -194,10 +194,7 @@ async function fetchAllProducts() {
       break; // nothing fetched STOP as guard
     }
     // adjust end conditions to continue loop
-    // dev only to prevent too many pages in prod pre-launch
-    if (process.env.NODE_ENV == "development") {
-      lastProductIndex = json.Pagination.TotalResults;
-    }
+    lastProductIndex = json.Pagination.TotalResults;
     fetchedProductIndex =
       json.Pagination.Index + json.Pagination.IncludedResults;
   }
