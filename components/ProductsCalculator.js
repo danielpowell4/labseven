@@ -64,17 +64,21 @@ const getQuote = (products, values) => {
 const ProductsCalculator = ({ products, setQuote, isLoading }) => {
   const [error, setError] = React.useState();
 
-  const allSides = products.reduce((collection, product) => {
-    for (let Side of product.Sides) {
-      if (
-        !collection.some((s) => s.Side == Side.Name) &&
-        ["front", "back"].includes(Side.Name) // per Justin's suggestion May '22
-      ) {
-        collection.push({ Side: Side.Name });
-      }
-    }
-    return collection;
-  }, []);
+  const allSides = products.some((p) => p.isLoading)
+    ? [{ Side: "front" }, { Side: "back" }] // if loading guess only front/back
+    : products.reduce((collection, product) => {
+        if (!product.isLoading) {
+          for (let Side of product.Sides) {
+            if (
+              !collection.some((s) => s.Side == Side.Name) &&
+              ["front", "back"].includes(Side.Name) // per Justin's suggestion May '22
+            ) {
+              collection.push({ Side: Side.Name });
+            }
+          }
+        }
+        return collection;
+      }, []);
 
   const defaultSide = allSides.find((s) => s.Side === "front") || allSides[0];
   if (!defaultSide) return null; // no sides, hide calculator

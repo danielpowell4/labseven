@@ -109,3 +109,17 @@
   opacity: 1;
   visibility: visible;
 }
+
+.ProductSkeleton__image {
+  animation: tahoeLoadingShimmer 1s cubic-bezier(0.08, 0.52, 0.52, 1) infinite
+    alternate;
+}
+
+@keyframes tahoeLoadingShimmer {
+  0% {
+    background-color: #f5f6f7;
+  }
+  100% {
+    background-color: #ebedf0;
+  }
+}

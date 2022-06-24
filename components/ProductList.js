@@ -4,7 +4,36 @@ import { ColorOption, ErrorAlert, Pagination, ThreeDotLoader } from ".";
 
 import styles from "./ProductList.module.css";
 
+const LOADING_ADJECTIVES = ["Awesome", "Superb", "Amazing", "Legit", "Rad"];
+const ProductSkeleton = () => {
+  const randomIndex = Math.floor(Math.random() * LOADING_ADJECTIVES.length);
+  const randomAdjective = LOADING_ADJECTIVES[randomIndex];
+
+  return (
+    <div className={styles.ProductCard}>
+      <div className={styles.ProductCard__frame} />
+      <div className={styles.ProductCard__description}>
+        <div
+          className={styles.ProductSkeleton__image}
+          style={{ width: 290, height: 320 }}
+        />
+        <div>
+          <h4>
+            {randomAdjective}
+            <br />
+            Product
+          </h4>
+          <p>Loading...</p>
+          <ul className={styles.colorOptions} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ProductCard = ({ product }) => {
+  if (product.isLoading) return <ProductSkeleton />;
+
   const activeStyle = product.Styles[0];
   const showMoreStyles = product.Styles.length > 7;
 
