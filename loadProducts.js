@@ -3,7 +3,7 @@ const { join } = require("path");
 const fetch = require("cross-fetch");
 
 const camelize = (str) => {
-  return str
+  return (str || "")
     .toLowerCase()
     .replace(/\/|-/, " ")
     .replace(/'/, "")
@@ -168,7 +168,11 @@ async function fetchAllProducts() {
           Categories: (product.Categories || []).map((category) => {
             const isSubCategory = category["Path"].includes(" / ");
             if (isSubCategory) {
-              const [cat, subCat] = category["Path"].split(" / ");
+              const [cat, subCat] = category["Path"].includes(
+                "Performance / Dry Fit"
+              )
+                ? ["Performance / Dry Fit", category["Path"].split(" / ")[2]]
+                : category["Path"].split(" / ");
               return {
                 ...category,
                 code: camelize(cat),

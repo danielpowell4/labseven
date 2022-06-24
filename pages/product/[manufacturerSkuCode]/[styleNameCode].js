@@ -42,13 +42,16 @@ export async function getStaticProps({ params }) {
   const category =
     productData.Categories.find((cat) => !!cat.subCategoryCode) ||
     productData.Categories[0];
-  let categoryData, subcategoryData;
+  let categoryData,
+    subcategoryData = null;
 
   if (category) {
-    categoryData = await getProductCategory(category.code);
-    subcategoryData = categoryData.SubCategories.find(
-      (sub) => sub.code == category.subCategoryCode
-    );
+    categoryData = (await getProductCategory(category.code)) || null;
+    if (categoryData) {
+      subcategoryData = categoryData.SubCategories.find(
+        (sub) => sub.code == category.subCategoryCode
+      );
+    }
   }
 
   return {
