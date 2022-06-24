@@ -48,9 +48,10 @@ export async function getStaticProps({ params }) {
   if (category) {
     categoryData = (await getProductCategory(category.code)) || null;
     if (categoryData) {
-      subcategoryData = categoryData.SubCategories.find(
-        (sub) => sub.code == category.subCategoryCode
-      );
+      subcategoryData =
+        categoryData.SubCategories.find(
+          (sub) => sub.code == category.subCategoryCode
+        ) || null;
     }
   }
 
