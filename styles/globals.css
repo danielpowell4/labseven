@@ -3,7 +3,7 @@ html {
 }
 
 a {
-  color: #0070f3;
+  color: var(--alternate);
   text-decoration: none;
 }
 
