@@ -12,6 +12,11 @@ const Layout = ({ children, hideNav = false }) => {
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="shortcut icon"
+          type="image/x-icon"
+          href="shortcut_icon.png"
+        />
         <title>{siteTitle}</title>
         <meta name="description" content={description} />
         <meta property="og:type" content="website" />
