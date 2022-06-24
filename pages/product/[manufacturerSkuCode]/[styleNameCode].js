@@ -73,7 +73,9 @@ const Product = ({ productData }) => {
         {!!productData.defaultHref && (
           <link rel="canonical" href={productData.defaultHref} />
         )}
-        <meta name="keywords" content={productData.Keywords.join(", ")} />
+        {productData.Keywords && (
+          <meta name="keywords" content={productData.Keywords.join(", ")} />
+        )}
       </Head>
       <div>
         <Link href="/products">
