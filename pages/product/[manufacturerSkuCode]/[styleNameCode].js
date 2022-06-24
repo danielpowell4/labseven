@@ -164,7 +164,11 @@ const Product = ({ productData }) => {
               <hr />
               <div className={productStyles.detailsBox}>
                 <h3>Product Information</h3>
-                <p>{productData.LongDescription}</p>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: productData.LongDescription,
+                  }}
+                ></p>
               </div>
             </>
           )}
