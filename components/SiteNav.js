@@ -3,13 +3,29 @@ import Image from "next/image";
 import styles from "./SiteNav.module.css";
 
 const SiteNav = () => {
+  const callContainerRef = React.useRef();
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const handleOpen = (event) => {
+    setIsOpen(true);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
         <img src="/assets/Lab-Seven-Logo.svg" height="auto" width={220} />
       </div>
-      <div className={styles.callNow}>
-        <button className={styles.callNow__anchor}>Call Now</button>
+      <div
+        className={`${styles.callNow} ${isOpen ? styles.callNow__isOpen : ""}`}
+        ref={callContainerRef}
+        onMouseLeave={() => setIsOpen(false)}
+      >
+        <button
+          className={styles.callNow__anchor}
+          onMouseEnter={() => setIsOpen(true)}
+        >
+          Call Now
+        </button>
         <div className={styles.callNow__flyout}>
           <ul>
             <li>
