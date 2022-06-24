@@ -1,5 +1,22 @@
 .breadcrumbs {
-  padding-top: 10px;
+  display: flex;
+  margin-left: 26px;
+}
+
+.breadcrumbs a,
+.breadcrumbs a:visited {
+  display: block;
+  text-decoration: underline;
+  color: var(--lightText);
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.breadcrumbs a:not(:last-of-type):after {
+  content: " /";
+  display: inline-block;
+  line-height: 1em;
+  margin: 0 0.25rem;
 }
 
 .pageContainer {

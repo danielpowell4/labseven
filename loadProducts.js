@@ -165,6 +165,22 @@ async function fetchAllProducts() {
                 `/product/${manufacturerSkuCode}/${camelize(defaultStyle.Name)}`
               )
             : "",
+          Categories: (product.Categories || []).map((category) => {
+            const isSubCategory = category["Path"].includes(" / ");
+            if (isSubCategory) {
+              const [cat, subCat] = category["Path"].split(" / ");
+              return {
+                ...category,
+                code: camelize(cat),
+                subCategoryCode: camelize(subCat),
+              };
+            } else {
+              return {
+                ...category,
+                code: camelize(category["Name"]),
+              };
+            }
+          }),
           Styles: (product.Styles || []).map((style) => {
             const hasMainImage = !!style.ImageFilePath_Front;
             const nameCode = camelize(style.Name);
@@ -255,6 +271,7 @@ async function fetchAllProductCategories() {
 
           ID: subCategory["ID"],
           Name: subCategory["Name"],
+          LongName: `${cat["Name"]} / ${subCategory["Name"]}`,
           ItemCount: subCategory["ItemCount"],
           ItemIds: subCategory["ItemIds"],
           CoverArtUrl: IMAGE_PREFIX + subCategory["CoverArtUrl"],

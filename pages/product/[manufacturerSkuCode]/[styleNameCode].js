@@ -4,7 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ColorOption, Layout } from "../../../components";
-import { getAllProducts, getProductByStyle } from "../../../lib/products";
+import {
+  getAllProducts,
+  getProductByStyle,
+  getProductCategory,
+} from "../../../lib/products";
 
 import productStyles from "./product.module.css";
 import { ProductCalculator } from "../../../components";
@@ -35,14 +39,28 @@ export async function getStaticProps({ params }) {
     params.manufacturerSkuCode,
     params.styleNameCode
   );
+  const category =
+    productData.Categories.find((cat) => !!cat.subCategoryCode) ||
+    productData.Categories[0];
+  let categoryData, subcategoryData;
+
+  if (category) {
+    categoryData = await getProductCategory(category.code);
+    subcategoryData = categoryData.SubCategories.find(
+      (sub) => sub.code == category.subCategoryCode
+    );
+  }
+
   return {
     props: {
       productData,
+      categoryData,
+      subcategoryData,
     },
   };
 }
 
-const Product = ({ productData }) => {
+const Product = ({ productData, categoryData, subcategoryData }) => {
   const activeStyle = productData.activeStyle;
   const [activeSide, setActiveSide] = React.useState();
 
@@ -79,8 +97,18 @@ const Product = ({ productData }) => {
       </Head>
       <div className={productStyles.breadcrumbs}>
         <Link href="/products">
-          <a>{`⬅ All Products`}</a>
+          <a>Products</a>
         </Link>
+        {!!categoryData && (
+          <Link href={categoryData.href}>
+            <a>{categoryData.Name}</a>
+          </Link>
+        )}
+        {!!subcategoryData && (
+          <Link href={subcategoryData.href}>
+            <a>{subcategoryData.Name}</a>
+          </Link>
+        )}
       </div>
       <div className={productStyles.pageContainer}>
         <div className={productStyles.gallery}>
