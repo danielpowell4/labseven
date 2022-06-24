@@ -9,7 +9,7 @@
 }
 
 .grid__aside {
-  padding: 1rem 1.4rem 5rem;
+  padding: 1rem 1.4rem 6rem;
   position: sticky;
   top: 1.15rem;
   align-self: start; /* for 'sticky' in grid */
@@ -18,4 +18,8 @@
   overflow-y: auto;
 
   border-right: 2px solid var(--hr);
+
+  /* lock calculator on bottom */
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
