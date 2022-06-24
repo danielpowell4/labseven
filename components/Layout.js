@@ -7,20 +7,11 @@ export const siteTitle =
 const description =
   "Lab Seven Screen Printing Co. is the leader in Denver Screen Printing,  Custom T-shirt Printing, Graphic Design, and Embroidery in Colorado.  Design your own t-shirt in our design studio or work with one of our artists to bring your custom tee to life.";
 
-// pick random emoji as favicon
-const sample = (arr) => arr[Math.floor(Math.random() * arr.length)];
-const EMOJI_OF_BUILD = ["🐕", "👨‍🚀", "👨‍💻", "🖼", "🚀"];
-
 const Layout = ({ children, hideNav = false }) => {
   return (
     <>
       <Head>
-        <link
-          rel="icon"
-          href={`data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${sample(
-            EMOJI_OF_BUILD
-          )}</text></svg>`}
-        />
+        <link rel="icon" href="/favicon.ico" />
         <title>{siteTitle}</title>
         <meta name="description" content={description} />
         <meta property="og:type" content="website" />
