@@ -4,16 +4,19 @@
   border-bottom: 1px solid var(--hr);
 }
 
-.logo,
-.locales {
-  background-color: var(--primary);
-  color: var(--background);
-  padding: 0 1rem;
+.logo {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: var(--headingFont);
-  font-weight: var(--headingWeight);
+  width: 18rem; /* matches grid's aside */
+}
+
+.locales {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 2rem 0 0;
+  gap: 1rem;
 }
 
 .nav ul {
