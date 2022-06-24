@@ -42,6 +42,9 @@ const loadOrBuildCache = async (filename, fetcher) => {
 // START - products
 // fetch all products and save in .gitignore'd JSON cache file
 function sortProducts(a, b) {
+  if (a.Featured && !b.Featured) return -1; // true first
+  if (!a.Featured && b.Featured) return 1;
+
   const supplierCompare = a.Supplier.localeCompare(b.Supplier);
   if (supplierCompare !== 0) return supplierCompare;
 
@@ -154,6 +157,7 @@ async function fetchAllProducts() {
 
         return {
           ...product,
+          Featured: additionalDetails.Data.Featured,
           LongDescription: additionalDetails.Data.LongDescription,
           manufacturerSkuCode,
           defaultHref: defaultStyle
