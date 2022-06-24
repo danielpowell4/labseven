@@ -20,7 +20,7 @@ const buildQuoteItem = (productParam, values) => ({
     ({ SideId, NumColors }) => ({
       SideId,
       NumColors,
-      ArtIdentifier: "one setup",
+      ArtIdentifier: `setup for ${productParam.ProductId}`,
       IsFullColor: false,
     })
   ),
