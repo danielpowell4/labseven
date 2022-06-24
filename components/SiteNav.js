@@ -34,10 +34,10 @@ const SiteNav = () => {
                 <sub className={styles.callNow__flyout__label__accent}>HQ</sub>
               </span>
               <a
-                href="tel:+13038413389"
+                href="tel:+13038143389"
                 className={styles.callNow__flyout__number}
               >
-                {`(303) 841-3389`}
+                {`(303) 814-3389`}
               </a>
             </li>
             <li>
