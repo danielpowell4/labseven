@@ -4,6 +4,16 @@
   padding: 0;
 }
 
+.categoriesList {
+  margin-top: 34px; /* same space as breadcrumbs */
+}
+
+.activeFilterTitle {
+  margin: 0 0 1.25rem;
+  font-size: 20px;
+  line-height: 1em;
+}
+
 .categoriesList__option {
   display: block;
   font-size: 20px;
@@ -13,7 +23,7 @@
 }
 
 .categoriesList__option a {
-  color: var(--mediumText);
+  color: var(--darkText);
   font-weight: bold;
 }
 
@@ -22,6 +32,7 @@
   font-size: 15px;
   margin-bottom: 0.625rem;
   margin-left: 0;
+  line-height: 1em;
 }
 
 .subcategoriesList__option a {
@@ -33,17 +44,22 @@
   margin: inherit;
 }
 
+.breadcrumbs {
+  display: flex;
+}
+
 .activeHelperLink,
 .activeHelperLink:visited {
+  display: block;
   text-decoration: underline;
   color: var(--lightText);
   font-size: 15px;
   margin-bottom: 0.75rem;
 }
 
-.activeHelperLink:after {
+.activeHelperLink:first-of-type:after {
   content: " /";
   display: inline-block;
   line-height: 1em;
-  margin-left: 0.25rem;
+  margin: 0 0.25rem;
 }

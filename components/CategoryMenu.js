@@ -12,17 +12,19 @@ const CategoryMenu = ({
   if (!!activeCategory) {
     return (
       <nav className={styles.nav}>
-        <Link href="/products">
-          <a className={styles.activeHelperLink}>Products</a>
-        </Link>
-        <h1>
-          {hasActiveSubCategory ? (
+        <div className={styles.breadcrumbs}>
+          <Link href="/products">
+            <a className={styles.activeHelperLink}>Products</a>
+          </Link>
+          {hasActiveSubCategory && (
             <Link href={activeCategory.href}>
-              <a>{activeCategory.Name}</a>
+              <a className={styles.activeHelperLink}>{activeCategory.Name}</a>
             </Link>
-          ) : (
-            activeCategory.Name
           )}
+        </div>
+
+        <h1 className={styles.activeFilterTitle}>
+          {hasActiveSubCategory ? activeSubCategory.Name : activeCategory.Name}
         </h1>
         {activeCategory.hasSubCategories && (
           <ul className={styles.subcategoriesList}>

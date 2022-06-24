@@ -38,7 +38,6 @@ const Products = ({ productData, pagination, allProductCategoryData }) => {
       </Head>
       <div className={productsStyles.grid}>
         <aside className={productsStyles.grid__aside}>
-          <h1>Apparel</h1>
           <CategoryMenu categories={allProductCategoryData} />
           <ProductsCalculator
             products={data.products}
