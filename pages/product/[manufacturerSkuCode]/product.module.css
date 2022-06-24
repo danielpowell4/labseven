@@ -1,3 +1,7 @@
+.breadcrumbs {
+  padding-top: 10px;
+}
+
 .pageContainer {
   display: grid;
   grid-template-columns: 2fr 1fr;

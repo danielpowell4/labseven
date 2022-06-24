@@ -77,7 +77,7 @@ const Product = ({ productData }) => {
           <meta name="keywords" content={productData.Keywords.join(", ")} />
         )}
       </Head>
-      <div>
+      <div className={productStyles.breadcrumbs}>
         <Link href="/products">
           <a>{`⬅ All Products`}</a>
         </Link>
