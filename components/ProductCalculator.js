@@ -21,7 +21,7 @@ const buildQuoteItem = (productData, values) => ({
     ({ SideId, NumColors }) => ({
       SideId,
       NumColors,
-      ArtIdentifier: "one setup",
+      ArtIdentifier: `${SideId} - ${productData.ID}`,
       IsFullColor: false,
     })
   ),
