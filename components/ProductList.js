@@ -4,10 +4,35 @@ import { ColorOption, ErrorAlert, Pagination, ThreeDotLoader } from ".";
 
 import styles from "./ProductList.module.css";
 
-const LOADING_ADJECTIVES = ["Awesome", "Superb", "Amazing", "Legit", "Rad"];
-const ProductSkeleton = () => {
-  const randomIndex = Math.floor(Math.random() * LOADING_ADJECTIVES.length);
-  const randomAdjective = LOADING_ADJECTIVES[randomIndex];
+const LOADING_ADJECTIVES = [
+  "Awesome",
+  "Beautiful",
+  "Creative",
+  "Delightful",
+  "Exciting",
+  "Favorite",
+  "Glorious",
+  "Honest",
+  "Incredible",
+  "Juicy",
+  "Killer",
+  "Legit",
+  "Majestic",
+  "Novel",
+  "Optimal",
+  "Prized",
+  "Quality",
+  "Rad",
+  "Stunning",
+  "Tantalizing",
+  "Upbeat",
+  "Valiant",
+  "Worthwhile",
+  "Yummy",
+  "Zazzy",
+];
+const ProductSkeleton = ({ productIndex }) => {
+  const randomAdjective = LOADING_ADJECTIVES[productIndex];
 
   return (
     <div className={styles.ProductCard}>
@@ -31,8 +56,8 @@ const ProductSkeleton = () => {
   );
 };
 
-const ProductCard = ({ product }) => {
-  if (product.isLoading) return <ProductSkeleton />;
+const ProductCard = ({ product, productIndex }) => {
+  if (product.isLoading) return <ProductSkeleton productIndex={productIndex} />;
 
   const activeStyle = product.Styles[0];
   const showMoreStyles = product.Styles.length > 7;
@@ -115,6 +140,7 @@ const ProductList = ({ error, products, isLoading, pagination }) => {
           <ProductCard
             key={`${product.ID}-${productIndex}`}
             product={product}
+            productIndex={productIndex}
           />
         ))}
       </div>
