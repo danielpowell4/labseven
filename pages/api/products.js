@@ -6,6 +6,7 @@ export default async (req, res) => {
   const perPage = req.query.perPage || 15;
   const categoryCode = req.query.productCategoryCode;
   const subCategoryCode = req.query.subCategoryCode;
+  const q = req.query.q;
 
   let allProducts = await getAllProducts();
 
@@ -25,6 +26,16 @@ export default async (req, res) => {
         categoryData.ItemIds.includes(product.ID)
       );
     }
+  }
+
+  if (q) {
+    const searchTerm = q.toLowerCase();
+    allProducts = allProducts.filter((product) => {
+      return (
+        product.SearchTerms &&
+        product.SearchTerms.some((term) => term.includes(searchTerm))
+      );
+    });
   }
 
   const [products, pagination] = paginate(

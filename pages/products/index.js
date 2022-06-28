@@ -4,6 +4,7 @@ import {
   ProductList,
   ProductsCalculator,
   CategoryMenu,
+  SearchBar,
 } from "../../components";
 import { getAllProductCategories, getAllProducts } from "../../lib/products";
 import { paginate } from "../../lib/utils";
@@ -26,10 +27,8 @@ export async function getStaticProps() {
 }
 
 const Products = ({ productData, pagination, allProductCategoryData }) => {
-  const { data, error, isLoading, setQuote } = usePaginatedProducts(
-    productData,
-    pagination
-  );
+  const { data, error, isLoading, setQuote, query, setQuery } =
+    usePaginatedProducts(productData, pagination);
 
   return (
     <Layout>
@@ -46,6 +45,8 @@ const Products = ({ productData, pagination, allProductCategoryData }) => {
           />
         </aside>
         <main className={productsStyles.grid__main}>
+          <SearchBar query={query} setQuery={setQuery} />
+          <hr />
           <ProductList
             products={data.products}
             pagination={data.pagination}

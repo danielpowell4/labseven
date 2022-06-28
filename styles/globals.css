@@ -76,3 +76,10 @@ input:focus {
   text-decoration-thickness: 4px;
   text-decoration-color: var(--highlight);
 }
+
+input[type="text"],
+input[type="search"],
+input[type="number"] {
+  border: solid 1px var(--lightText);
+  padding: 0.5rem;
+}

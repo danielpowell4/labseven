@@ -208,6 +208,17 @@ async function fetchAllProducts() {
               }),
             };
           }),
+          SearchTerms: [
+            product.Name,
+            product.Sku,
+            product.Supplier,
+            product.Manufacturer,
+            product.ManufacturerSku,
+            additionalDetails.Data.LongDescription,
+            ...(product.Keywords || []),
+          ]
+            .filter((term) => !!term)
+            .map((term) => term.toLowerCase()),
         };
       })
     );

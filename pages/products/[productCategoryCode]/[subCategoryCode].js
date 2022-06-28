@@ -6,6 +6,7 @@ import {
   CategoryMenu,
   ProductsCalculator,
   ProductList,
+  SearchBar,
 } from "../../../components";
 import {
   getAllProductCategories,
@@ -69,10 +70,8 @@ const SubCategory = ({
   productData,
   pagination,
 }) => {
-  const { data, error, isLoading, setQuote } = usePaginatedProducts(
-    productData,
-    pagination
-  );
+  const { data, error, isLoading, setQuote, query, setQuery } =
+    usePaginatedProducts(productData, pagination);
 
   return (
     <Layout>
@@ -93,6 +92,7 @@ const SubCategory = ({
           />
         </aside>
         <main className={productsStyles.grid__main}>
+          <SearchBar query={query} setQuery={setQuery} />
           <ProductList
             products={data.products}
             pagination={data.pagination}
