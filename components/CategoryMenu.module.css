@@ -24,6 +24,7 @@
 
 .categoriesList__option a {
   color: var(--darkText);
+  font-family: var(--headingFont);
   font-weight: bold;
 }
 
