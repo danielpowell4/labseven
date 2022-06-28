@@ -111,8 +111,11 @@ const ProductList = ({ error, products, isLoading, pagination }) => {
           isLoading ? styles.ProductListIsLoading : ""
         }`}
       >
-        {products.map((product) => (
-          <ProductCard key={product.ID} product={product} />
+        {products.map((product, productIndex) => (
+          <ProductCard
+            key={`${product.ID}-${productIndex}`}
+            product={product}
+          />
         ))}
       </div>
       <div>
