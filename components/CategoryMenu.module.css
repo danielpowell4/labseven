@@ -10,13 +10,13 @@
 
 .activeFilterTitle {
   margin: 0 0 1.25rem;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1em;
 }
 
 .categoriesList__option {
   display: block;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.15rem;
   margin-bottom: 0.625rem;
   margin-left: 0;
