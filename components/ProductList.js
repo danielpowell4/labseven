@@ -29,7 +29,7 @@ const LOADING_ADJECTIVES = [
   "Valiant",
   "Worthwhile",
   "Yummy",
-  "Zazzy",
+  "Zesty",
 ];
 const ProductSkeleton = ({ productIndex }) => {
   const randomAdjective = LOADING_ADJECTIVES[productIndex];
