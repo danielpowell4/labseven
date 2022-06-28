@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import styles from "./CategoryMenu.module.css";
 
@@ -7,17 +8,18 @@ const CategoryMenu = ({
   activeCategory,
   activeSubCategory = {},
 }) => {
+  const { query } = useRouter();
   const hasActiveSubCategory = !!activeSubCategory.ID;
 
   if (!!activeCategory) {
     return (
       <nav className={styles.nav}>
         <div className={styles.breadcrumbs}>
-          <Link href="/products">
+          <Link href={{ pathname: "/products", query }}>
             <a className={styles.activeHelperLink}>Products</a>
           </Link>
           {hasActiveSubCategory && (
-            <Link href={activeCategory.href}>
+            <Link href={{ pathname: activeCategory.href, query }}>
               <a className={styles.activeHelperLink}>{activeCategory.Name}</a>
             </Link>
           )}
@@ -41,7 +43,7 @@ const CategoryMenu = ({
                   key={subCat.ID}
                   className={styles.subcategoriesList__option}
                 >
-                  <Link href={subCat.href}>
+                  <Link href={{ pathname: subCat.href, query }}>
                     <a>{subCat.Name}</a>
                   </Link>
                 </li>
@@ -58,7 +60,7 @@ const CategoryMenu = ({
       <ul className={styles.categoriesList}>
         {categories.map((category) => (
           <li key={category.ID} className={styles.categoriesList__option}>
-            <Link href={category.href}>
+            <Link href={{ pathname: category.href, query }}>
               <a>{category.Name}</a>
             </Link>
           </li>
