@@ -1,0 +1,39 @@
+.Footer {
+  width: 100%;
+  background-color: #fff;
+  padding: 3rem 1.15rem;
+  border-top: 2px solid var(--hr);
+
+  display: grid;
+  grid-template-columns: auto;
+}
+
+@media (min-width: 800px) {
+  .Footer {
+    grid-template-columns: 500px auto;
+    align-items: center;
+    grid-gap: 2rem;
+  }
+}
+
+.Footer__logo {
+  text-align: center;
+}
+
+.Footer__location {
+  margin-bottom: 1rem;
+}
+
+.Footer__location h4 {
+  margin: 0 0 0.5rem;
+}
+
+.Footer__location sub {
+  color: var(--primary);
+}
+
+.Footer__location p {
+  margin: 0;
+  line-height: 1.25rem;
+  color: var(--mediumText);
+}

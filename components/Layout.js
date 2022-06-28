@@ -1,6 +1,6 @@
 import styles from "./layout.module.css";
 import Head from "next/head";
-import { SiteNav } from ".";
+import { SiteNav, SiteFooter } from ".";
 
 export const siteTitle =
   "Denver Screen Printing & Custom T-Shirt Printing | Lab Seven Screen Printing Co.";
@@ -39,7 +39,7 @@ const Layout = ({ children, hideNav = false }) => {
       <div className={styles.container}>
         <main>{children}</main>
       </div>
-      <footer className={styles.footer}> Colorado Proud 🏔</footer>
+      <SiteFooter />
     </>
   );
 };

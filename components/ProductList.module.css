@@ -7,6 +7,10 @@
   padding: 0px 1.25rem 1.375rem;
 }
 
+.PaginationContainer {
+  padding-bottom: 1.375rem;
+}
+
 @media (min-width: 45rem) {
   .ProductList {
     grid-template-columns: repeat(3, 1fr);

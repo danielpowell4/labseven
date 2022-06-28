@@ -144,7 +144,7 @@ const ProductList = ({ error, products, isLoading, pagination }) => {
           />
         ))}
       </div>
-      <div>
+      <div className={styles.PaginationContainer}>
         <Pagination pagination={pagination} />
         {isLoading && <ThreeDotLoader />}
       </div>
