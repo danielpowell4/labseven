@@ -3,12 +3,17 @@ import styles from "./SearchBar.module.css";
 export const SEARCH_KEYS = ["q", "sort"];
 
 const SearchBar = ({ query, setQuery }) => {
+  const resetPage = query.page && query.page != 1;
+  const pageQuery = resetPage ? { page: 1 } : {};
+
   return (
     <div className={styles.searchBar}>
       <div className={styles.searchBar__inputContainer}>
         <label htmlFor="sort_by">Sort</label>
         <select
-          onChange={(event) => setQuery({ sort: event.target.value })}
+          onChange={(event) =>
+            setQuery({ ...pageQuery, sort: event.target.value })
+          }
           value={query.sort || "default"}
         >
           {[
@@ -38,7 +43,9 @@ const SearchBar = ({ query, setQuery }) => {
         </span>
         <input
           type="search"
-          onChange={(event) => setQuery({ q: event.target.value })}
+          onChange={(event) =>
+            setQuery({ ...pageQuery, q: event.target.value })
+          }
           value={query.q || ""}
           placeholder={"Search products..."}
         />
