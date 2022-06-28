@@ -1,5 +1,7 @@
 import styles from "./SearchBar.module.css";
 
+export const SEARCH_KEYS = ["q", "sort"];
+
 const SearchBar = ({ query, setQuery }) => {
   return (
     <div className={styles.searchBar}>

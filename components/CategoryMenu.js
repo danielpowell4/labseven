@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 
 import styles from "./CategoryMenu.module.css";
 
+import { SEARCH_KEYS } from "./SearchBar";
+
 const CategoryMenu = ({
   categories,
   activeCategory,
@@ -10,16 +12,21 @@ const CategoryMenu = ({
 }) => {
   const { query } = useRouter();
   const hasActiveSubCategory = !!activeSubCategory.ID;
+  const searchQuery = {};
+  for (const searchKey of SEARCH_KEYS) {
+    const searchValue = query[searchKey];
+    if (searchValue) searchQuery[searchKey] = searchValue;
+  }
 
   if (!!activeCategory) {
     return (
       <nav className={styles.nav}>
         <div className={styles.breadcrumbs}>
-          <Link href={{ pathname: "/products", query }}>
+          <Link href={{ pathname: "/products", query: searchQuery }}>
             <a className={styles.activeHelperLink}>Products</a>
           </Link>
           {hasActiveSubCategory && (
-            <Link href={{ pathname: activeCategory.href, query }}>
+            <Link href={{ pathname: activeCategory.href, query: searchQuery }}>
               <a className={styles.activeHelperLink}>{activeCategory.Name}</a>
             </Link>
           )}
@@ -43,7 +50,7 @@ const CategoryMenu = ({
                   key={subCat.ID}
                   className={styles.subcategoriesList__option}
                 >
-                  <Link href={{ pathname: subCat.href, query }}>
+                  <Link href={{ pathname: subCat.href, query: searchQuery }}>
                     <a>{subCat.Name}</a>
                   </Link>
                 </li>
@@ -60,7 +67,7 @@ const CategoryMenu = ({
       <ul className={styles.categoriesList}>
         {categories.map((category) => (
           <li key={category.ID} className={styles.categoriesList__option}>
-            <Link href={{ pathname: category.href, query }}>
+            <Link href={{ pathname: category.href, query: searchQuery }}>
               <a>{category.Name}</a>
             </Link>
           </li>
