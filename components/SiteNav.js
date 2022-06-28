@@ -12,9 +12,9 @@ const SiteNav = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
+      <a className={styles.logo} href="//labseven.co">
         <img src="/assets/Lab-Seven-Logo.svg" height="auto" width={220} />
-      </div>
+      </a>
       <div
         className={`${styles.callNow} ${isOpen ? styles.callNow__isOpen : ""}`}
         ref={callContainerRef}
