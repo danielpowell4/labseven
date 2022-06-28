@@ -18,7 +18,7 @@ const containerStyle = {
 const AdminPage = () => {
   const [authenticated, setAuthenticated] = React.useState();
   const [isTriggering, setIsTriggering] = React.useState(false);
-  const [message, setMessage] = React.useState("A message");
+  const [message, setMessage] = React.useState();
 
   const onTriggerClick = async () => {
     setIsTriggering(true);
