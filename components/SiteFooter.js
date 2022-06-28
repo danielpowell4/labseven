@@ -33,7 +33,10 @@ const SiteFooter = () => {
             Lab Seven at River Point <sub>HQ</sub>
           </h4>
           <p>
-            <a href="https://www.google.com/maps/dir//Lab+Seven+Screen+Printing+Co./@39.6570677,-105.0729178,12z/data=!3m1!4b1!4m9!4m8!1m1!4e2!1m5!1m1!1s0x876c7fd8cd38f017:0x2856413ac04a5c4d!2m2!1d-105.0028778!2d39.6570887">
+            <a
+              target="__blank"
+              href="https://www.google.com/maps/dir//Lab+Seven+Screen+Printing+Co./@39.6570677,-105.0729178,12z/data=!3m1!4b1!4m9!4m8!1m1!4e2!1m5!1m1!1s0x876c7fd8cd38f017:0x2856413ac04a5c4d!2m2!1d-105.0028778!2d39.6570887"
+            >
               3244 S Platte River Dr Englewood, CO, 80110
             </a>
           </p>
@@ -51,7 +54,10 @@ const SiteFooter = () => {
         <div className={styles.Footer__location}>
           <h4>Lab Seven at Lakeside</h4>
           <p>
-            <a href="https://www.google.com/maps/dir//5265+W+48th+Ave,+Denver,+CO+80212/@39.7842758,-105.0562265,17z/data=!3m1!4b1!4m9!4m8!1m1!4e2!1m5!1m1!1s0x876b87966ca4b1cf:0x38c3e30d07cd49cb!2m2!1d-105.0540378!2d39.7842758">
+            <a
+              target="__blank"
+              href="https://www.google.com/maps/dir//5265+W+48th+Ave,+Denver,+CO+80212/@39.7842758,-105.0562265,17z/data=!3m1!4b1!4m9!4m8!1m1!4e2!1m5!1m1!1s0x876b87966ca4b1cf:0x38c3e30d07cd49cb!2m2!1d-105.0540378!2d39.7842758"
+            >
               5265 W 48th Ave Denver, CO, 80212
             </a>
           </p>
