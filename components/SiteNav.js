@@ -6,14 +6,15 @@ const SiteNav = () => {
   const callContainerRef = React.useRef();
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const handleOpen = (event) => {
-    setIsOpen(true);
-  };
-
   return (
     <header className={styles.header}>
       <a className={styles.logo} href="//labseven.co">
-        <img src="/assets/Lab-Seven-Logo.svg" height="auto" width={220} />
+        <img
+          alt="Lab Seven Screen Printing Co. Logo"
+          src="/assets/Lab-Seven-Logo.svg"
+          height="auto"
+          width={220}
+        />
       </a>
       <div
         className={`${styles.callNow} ${isOpen ? styles.callNow__isOpen : ""}`}

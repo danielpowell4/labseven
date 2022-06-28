@@ -1,11 +1,32 @@
+import Image from "next/image";
 import styles from "./SiteFooter.module.css";
 
 const SiteFooter = () => {
   return (
     <footer className={styles.Footer}>
-      <a className={styles.Footer__logo} href="//labseven.co">
-        <img src="/assets/Lab-Seven-Logo.svg" height="auto" width={280} />
-      </a>
+      <div className={styles.Footer__logo}>
+        <a href="//labseven.co">
+          <img
+            alt="Lab Seven Screen Printing Co. Logo"
+            src="/assets/Lab-Seven-Logo.svg"
+            height="auto"
+            width={280}
+          />
+        </a>
+        <p>
+          <small>
+            <i>
+              Lab Seven Screen Printing Co. is the leader in Denver Screen
+              Printing, Custom T-shirt Printing, Graphic Design, and Embroidery
+              in Colorado.
+            </i>
+          </small>
+        </p>
+        <div className={styles.locales}>
+          <Image src="/assets/Colorado-Flag.svg" height={20} width={30} />
+          <Image src="/assets/USA-Flag.svg" height={20} width={30} />
+        </div>
+      </div>
       <div>
         <div className={styles.Footer__location}>
           <h4>

@@ -20,6 +20,18 @@
   text-align: center;
 }
 
+.Footer__logo p {
+  color: var(--mediumText);
+  max-width: 320px;
+  margin: 1rem auto;
+}
+
+.locales {
+  display: flex;
+  gap: 0.85rem;
+  justify-content: center;
+}
+
 .Footer__location {
   margin-bottom: 1rem;
 }
