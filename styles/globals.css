@@ -42,6 +42,12 @@ li {
   --headingWeight: 700;
 }
 
+.highlight {
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-decoration-color: var(--highlight);
+}
+
 html,
 body {
   padding: 0;
@@ -67,19 +73,24 @@ hr {
   height: 1px;
 }
 
-input:focus {
+input:focus,
+select:focus {
   outline-color: var(--primary);
 }
 
-.highlight {
-  text-decoration: underline;
-  text-decoration-thickness: 4px;
-  text-decoration-color: var(--highlight);
+input,
+select {
+  font-family: var(--bodyFont);
 }
 
 input[type="text"],
 input[type="search"],
 input[type="number"] {
   border: solid 1px var(--lightText);
-  padding: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
+
+select {
+  border: solid 1px var(--lightText);
+  padding: 3px;
 }

@@ -130,6 +130,33 @@ async function getProductDetail(product) {
   return json;
 }
 
+function mode(collection) {
+  // build tally
+  const tally = {};
+  collection.forEach((number) => {
+    if (!tally[number]) {
+      tally[number] = 1;
+    } else {
+      tally[number] += 1;
+    }
+  });
+
+  // find max
+  let highestValue = 0;
+  let highestValueKey = -Infinity;
+
+  for (let key in tally) {
+    const value = tally[key];
+    if (value > highestValue) {
+      highestValue = value;
+      highestValueKey = key;
+    }
+  }
+
+  // convert key back to number
+  return Number(highestValueKey);
+}
+
 async function fetchAllProducts() {
   console.log("fetching all products...");
   let products = [];
@@ -153,18 +180,22 @@ async function fetchAllProducts() {
             .join("-")
             .toLowerCase();
         const defaultStyle = (product.Styles || [])[0]; // first
+        const defaultPrice = mode(
+          defaultStyle.Sizes.map((size) => size.UnitPrice)
+        );
         const additionalDetails = await getProductDetail(product);
 
         return {
-          ...product,
-          Featured: additionalDetails.Data.Featured,
-          LongDescription: additionalDetails.Data.LongDescription,
           manufacturerSkuCode,
+          defaultPrice: defaultPrice,
           defaultHref: defaultStyle
             ? encodeURI(
                 `/product/${manufacturerSkuCode}/${camelize(defaultStyle.Name)}`
               )
             : "",
+          ...product,
+          Featured: additionalDetails.Data.Featured,
+          LongDescription: additionalDetails.Data.LongDescription,
           Categories: (product.Categories || []).map((category) => {
             const isSubCategory = category["Path"].includes(" / ");
             if (isSubCategory) {

@@ -1,5 +1,21 @@
-import { getProductCategory, getAllProducts } from "../../lib/products";
+import {
+  getProductCategory,
+  getAllProducts,
+  sortProducts,
+  sortBrand,
+  sortBrandZA,
+  sortPriceHighLow,
+  sortPriceLowHigh,
+} from "../../lib/products";
 import { paginate } from "../../lib/utils";
+
+const sortCallback = {
+  default: sortProducts,
+  brandAZ: sortBrand,
+  brandZA: sortBrandZA,
+  priceHighLow: sortPriceHighLow,
+  priceLowHigh: sortPriceLowHigh,
+};
 
 export default async (req, res) => {
   const currentPage = req.query.page || 1;
@@ -7,6 +23,7 @@ export default async (req, res) => {
   const categoryCode = req.query.productCategoryCode;
   const subCategoryCode = req.query.subCategoryCode;
   const q = req.query.q;
+  const sort = req.query.sort;
 
   let allProducts = await getAllProducts();
 
@@ -36,6 +53,13 @@ export default async (req, res) => {
         product.SearchTerms.some((term) => term.includes(searchTerm))
       );
     });
+  }
+
+  if (sort) {
+    const callback = sortCallback[sort];
+    if (callback) {
+      allProducts = allProducts.sort(callback);
+    }
   }
 
   const [products, pagination] = paginate(

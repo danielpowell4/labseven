@@ -4,7 +4,7 @@
   gap: 1rem;
 }
 
-.searchBar__queryContainer {
+.searchBar__inputContainer {
   display: flex;
   gap: 0.25rem;
   align-items: center;
