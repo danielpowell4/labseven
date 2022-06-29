@@ -42,7 +42,7 @@ const Layout = ({ children, hideNav = false }) => {
         <main>{children}</main>
       </div>
       <SiteFooter />
-      {!!process.env.NEXT_PUBLIC_ENV_VARIABLE && (
+      {!!process.env.NEXT_GOOGLE_ANALYTICS_ID && (
         <>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_GOOGLE_ANALYTICS_ID}`}
