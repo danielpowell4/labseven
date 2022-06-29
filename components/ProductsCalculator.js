@@ -61,7 +61,7 @@ const getQuote = (products, values) => {
   });
 };
 
-const ProductsCalculator = ({ products, setQuote, isLoading }) => {
+const ProductsCalculator = ({ className, products, setQuote, isLoading }) => {
   const [error, setError] = React.useState();
 
   const allSides = products.some((p) => p.isLoading)
@@ -93,7 +93,7 @@ const ProductsCalculator = ({ products, setQuote, isLoading }) => {
   };
 
   return (
-    <div className={calcStyles.pageContainer}>
+    <div className={`${className} ${calcStyles.pageContainer}`}>
       <h3 className="highlight">Instant Quote</h3>
       <Formik
         initialValues={initialValues}

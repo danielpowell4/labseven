@@ -7,6 +7,7 @@ import {
   ProductsCalculator,
   ProductList,
   SearchBar,
+  ToggleMenu,
 } from "../../../components";
 import {
   getAllProductCategories,
@@ -72,6 +73,7 @@ const SubCategory = ({
 }) => {
   const { data, error, isLoading, setQuote, query, setQuery } =
     usePaginatedProducts(productData, pagination);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
     <Layout>
@@ -79,13 +81,23 @@ const SubCategory = ({
         <title>Shop our products</title>
       </Head>
       <div className={productsStyles.grid}>
-        <aside className={productsStyles.grid__aside}>
+        <aside
+          className={`${productsStyles.grid__aside} ${
+            isMenuOpen ? productsStyles.grid__asideIsOpen : ""
+          }`}
+        >
+          <ToggleMenu
+            className={productsStyles.menuButton}
+            isMenuOpen={isMenuOpen}
+            setIsMenuOpen={setIsMenuOpen}
+          />
           <CategoryMenu
             categories={allProductCategoryData}
             activeCategory={categoryData}
             activeSubCategory={subcategoryData}
           />
           <ProductsCalculator
+            className={productsStyles.ProductsCalculator}
             products={data.products}
             setQuote={setQuote}
             isLoading={isLoading}

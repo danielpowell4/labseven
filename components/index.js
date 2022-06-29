@@ -11,3 +11,4 @@ export { default as SearchBar } from "./SearchBar";
 export { default as SiteFooter } from "./SiteFooter";
 export { default as SiteNav } from "./SiteNav";
 export { default as ThreeDotLoader } from "./ThreeDotLoader";
+export { default as ToggleMenu } from "./ToggleMenu";

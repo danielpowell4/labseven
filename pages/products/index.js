@@ -1,3 +1,4 @@
+import * as React from "react";
 import Head from "next/head";
 import {
   Layout,
@@ -5,6 +6,7 @@ import {
   ProductsCalculator,
   CategoryMenu,
   SearchBar,
+  ToggleMenu,
 } from "../../components";
 import { getAllProductCategories, getAllProducts } from "../../lib/products";
 import { paginate } from "../../lib/utils";
@@ -29,6 +31,7 @@ export async function getStaticProps() {
 const Products = ({ productData, pagination, allProductCategoryData }) => {
   const { data, error, isLoading, setQuote, query, setQuery } =
     usePaginatedProducts(productData, pagination);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
     <Layout>
@@ -36,9 +39,19 @@ const Products = ({ productData, pagination, allProductCategoryData }) => {
         <title>Shop our products</title>
       </Head>
       <div className={productsStyles.grid}>
-        <aside className={productsStyles.grid__aside}>
+        <aside
+          className={`${productsStyles.grid__aside} ${
+            isMenuOpen ? productsStyles.grid__asideIsOpen : ""
+          }`}
+        >
+          <ToggleMenu
+            className={productsStyles.menuButton}
+            isMenuOpen={isMenuOpen}
+            setIsMenuOpen={setIsMenuOpen}
+          />
           <CategoryMenu categories={allProductCategoryData} />
           <ProductsCalculator
+            className={productsStyles.ProductsCalculator}
             products={data.products}
             setQuote={setQuote}
             isLoading={isLoading}
