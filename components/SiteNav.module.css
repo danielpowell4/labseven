@@ -1,29 +1,26 @@
 .header {
   display: grid;
-  grid-template-columns: 200px auto 146px;
   border-bottom: 1px solid var(--hr);
   font-family: var(--headingFont);
+  padding: 0.5rem 1rem;
+  grid-gap: 0.5rem;
 }
 
 .logo {
   display: flex;
-  justify-content: center;
   align-items: center;
   width: 18rem; /* matches grid's aside */
 }
 
 .locales {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  padding: 1.25rem 2rem 1.25rem 0;
   gap: 1rem;
 }
 
 .callNow {
   position: relative;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   z-index: 2;
 }
@@ -38,7 +35,7 @@
   font-family: var(--headingFont);
   font-weight: bold;
   height: 100%;
-  padding: inherit 1rem;
+  padding: 1rem 0;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -46,7 +43,6 @@
 
 .callNow__flyout {
   display: none; /* shown via __isOpen */
-
   position: absolute;
   top: 3rem;
   background: var(--background);
@@ -89,4 +85,24 @@
 .callNow__flyout__number,
 .callNow__flyout__number:visited {
   color: var(--primary);
+}
+
+@media (min-width: 612px) {
+  .header {
+    grid-template-columns: 200px auto 146px;
+    padding: 0;
+  }
+  .logo {
+    justify-content: center;
+  }
+  .callNow {
+    justify-content: flex-end;
+  }
+  .callNow__anchor {
+    padding: 0;
+  }
+  .locales {
+    justify-content: flex-end;
+    padding: 1.25rem 2rem 1.25rem 0;
+  }
 }
