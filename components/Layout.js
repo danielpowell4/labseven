@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Script from "next/script";
 import { SiteNav, SiteFooter } from ".";
 
 import styles from "./layout.module.css";
@@ -42,20 +41,6 @@ const Layout = ({ children, hideNav = false }) => {
         <main>{children}</main>
       </div>
       <SiteFooter />
-      {!!process.env.NEXT_GOOGLE_ANALYTICS_ID && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_GOOGLE_ANALYTICS_ID}`}
-            strategy="afterInteractive"
-          />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`window.dataLayer = window.dataLayer || [];
-              function gtag(){window.dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${NEXT_GOOGLE_ANALYTICS_ID}');`}
-          </Script>
-        </>
-      )}
     </>
   );
 };
