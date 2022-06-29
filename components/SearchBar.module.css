@@ -2,6 +2,7 @@
   padding: 1rem;
   display: flex;
   gap: 1rem;
+  flex-flow: row wrap;
 }
 
 .searchBar__inputContainer {
