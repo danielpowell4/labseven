@@ -38,10 +38,7 @@ const ProductSkeleton = ({ productIndex }) => {
     <div className={styles.ProductCard}>
       <div className={styles.ProductCard__frame} />
       <div className={styles.ProductCard__description}>
-        <div
-          className={styles.ProductSkeleton__image}
-          style={{ width: 290, height: 320 }}
-        />
+        <div className={styles.ProductSkeleton__image} />
         <div>
           <h4>
             {randomAdjective}
