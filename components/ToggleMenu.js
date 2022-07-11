@@ -12,7 +12,6 @@ const ToggleMenu = ({ className, isMenuOpen, setIsMenuOpen }) => (
       viewBox="0 0 16 16"
       version="1.1"
       width="24"
-      class="three-bars"
     >
       <path
         fillRule="evenodd"
