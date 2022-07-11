@@ -115,6 +115,13 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
         )}
       </div>
       <div className={productStyles.pageContainer}>
+        <div className={productStyles.title}>
+          <h1>{productData.Name}</h1>
+          <h3>
+            {productData.Manufacturer}{" "}
+            <span className="highlight">{productData.ManufacturerSku}</span>
+          </h3>
+        </div>
         <div className={productStyles.gallery}>
           <ul className={productStyles.gallery__sides}>
             {activeStyle.Sides.map((side, sideIndex) => (
@@ -141,6 +148,7 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
           </ul>
           {!!activeSide ? (
             <Image
+              className={productStyles.gallery__main}
               src={activeSide.imageUrl}
               objectFit="contain"
               objectPosition="center"
@@ -150,6 +158,7 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
             />
           ) : activeStyle.hasMainImage ? (
             <Image
+              className={productStyles.gallery__main}
               src={activeStyle.mainImageUrl}
               objectFit="contain"
               objectPosition="center"
@@ -158,18 +167,11 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
               alt={`Sample of ${productData.Name} in ${activeStyle.Name} style`}
             />
           ) : (
-            <p>Missing image!</p>
+            <p className={productStyles.gallery__main}>Missing image!</p>
           )}
         </div>
         <div className={productStyles.details}>
           <div className={productStyles.detailsBox}>
-            <div className={productStyles.title}>
-              <h1>{productData.Name}</h1>
-              <h3>
-                {productData.Manufacturer}{" "}
-                <span className="highlight">{productData.ManufacturerSku}</span>
-              </h3>
-            </div>
             <div className="detailsBox__styles">
               <label className={productStyles.style__label}>
                 Color Shown

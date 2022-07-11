@@ -180,7 +180,7 @@ const ProductCalculator = ({ productData }) => {
                 className={calcStyles.errorMessage}
               />
             </div>
-            <hr style={{ margin: "1.5rem 0 0.5rem", maxWidth: "16rem" }} />
+            <hr className={calcStyles.divider} />
             <FieldArray
               name="Sides"
               render={(_arrayHelpers) => (

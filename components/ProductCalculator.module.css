@@ -5,6 +5,43 @@
   padding: 0.25rem;
 }
 
+.formEl {
+  width: 16rem;
+  margin: auto;
+}
+
+.divider {
+  margin: 1.5rem 0 0.5rem;
+}
+
+.formActions {
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto 0;
+}
+
+.formActions button {
+  width: 14rem;
+  margin: auto;
+}
+
+@media screen and (min-width: 800px) {
+  .formEl {
+    width: auto;
+  }
+  .divider {
+    max-width: 16rem;
+  }
+  .formActions {
+    justify-content: flex-start;
+    margin: 0;
+  }
+  .formActions button {
+    width: inherit;
+    margin: 0;
+  }
+}
+
 .formSideGrid {
   display: grid;
   grid-template-columns: auto 8.5rem;
