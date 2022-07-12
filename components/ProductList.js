@@ -79,7 +79,7 @@ const ProductCard = ({ product, productIndex }) => {
           <div>
             <h4>
               {product.Manufacturer} <br />
-              {product.ManufacturerSku}
+              <span class="caps">{product.ManufacturerSku}</span>
             </h4>
             <p>{product.Name}</p>
 

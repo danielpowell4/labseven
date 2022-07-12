@@ -119,7 +119,9 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
           <h1>{productData.Name}</h1>
           <h3>
             {productData.Manufacturer}{" "}
-            <span className="highlight">{productData.ManufacturerSku}</span>
+            <span className="highlight caps">
+              {productData.ManufacturerSku}
+            </span>
           </h3>
         </div>
         <div className={productStyles.gallery}>

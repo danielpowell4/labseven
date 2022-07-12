@@ -115,3 +115,7 @@ select {
 h3.highlight::after {
   height: 1.15em;
 }
+
+.caps {
+  text-transform: uppercase;
+}
