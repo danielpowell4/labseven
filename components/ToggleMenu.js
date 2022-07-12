@@ -7,13 +7,7 @@ const ToggleMenu = ({ className, isMenuOpen, setIsMenuOpen }) => (
     aria-expanded={isMenuOpen ? "true" : "false"}
   >
     {isMenuOpen ? (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
         <g fill="var(--lightText)" fill-rule="evenodd">
           <rect
             width="30"
@@ -32,13 +26,7 @@ const ToggleMenu = ({ className, isMenuOpen, setIsMenuOpen }) => (
         </g>
       </svg>
     ) : (
-      <svg
-        aria-hidden="true"
-        height="24"
-        viewBox="0 0 16 16"
-        version="1.1"
-        width="24"
-      >
+      <svg aria-hidden="true" height="24" viewBox="0 0 16 16" width="24">
         <path
           fillRule="evenodd"
           d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"
