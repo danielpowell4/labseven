@@ -49,6 +49,9 @@ const AdminPage = () => {
 
   return (
     <Layout>
+      <Head>
+        <meta name="robots" content="noindex" />
+      </Head>
       <form
         style={containerStyle}
         onSubmit={(event) => {
