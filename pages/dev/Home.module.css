@@ -25,10 +25,10 @@
 .verbsContainer__reel__item:first-of-type {
   --verbHeight: -40px;
 
-  animation: hero 10s ease infinite;
+  animation: rotatingVerb 10s ease infinite;
 }
 
-@keyframes hero {
+@keyframes rotatingVerb {
   0% {
     margin-top: calc(6 * var(--verbHeight));
   }
