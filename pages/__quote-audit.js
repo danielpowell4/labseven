@@ -35,7 +35,6 @@ const QuoteAudit = ({ missingDecorations }) => {
         ))}
       </ul>
       <table>
-        <thead></thead>
         <tbody>
           {missingDecorations.map((product) => (
             <tr key={product.ID}>
