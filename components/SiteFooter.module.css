@@ -84,8 +84,12 @@
 
 @media (min-width: 888px) {
   .Footer__bottom {
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: 220px 1fr 220px;
     justify-content: unset;
+  }
+
+  .copyright {
+    text-align: center;
   }
 
   .socialLinks {
