@@ -5,15 +5,7 @@ import { Layout } from "../../components";
 
 import styles from "./Home.module.css";
 
-const ACTION_VERBS = [
-  "Wear",
-  "Share",
-  "Put on",
-  "Sell",
-  "Wear",
-  "Share",
-  "Wear",
-];
+const ACTION_VERBS = ["Wear", "Share", "Wear", "Sell", "Wear", "Share", "Wear"];
 
 const HomePage = () => {
   return (
