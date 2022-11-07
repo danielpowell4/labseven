@@ -152,20 +152,16 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
             <Image
               className={productStyles.gallery__main}
               src={activeSide.imageUrl}
-              objectFit="contain"
-              objectPosition="center"
-              width={800}
-              height={800}
+              fill
+              sizes="(min-width: 799px) 800px,(min-width: 1200px) 1000px,100vw"
               alt={`Sample of ${productData.Name} in ${activeStyle.Name} from side ${activeSide.Side}`}
             />
           ) : activeStyle.hasMainImage ? (
             <Image
               className={productStyles.gallery__main}
               src={activeStyle.mainImageUrl}
-              objectFit="contain"
-              objectPosition="center"
-              width={800}
-              height={800}
+              fill
+              sizes="(min-width: 799px) 800px,(min-width: 1200px) 1000px,100vw"
               alt={`Sample of ${productData.Name} in ${activeStyle.Name} style`}
             />
           ) : (
