@@ -5,10 +5,18 @@ import Link from "next/link";
 import { Layout } from "../../components";
 
 /* images */
+/* - steps */
 import Step1_Shirt from "../../public/assets/Home/Step1_Shirt.svg";
 import Step2_Sizes from "../../public/assets/Home/Step2_Sizes.svg";
 import Step3_Upload from "../../public/assets/Home/Step3_Upload.svg";
 import ThatsIt_Hoodie from "../../public/assets/Home/ThatsIt_Hoodie.svg";
+/* - services */
+import Services_World from "../../public/assets/Home/Services_World.svg";
+import Services_Handshake from "../../public/assets/Home/Services_Handshake.svg";
+import Services_PiggyBank from "../../public/assets/Home/Services_PiggyBank.svg";
+import Services_Star from "../../public/assets/Home/Services_Star.svg";
+import Background_Wavy from "../../public/assets/Home/Background_Wavy.svg";
+import UniformMan from "../../public/assets/Home/UniformMan.png";
 
 import styles from "./Home.module.css";
 
@@ -121,6 +129,96 @@ const HomePage = () => {
             width={200}
             alt="Cool hoodie and beanie"
           />
+        </div>
+      </div>
+      <div className={styles.servicesWrap}>
+        <Image
+          className={styles.services__bg}
+          src={Background_Wavy}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+        />
+        <div className={styles.services}>
+          <h2 className={styles.services__heading}>
+            <span className="highlight">Real world</span>
+            <div style={{ display: "inline-flex", margin: 10 }}>
+              <Image src={Services_World} height={60} width={60} />
+            </div>
+            <br />
+            marketing solutions.
+          </h2>
+
+          <p className={styles.services__flyingText}>
+            <strong>T-shirts aren't going out of style.</strong>
+            {` Custom apparel is a tried-and-true business investment, and it's
+            never been easier to order retail-quality apparel and promotional
+            materials on a budget!`}
+          </p>
+
+          <div className={styles.services__uniformMan}>
+            <Image src={UniformMan} />
+          </div>
+
+          <ul className={styles.services__points}>
+            <li>
+              <Image src={Services_PiggyBank} alt="Hand drawn chart of sizes" />
+              <div>
+                <h5>Monetize Your Brand</h5>
+                <p>
+                  Apparel sales offer your customers a fun and affordable way to
+                  show their support, while creating a new source of income for
+                  your business or company.
+                </p>
+              </div>
+            </li>
+            <li>
+              <Image src={Services_Handshake} alt="Hand drawn chart of sizes" />
+              <div>
+                <h5>Connect With Your Crowd</h5>
+                <p>
+                  Build positive relationships with your most important team
+                  members and clientele. One T-shirt at a time!
+                </p>
+              </div>
+            </li>
+            <li>
+              <Image src={Services_Star} alt="Hand drawn chart of sizes" />
+              <div className={styles.services__points__textWrap}>
+                <h5>Outfit Employees in Style</h5>
+                <p>
+                  Affordable t-shirts no longer have to feel cheap. Outfitting
+                  your team with trendy, retail-quality styles goes a long way
+                  in representing your brand.
+                </p>
+              </div>
+            </li>
+          </ul>
+
+          <div className={styles.services__block}>
+            <h3 className={styles.services__block__heading}>
+              What does <span className="highlight">your business</span> need?
+            </h3>
+            <div className={styles.services__block__carousel}>
+              {["Screen Printing", "Embroidery", "Stickers & Decals"].map(
+                (serviceName, serviceIndex) => (
+                  <div
+                    key={serviceIndex}
+                    style={{
+                      flex: 1,
+                      height: "10rem",
+                      background: "grey",
+                      padding: "1rem",
+                      display: "flex",
+                      alignItems: "flex-end",
+                    }}
+                  >
+                    <h4 style={{ margin: 0 }}>{serviceName}</h4>
+                  </div>
+                )
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
