@@ -1,0 +1,24 @@
+.RotatingLogo {
+  fill: #cdcdcd;
+}
+
+.RotatingLogo__text {
+  animation: rotating 10s linear infinite;
+}
+
+@media (prefers-reduced-motion) {
+  .RotatingLogo__text {
+    animation: none;
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+    transform-origin: center center;
+  }
+  to {
+    transform: rotate(360deg);
+    transform-origin: center center;
+  }
+}

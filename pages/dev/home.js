@@ -2,7 +2,7 @@ import * as React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Layout } from "../../components";
+import { Layout, RotatingLogo } from "../../components";
 
 /* images */
 /* - steps */
@@ -59,9 +59,12 @@ const HomePage = () => {
       </div>
       <div className={styles.welcome}>
         <div className={styles.welcome__block}>
-          <h3 className={styles.welcome__block__heading}>
-            Welcome to Lab Seven
-          </h3>
+          <div className={styles.welcome__block__header}>
+            <h3 className={styles.welcome__block__heading}>
+              Welcome to Lab Seven.
+            </h3>
+            <RotatingLogo />
+          </div>
           <p>
             Founded in 2006, now with 6 front-range locations – We've been
             helping local businesses, schools, and churches successfully market

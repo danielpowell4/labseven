@@ -174,9 +174,17 @@
   border-radius: var(--rounded);
 }
 
+.welcome__block__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .welcome__block__heading {
   max-width: 240px;
   width: 80%;
+  font-size: 2rem;
+  margin: 0;
 }
 
 .youDeserve {
