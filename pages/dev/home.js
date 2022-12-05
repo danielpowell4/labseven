@@ -13,6 +13,7 @@ import {
 
 /* images */
 /* - welcome */
+import Welcome_LibertyLadies from "../../public/assets/Home/Welcome_LibertyLadies.png";
 import Welcome_Arrow from "../../public/assets/Home/Welcome_Arrow.svg";
 /* - steps */
 import Step1_Shirt from "../../public/assets/Home/Step1_Shirt.svg";
@@ -81,32 +82,37 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className={styles.welcome}>
-        <div className={styles.welcome__block}>
-          <div className={styles.welcome__block__header}>
-            <h3 className={styles.welcome__block__heading}>
-              Welcome to Lab Seven.
-            </h3>
-            <RotatingLogo />
-          </div>
-          <p>
-            Founded in 2006, now with 6 front-range locations – We've been
-            helping local businesses, schools, and churches successfully market
-            their brands in style for nearly 15 years.
-          </p>
-          <p>
-            Like you, we understand the challenges of standing out in a busy and
-            competitive market.
-          </p>
-          <p>
-            <strong>That's why we believe:</strong>
-          </p>
-          <div style={{ position: "absolute" }}>
-            <Image
-              src={Welcome_Arrow}
-              alt="Arrow pointing to next section"
-              aria-hidden="true"
-            />
+      <div className={styles.welcomeWrap}>
+        <div className={styles.welcome__image}>
+          <Image src={Welcome_LibertyLadies} />
+        </div>
+        <div className={styles.welcome}>
+          <div className={styles.welcome__block}>
+            <div className={styles.welcome__block__header}>
+              <h3 className={styles.welcome__block__heading}>
+                Welcome to Lab Seven.
+              </h3>
+              <RotatingLogo />
+            </div>
+            <p>
+              Founded in 2006, now with 6 front-range locations – We've been
+              helping local businesses, schools, and churches successfully
+              market their brands in style for nearly 15 years.
+            </p>
+            <p>
+              Like you, we understand the challenges of standing out in a busy
+              and competitive market.
+            </p>
+            <p>
+              <strong>That's why we believe:</strong>
+            </p>
+            <div style={{ position: "absolute" }}>
+              <Image
+                src={Welcome_Arrow}
+                alt="Arrow pointing to next section"
+                aria-hidden="true"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -209,10 +209,20 @@
   }
 }
 
+.welcomeWrap {
+  max-width: 1280px;
+  width: 100%;
+  position: relative;
+}
+
+.welcome__image {
+  position: absolute;
+  z-index: 1;
+  width: 58rem;
+}
+
 .welcome {
   min-height: 30rem;
-  position: relative;
-
   margin: auto;
   max-width: 1080px;
   width: 100%;
@@ -229,6 +239,7 @@
   right: 6rem;
   bottom: 64px;
   border-radius: var(--rounded);
+  z-index: 2;
 }
 
 .welcome__block__header {
