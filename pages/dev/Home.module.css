@@ -162,7 +162,7 @@
 }
 
 .welcome__block {
-  padding: 3rem;
+  padding: 2rem 3rem;
   max-width: 28rem;
   width: 100%;
   background-color: var(--background);
@@ -178,6 +178,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .welcome__block__heading {
@@ -267,10 +268,6 @@
   z-index: 0;
 }
 
-.services {
-  /* position: relative; */
-}
-
 .services__heading {
   position: absolute;
   left: 10%;
@@ -351,4 +348,151 @@
   flex-flow: row wrap;
   gap: 2rem;
   justify-content: space-between;
+}
+
+.designWrap {
+  padding: 8rem 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.design__header {
+  position: relative;
+  z-index: 2;
+}
+
+#design__arrow {
+  position: absolute;
+  top: 2rem;
+  left: -5rem;
+}
+
+.design__container {
+  position: relative;
+  max-width: 1280px;
+  width: 100%;
+  margin: 6rem auto 0;
+  z-index: 1;
+}
+
+#design__studio {
+  z-index: 2;
+  margin: auto;
+  min-height: 720px;
+  width: 100%;
+  max-width: 960px;
+
+  background: var(--hr);
+  box-shadow: var(--boxShadow);
+  border-radius: var(--rounded);
+}
+
+#design__blob1 {
+  position: absolute;
+  top: -4rem;
+  right: 0rem;
+  z-index: -1;
+}
+
+#design__blob2 {
+  position: absolute;
+  bottom: -4rem;
+  left: 0rem;
+  z-index: -1;
+}
+
+.testimonialsWrap {
+  padding: 6rem 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonials__heading {
+  position: relative;
+}
+
+.testimonials__arrow {
+  position: absolute;
+  top: 1rem;
+  right: -3rem;
+}
+
+.ctaWrap {
+  min-height: 72rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta__bg {
+  z-index: 0;
+}
+
+.cta__header {
+  position: absolute;
+  left: 7%;
+  width: 38%;
+  top: 7rem;
+  font-size: 2rem;
+  color: var(--background);
+  line-height: 1.5;
+}
+
+.cta__heading:last-of-type {
+  max-width: 21rem;
+}
+
+.cta__namaste {
+  position: absolute;
+  left: 20%;
+  bottom: 19rem;
+  max-width: 50vw;
+  width: 100%;
+  display: inline-flex;
+}
+
+.cta__form {
+  position: absolute;
+  right: 7%;
+  width: 38%;
+  top: 6rem;
+  padding: 2rem;
+
+  background: var(--background);
+  box-shadow: var(--boxShadow);
+  border-radius: var(--rounded);
+}
+
+.cta__form__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.65rem;
+}
+
+.cta__form__heading {
+  font-size: 1.65rem;
+  margin: 0;
+}
+
+.cta__footer {
+  position: absolute;
+  bottom: 0;
+  z-index: 3;
+}
+
+.newsletterWrap {
+  display: flex;
+  padding: 2rem 1rem;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 0 auto;
+  color: var(--background);
+}
+
+.newsletterWrap p {
+  margin: 0;
 }

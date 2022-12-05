@@ -1,0 +1,9 @@
+.TestimonialsReel {
+  padding: 2rem;
+  background: var(--background);
+  box-shadow: var(--boxShadow);
+  border-radius: var(--rounded);
+  width: 100%;
+  max-width: 50rem;
+  margin-top: 5rem;
+}

@@ -1,0 +1,11 @@
+.NewsletterForm {
+  display: flex;
+  gap: 1rem;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 0.5rem;
+}

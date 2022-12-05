@@ -2,9 +2,18 @@ import * as React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Layout, RotatingLogo } from "../../components";
+import {
+  Layout,
+  RotatingLogo,
+  TestimonialsReel,
+  CtaForm,
+  InstaReel,
+  NewsletterForm,
+} from "../../components";
 
 /* images */
+/* - welcome */
+import Welcome_Arrow from "../../public/assets/Home/Welcome_Arrow.svg";
 /* - steps */
 import Step1_Shirt from "../../public/assets/Home/Step1_Shirt.svg";
 import Step2_Sizes from "../../public/assets/Home/Step2_Sizes.svg";
@@ -17,6 +26,18 @@ import Services_PiggyBank from "../../public/assets/Home/Services_PiggyBank.svg"
 import Services_Star from "../../public/assets/Home/Services_Star.svg";
 import Background_Wavy from "../../public/assets/Home/Background_Wavy.svg";
 import UniformMan from "../../public/assets/Home/UniformMan.png";
+/* - design */
+import Design_Paint from "../../public/assets/Home/Design_Paint.svg";
+import Design_BlueArrow from "../../public/assets/Home/Design_BlueArrow.svg";
+import Design_Blob1 from "../../public/assets/Home/Design_Blob1.svg";
+import Design_Blob2 from "../../public/assets/Home/Design_Blob2.svg";
+/* - reviews */
+import Reviews_Megaphone from "../../public/assets/Home/Reviews_Megaphone.svg";
+import Reviews_Arrow from "../../public/assets/Home/Reviews_Arrow.svg";
+/* - cta */
+import Consultation_Phone from "../../public/assets/Home/Consultation_Phone.svg";
+import Green_Wave from "../../public/assets/Home/Green_Wave.svg";
+import CTA_Namaste from "../../public/assets/Home/CTA_Namaste.png";
 
 import styles from "./Home.module.css";
 
@@ -37,8 +58,11 @@ const HomePage = () => {
           <h1>
             <div className={styles.verbsContainer}>
               <div className={styles.verbsContainer__reel}>
-                {ACTION_VERBS.map((verb) => (
-                  <div key={verb} className={styles.verbsContainer__reel__item}>
+                {ACTION_VERBS.map((verb, vIndex) => (
+                  <div
+                    key={vIndex}
+                    className={styles.verbsContainer__reel__item}
+                  >
                     {verb}
                   </div>
                 ))}
@@ -77,6 +101,13 @@ const HomePage = () => {
           <p>
             <strong>That's why we believe:</strong>
           </p>
+          <div style={{ position: "absolute" }}>
+            <Image
+              src={Welcome_Arrow}
+              alt="Arrow pointing to next section"
+              aria-hidden="true"
+            />
+          </div>
         </div>
       </div>
       <div className={styles.youDeserve}>
@@ -221,6 +252,105 @@ const HomePage = () => {
                 )
               )}
             </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.designWrap}>
+        <Image src={Design_Paint} alt="Sketch of Artist's Color Palette" />
+        <div className={styles.design__header}>
+          <div id={styles.design__arrow}>
+            <Image
+              src={Design_BlueArrow}
+              alt="Arrow towards design studio"
+              aria-hidden="true"
+            />
+          </div>
+          <h2 className={styles.design__heading}>Design Your Own Shirt</h2>
+        </div>
+        <div className={styles.design__container}>
+          <div id={styles.design__blob1}>
+            <Image
+              src={Design_Blob1}
+              alt="Decorative blue blob"
+              aria-hidden="true"
+            />
+          </div>
+          <pre id={styles.design__studio}>TODO: drop in iframe</pre>
+          <div id={styles.design__blob2}>
+            <Image
+              src={Design_Blob2}
+              alt="Decorative yellow blob"
+              aria-hidden="true"
+            />
+          </div>
+        </div>
+      </div>
+      <div className={styles.testimonialsWrap}>
+        <Image
+          src={Reviews_Megaphone}
+          alt="Sketch of happy customer with megaphone"
+        />
+        <h2 className={styles.testimonials__heading}>
+          What Lab Seven Customers are Saying:
+          <div className={styles.testimonials__arrow}>
+            <Image
+              src={Reviews_Arrow}
+              alt="Arrow towards customer reviews"
+              aria-hidden="true"
+            />
+          </div>
+        </h2>
+        <TestimonialsReel />
+      </div>
+      <div className={styles.ctaWrap}>
+        <Image
+          className={styles.cta__bg}
+          src={Green_Wave}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+        />
+        <div className={styles.cta__header}>
+          <h3 className={styles.cta__heading}>
+            Stop wasting your marketing budget on throwaway apparel.
+          </h3>
+          <h3 className={styles.cta__heading}>
+            Get t-shirts you'll <span className="highlight">want</span> to wear.
+          </h3>
+        </div>
+        <div className={styles.cta__namaste}>
+          <Image src={CTA_Namaste} />
+        </div>
+        <div className={styles.cta__form}>
+          <div className={styles.cta__form__header}>
+            <Image
+              src={Consultation_Phone}
+              alt="Sketch of happy customer on the phone"
+            />
+            <h4 className={styles.cta__form__heading}>
+              Schedule Your Free
+              <br />
+              10 Minute Consultation
+            </h4>
+          </div>
+          <p>
+            If you're curious about custom apparel, need graphic design
+            feedback, or have any questions about the ordering process,{" "}
+            <strong>
+              Our friendly apparel experts are happy to talk you through your
+              next project!
+            </strong>
+          </p>
+          <CtaForm />
+        </div>
+        <div className={styles.cta__footer}>
+          <InstaReel />
+          <div className={styles.newsletterWrap}>
+            <p>
+              Get exclusive design tips, product announcements, and seasonal
+              promotions.
+            </p>
+            <NewsletterForm />
           </div>
         </div>
       </div>
