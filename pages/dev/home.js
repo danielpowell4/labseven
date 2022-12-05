@@ -123,7 +123,7 @@ const HomePage = () => {
       </div>
       <div className={styles.howTo}>
         <h2 className={styles.howTo__heading}>
-          <span className="highlight">Your plan</span>
+          <span className={styles.Underline1}>Your plan</span>
           {` for awesome apparel:`}
         </h2>
         <ol className={styles.howTo__steps}>
@@ -142,8 +142,8 @@ const HomePage = () => {
         </ol>
         <div className={styles.howTo__block}>
           <div className={styles.howTo__block__text}>
-            <h3>
-              <span className="highlight">That's it!</span>
+            <h3 className={styles.howTo__block__heading}>
+              <span className={styles.Underline2}>That's it!</span>
             </h3>
             <p>
               We'll send you a no-commitment proposal, complete with pricing,
@@ -175,7 +175,7 @@ const HomePage = () => {
         />
         <div className={styles.services}>
           <h2 className={styles.services__heading}>
-            <span className="highlight">Real world</span>
+            <span className={styles.Underline3}>Real world</span>
             <div style={{ display: "inline-flex", margin: 10 }}>
               <Image src={Services_World} height={60} width={60} />
             </div>
@@ -231,7 +231,8 @@ const HomePage = () => {
 
           <div className={styles.services__block}>
             <h3 className={styles.services__block__heading}>
-              What does <span className="highlight">your business</span> need?
+              What does <span className={styles.Underline4}>your business</span>{" "}
+              need?
             </h3>
             <div className={styles.services__block__carousel}>
               {["Screen Printing", "Embroidery", "Stickers & Decals"].map(
@@ -315,7 +316,8 @@ const HomePage = () => {
             Stop wasting your marketing budget on throwaway apparel.
           </h3>
           <h3 className={styles.cta__heading}>
-            Get t-shirts you'll <span className="highlight">want</span> to wear.
+            Get t-shirts you'll <span className={styles.Underline5}>want</span>{" "}
+            to wear.
           </h3>
         </div>
         <div className={styles.cta__namaste}>
