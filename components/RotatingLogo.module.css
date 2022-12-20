@@ -3,7 +3,7 @@
 }
 
 .RotatingLogo__text {
-  animation: rotating 10s linear infinite;
+  animation: rotating 30s linear infinite;
 }
 
 @media (prefers-reduced-motion) {
