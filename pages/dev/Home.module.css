@@ -274,11 +274,17 @@
   align-items: center;
 }
 
+.youDeserve__spacer {
+  max-width: var(--gridWidth);
+  width: 100%;
+  margin: auto;
+}
+
 .youDeserve__block {
-  max-width: 28rem;
+  max-width: 35rem;
   width: 80%;
-  margin-left: 10vw;
   border-radius: var(--rounded);
+  margin-left: 10vw;
 }
 
 .youDeserve__block p {
@@ -288,6 +294,12 @@
   font-family: var(--headingFont);
   font-weight: var(--headingWeight);
   color: var(--background);
+}
+
+.howTo {
+  max-width: var(--gridWidth);
+  width: 100%;
+  margin: auto;
 }
 
 .howTo__heading {
@@ -301,6 +313,10 @@
   flex-flow: row wrap;
   gap: 1rem;
   justify-content: space-evenly;
+
+  /* overwrite ul */
+  margin: 0;
+  padding: 0;
 }
 
 .howTo__steps li {

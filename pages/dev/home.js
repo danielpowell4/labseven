@@ -121,14 +121,16 @@ const HomePage = () => {
         </div>
       </div>
       <div className={styles.youDeserve}>
-        <div className={styles.youDeserve__block}>
-          <p>
-            You deserve quality apparel that reflects the legitimacy of your
-            brand.
-          </p>
-          <Link href="/products">
-            <a className={styles.LinkButton}>Get Started</a>
-          </Link>
+        <div className={styles.youDeserve__spacer}>
+          <div className={styles.youDeserve__block}>
+            <p>
+              You deserve quality apparel that reflects the legitimacy of your
+              brand.
+            </p>
+            <Link href="/products">
+              <a className={styles.LinkButton}>Get Started</a>
+            </Link>
+          </div>
         </div>
       </div>
       <div className={styles.howTo}>
