@@ -53,27 +53,6 @@
   right: -7.5%;
 }
 
-/* END - utils */
-
-.hero {
-  height: 75vh;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid var(--hr);
-  background-image: linear-gradient(145deg, var(--primary), var(--alternate));
-}
-
-.hero__text {
-  margin-left: 2rem;
-  max-width: 666px;
-  width: 100%;
-}
-
-.linkContainer {
-  display: flex;
-  gap: 0.5rem;
-}
-
 .LinkButton {
   --buttonBackground: var(--primary);
 }
@@ -110,6 +89,27 @@
 .LinkButton:visited,
 .LinkButtonAlternate:visited {
   color: var(--background);
+}
+
+.linkContainer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* END - utils */
+
+.hero {
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--hr);
+  background-image: linear-gradient(145deg, var(--primary), var(--alternate));
+}
+
+.hero__text {
+  margin-left: 2rem;
+  max-width: 666px;
+  width: 100%;
 }
 
 .verbsContainer {
