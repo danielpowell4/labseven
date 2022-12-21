@@ -55,30 +55,34 @@ const HomePage = () => {
         />
       </Head>
       <div className={styles.hero}>
-        <div className={styles.hero__text}>
-          <h1>
-            <div className={styles.verbsContainer}>
-              <div className={styles.verbsContainer__reel}>
-                {ACTION_VERBS.map((verb, vIndex) => (
-                  <div
-                    key={vIndex}
-                    className={styles.verbsContainer__reel__item}
-                  >
-                    {verb}
-                  </div>
-                ))}
+        <div className={styles.hero__spacer}>
+          <div className={styles.hero__text}>
+            <h1>
+              <div className={styles.verbsContainer}>
+                <div className={styles.verbsContainer__reel}>
+                  {ACTION_VERBS.map((verb, vIndex) => (
+                    <div
+                      key={vIndex}
+                      className={styles.verbsContainer__reel__item}
+                    >
+                      {verb}
+                    </div>
+                  ))}
+                </div>
+                <span>your brand proudly.</span>
               </div>
-              <span>your brand proudly.</span>
+            </h1>
+            <h2>Get Quality Custom Apparel Locally and Affordably.</h2>
+            <div className={styles.linkContainer}>
+              <Link href="/products">
+                <a className={styles.LinkButton}>Browse Catalog</a>
+              </Link>
+              <Link href="/contact">
+                <a className={styles.LinkButtonAlternate}>
+                  Contact Printing Pro
+                </a>
+              </Link>
             </div>
-          </h1>
-          <h2>Get Quality Custom Apparel Locally and Affordably.</h2>
-          <div className={styles.linkContainer}>
-            <Link href="/products">
-              <a className={styles.LinkButton}>Browse Catalog</a>
-            </Link>
-            <Link href="/contact">
-              <a className={styles.LinkButtonAlternate}>Contact Printing Pro</a>
-            </Link>
           </div>
         </div>
       </div>
