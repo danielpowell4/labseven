@@ -107,13 +107,13 @@
 }
 
 .hero__spacer {
-  max-width: var(--maxWidth);
+  max-width: var(--gridWidth);
+  padding: 1rem;
   width: 100%;
   margin: auto;
 }
 
 .hero__text {
-  margin-left: 2rem;
   max-width: 666px;
   width: 100%;
 }
@@ -216,22 +216,26 @@
 }
 
 .welcomeWrap {
-  max-width: 1280px;
+  max-width: var(--maxWidth);
   width: 100%;
+  margin: auto;
   position: relative;
 }
 
 .welcome__image {
   position: absolute;
   z-index: 1;
-  width: 58rem;
+  max-width: 58rem;
+  width: 100%;
 }
 
 .welcome {
-  min-height: 30rem;
-  margin: auto;
-  max-width: 1080px;
+  max-width: var(--gridWidth);
   width: 100%;
+  margin: auto;
+
+  position: relative;
+  min-height: 30rem;
 }
 
 .welcome__block {
@@ -242,7 +246,7 @@
   box-shadow: var(--boxShadow);
 
   position: absolute;
-  right: 6rem;
+  right: 1rem;
   bottom: 64px;
   border-radius: var(--rounded);
   z-index: 2;

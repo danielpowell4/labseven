@@ -45,7 +45,8 @@ li {
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   --rounded: 1rem;
 
-  --maxWidth: 1156px;
+  --gridWidth: 1156px;
+  --maxWidth: 1800px;
 }
 
 html,
