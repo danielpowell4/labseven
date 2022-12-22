@@ -98,9 +98,15 @@ const DesignIFrame = ({ id }) => {
         type="text/javascript"
         language="javascript"
         src="https://stores.inksoft.com/designer/html5/common/js/launcher.js"
+        onLoad={() => {
+          console.log("onLoad");
+        }}
         onReady={() => {
-          console.log("on Ready");
+          console.log("onReady");
           launchDesigner("HTML5DS", launchSettings, designerRef.current);
+        }}
+        onError={(e) => {
+          console.error("Studio script failed to load", e);
         }}
       />
     </>
