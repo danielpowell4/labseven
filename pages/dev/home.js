@@ -9,6 +9,7 @@ import {
   CtaForm,
   InstaReel,
   NewsletterForm,
+  DesignIFrame,
 } from "../../components";
 
 /* images */
@@ -288,7 +289,7 @@ const HomePage = () => {
               aria-hidden="true"
             />
           </div>
-          <pre id={styles.design__studio}>TODO: drop in iframe</pre>
+          <DesignIFrame id={styles.design__studio} />
           <div id={styles.design__blob2}>
             <Image
               src={Design_Blob2}
