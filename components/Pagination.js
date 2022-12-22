@@ -24,7 +24,7 @@ const PageItem = ({ pageNumber, active, children, placeholder = false }) => {
           shallow
           replace
         >
-          <a>{children}</a>
+          {children}
         </Link>
       )}
     </li>

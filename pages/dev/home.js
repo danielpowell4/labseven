@@ -75,13 +75,11 @@ const HomePage = () => {
             </h1>
             <h2>Get Quality Custom Apparel Locally and Affordably.</h2>
             <div className={styles.linkContainer}>
-              <Link href="/products">
-                <a className={styles.LinkButton}>Browse Catalog</a>
+              <Link href="/products" className={styles.LinkButton}>
+                Browse Catalog
               </Link>
-              <Link href="/contact">
-                <a className={styles.LinkButtonAlternate}>
-                  Contact Printing Pro
-                </a>
+              <Link href="/contact" className={styles.LinkButtonAlternate}>
+                Contact Printing Pro
               </Link>
             </div>
           </div>
@@ -128,8 +126,8 @@ const HomePage = () => {
               You deserve quality apparel that reflects the legitimacy of your
               brand.
             </p>
-            <Link href="/products">
-              <a className={styles.LinkButton}>Get Started</a>
+            <Link href="/products" className={styles.LinkButton}>
+              Get Started
             </Link>
           </div>
         </div>
@@ -163,11 +161,11 @@ const HomePage = () => {
               product recommendations, and digital mockups!
             </p>
             <div className={styles.linkContainer}>
-              <Link href="/products">
-                <a className={styles.LinkButton}>Ok, let's go!</a>
+              <Link href="/products" className={styles.LinkButton}>
+                Ok, let's go!
               </Link>
-              <Link href="/contact">
-                <a className={styles.LinkButtonAlternate}>Talk to a person</a>
+              <Link href="/contact" className={styles.LinkButtonAlternate}>
+                Talk to a person
               </Link>
             </div>
           </div>

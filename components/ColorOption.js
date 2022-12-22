@@ -7,21 +7,22 @@ const ColorOption = ({ style, isActive = false, replace = false }) => {
 
   return (
     <li key={style.ID}>
-      <Link href={style.href} replace={replace} scroll={!replace}>
-        <a
-          title={style.Name}
-          className={`${styles.styleOption}${
-            isActive ? ` ${styles.styleOptionActive}` : ""
-          }`}
-        >
-          <div
-            className={styles.styleOption__color}
-            style={{
-              backgroundColor: `#${style.HtmlColor1}`,
-              border: isWhite && !isActive ? `1px solid var(--hr)` : undefined,
-            }}
-          />
-        </a>
+      <Link
+        href={style.href}
+        replace={replace}
+        scroll={!replace}
+        title={style.Name}
+        className={`${styles.styleOption}${
+          isActive ? ` ${styles.styleOptionActive}` : ""
+        }`}
+      >
+        <div
+          className={styles.styleOption__color}
+          style={{
+            backgroundColor: `#${style.HtmlColor1}`,
+            border: isWhite && !isActive ? `1px solid var(--hr)` : undefined,
+          }}
+        />
       </Link>
     </li>
   );

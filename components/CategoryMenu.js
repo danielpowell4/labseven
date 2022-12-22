@@ -22,12 +22,18 @@ const CategoryMenu = ({
     return (
       <nav className={styles.nav}>
         <div className={styles.breadcrumbs}>
-          <Link href={{ pathname: "/products", query: searchQuery }}>
-            <a className={styles.activeHelperLink}>Products</a>
+          <Link
+            href={{ pathname: "/products", query: searchQuery }}
+            className={styles.activeHelperLink}
+          >
+            Products
           </Link>
           {hasActiveSubCategory && (
-            <Link href={{ pathname: activeCategory.href, query: searchQuery }}>
-              <a className={styles.activeHelperLink}>{activeCategory.Name}</a>
+            <Link
+              href={{ pathname: activeCategory.href, query: searchQuery }}
+              className={styles.activeHelperLink}
+            >
+              {activeCategory.Name}
             </Link>
           )}
         </div>
@@ -51,7 +57,7 @@ const CategoryMenu = ({
                   className={styles.subcategoriesList__option}
                 >
                   <Link href={{ pathname: subCat.href, query: searchQuery }}>
-                    <a>{subCat.Name}</a>
+                    {subCat.Name}
                   </Link>
                 </li>
               )
@@ -68,7 +74,7 @@ const CategoryMenu = ({
         {categories.map((category) => (
           <li key={category.ID} className={styles.categoriesList__option}>
             <Link href={{ pathname: category.href, query: searchQuery }}>
-              <a>{category.Name}</a>
+              {category.Name}
             </Link>
           </li>
         ))}

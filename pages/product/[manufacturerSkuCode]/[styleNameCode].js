@@ -100,18 +100,12 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
         )}
       </Head>
       <div className={productStyles.breadcrumbs}>
-        <Link href="/products">
-          <a>Products</a>
-        </Link>
+        <Link href="/products">Products</Link>
         {!!categoryData && (
-          <Link href={categoryData.href}>
-            <a>{categoryData.Name}</a>
-          </Link>
+          <Link href={categoryData.href}>{categoryData.Name}</Link>
         )}
         {!!subcategoryData && (
-          <Link href={subcategoryData.href}>
-            <a>{subcategoryData.Name}</a>
-          </Link>
+          <Link href={subcategoryData.href}>{subcategoryData.Name}</Link>
         )}
       </div>
       <div className={productStyles.pageContainer}>
