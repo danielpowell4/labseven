@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import { ColorOption, ErrorAlert, Pagination, ThreeDotLoader } from ".";
 
@@ -66,12 +66,15 @@ const ProductCard = ({ product, productIndex }) => {
         {activeStyle.hasMainImage ? (
           <Image
             src={activeStyle.mainImageUrl}
-            objectFit="contain"
-            objectPosition="center"
             width={290}
             height={320}
             alt={`Sample of ${product.Name} in ${activeStyle.Name} style`}
-          />
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+              objectFit: "contain",
+              objectPosition: "center"
+            }} />
         ) : (
           <p>Missing image!</p>
         )}

@@ -1,6 +1,6 @@
 import * as React from "react";
 import Head from "next/head";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 
 import { ColorOption, Layout } from "../../../components";
@@ -129,12 +129,15 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
                   <button onClick={() => setActiveSide(side)}>
                     <Image
                       src={side.imageUrl}
-                      objectFit="cover"
-                      objectPosition="center"
                       width={80}
                       height={80}
                       alt={`Sample of ${productData.Name} in ${activeStyle.Name} from side ${side.Side}`}
-                    />
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto",
+                        objectFit: "cover",
+                        objectPosition: "center"
+                      }} />
                   </button>
                 ) : (
                   <p>Missing image for {side.Side}</p>
@@ -146,22 +149,28 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
             <Image
               className={productStyles.gallery__main}
               src={activeSide.imageUrl}
-              objectFit="contain"
-              objectPosition="center"
               width={800}
               height={800}
               alt={`Sample of ${productData.Name} in ${activeStyle.Name} from side ${activeSide.Side}`}
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+                objectFit: "contain",
+                objectPosition: "center"
+              }} />
           ) : activeStyle.hasMainImage ? (
             <Image
               className={productStyles.gallery__main}
               src={activeStyle.mainImageUrl}
-              objectFit="contain"
-              objectPosition="center"
               width={800}
               height={800}
               alt={`Sample of ${productData.Name} in ${activeStyle.Name} style`}
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+                objectFit: "contain",
+                objectPosition: "center"
+              }} />
           ) : (
             <p className={productStyles.gallery__main}>Missing image!</p>
           )}

@@ -1,5 +1,5 @@
 import * as React from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import styles from "./SiteNav.module.css";
 
 const SiteNav = () => {
@@ -54,8 +54,22 @@ const SiteNav = () => {
         </div>
       </div>
       <div className={styles.locales}>
-        <Image src="/assets/Colorado-Flag.svg" height={20} width={30} />
-        <Image src="/assets/USA-Flag.svg" height={20} width={30} />
+        <Image
+          src="/assets/Colorado-Flag.svg"
+          height={20}
+          width={30}
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
+        <Image
+          src="/assets/USA-Flag.svg"
+          height={20}
+          width={30}
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
       </div>
     </header>
   );

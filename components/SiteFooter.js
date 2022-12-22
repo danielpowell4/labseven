@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import styles from "./SiteFooter.module.css";
 
 const SiteFooter = () => {
@@ -8,8 +8,22 @@ const SiteFooter = () => {
         <div className={styles.Footer__top__title}>
           <h3>Colorado Proud since 2006</h3>
           <div className={styles.locales}>
-            <Image src="/assets/Colorado-Flag.svg" height={20} width={30} />
-            <Image src="/assets/USA-Flag.svg" height={20} width={30} />
+            <Image
+              src="/assets/Colorado-Flag.svg"
+              height={20}
+              width={30}
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
+            <Image
+              src="/assets/USA-Flag.svg"
+              height={20}
+              width={30}
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
         </div>
         <div className={styles.Footer__locations}>
@@ -93,7 +107,10 @@ const SiteFooter = () => {
               src="/assets/Instagram-Icon.svg"
               height={40}
               width={40}
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </a>
           <a target="__blank" href="https://www.facebook.com/labseven.co">
             <Image
@@ -101,7 +118,10 @@ const SiteFooter = () => {
               src="/assets/Facebook-Icon.svg"
               height={40}
               width={40}
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </a>
         </div>
       </div>

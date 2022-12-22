@@ -1,6 +1,6 @@
 import * as React from "react";
 import Head from "next/head";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Layout,
@@ -87,7 +87,12 @@ const HomePage = () => {
       </div>
       <div className={styles.welcomeWrap}>
         <div className={styles.welcome__image}>
-          <Image src={Welcome_LibertyLadies} />
+          <Image
+            src={Welcome_LibertyLadies}
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
         <div className={styles.welcome}>
           <div className={styles.welcome__block}>
@@ -114,7 +119,10 @@ const HomePage = () => {
                 src={Welcome_Arrow}
                 alt="Arrow pointing to next section"
                 aria-hidden="true"
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </div>
           </div>
         </div>
@@ -139,15 +147,33 @@ const HomePage = () => {
         </h2>
         <ol className={styles.howTo__steps}>
           <li>
-            <Image src={Step1_Shirt} alt="Hand drawn sketch of a t-shirt" />
+            <Image
+              src={Step1_Shirt}
+              alt="Hand drawn sketch of a t-shirt"
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
             <h4>Pick your products</h4>
           </li>
           <li>
-            <Image src={Step2_Sizes} alt="Hand drawn chart of sizes" />
+            <Image
+              src={Step2_Sizes}
+              alt="Hand drawn chart of sizes"
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
             <h4>Fill out the size breakdown</h4>
           </li>
           <li>
-            <Image src={Step3_Upload} alt="Upload logo to cloud" />
+            <Image
+              src={Step3_Upload}
+              alt="Upload logo to cloud"
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
             <h4>Upload your logo idea</h4>
           </li>
         </ol>
@@ -173,22 +199,34 @@ const HomePage = () => {
             src={ThatsIt_Hoodie}
             width={200}
             alt="Cool hoodie and beanie"
-          />
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
       </div>
       <div className={styles.servicesWrap}>
         <Image
           className={styles.services__bg}
           src={Background_Wavy}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-        />
+          fill
+          sizes="100vw"
+          style={{
+            objectFit: "cover",
+            objectPosition: "center"
+          }} />
         <div className={styles.services}>
           <h2 className={styles.services__heading}>
             <span className={styles.Underline3}>Real world</span>
             <div style={{ display: "inline-flex", margin: 10 }}>
-              <Image src={Services_World} height={60} width={60} />
+              <Image
+                src={Services_World}
+                height={60}
+                width={60}
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </div>
             <br />
             marketing solutions.
@@ -202,12 +240,23 @@ const HomePage = () => {
           </p>
 
           <div className={styles.services__uniformMan}>
-            <Image src={UniformMan} />
+            <Image
+              src={UniformMan}
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
 
           <ul className={styles.services__points}>
             <li>
-              <Image src={Services_PiggyBank} alt="Hand drawn chart of sizes" />
+              <Image
+                src={Services_PiggyBank}
+                alt="Hand drawn chart of sizes"
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
               <div>
                 <h5>Monetize Your Brand</h5>
                 <p>
@@ -218,7 +267,13 @@ const HomePage = () => {
               </div>
             </li>
             <li>
-              <Image src={Services_Handshake} alt="Hand drawn chart of sizes" />
+              <Image
+                src={Services_Handshake}
+                alt="Hand drawn chart of sizes"
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
               <div>
                 <h5>Connect With Your Crowd</h5>
                 <p>
@@ -228,7 +283,13 @@ const HomePage = () => {
               </div>
             </li>
             <li>
-              <Image src={Services_Star} alt="Hand drawn chart of sizes" />
+              <Image
+                src={Services_Star}
+                alt="Hand drawn chart of sizes"
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
               <div className={styles.services__points__textWrap}>
                 <h5>Outfit Employees in Style</h5>
                 <p>
@@ -268,14 +329,23 @@ const HomePage = () => {
         </div>
       </div>
       <div className={styles.designWrap}>
-        <Image src={Design_Paint} alt="Sketch of Artist's Color Palette" />
+        <Image
+          src={Design_Paint}
+          alt="Sketch of Artist's Color Palette"
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <div className={styles.design__header}>
           <div id={styles.design__arrow}>
             <Image
               src={Design_BlueArrow}
               alt="Arrow towards design studio"
               aria-hidden="true"
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
           <h2 className={styles.design__heading}>Design Your Own Shirt</h2>
         </div>
@@ -285,7 +355,10 @@ const HomePage = () => {
               src={Design_Blob1}
               alt="Decorative blue blob"
               aria-hidden="true"
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
           <DesignIFrame id={styles.design__studio} />
           <div id={styles.design__blob2}>
@@ -293,7 +366,10 @@ const HomePage = () => {
               src={Design_Blob2}
               alt="Decorative yellow blob"
               aria-hidden="true"
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
         </div>
       </div>
@@ -301,7 +377,10 @@ const HomePage = () => {
         <Image
           src={Reviews_Megaphone}
           alt="Sketch of happy customer with megaphone"
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <h2 className={styles.testimonials__heading}>
           What Lab Seven Customers are Saying:
           <div className={styles.testimonials__arrow}>
@@ -309,7 +388,10 @@ const HomePage = () => {
               src={Reviews_Arrow}
               alt="Arrow towards customer reviews"
               aria-hidden="true"
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
         </h2>
         <TestimonialsReel />
@@ -318,10 +400,12 @@ const HomePage = () => {
         <Image
           className={styles.cta__bg}
           src={Green_Wave}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-        />
+          fill
+          sizes="100vw"
+          style={{
+            objectFit: "cover",
+            objectPosition: "center"
+          }} />
         <div className={styles.cta__header}>
           <h3 className={styles.cta__heading}>
             Stop wasting your marketing budget on throwaway apparel.
@@ -332,14 +416,22 @@ const HomePage = () => {
           </h3>
         </div>
         <div className={styles.cta__namaste}>
-          <Image src={CTA_Namaste} />
+          <Image
+            src={CTA_Namaste}
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
         </div>
         <div className={styles.cta__form}>
           <div className={styles.cta__form__header}>
             <Image
               src={Consultation_Phone}
               alt="Sketch of happy customer on the phone"
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
             <h4 className={styles.cta__form__heading}>
               Schedule Your Free
               <br />
