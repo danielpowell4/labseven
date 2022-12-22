@@ -481,7 +481,7 @@
   width: 100%;
   max-width: 960px;
 
-  background: var(--hr);
+  background: var(--background);
   box-shadow: var(--boxShadow);
   border-radius: var(--rounded);
 }
