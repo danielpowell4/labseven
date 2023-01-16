@@ -1,10 +1,10 @@
 import * as React from "react";
 import styles from "./NewsletterForm.module.css";
 import { Button } from ".";
-import { serializeForm } from "../lib/utils";
+import { useSubmit } from "../lib/customHooks";
 
 const NewsletterForm = ({ className = "" }) => {
-  const [formState, setFormState] = React.useState("idle");
+  const [formState, onSubmit] = useSubmit();
 
   if (formState === "submitted") {
     return (
@@ -20,31 +20,9 @@ const NewsletterForm = ({ className = "" }) => {
       </p>
       <form
         className={`${styles.className} ${styles.NewsletterForm}`}
-        onSubmit={async (event) => {
-          event.preventDefault();
-
-          setFormState("submitting");
-          try {
-            const response = await fetch("/api/forms", {
-              method: "POST",
-              headers: {
-                "Content-type": "application/json; charset=UTF-8",
-              },
-              body: JSON.stringify(serializeForm(event.target)),
-            });
-
-            if (response.ok) {
-              setFormState("submitted");
-            } else {
-              console.warn(response);
-              throw new Error("submit error");
-            }
-          } catch (_e) {
-            setFormState("error");
-          }
-        }}
+        onSubmit={onSubmit}
       >
-        <input type="hidden" name="title" value="newsletter" />
+        <input type="hidden" name="__title" value="newsletter" />
         <div className={styles.inputWrapper}>
           <label htmlFor="newsletter_email">Email</label>
           <input
@@ -54,13 +32,13 @@ const NewsletterForm = ({ className = "" }) => {
             required="true"
           />
         </div>
-        <Button type="submit" isSubmitting={formState == "isSubmitting"}>
+        <Button type="submit" isSubmitting={formState === "submitting"}>
           Sign Up!
         </Button>
         {formState === "error" && (
-          <p>
-            Oh no! An error has occurred. If this problem continues, please let
-            our team know.
+          <p style={{ color: "var(--danger)" }}>
+            Oh no! An error occurred. If this problem continues please let our
+            team know.
           </p>
         )}
       </form>

@@ -465,14 +465,6 @@ const HomePage = () => {
               10 Minute Consultation
             </h4>
           </div>
-          <p>
-            If you're curious about custom apparel, need graphic design
-            feedback, or have any questions about the ordering process,{" "}
-            <strong>
-              Our friendly apparel experts are happy to talk you through your
-              next project!
-            </strong>
-          </p>
           <CtaForm />
         </div>
         <div className={styles.cta__footer}>

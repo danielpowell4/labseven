@@ -8,8 +8,10 @@ export default async (req, res) => {
   });
 
   await doc.loadInfo();
-  const { title, ...fields } = req.body;
-  const sheet = doc.sheetsByTitle[title];
+
+  console.log("req.body", req.body);
+  const { __title, ...fields } = req.body;
+  const sheet = doc.sheetsByTitle[__title];
 
   sheet.addRow({ ...fields, addedOn: new Date().toISOString() });
 
