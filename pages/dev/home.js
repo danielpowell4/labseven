@@ -478,10 +478,6 @@ const HomePage = () => {
         <div className={styles.cta__footer}>
           <InstaReel />
           <div className={styles.newsletterWrap}>
-            <p>
-              Get exclusive design tips, product announcements, and seasonal
-              promotions.
-            </p>
             <NewsletterForm />
           </div>
         </div>
