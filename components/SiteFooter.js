@@ -10,20 +10,16 @@ const SiteFooter = () => {
           <div className={styles.locales}>
             <Image
               src="/assets/Colorado-Flag.svg"
+              alt="Colorado Flag"
               height={20}
               width={30}
-              style={{
-                maxWidth: "100%",
-                height: "auto"
-              }} />
+            />
             <Image
               src="/assets/USA-Flag.svg"
+              alt="USA Flag"
               height={20}
               width={30}
-              style={{
-                maxWidth: "100%",
-                height: "auto"
-              }} />
+            />
           </div>
         </div>
         <div className={styles.Footer__locations}>
@@ -109,8 +105,9 @@ const SiteFooter = () => {
               width={40}
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </a>
           <a target="__blank" href="https://www.facebook.com/labseven.co">
             <Image
@@ -120,8 +117,9 @@ const SiteFooter = () => {
               width={40}
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </a>
         </div>
       </div>

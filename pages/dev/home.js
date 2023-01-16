@@ -89,10 +89,12 @@ const HomePage = () => {
         <div className={styles.welcome__image}>
           <Image
             src={Welcome_LibertyLadies}
+            alt="Happy customers wearing sweatshirts"
             style={{
               maxWidth: "100%",
-              height: "auto"
-            }} />
+              height: "auto",
+            }}
+          />
         </div>
         <div className={styles.welcome}>
           <div className={styles.welcome__block}>
@@ -121,8 +123,9 @@ const HomePage = () => {
                 aria-hidden="true"
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                  height: "auto",
+                }}
+              />
             </div>
           </div>
         </div>
@@ -152,8 +155,9 @@ const HomePage = () => {
               alt="Hand drawn sketch of a t-shirt"
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
             <h4>Pick your products</h4>
           </li>
           <li>
@@ -162,8 +166,9 @@ const HomePage = () => {
               alt="Hand drawn chart of sizes"
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
             <h4>Fill out the size breakdown</h4>
           </li>
           <li>
@@ -172,8 +177,9 @@ const HomePage = () => {
               alt="Upload logo to cloud"
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
             <h4>Upload your logo idea</h4>
           </li>
         </ol>
@@ -201,32 +207,39 @@ const HomePage = () => {
             alt="Cool hoodie and beanie"
             style={{
               maxWidth: "100%",
-              height: "auto"
-            }} />
+              height: "auto",
+            }}
+          />
         </div>
       </div>
       <div className={styles.servicesWrap}>
         <Image
           className={styles.services__bg}
           src={Background_Wavy}
+          alt="Background images"
+          aria-hidden={true}
           fill
           sizes="100vw"
           style={{
             objectFit: "cover",
-            objectPosition: "center"
-          }} />
+            objectPosition: "center",
+          }}
+        />
         <div className={styles.services}>
           <h2 className={styles.services__heading}>
             <span className={styles.Underline3}>Real world</span>
             <div style={{ display: "inline-flex", margin: 10 }}>
               <Image
                 src={Services_World}
+                alt={"Sketch of globe"}
+                aria-hidden={true}
                 height={60}
                 width={60}
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                  height: "auto",
+                }}
+              />
             </div>
             <br />
             marketing solutions.
@@ -242,21 +255,24 @@ const HomePage = () => {
           <div className={styles.services__uniformMan}>
             <Image
               src={UniformMan}
+              alt="Man wearing branded polo shirt"
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </div>
 
           <ul className={styles.services__points}>
             <li>
               <Image
                 src={Services_PiggyBank}
-                alt="Hand drawn chart of sizes"
+                alt="Hand drawn sketch of piggy bank"
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                  height: "auto",
+                }}
+              />
               <div>
                 <h5>Monetize Your Brand</h5>
                 <p>
@@ -269,11 +285,12 @@ const HomePage = () => {
             <li>
               <Image
                 src={Services_Handshake}
-                alt="Hand drawn chart of sizes"
+                alt="Hand drawn sketch of handshake"
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                  height: "auto",
+                }}
+              />
               <div>
                 <h5>Connect With Your Crowd</h5>
                 <p>
@@ -285,11 +302,12 @@ const HomePage = () => {
             <li>
               <Image
                 src={Services_Star}
-                alt="Hand drawn chart of sizes"
+                alt="Hand drawn sketch of star"
                 style={{
                   maxWidth: "100%",
-                  height: "auto"
-                }} />
+                  height: "auto",
+                }}
+              />
               <div className={styles.services__points__textWrap}>
                 <h5>Outfit Employees in Style</h5>
                 <p>
@@ -334,8 +352,9 @@ const HomePage = () => {
           alt="Sketch of Artist's Color Palette"
           style={{
             maxWidth: "100%",
-            height: "auto"
-          }} />
+            height: "auto",
+          }}
+        />
         <div className={styles.design__header}>
           <div id={styles.design__arrow}>
             <Image
@@ -344,8 +363,9 @@ const HomePage = () => {
               aria-hidden="true"
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </div>
           <h2 className={styles.design__heading}>Design Your Own Shirt</h2>
         </div>
@@ -357,8 +377,9 @@ const HomePage = () => {
               aria-hidden="true"
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </div>
           <DesignIFrame id={styles.design__studio} />
           <div id={styles.design__blob2}>
@@ -368,8 +389,9 @@ const HomePage = () => {
               aria-hidden="true"
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </div>
         </div>
       </div>
@@ -379,8 +401,9 @@ const HomePage = () => {
           alt="Sketch of happy customer with megaphone"
           style={{
             maxWidth: "100%",
-            height: "auto"
-          }} />
+            height: "auto",
+          }}
+        />
         <h2 className={styles.testimonials__heading}>
           What Lab Seven Customers are Saying:
           <div className={styles.testimonials__arrow}>
@@ -390,8 +413,9 @@ const HomePage = () => {
               aria-hidden="true"
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
           </div>
         </h2>
         <TestimonialsReel />
@@ -404,8 +428,9 @@ const HomePage = () => {
           sizes="100vw"
           style={{
             objectFit: "cover",
-            objectPosition: "center"
-          }} />
+            objectPosition: "center",
+          }}
+        />
         <div className={styles.cta__header}>
           <h3 className={styles.cta__heading}>
             Stop wasting your marketing budget on throwaway apparel.
@@ -420,8 +445,9 @@ const HomePage = () => {
             src={CTA_Namaste}
             style={{
               maxWidth: "100%",
-              height: "auto"
-            }} />
+              height: "auto",
+            }}
+          />
         </div>
         <div className={styles.cta__form}>
           <div className={styles.cta__form__header}>
@@ -430,8 +456,9 @@ const HomePage = () => {
               alt="Sketch of happy customer on the phone"
               style={{
                 maxWidth: "100%",
-                height: "auto"
-              }} />
+                height: "auto",
+              }}
+            />
             <h4 className={styles.cta__form__heading}>
               Schedule Your Free
               <br />

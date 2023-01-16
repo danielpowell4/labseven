@@ -1,5 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/legacy/image";
+import { useRouter } from "next/router";
+
 import { ColorOption, ErrorAlert, Pagination, ThreeDotLoader } from ".";
 
 import styles from "./ProductList.module.css";
@@ -53,35 +54,35 @@ const ProductSkeleton = ({ productIndex }) => {
   );
 };
 
-const ProductCard = ({ product, productIndex }) => {
+const ProductCard = ({ product, productIndex, navigateTo }) => {
   if (product.isLoading) return <ProductSkeleton productIndex={productIndex} />;
 
   const activeStyle = product.Styles[0];
   const showMoreStyles = product.Styles.length > 7;
 
   return (
-    <Link href={product.defaultHref} className={styles.ProductCard}>
-      <div className={styles.ProductCard__frame} />
+    <div
+      className={styles.ProductCard}
+      onClick={() => navigateTo(product.defaultHref)}
+    >
+      <span className={styles.ProductCard__frame} />
       <div className={styles.ProductCard__description}>
         {activeStyle.hasMainImage ? (
           <Image
             src={activeStyle.mainImageUrl}
+            objectFit="contain"
+            objectPosition="center"
             width={290}
             height={320}
             alt={`Sample of ${product.Name} in ${activeStyle.Name} style`}
-            style={{
-              maxWidth: "100%",
-              height: "auto",
-              objectFit: "contain",
-              objectPosition: "center"
-            }} />
+          />
         ) : (
           <p>Missing image!</p>
         )}
         <div>
           <h4>
             {product.Manufacturer} <br />
-            <span class="caps">{product.ManufacturerSku}</span>
+            <span className="caps">{product.ManufacturerSku}</span>
           </h4>
           <p>{product.Name}</p>
 
@@ -114,11 +115,13 @@ const ProductCard = ({ product, productIndex }) => {
           )}
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
 const ProductList = ({ error, products, isLoading, pagination }) => {
+  const router = useRouter();
+
   if (error) {
     return <ErrorAlert error={error} />;
   }
@@ -139,6 +142,7 @@ const ProductList = ({ error, products, isLoading, pagination }) => {
             key={`${product.ID}-${productIndex}`}
             product={product}
             productIndex={productIndex}
+            navigateTo={(path) => router.push(path)}
           />
         ))}
       </div>

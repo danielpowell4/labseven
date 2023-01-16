@@ -16,7 +16,7 @@ const ColorOption = ({ style, isActive = false, replace = false }) => {
           isActive ? ` ${styles.styleOptionActive}` : ""
         }`}
       >
-        <div
+        <span
           className={styles.styleOption__color}
           style={{
             backgroundColor: `#${style.HtmlColor1}`,

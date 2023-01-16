@@ -56,20 +56,16 @@ const SiteNav = () => {
       <div className={styles.locales}>
         <Image
           src="/assets/Colorado-Flag.svg"
+          alt="Colorado Flag"
           height={20}
           width={30}
-          style={{
-            maxWidth: "100%",
-            height: "auto"
-          }} />
+        />
         <Image
           src="/assets/USA-Flag.svg"
+          alt="USA Flag"
           height={20}
           width={30}
-          style={{
-            maxWidth: "100%",
-            height: "auto"
-          }} />
+        />
       </div>
     </header>
   );

@@ -29,6 +29,7 @@
 
 .ProductCard:hover {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .ProductCard__frame {
@@ -120,10 +121,6 @@
   .ProductList {
     column-gap: 0.5rem;
     grid-template-columns: repeat(3, 1fr);
-  }
-  .ProductSkeleton__image {
-    width: 24rem;
-    height: 27rem;
   }
 }
 @media (min-width: 95rem) {
