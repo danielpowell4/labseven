@@ -13,7 +13,7 @@ export default async (req, res) => {
   const { __title, ...fields } = req.body;
   const sheet = doc.sheetsByTitle[__title];
 
-  sheet.addRow({ ...fields, addedOn: new Date().toISOString() });
+  await sheet.addRow({ ...fields, addedOn: new Date().toISOString() });
 
   return res.status(200).json({ message: "Submission recorded!" });
 };
