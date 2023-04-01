@@ -428,7 +428,7 @@ const HomePage = () => {
           sizes="100vw"
           style={{
             objectFit: "cover",
-            objectPosition: "center",
+            objectPosition: "top center",
           }}
         />
         <div className={styles.cta__header}>
