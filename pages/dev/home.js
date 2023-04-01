@@ -222,7 +222,7 @@ const HomePage = () => {
           sizes="100vw"
           style={{
             objectFit: "cover",
-            objectPosition: "center",
+            objectPosition: "top",
           }}
         />
         <div className={styles.services}>

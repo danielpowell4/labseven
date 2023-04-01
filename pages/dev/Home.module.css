@@ -357,6 +357,7 @@
   font-size: 2rem;
 }
 
+/* nice from 1275px+ */
 .servicesWrap {
   min-height: 62rem;
   position: relative;
@@ -377,7 +378,7 @@
 
 .services__flyingText {
   position: absolute;
-  left: 24%;
+  left: 27vw;
   top: 22rem;
   color: var(--background);
   max-width: 16rem;
@@ -387,9 +388,9 @@
 
 .services__uniformMan {
   position: absolute;
-  left: 10px;
+  left: max(4vw, 10px);
   bottom: 0;
-  max-width: 30vw;
+  max-width: min(28vw, 410px);
   width: 100%;
   display: inline-flex;
 }
