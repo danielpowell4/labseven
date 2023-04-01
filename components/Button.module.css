@@ -29,10 +29,6 @@
   transform: scale(1.15);
 }
 
-.Button:disabled {
-  cursor: not-allowed;
-}
-
 .ButtonIsSubmitting:after {
   position: absolute;
   top: 0;
@@ -46,4 +42,16 @@
   align-items: center;
   background-color: var(--buttonBackground);
   filter: brightness(115%);
+}
+
+.ButtonTransparent {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.Button:disabled,
+.ButtonAlternate:disabled,
+.ButtonTransparent:disabled {
+  cursor: not-allowed;
 }

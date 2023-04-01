@@ -2,9 +2,10 @@ import * as React from "react";
 import styles from "./TestimonialsReel.module.css";
 
 import Image from "next/image";
+import { Button } from ".";
 
-import LeftArrow from "../public/assets/Home/Testimonials_LeftArrow.svg";
-import RightArrow from "../public/assets/Home/Testimonials_RightArrow.svg";
+import ArrowLeft from "../public/assets/Home/ArrowLeft.svg";
+import ArrowRight from "../public/assets/Home/ArrowRight.svg";
 import Stars from "../public/assets/Home/Testimonials_Stars.svg";
 
 import Casey from "../public/assets/Home/Testimonials_Casey.png";
@@ -67,11 +68,11 @@ const Testimonial = ({ customerName, blurb, avatar }) => (
   </figure>
 );
 
-const TestimonialsReel = ({ testimonials = TESTIMONIALS }) => {
+export const useCarousel = (items) => {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   // position helpers
-  const lastIndex = testimonials.length - 1;
+  const lastIndex = items.length - 1;
   const isFirst = activeIndex === 0;
   const isLast = activeIndex === lastIndex;
 
@@ -83,23 +84,26 @@ const TestimonialsReel = ({ testimonials = TESTIMONIALS }) => {
     setActiveIndex(isFirst ? lastIndex : activeIndex - 1);
   };
 
+  return {
+    activeIndex,
+    showNext,
+    showPrev,
+  };
+};
+
+const TestimonialsReel = ({ testimonials = TESTIMONIALS }) => {
+  const { activeIndex, showNext, showPrev } = useCarousel(testimonials);
   const testimonial = TESTIMONIALS[activeIndex];
 
   return (
     <div className={styles.TestimonialsReel}>
-      <button
-        onClick={showPrev}
-        style={{ backgroundColor: "transparent", border: 0, cursor: "pointer" }}
-      >
-        <Image src={LeftArrow} />
-      </button>
+      <Button className="ButtonTransparent" onClick={showPrev}>
+        <Image src={ArrowLeft} />
+      </Button>
       <Testimonial {...testimonial} />
-      <button
-        onClick={showNext}
-        style={{ backgroundColor: "transparent", border: 0, cursor: "pointer" }}
-      >
-        <Image src={RightArrow} />
-      </button>
+      <Button className="ButtonTransparent" onClick={showNext}>
+        <Image src={ArrowRight} />
+      </Button>
     </div>
   );
 };

@@ -423,32 +423,6 @@
   margin: 0;
 }
 
-.services__block {
-  padding: 2rem;
-  background: var(--background);
-  box-shadow: var(--boxShadow);
-  border-radius: var(--rounded);
-
-  width: 100%;
-  max-width: 40rem;
-  position: absolute;
-  top: 38rem;
-  right: 15%;
-}
-
-.services__block__heading {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.services__block__carousel {
-  margin-top: 2rem;
-  display: flex;
-  flex-flow: row wrap;
-  gap: 2rem;
-  justify-content: space-between;
-}
-
 .designWrap {
   padding: 8rem 10px;
   display: flex;

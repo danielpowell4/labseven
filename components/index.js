@@ -13,6 +13,7 @@ export { default as ProductsCalculator } from "./ProductsCalculator";
 export { default as ProductList } from "./ProductList";
 export { default as RotatingLogo } from "./RotatingLogo";
 export { default as SearchBar } from "./SearchBar";
+export { default as ServicesReel } from "./ServicesReel";
 export { default as SiteFooter } from "./SiteFooter";
 export { default as SiteNav } from "./SiteNav";
 export { default as TestimonialsReel } from "./TestimonialsReel";

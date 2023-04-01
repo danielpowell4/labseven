@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
   Layout,
   RotatingLogo,
+  ServicesReel,
   TestimonialsReel,
   CtaForm,
   InstaReel,
@@ -319,31 +320,7 @@ const HomePage = () => {
             </li>
           </ul>
 
-          <div className={styles.services__block}>
-            <h3 className={styles.services__block__heading}>
-              What does <span className={styles.Underline4}>your business</span>{" "}
-              need?
-            </h3>
-            <div className={styles.services__block__carousel}>
-              {["Screen Printing", "Embroidery", "Stickers & Decals"].map(
-                (serviceName, serviceIndex) => (
-                  <div
-                    key={serviceIndex}
-                    style={{
-                      flex: 1,
-                      height: "10rem",
-                      background: "grey",
-                      padding: "1rem",
-                      display: "flex",
-                      alignItems: "flex-end",
-                    }}
-                  >
-                    <h4 style={{ margin: 0 }}>{serviceName}</h4>
-                  </div>
-                )
-              )}
-            </div>
-          </div>
+          <ServicesReel />
         </div>
       </div>
       <div className={styles.designWrap}>

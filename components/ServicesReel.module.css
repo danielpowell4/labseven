@@ -1,0 +1,67 @@
+.ServicesReel {
+  padding: 2rem;
+  background: var(--background);
+  box-shadow: var(--boxShadow);
+  border-radius: var(--rounded);
+
+  width: 100%;
+  max-width: 40rem;
+  position: absolute;
+  top: 38rem;
+  right: 15%;
+
+  overflow: hidden; /* hide overflow items */
+}
+
+.ServicesReel__header {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+
+.ServicesReel__heading {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.ServicesReel__carousel {
+  --itemSize: 10rem;
+
+  margin-top: 2rem;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2rem;
+  justify-content: space-between;
+
+  transition: ease transform 300ms;
+}
+
+.ServicesReel__carousel__item {
+  height: var(--itemSize);
+  width: var(--itemSize);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  flex: 0 0 var(--itemSize);
+  border-radius: 1rem;
+  position: relative;
+}
+
+/* overlay so text pops */
+.ServicesReel__carousel__item:after {
+  content: "";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.33);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.ServicesReel__carousel__item h4 {
+  margin: 0;
+  padding: 1rem;
+  color: var(--background);
+  z-index: 3;
+}
