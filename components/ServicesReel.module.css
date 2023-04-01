@@ -1,5 +1,5 @@
 .ServicesReel {
-  padding: 2rem;
+  padding: 2rem 0 0;
   background: var(--background);
   box-shadow: var(--boxShadow);
   border-radius: var(--rounded);
@@ -17,6 +17,7 @@
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
+  padding: 0 2rem;
 }
 
 .ServicesReel__heading {
@@ -33,7 +34,9 @@
   gap: 2rem;
   justify-content: space-between;
 
-  transition: ease transform 300ms;
+  scroll-snap-type: x mandatory;
+  padding: 0 2rem 2rem;
+  overflow: auto;
 }
 
 .ServicesReel__carousel__item {

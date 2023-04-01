@@ -27,11 +27,17 @@ const SERVICES = [
 ];
 
 const ServicesReel = ({ services = SERVICES }) => {
+  const carouselRef = React.useRef();
   const { activeIndex, showNext, showPrev } = useCarousel(services);
   const prevDisabled = activeIndex === 0;
   const nextDisabled = activeIndex === services.length - 3;
 
-  const offset = activeIndex * -12; /* size + gap */
+  React.useLayoutEffect(() => {
+    const oneRem = 16;
+    const offset =
+      activeIndex * oneRem * (10 + 2); /* fontSize + (size + gap) */
+    carouselRef.current.scrollTo({ behavior: "smooth", left: offset });
+  }, [activeIndex]);
 
   return (
     <div className={styles.ServicesReel}>
@@ -63,10 +69,7 @@ const ServicesReel = ({ services = SERVICES }) => {
           </Button>
         </div>
       </div>
-      <div
-        className={styles.ServicesReel__carousel}
-        style={{ transform: `translate(${offset}rem, 0)` }}
-      >
+      <div className={styles.ServicesReel__carousel} ref={carouselRef}>
         {services.map(({ name, background }, serviceIndex) => (
           <div
             key={serviceIndex}
