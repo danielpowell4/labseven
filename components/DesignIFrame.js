@@ -1,6 +1,8 @@
 import * as React from "react";
 import Script from "next/script";
 
+import { ThreeDotLoader } from ".";
+
 const launchSettings = {
   DesignerLocation: "https://images.inksoft.com/designer/html5",
   EnforceBoundaries: "1",
@@ -90,10 +92,30 @@ const launchSettings = {
 
 const DesignIFrame = ({ id }) => {
   const designerRef = React.useRef();
+  const [frameState, setFrameState] = React.useState({ state: "loading" });
 
   return (
     <>
-      <pre id={id}>TODO: fill in iframe</pre>
+      <div id={id} ref={designerRef}>
+        {frameState.state === "loading" && <ThreeDotLoader />}
+        {frameState.state === "error" && (
+          <div>
+            <h3>Oh no! Something went wrong.</h3>
+            <p>
+              An error occurred while loading our design suite. Contact our
+              in-house team of professional designers to get your project
+              started today.
+            </p>
+            <details>
+              <summary style={{ color: `var(--danger)` }}>
+                Error Summary
+              </summary>
+              Error: {frameState.error}
+            </details>
+          </div>
+        )}
+        {/* frameState.state === "ready" => rendered via async script*/}
+      </div>
       <Script
         type="text/javascript"
         language="javascript"
@@ -102,11 +124,11 @@ const DesignIFrame = ({ id }) => {
           console.log("onLoad");
         }}
         onReady={() => {
-          console.log("onReady");
+          setFrameState({ state: "ready" });
           launchDesigner("HTML5DS", launchSettings, designerRef.current);
         }}
-        onError={(e) => {
-          console.error("Studio script failed to load", e);
+        onError={(error) => {
+          setFrameState({ state: "error", error: error });
         }}
       />
     </>
