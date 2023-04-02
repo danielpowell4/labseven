@@ -49,6 +49,13 @@ li {
   --maxWidth: 1800px;
 }
 
+@media (prefers-contrast: more) {
+  :root {
+    --primary: #3929ff;
+    --alternate: #0a6148;
+  }
+}
+
 html,
 body {
   padding: 0;
