@@ -1,6 +1,8 @@
 import * as React from "react";
 import Script from "next/script";
 
+import useIntersectionObserver from "@react-hook/intersection-observer";
+
 import { ThreeDotLoader } from ".";
 
 const launchSettings = {
@@ -93,45 +95,59 @@ const launchSettings = {
 const DesignIFrame = ({ id }) => {
   const designerRef = React.useRef();
   const [frameState, setFrameState] = React.useState({ state: "initial" });
+  const { isIntersecting } = useIntersectionObserver(designerRef, {
+    initialIsIntersecting: false, // for SSR
+  });
+
+  React.useEffect(() => {
+    if (isIntersecting && frameState.state === "initial") {
+      setFrameState({ state: "loading" });
+    }
+  }, [isIntersecting, frameState.state]);
+
+  const showLoader = ["initial", "loading", "loaded"].includes(
+    frameState.state
+  );
 
   return (
     <>
-      <div id={id} ref={designerRef}>
-        {["initial", "loaded"].includes(frameState.state) && <ThreeDotLoader />}
+      <div id={id} ref={designerRef} scroll={false}>
+        {showLoader && <ThreeDotLoader style={{ paddingTop: "6rem" }} />}
         {frameState.state === "error" && (
-          <div>
+          <div style={{ padding: "3rem" }}>
             <h3>Oh no! Something went wrong.</h3>
             <p>
               An error occurred while loading our design suite. Contact our
-              in-house team of professional designers to get your project
-              started today.
+              in-house team of professionals to get your project started today.
             </p>
             <details>
               <summary style={{ color: `var(--danger)` }}>
                 Error Summary
               </summary>
-              Error: {frameState.error}
+              Error: {frameState.error.message}
             </details>
           </div>
         )}
         {/* frameState.state === "ready" => rendered via inkSoft */}
       </div>
-      <Script
-        type="text/javascript"
-        language="javascript"
-        src="https://stores.inksoft.com/designer/html5/common/js/launcher.js"
-        strategy={"lazyOnload"} // after assets loaded per https://nextjs.org/docs/api-reference/next/script#lazyonload
-        onLoad={() => {
-          setFrameState({ state: "loaded" });
-        }}
-        onReady={() => {
-          setFrameState({ state: "ready" });
-          launchDesigner("HTML5DS", launchSettings, designerRef.current);
-        }}
-        onError={(error) => {
-          setFrameState({ state: "error", error: error });
-        }}
-      />
+      {frameState.state !== "initial" && (
+        <Script
+          type="text/javascript"
+          language="javascript"
+          src="https://stores.inksoft.com/designer/html5/common/js/launcher.js"
+          strategy={"lazyOnload"} // after assets loaded per https://nextjs.org/docs/api-reference/next/script#lazyonload
+          onLoad={() => {
+            setFrameState({ state: "loaded" });
+          }}
+          onReady={() => {
+            setFrameState({ state: "ready" });
+            launchDesigner("HTML5DS", launchSettings, designerRef.current);
+          }}
+          onError={(error) => {
+            setFrameState({ state: "error", error: error });
+          }}
+        />
+      )}
     </>
   );
 };
