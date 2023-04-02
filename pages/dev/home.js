@@ -28,12 +28,14 @@ const HeroImages = [
     alt: "Hero_ScreenPrintingDenver",
     width: 917,
     height: 847,
+    priority: true,
   },
   {
     src: Hero_CustomEmbroideryColorado,
     alt: "Hero_CustomEmbroideryColorado",
     width: 341,
     height: 388,
+    priority: true,
   },
   {
     src: Hero_CustomTShirtsSpiritWear,
