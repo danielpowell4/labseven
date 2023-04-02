@@ -2,6 +2,8 @@ import * as React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import useIntersectionObserver from "@react-hook/intersection-observer";
+
 import {
   Layout,
   RotatingLogo,
@@ -14,6 +16,45 @@ import {
 } from "../../components";
 
 /* images */
+/* - hero */
+import Hero_CustomEmbroideryColorado from "../../public/assets/Home/Hero_CustomEmbroideryColorado.png";
+import Hero_CustomTShirtsDenver from "../../public/assets/Home/Hero_CustomTShirtsDenver.png";
+import Hero_CustomTShirtsSpiritWear from "../../public/assets/Home/Hero_CustomTShirtsSpiritWear.png";
+import Hero_ScreenPrintingDenver from "../../public/assets/Home/Hero_ScreenPrintingDenver.png";
+import Hero_SuziesMockup from "../../public/assets/Home/Hero_SuziesMockup.png";
+const HeroImages = [
+  {
+    src: Hero_ScreenPrintingDenver,
+    alt: "Hero_ScreenPrintingDenver",
+    width: 917,
+    height: 847,
+  },
+  {
+    src: Hero_CustomEmbroideryColorado,
+    alt: "Hero_CustomEmbroideryColorado",
+    width: 341,
+    height: 388,
+  },
+  {
+    src: Hero_CustomTShirtsSpiritWear,
+    alt: "Hero_CustomTShirtsSpiritWear",
+    width: 891,
+    height: 817,
+  },
+  { src: Hero_SuziesMockup, alt: "Hero_SuziesMockup", width: 443, height: 521 },
+  {
+    src: Hero_CustomTShirtsDenver,
+    alt: "Hero_CustomTShirtsDenver",
+    width: 577,
+    height: 1104,
+  },
+].map(({ width, height, ...img }) => {
+  const fixedWidth = 400;
+  const fixedHeight = (fixedWidth / width) * height;
+
+  return { ...img, width: fixedWidth, height: fixedHeight };
+});
+
 /* - welcome */
 import Welcome_LibertyLadies from "../../public/assets/Home/Welcome_LibertyLadies.png";
 import Welcome_Arrow from "../../public/assets/Home/Welcome_Arrow.svg";
@@ -47,6 +88,9 @@ import styles from "./Home.module.css";
 const ACTION_VERBS = ["Wear", "Share", "Wear", "Sell", "Wear", "Share", "Wear"];
 
 const HomePage = () => {
+  const [heroRef, setHeroRef] = React.useState();
+  const { isIntersecting: heroIsVisible } = useIntersectionObserver(heroRef);
+
   return (
     <Layout>
       <Head>
@@ -56,7 +100,7 @@ const HomePage = () => {
           content="Get Custom Printed Apparel Affordably. Backed by a Local Team You Can Trust."
         />
       </Head>
-      <div className={styles.hero}>
+      <div className={styles.hero} ref={setHeroRef}>
         <div className={styles.hero__spacer}>
           <div className={styles.hero__text}>
             <h1>
@@ -83,6 +127,23 @@ const HomePage = () => {
                 Contact Printing Pro
               </Link>
             </div>
+          </div>
+          <div
+            className={`${styles.hero__imageReel}${
+              heroIsVisible ? "" : ` ${styles.hero__imageReel__pauseAnimation}`
+            }`}
+            style={{
+              "--totalImageHeights":
+                HeroImages.reduce((total, img) => (total += img.height), 0) +
+                300 +
+                "px",
+            }}
+          >
+            {HeroImages.map((image, imageIndex) => (
+              <li key={imageIndex} style={{ marginTop: 200 }}>
+                <Image aria-hidden={true} {...image} />
+              </li>
+            ))}
           </div>
         </div>
       </div>

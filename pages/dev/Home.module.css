@@ -99,7 +99,8 @@
 /* END - utils */
 
 .hero {
-  height: 75vh;
+  --heroHeight: 75vh; /* used in image animation */
+  height: var(--heroHeight);
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--hr);
@@ -111,11 +112,50 @@
   padding: 1rem;
   width: 100%;
   margin: auto;
+
+  /* lock in imageReel */
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: clip;
 }
 
 .hero__text {
   max-width: 666px;
   width: 100%;
+  z-index: 3;
+}
+
+.hero__imageReel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  padding: 0;
+  margin: 0;
+}
+
+.hero__imageReel li {
+  margin-top: 6rem;
+}
+
+.hero__imageReel li:first-of-type {
+  animation: imageTurnUp 30s linear infinite;
+}
+
+.hero__imageReel__pauseAnimation li:first-of-type {
+  animation-play-state: paused;
+}
+
+@keyframes imageTurnUp {
+  0% {
+    margin-top: var(--heroHeight);
+  }
+  100% {
+    /* --totalImageHeights from JSX */
+    margin-top: calc(-1 * (var(--heroHeight) + var(--totalImageHeights)));
+  }
 }
 
 .verbsContainer {

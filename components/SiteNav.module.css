@@ -4,6 +4,11 @@
   font-family: var(--headingFont);
   padding: 0.5rem 1rem;
   grid-gap: 0.5rem;
+
+  /* above the hero*/
+  background-color: var(--background);
+  position: relative;
+  z-index: 9;
 }
 
 .logo {
