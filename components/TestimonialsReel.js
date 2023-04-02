@@ -61,7 +61,6 @@ const Testimonial = ({ customerName, blurb, avatar }) => (
           height: "auto",
         }}
         width={120}
-        height={120}
       />
     </figcaption>
     <blockquote className={styles.Testimonial__blurb}>{blurb}</blockquote>
