@@ -25,12 +25,7 @@ const NewsletterForm = ({ className = "" }) => {
         <input type="hidden" name="__title" value="newsletter" />
         <div className={styles.inputWrapper}>
           <label htmlFor="newsletter_email">Email</label>
-          <input
-            id="newsletter_email"
-            name="email"
-            type="email"
-            required="true"
-          />
+          <input id="newsletter_email" name="email" type="email" required />
         </div>
         <Button type="submit" isSubmitting={formState === "submitting"}>
           Sign Up!
