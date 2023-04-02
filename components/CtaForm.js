@@ -57,19 +57,17 @@ const CtaForm = () => {
           label: "Company / Organization",
         },
       ].map((field) => {
+        const id = `CtaForm_${field.name}`;
+
         return (
-          <div
-            key={field.name}
-            className={styles.inputWrapper}
-            style={field.styles}
-          >
-            <label htmlFor={field.id}>{field.label}</label>
+          <div key={id} className={styles.inputWrapper} style={field.styles}>
+            <label htmlFor={id}>{field.label}</label>
             <input
-              id={field.id}
+              id={id}
               name={field.name}
               type={field.type}
               value={field.value}
-              required={field.required}
+              required={field.required || false}
             />
           </div>
         );
