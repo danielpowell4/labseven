@@ -90,16 +90,37 @@ export const useCarousel = (items) => {
   };
 };
 
+const buildTestimonialId = (tIndex) => {
+  const id = tIndex + 1;
+  return `testimonial-${id}`;
+};
+
 const TestimonialsReel = ({ testimonials = TESTIMONIALS }) => {
+  const containerRef = React.useRef();
   const { activeIndex, showNext, showPrev } = useCarousel(testimonials);
-  const testimonial = TESTIMONIALS[activeIndex];
+
+  React.useEffect(() => {
+    const activeId = buildTestimonialId(activeIndex);
+
+    const container = containerRef.current;
+    if (container) {
+      const testimonial = container.querySelector("#" + activeId);
+      if (testimonial) container.scrollTo(testimonial.offsetLeft, 0);
+    }
+  }, [activeIndex]);
 
   return (
     <div className={styles.TestimonialsReel}>
       <Button className="ButtonTransparent" onClick={showPrev}>
         <Image src={ArrowLeft} alt={"Arrow to Previous Testimonial"} />
       </Button>
-      <Testimonial {...testimonial} />
+      <ul className={styles.TestimonialsReel__container} ref={containerRef}>
+        {testimonials.map((testimonial, tIndex) => (
+          <li key={tIndex} id={buildTestimonialId(tIndex)}>
+            <Testimonial {...testimonial} />
+          </li>
+        ))}
+      </ul>
       <Button className="ButtonTransparent" onClick={showNext}>
         <Image src={ArrowRight} alt={"Arrow to Next Testimonial"} />
       </Button>

@@ -12,6 +12,26 @@
   justify-content: space-between;
 }
 
+.TestimonialsReel__container {
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* Needed to work on iOS Safari */
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  gap: 4rem;
+  flex-direction: row;
+  overflow-x: auto;
+}
+
+.TestimonialsReel__container li {
+  list-style: none;
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+}
+
 .Testimonial {
   display: flex;
   flex-flow: row wrap-reverse;
@@ -19,6 +39,7 @@
   justify-content: space-around;
   gap: 1rem;
   min-height: 16rem;
+  scroll-snap-align: center;
 }
 
 .Testimonial blockquote {
