@@ -125,6 +125,7 @@
   max-width: 666px;
   width: 100%;
   z-index: 3;
+  color: var(--background);
 }
 
 .hero__imageReel {
@@ -174,6 +175,7 @@
 }
 
 .verbsContainer__reel__item {
+  color: var(--darkText);
   background-color: var(--highlight);
   mix-blend-mode: screen;
   border-radius: 0.5rem;
