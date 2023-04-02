@@ -134,27 +134,26 @@
   z-index: 2;
   padding: 0;
   margin: 0;
+  animation: imageTurnUp 30s linear infinite;
 }
 
 .hero__imageReel li {
   margin-top: 6rem;
 }
 
-.hero__imageReel li:first-of-type {
-  animation: imageTurnUp 30s linear infinite;
-}
-
-.hero__imageReel__pauseAnimation li:first-of-type {
+.hero__imageReel__pauseAnimation {
   animation-play-state: paused;
 }
 
 @keyframes imageTurnUp {
   0% {
-    margin-top: var(--heroHeight);
+    transform: translateY(var(--heroHeight));
   }
   100% {
     /* --totalImageHeights from JSX */
-    margin-top: calc(-1 * (var(--heroHeight) + var(--totalImageHeights)));
+    transform: translateY(
+      calc(-1 * (var(--heroHeight) + var(--totalImageHeights)))
+    );
   }
 }
 
