@@ -98,11 +98,11 @@ const TestimonialsReel = ({ testimonials = TESTIMONIALS }) => {
   return (
     <div className={styles.TestimonialsReel}>
       <Button className="ButtonTransparent" onClick={showPrev}>
-        <Image src={ArrowLeft} />
+        <Image src={ArrowLeft} alt={"Arrow to Previous Testimonial"} />
       </Button>
       <Testimonial {...testimonial} />
       <Button className="ButtonTransparent" onClick={showNext}>
-        <Image src={ArrowRight} />
+        <Image src={ArrowRight} alt={"Arrow to Next Testimonial"} />
       </Button>
     </div>
   );

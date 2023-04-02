@@ -89,7 +89,9 @@ const ACTION_VERBS = ["Wear", "Share", "Wear", "Sell", "Wear", "Share", "Wear"];
 
 const HomePage = () => {
   const [heroRef, setHeroRef] = React.useState();
-  const { isIntersecting: heroIsVisible } = useIntersectionObserver(heroRef);
+  const { isIntersecting: heroIsVisible } = useIntersectionObserver(heroRef, {
+    initialIsIntersecting: true, // for SSR
+  });
 
   return (
     <Layout>

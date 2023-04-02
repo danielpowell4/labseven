@@ -55,6 +55,7 @@ const ServicesReel = ({ services = SERVICES }) => {
             <Image
               src={ArrowLeft}
               style={prevDisabled ? { filter: `opacity(25%)` } : {}}
+              alt={"Arrow to Previous Service"}
             />
           </Button>
           <Button
@@ -65,6 +66,7 @@ const ServicesReel = ({ services = SERVICES }) => {
             <Image
               style={nextDisabled ? { filter: `opacity(25%)` } : {}}
               src={ArrowRight}
+              alt={"Arrow to Next Service"}
             />
           </Button>
         </div>
