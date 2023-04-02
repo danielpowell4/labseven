@@ -134,11 +134,11 @@
   z-index: 2;
   padding: 0;
   margin: 0;
-  animation: imageTurnUp 30s linear infinite;
+  animation: imageTurnUp 30s cubic-bezier(0.5, 0.7, 1, 0.7) infinite;
 }
 
 .hero__imageReel li {
-  margin-top: 6rem;
+  margin-top: 100px;
 }
 
 .hero__imageReel__pauseAnimation {
