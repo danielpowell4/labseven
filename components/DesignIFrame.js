@@ -92,12 +92,12 @@ const launchSettings = {
 
 const DesignIFrame = ({ id }) => {
   const designerRef = React.useRef();
-  const [frameState, setFrameState] = React.useState({ state: "loading" });
+  const [frameState, setFrameState] = React.useState({ state: "initial" });
 
   return (
     <>
       <div id={id} ref={designerRef}>
-        {frameState.state === "loading" && <ThreeDotLoader />}
+        {["initial", "loaded"].includes(frameState.state) && <ThreeDotLoader />}
         {frameState.state === "error" && (
           <div>
             <h3>Oh no! Something went wrong.</h3>
@@ -114,14 +114,15 @@ const DesignIFrame = ({ id }) => {
             </details>
           </div>
         )}
-        {/* frameState.state === "ready" => rendered via async script*/}
+        {/* frameState.state === "ready" => rendered via inkSoft */}
       </div>
       <Script
         type="text/javascript"
         language="javascript"
         src="https://stores.inksoft.com/designer/html5/common/js/launcher.js"
+        strategy={"lazyOnload"} // after assets loaded per https://nextjs.org/docs/api-reference/next/script#lazyonload
         onLoad={() => {
-          console.log("onLoad");
+          setFrameState({ state: "loaded" });
         }}
         onReady={() => {
           setFrameState({ state: "ready" });
