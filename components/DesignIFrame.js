@@ -111,7 +111,7 @@ const DesignIFrame = ({ id }) => {
 
   return (
     <>
-      <div id={id} ref={designerRef} scroll={false}>
+      <div id={id} ref={designerRef}>
         {showLoader && <ThreeDotLoader style={{ paddingTop: "6rem" }} />}
         {frameState.state === "error" && (
           <div style={{ padding: "3rem" }}>
