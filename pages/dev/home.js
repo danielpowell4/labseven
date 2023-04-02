@@ -28,14 +28,12 @@ const HeroImages = [
     alt: "Hero_ScreenPrintingDenver",
     width: 917,
     height: 847,
-    priority: true,
   },
   {
     src: Hero_CustomEmbroideryColorado,
     alt: "Hero_CustomEmbroideryColorado",
     width: 341,
     height: 388,
-    priority: true,
   },
   {
     src: Hero_CustomTShirtsSpiritWear,
@@ -52,7 +50,7 @@ const HeroImages = [
   },
 ].map(({ width, height, ...img }) => {
   const fixedWidth = 400;
-  const fixedHeight = (fixedWidth / width) * height;
+  const fixedHeight = Math.round((fixedWidth / width) * height);
 
   return { ...img, width: fixedWidth, height: fixedHeight };
 });
@@ -145,7 +143,7 @@ const HomePage = () => {
           >
             {HeroImages.map((image, imageIndex) => (
               <li key={imageIndex} style={{ marginTop: 200 }}>
-                <Image aria-hidden={true} {...image} />
+                <Image aria-hidden={true} priority {...image} />
               </li>
             ))}
           </div>
@@ -157,6 +155,7 @@ const HomePage = () => {
             src={Welcome_LibertyLadies}
             alt="Happy customers wearing sweatshirts"
             style={{ maxWidth: "100%", height: "auto" }}
+            priority
           />
         </div>
         <div className={styles.welcome}>
@@ -418,6 +417,8 @@ const HomePage = () => {
           fill
           sizes="100vw"
           style={{ objectFit: "cover", objectPosition: "top center" }}
+          aria-hidden={true}
+          alt="Green wave background"
         />
         <div className={styles.cta__header}>
           <h3 className={styles.cta__heading}>
@@ -432,6 +433,7 @@ const HomePage = () => {
           <Image
             src={CTA_Namaste}
             style={{ maxWidth: "100%", height: "auto" }}
+            alt="Woman wearing yoga tShirt"
           />
         </div>
         <div className={styles.cta__form}>
