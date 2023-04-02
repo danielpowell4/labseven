@@ -32,7 +32,7 @@ const ServicesReel = ({ services = SERVICES }) => {
   const prevDisabled = activeIndex === 0;
   const nextDisabled = activeIndex === services.length - 3;
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     const oneRem = 16;
     const offset =
       activeIndex * oneRem * (10 + 2); /* fontSize + (size + gap) */
