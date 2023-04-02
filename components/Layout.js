@@ -8,6 +8,14 @@ export const siteTitle =
 const description =
   "Lab Seven Screen Printing Co. is the leader in Denver Screen Printing,  Custom T-shirt Printing, Graphic Design, and Embroidery in Colorado.  Design your own t-shirt in our design studio or work with one of our artists to bring your custom tee to life.";
 
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  weights: [800],
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+});
+
 const Layout = ({ children, hideNav = false }) => {
   return (
     <>
@@ -25,20 +33,10 @@ const Layout = ({ children, hideNav = false }) => {
         <meta name="og:description" content={description} />
         {/* fonts tied to Justin's account */}
         <link rel="stylesheet" href="https://use.typekit.net/fqt7rom.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="true"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap"
-          rel="stylesheet"
-        />
       </Head>
-      {!hideNav && <SiteNav />}
-      <div className={styles.container}>
-        <main>{children}</main>
+      <div className={`${montserrat.variable}`}>
+        {!hideNav && <SiteNav />}
+        <div className={styles.container}>{children}</div>
       </div>
       <SiteFooter />
     </>
