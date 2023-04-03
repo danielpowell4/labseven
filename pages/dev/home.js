@@ -130,7 +130,7 @@ const HomePage = () => {
               </Link>
             </div>
           </div>
-          <div
+          <ul
             className={`${styles.hero__imageReel}${
               heroIsVisible ? "" : ` ${styles.hero__imageReel__pauseAnimation}`
             }`}
@@ -146,7 +146,7 @@ const HomePage = () => {
                 <Image aria-hidden={true} priority {...image} />
               </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
       <div className={styles.welcomeWrap}>

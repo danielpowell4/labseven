@@ -1,9 +1,8 @@
-// pages/_document.js
 import { Html, Head, Main, NextScript } from "next/document";
 
 const Document = () => {
   return (
-    <Html>
+    <Html lang="en">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <link
