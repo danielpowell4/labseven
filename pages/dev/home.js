@@ -62,21 +62,40 @@ import Welcome_Arrow from "../../public/assets/Home/Welcome_Arrow.svg";
 import Deserve_Hats from "../../public/assets/Home/Deserve_Hats.jpg";
 import Deserve_Hoodies from "../../public/assets/Home/Deserve_Hoodies.jpg";
 import Deserve_Volunteers from "../../public/assets/Home/Deserve_Volunteers.jpg";
+/* TODO: pick colors for each slider */
 const DeserveImages = [
   {
     src: Deserve_Volunteers,
     alt: "Volunteers in branded gear at an event",
-    minHeight: "90vh",
+    objectPosition: "center",
+    style: {
+      minHeight: "90vh",
+      backgroundColor: "#f5af21",
+      background: "linearGradient(#f5c922, #f4951f)",
+    },
   },
   {
     src: Deserve_Hoodies,
     alt: "Happy customer pointing towards button",
-    minHeight: 630,
+    objectPosition: "top",
+    style: {
+      minHeight: 630,
+      backgroundColor: "#f5af21",
+      background: "linearGradient(#f5c922, #f4951f)",
+    },
   },
-  { src: Deserve_Hats, alt: "Customer tipping custom hat", minHeight: "90vh" },
+  {
+    src: Deserve_Hats,
+    alt: "Customer tipping custom hat",
+    objectPosition: "center",
+    style: {
+      minHeight: "90vh",
+      backgroundColor: "#f5af21",
+      background: "linearGradient(#f5c922, #f4951f)",
+    },
+  },
 ];
-const DeserveImage =
-  DeserveImages[Math.floor(Math.random() * DeserveImages.length)];
+const DeserveImage = DeserveImages[0]; // Math.floor(Math.random() * DeserveImages.length)];
 /* - steps */
 import Step1_Shirt from "../../public/assets/Home/Step1_Shirt.svg";
 import Step2_Sizes from "../../public/assets/Home/Step2_Sizes.svg";
@@ -208,10 +227,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div
-        className={styles.youDeserve}
-        style={{ minHeight: DeserveImage.minHeight }}
-      >
+      <div className={styles.youDeserve} style={DeserveImage.style}>
         <Image
           className={styles.youDeserve__bg}
           src={DeserveImage.src}
@@ -219,7 +235,10 @@ const HomePage = () => {
           aria-hidden={true}
           fill
           sizes="100vw"
-          style={{ objectFit: "cover", objectPosition: "center" }}
+          style={{
+            objectFit: "cover",
+            objectPosition: DeserveImage.objectPosition,
+          }}
         />
         <div className={styles.youDeserve__spacer}>
           <div className={styles.youDeserve__block}>
