@@ -12,7 +12,7 @@ const SiteNav = () => {
         <img
           alt="Lab Seven Screen Printing Co. Logo"
           src="/assets/Lab-Seven-Logo.svg"
-          height="auto"
+          height={40.5}
           width={220}
         />
       </a>
