@@ -10,12 +10,14 @@ const COLORS = [
   "yellow",
   "lavender",
   "thistle",
+  "lightgreen",
+  "grey",
 ];
 
 const InstaReel = ({ className = "" }) => {
   return (
     <div className={`${styles.className} ${styles.InstaReel}`}>
-      {Array(5)
+      {Array(10)
         .fill("")
         .map((_, index) => (
           <div

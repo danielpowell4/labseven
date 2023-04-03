@@ -266,7 +266,7 @@
 
 .welcome__image {
   width: 120vw;
-  margin-left: -10vw;
+  margin-left: -4vw;
 }
 
 .welcome {
@@ -447,8 +447,8 @@
   background: var(--background);
   box-shadow: var(--boxShadow);
   max-width: 720px;
-  width: 100%;
-  margin: 2rem 1rem -16rem;
+  width: 90%;
+  margin: 2rem auto -16rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -464,13 +464,6 @@
 
 .howTo__block .linkContainer {
   justify-content: center;
-}
-
-@media screen and (min-width: 720px) {
-  .howTo__block {
-    margin-left: auto;
-    margin-right: auto;
-  }
 }
 
 @media screen and (min-width: 820px) {
@@ -657,8 +650,15 @@
 
 #design__arrow {
   position: absolute;
-  top: 2rem;
-  left: -5rem;
+  top: 5rem;
+  left: 0rem;
+}
+
+@media screen and (min-width: 510px) {
+  #design__arrow {
+    top: 2rem;
+    left: -5rem;
+  }
 }
 
 .design__container {
@@ -704,16 +704,28 @@
 
 .testimonials__heading {
   position: relative;
+  text-align: center;
 }
 
 .testimonials__arrow {
   position: absolute;
-  top: 1rem;
-  right: -3rem;
+  top: 2rem;
+  right: 1rem;
+}
+
+@media screen and (min-width: 624px) {
+  .testimonials__heading {
+    text-align: left;
+  }
+
+  .testimonials__arrow {
+    top: 1rem;
+    right: -3rem;
+  }
 }
 
 .ctaWrap {
-  min-height: 72rem;
+  min-height: 135rem;
   position: relative;
   overflow: hidden;
 }
@@ -724,37 +736,40 @@
 
 .cta__header {
   position: absolute;
-  left: 7%;
-  width: 38%;
-  top: 7rem;
-  font-size: 2rem;
   color: var(--background);
   line-height: 1.5;
-}
 
-.cta__heading:last-of-type {
-  max-width: 21rem;
+  top: 10rem;
+  font-size: 2rem;
+  left: 1.5rem;
 }
 
 .cta__namaste {
   position: absolute;
-  left: 20%;
-  bottom: 19rem;
-  max-width: 50vw;
-  width: 100%;
-  display: inline-flex;
+  display: flex; /* has bottom flush */
+
+  width: max-content;
+  max-width: 100%;
+  min-width: 375px;
+  margin: auto;
+  bottom: 72rem;
+  right: 0;
+  left: 0;
 }
 
 .cta__form {
-  position: absolute;
-  right: 7%;
-  width: 38%;
-  top: 6rem;
-  padding: 2rem;
-
   background: var(--background);
-  box-shadow: var(--boxShadow);
-  border-radius: var(--rounded);
+  padding: 2rem;
+  position: absolute;
+  width: 100%;
+
+  left: 0;
+  right: 0;
+
+  margin: auto;
+  max-width: 45rem;
+
+  bottom: 28rem;
 }
 
 .cta__form__header {
@@ -773,6 +788,7 @@
   position: absolute;
   bottom: 0;
   z-index: 3;
+  max-width: 100%;
 }
 
 .newsletterWrap {
@@ -788,4 +804,63 @@
 
 .newsletterWrap p {
   margin: 0;
+  text-align: center;
+}
+
+@media screen and (min-width: 420px) {
+  .cta__form {
+    bottom: 39rem;
+  }
+}
+
+@media screen and (min-width: 526px) {
+  .cta__header {
+    top: 12rem;
+    font-size: 2rem;
+    left: 2rem;
+  }
+  .cta__form {
+    bottom: 41rem;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .cta__form {
+    box-shadow: var(--boxShadow);
+    border-radius: var(--rounded);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  /* without break form touches face */
+  .ctaWrap {
+    min-height: 75rem;
+  }
+
+  .cta__header {
+    left: 7%;
+    width: 40%;
+  }
+
+  .cta__heading:last-of-type {
+    max-width: 21rem;
+  }
+
+  .cta__namaste {
+    right: unset;
+    left: 24%;
+    bottom: 19rem;
+    width: 42%;
+  }
+
+  .cta__form {
+    right: 7%;
+    width: 38%;
+    top: 6rem;
+    box-shadow: var(--boxShadow);
+    border-radius: var(--rounded);
+
+    bottom: unset;
+    left: unset;
+  }
 }

@@ -4,6 +4,10 @@
   gap: 1rem;
 }
 
+.CtaForm p {
+  margin: 0;
+}
+
 .inputWrapper {
   flex: 1 0 100%;
   display: flex;
@@ -16,7 +20,7 @@
 
 .CtaForm__actions {
   display: flex;
-  margin: 0 2rem;
+  margin: 1rem 2rem 0;
   justify-content: center;
   flex-basis: 100%;
 }

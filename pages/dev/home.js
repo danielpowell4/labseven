@@ -454,22 +454,25 @@ const HomePage = () => {
               src={Reviews_Arrow}
               alt="Arrow towards customer reviews"
               aria-hidden="true"
-              style={{ maxWidth: "100%", height: "auto" }}
+              style={{ maxWidth: "5rem", height: "auto" }}
             />
           </div>
         </h2>
         <TestimonialsReel />
       </div>
-      <div className={styles.ctaWrap}>
-        <Image
+      <div
+        className={styles.ctaWrap}
+        style={{ backgroundImage: `url(/assets/Home/Green_Wave.svg)` }}
+      >
+        {/* <Image
           className={styles.cta__bg}
           src={Green_Wave}
           fill
           sizes="100vw"
-          style={{ objectFit: "cover", objectPosition: "top center" }}
+          style={{ objectFit: "cover", objectPosition: "center top" }}
           aria-hidden={true}
           alt="Green wave background"
-        />
+        /> */}
         <div className={styles.cta__header}>
           <h3 className={styles.cta__heading}>
             Stop wasting your marketing budget on throwaway apparel.

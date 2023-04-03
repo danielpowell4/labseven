@@ -2,11 +2,15 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  overflow: hidden;
+
   width: 100%;
+  overflow: auto;
+  justify-content: space-between;
+  scroll-snap-type: x mandatory;
 }
 
 .InstaReel__item {
   height: 17rem;
   width: 17rem;
+  flex: 0 0 17rem;
 }
