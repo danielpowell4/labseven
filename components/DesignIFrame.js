@@ -3,7 +3,7 @@ import Script from "next/script";
 
 import useIntersectionObserver from "@react-hook/intersection-observer";
 
-import { ThreeDotLoader } from ".";
+import { Button, ThreeDotLoader } from ".";
 
 const launchSettings = {
   DesignerLocation: "https://images.inksoft.com/designer/html5",
@@ -113,6 +113,14 @@ const DesignIFrame = ({ id }) => {
     <>
       <div id={id} ref={designerRef}>
         {showLoader && <ThreeDotLoader style={{ paddingTop: "6rem" }} />}
+        {frameState.state === "initial" && (
+          <Button
+            onClick={() => setFrameState({ state: "loading" })}
+            style={{ margin: "auto", display: "block" }}
+          >
+            Load Design Studio
+          </Button>
+        )}
         {frameState.state === "error" && (
           <div style={{ padding: "3rem" }}>
             <h3>Oh no! Something went wrong.</h3>
