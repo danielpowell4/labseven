@@ -308,17 +308,23 @@
 }
 
 .youDeserve {
-  min-height: 560px;
+  min-height: 90vh;
   background-color: #f5af21;
   background: linear-gradient(#f5c922, #f4951f);
   display: flex;
   align-items: center;
+  position: relative;
+}
+
+.youDeserve__bg {
+  z-index: 0;
 }
 
 .youDeserve__spacer {
   max-width: var(--gridWidth);
   width: 100%;
   margin: auto;
+  z-index: 1;
 }
 
 .youDeserve__block {

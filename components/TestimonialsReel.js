@@ -90,9 +90,8 @@ export const useCarousel = (items) => {
   };
 };
 
-const buildTestimonialId = (tIndex) => {
-  const id = tIndex + 1;
-  return `testimonial-${id}`;
+const buildTestimonialId = (index) => {
+  return `testimonial-${index}`;
 };
 
 const TestimonialsReel = ({ testimonials = TESTIMONIALS }) => {
