@@ -91,7 +91,7 @@ export const useCarousel = (items) => {
 };
 
 const buildTestimonialId = (index) => {
-  return `testimonial-${index}`;
+  return `testimonial-${index + 1}`;
 };
 
 const TestimonialsReel = ({ testimonials = TESTIMONIALS }) => {
@@ -103,8 +103,10 @@ const TestimonialsReel = ({ testimonials = TESTIMONIALS }) => {
 
     const container = containerRef.current;
     if (container) {
+      const containerOffset = container.offsetLeft;
       const testimonial = container.querySelector("#" + activeId);
-      if (testimonial) container.scrollTo(testimonial.offsetLeft, 0);
+      if (testimonial)
+        container.scrollTo(testimonial.offsetLeft - containerOffset, 0);
     }
   }, [activeIndex]);
 

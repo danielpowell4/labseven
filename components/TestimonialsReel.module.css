@@ -39,7 +39,7 @@
   justify-content: space-around;
   gap: 1rem;
   min-height: 16rem;
-  scroll-snap-align: center;
+  margin: 1rem auto;
 }
 
 .Testimonial blockquote {
