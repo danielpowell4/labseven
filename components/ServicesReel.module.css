@@ -1,14 +1,10 @@
 .ServicesReel {
   padding: 2rem 0 0;
   background: var(--background);
-  box-shadow: var(--boxShadow);
-  border-radius: var(--rounded);
 
   width: 100%;
-  max-width: 40rem;
   position: absolute;
-  top: 38rem;
-  right: 15%;
+  bottom: 0;
 
   overflow: hidden; /* hide overflow items */
 }
@@ -23,6 +19,12 @@
 .ServicesReel__heading {
   margin: 0;
   font-size: 1.5rem;
+
+  text-align: center;
+}
+
+.ServicesReel__nav {
+  display: none; /* carousel hidden */
 }
 
 .ServicesReel__carousel {
@@ -30,18 +32,18 @@
 
   margin-top: 2rem;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   gap: 2rem;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 
-  scroll-snap-type: x mandatory;
   padding: 0 2rem 2rem;
-  overflow: auto;
 }
 
 .ServicesReel__carousel__item {
-  height: var(--itemSize);
-  width: var(--itemSize);
+  height: 180px;
+  width: 240px;
+
   overflow: hidden;
   display: flex;
   align-items: flex-end;
@@ -67,4 +69,52 @@
   padding: 1rem;
   color: var(--background);
   z-index: 3;
+}
+
+@media screen and (min-width: 960px) {
+  /* to floating carousel*/
+  .ServicesReel {
+    box-shadow: var(--boxShadow);
+    border-radius: var(--rounded);
+
+    max-width: 40rem;
+    top: 38rem;
+    bottom: unset;
+    right: 0;
+  }
+
+  .ServicesReel__heading {
+    text-align: left;
+  }
+
+  .ServicesReel__nav {
+    display: block;
+  }
+
+  .ServicesReel__carousel {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    scroll-snap-type: x mandatory;
+
+    padding: 0 2rem 2rem;
+    overflow: auto;
+  }
+
+  .ServicesReel__carousel__item {
+    height: var(--itemSize);
+    width: var(--itemSize);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    flex: 0 0 var(--itemSize);
+    border-radius: 1rem;
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 1275px) {
+  .ServicesReel {
+    top: 38rem;
+    right: 15%;
+  }
 }

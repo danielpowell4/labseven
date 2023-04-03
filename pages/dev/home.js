@@ -216,7 +216,7 @@ const HomePage = () => {
             <p>
               <strong>That's why we believe:</strong>
             </p>
-            <div style={{ position: "absolute" }}>
+            <div className={styles.welcome__block__arrow}>
               <Image
                 src={Welcome_Arrow}
                 alt="Arrow pointing to next section"
@@ -366,7 +366,7 @@ const HomePage = () => {
                 <p>
                   Apparel sales offer your customers a fun and affordable way to
                   show their support, while creating a new source of income for
-                  your business or company.
+                  your business.
                 </p>
               </div>
             </li>
