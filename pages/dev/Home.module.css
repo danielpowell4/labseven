@@ -485,32 +485,46 @@
 }
 
 .servicesWrap {
+  --servicesHeight: 134rem;
+
   position: relative;
-  min-height: 134rem;
+  min-height: var(--servicesHeight);
 }
 
 .services__bg {
   z-index: 0;
 }
 
-.services__heading {
-  position: absolute;
-  left: 10%;
-  top: 16rem;
-  font-size: 1.5rem;
-  color: var(--background);
-  line-height: 1.5;
+.services__spacer {
+  min-height: var(--servicesHeight);
+  position: relative;
+  max-width: var(--gridWidth);
+  width: 100%;
+  margin: auto;
 }
 
 .services__uniformMan {
   position: absolute;
 
   top: 28rem;
-  left: -12vw;
+  left: -8%;
   max-width: 66vw;
 
   width: 100%;
   display: flex;
+}
+
+.services__heading {
+  position: absolute;
+  color: var(--background);
+
+  font-size: 1.5rem;
+  line-height: 1.5;
+
+  top: 16rem;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
 .services__flyingText {
@@ -547,7 +561,7 @@
 @media screen and (min-width: 416px) {
   /* carsosel to 2 column */
   .servicesWrap {
-    min-height: 94rem;
+    --servicesHeight: 94rem;
   }
   .services__heading {
     font-size: 2rem;
@@ -564,9 +578,13 @@
 @media screen and (min-width: 820px) {
   /* remove howTo overlap */
   .services__heading {
+    font-size: 1.5rem;
+
     top: 8rem;
     left: 3rem;
-    font-size: 1.5rem;
+    right: unset;
+
+    text-align: left;
   }
 
   .services__points {
@@ -580,7 +598,7 @@
     position: absolute;
     width: 100%;
     max-width: 55vw;
-    right: 1rem;
+    right: 0;
   }
 
   .services__flyingText {
@@ -588,44 +606,26 @@
   }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 1000px) {
   /* to floating carousel*/
   .servicesWrap {
-    min-height: 80rem;
+    --servicesHeight: 62rem;
   }
 
   .services__heading {
-    top: 8rem;
-    font-size: 2rem;
+    top: 4rem;
+    font-size: 2.5rem;
+    left: 1rem;
   }
 
   .services__uniformMan {
     top: unset;
     bottom: 0;
+    width: 420px;
   }
 
   .services__flyingText {
-    top: 30rem;
-  }
-}
-
-@media screen and (min-width: 1275px) {
-  .servicesWrap {
-    min-height: 62rem;
-  }
-
-  .services__heading {
-    left: 10%;
-  }
-
-  .services__uniformMan {
-    left: max(4vw, 10px);
-    max-width: min(28vw, 410px);
-    width: 100%;
-  }
-
-  .services__flyingText {
-    left: 27vw;
+    left: 32%;
     top: 22rem;
     max-width: 16rem;
     width: 100%;
@@ -633,7 +633,13 @@
 
   .services__points {
     max-width: 26rem;
-    right: 20%;
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 1186px) {
+  .services__heading {
+    left: 0;
   }
 }
 

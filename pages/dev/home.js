@@ -319,7 +319,8 @@ const HomePage = () => {
           sizes="100vw"
           style={{ objectFit: "cover", objectPosition: "top" }}
         />
-        <div className={styles.services}>
+
+        <div className={styles.services__spacer}>
           <h2 className={styles.services__heading}>
             <span className={styles.Underline3}>Real world</span>
             <div style={{ display: "inline-flex", margin: 10 }}>
