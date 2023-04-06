@@ -15,6 +15,8 @@
 .grid__aside {
   box-sizing: border-box;
   padding: 0.5rem 0.5rem 6rem;
+  padding-top: 4.5rem; /* until menu overlay fixed */
+
   position: sticky;
   top: 1.15rem;
   align-self: start; /* for 'sticky' in grid */
@@ -61,6 +63,12 @@
 
 .grid__asideIsOpen .menuButton svg {
   fill: var(--mediumText);
+}
+
+@media (min-width: 620px) {
+  .grid__aside {
+    padding-top: 0.5rem; /* until menu overlay fixed */
+  }
 }
 
 @media (min-width: 860px) {
