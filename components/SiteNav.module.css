@@ -1,14 +1,27 @@
 .header {
-  display: grid;
-  border-bottom: 1px solid var(--hr);
+  --localeWidth: 92px; /* flags + padding */
+
   font-family: var(--headingFont);
+  border-bottom: 1px solid var(--hr);
   padding: 0.5rem 1rem;
-  grid-gap: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
   /* above the hero*/
   background-color: var(--background);
   position: relative;
   z-index: 9;
+}
+
+.header__spacer {
+  width: 100%;
+  margin: auto;
+
+  display: flex;
+  flex-direction: inherit;
+  justify-content: space-between;
 }
 
 .logo {
@@ -94,8 +107,14 @@
 
 @media (min-width: 612px) {
   .header {
-    grid-template-columns: 200px auto 146px;
-    padding: 0;
+    flex-direction: row;
+    align-items: center;
+  }
+  .header__spacer {
+    width: 100%;
+    max-width: var(--gridWidth);
+    padding-right: var(--localeWidth);
+    margin-right: auto;
   }
   .logo {
     justify-content: center;
@@ -107,7 +126,16 @@
     padding: 0;
   }
   .locales {
-    justify-content: flex-end;
-    padding: 1.25rem 2rem 1.25rem 0;
+    position: absolute;
+    right: 1rem;
+  }
+}
+
+/* at --gridWidth let flags fly right */
+@media screen and (min-width: 1376px) {
+  .header__spacer {
+    max-width: var(--gridWidth);
+    padding-right: 0;
+    margin: auto;
   }
 }
