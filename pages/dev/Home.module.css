@@ -124,10 +124,11 @@
 }
 
 .hero__text {
-  max-width: 666px;
-  width: 100%;
-  z-index: 3;
   color: var(--background);
+  max-width: 45rem;
+  width: 100%;
+  padding-left: 2rem;
+  z-index: 3;
 }
 
 .hero__imageReel {
@@ -163,6 +164,7 @@
 .verbsContainer {
   display: flex;
   flex-direction: row;
+  margin-left: -0.75rem;
 }
 
 .verbsContainer__reel {
@@ -173,16 +175,14 @@
   text-align: center;
   height: 2.5rem;
 
-  margin-right: 0.5rem;
+  min-width: fit-content;
+  margin-right: 0.45rem; /* inject space */
 }
 
 .verbsContainer__reel__item {
-  color: var(--darkText);
-  background-color: var(--highlight);
-  mix-blend-mode: screen;
   border-radius: 0.5rem;
-  padding: 1px 0.25rem;
-  height: 40px;
+  padding: 0 0.25rem;
+  min-height: 40px;
   box-sizing: border-box;
 }
 
