@@ -47,6 +47,7 @@ li {
 
   --gridWidth: 1156px;
   --maxWidth: 1800px;
+  --navHeight: 58px;
 }
 
 @media (prefers-contrast: more) {

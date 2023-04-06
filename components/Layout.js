@@ -27,7 +27,12 @@ const Layout = ({ children, hideNav = false }) => {
       </Head>
       <div className={`${montserrat.variable}`}>
         {!hideNav && <SiteNav />}
-        <div className={styles.container}>{children}</div>
+        <div
+          className={styles.container}
+          style={!hideNav ? { paddingTop: `var(--navHeight)` } : {}}
+        >
+          {children}
+        </div>
         <SiteFooter />
       </div>
     </>

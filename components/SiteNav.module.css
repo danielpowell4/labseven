@@ -1,3 +1,16 @@
+.SiteNav {
+  /* stick to top */
+  position: fixed;
+  top: 0;
+  transition: top 0.3s;
+  width: 100%;
+  z-index: 9;
+}
+
+.SiteNav__hidden {
+  top: calc(0px - var(--navHeight));
+}
+
 .header {
   --localeWidth: 92px; /* flags + padding */
 
@@ -12,7 +25,6 @@
   /* above the hero*/
   background-color: var(--background);
   position: relative;
-  z-index: 9;
 }
 
 .header__spacer {
@@ -43,7 +55,7 @@
   z-index: 2;
 }
 
-.callNow__isOpen .callNow__flyout {
+.callNow__isFlyoutOpen .callNow__flyout {
   display: block;
 }
 
@@ -67,6 +79,7 @@
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 3px 15px 0 rgb(0 0 0 / 10%);
+  width: 18.5rem;
 }
 
 .callNow__flyout ul {
