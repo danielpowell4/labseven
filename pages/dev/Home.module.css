@@ -131,6 +131,32 @@
   z-index: 3;
 }
 
+.hero__imageRacetrack {
+  position: absolute;
+  z-index: 1;
+
+  top: 1rem;
+  height: 90%;
+
+  width: 120%;
+  right: -10%;
+  left: -10%;
+}
+
+.hero__imageRacetrack image {
+  animation: travelPath 25s linear infinite;
+  offset-path: path(
+    "m31.57,379.4C16.89,407.97-2.63,114.01.29,196.64c1.28,36.26,7.35-100.27,15.3-119.86,10.01-24.64,5.59-58.28,111.05-58.28s86.46,50.06,166.35,39.94c79.9-10.12,120.99-73.69,167.28-55.03s47.39,69.73,103.1,58.79,87.01-75.71,122.16-42.87,21.58,206.44,22.37,167.68c.7-34.19-43.31,176.65-6.39,151.99,44.38-29.65-92.75,8.19-117.37,10.69-30.02,3.05-56.8,54.95-88.18,43.59-59.08-21.38-199.33,12.23-284.26,5.63-57.68-4.48-153.71-70.96-180.15-19.51Z"
+  );
+}
+
+@keyframes travelPath {
+  100% {
+    /* --startingOffset set in DOM */
+    offset-distance: calc(var(--startingOffset) + 100%);
+  }
+}
+
 .hero__imageReel {
   position: absolute;
   right: 0;
@@ -138,7 +164,17 @@
   z-index: 2;
   padding: 0;
   margin: 0;
-  animation: imageTurnUp 30s cubic-bezier(0.5, 0.7, 1, 0.7) infinite;
+  display: none;
+}
+
+@media screen and (min-width: 920px) {
+  .hero__imageReel {
+    display: block;
+    animation: imageTurnUp 30s linear infinite;
+  }
+  .hero__imageRacetrack {
+    display: none;
+  }
 }
 
 .hero__imageReel li {

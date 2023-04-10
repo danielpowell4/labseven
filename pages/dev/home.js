@@ -18,38 +18,121 @@ import {
 /* images */
 /* - hero */
 import Hero_CustomEmbroideryColorado from "../../public/assets/Home/Hero_CustomEmbroideryColorado.png";
-import Hero_CustomTShirtsDenver from "../../public/assets/Home/Hero_CustomTShirtsDenver.png";
-import Hero_CustomTShirtsSpiritWear from "../../public/assets/Home/Hero_CustomTShirtsSpiritWear.png";
+import Hero_CustomEmbroideryDenver from "../../public/assets/Home/Hero_CustomEmbroideryDenver.png";
+import Hero_CustomTshirtsDenver from "../../public/assets/Home/Hero_CustomTshirtsDenver.png";
+import Hero_CustomTshirtsSpiritWear from "../../public/assets/Home/Hero_CustomTshirtsSpiritWear.png";
+import Hero_ScreenPrintedHoodies_Colorado from "../../public/assets/Home/Hero_ScreenPrintedHoodies_Colorado.png";
 import Hero_ScreenPrintingDenver from "../../public/assets/Home/Hero_ScreenPrintingDenver.png";
 import Hero_SuziesMockup from "../../public/assets/Home/Hero_SuziesMockup.png";
+import Hero_TshirtPrinterTankTops from "../../public/assets/Home/Hero_TshirtPrinterTankTops.png";
+
 const HeroImages = [
   {
     src: Hero_ScreenPrintingDenver,
     alt: "Hero_ScreenPrintingDenver",
-    width: 917,
-    height: 847,
+    width: 1146,
+    height: 844,
   },
   {
     src: Hero_CustomEmbroideryColorado,
     alt: "Hero_CustomEmbroideryColorado",
-    width: 341,
-    height: 388,
+    width: 1146,
+    height: 392,
   },
   {
-    src: Hero_CustomTShirtsSpiritWear,
-    alt: "Hero_CustomTShirtsSpiritWear",
-    width: 891,
-    height: 817,
+    src: Hero_CustomTshirtsSpiritWear,
+    alt: "Hero_CustomTshirtsSpiritWear",
+    width: 1146,
+    height: 848,
   },
-  { src: Hero_SuziesMockup, alt: "Hero_SuziesMockup", width: 443, height: 521 },
   {
-    src: Hero_CustomTShirtsDenver,
-    alt: "Hero_CustomTShirtsDenver",
-    width: 577,
-    height: 1104,
+    src: Hero_SuziesMockup,
+    alt: "Hero_SuziesMockup",
+    width: 1146,
+    height: 518,
+  },
+  {
+    src: Hero_CustomTshirtsDenver,
+    alt: "Hero_CustomTshirtsDenver",
+    width: 1146,
+    height: 1023,
+  },
+  {
+    src: Hero_CustomEmbroideryDenver,
+    alt: "Hero_CustomEmbroideryDenver",
+    width: 1146,
+    height: 338,
+  },
+  {
+    src: Hero_ScreenPrintedHoodies_Colorado,
+    alt: "Hero_ScreenPrintedHoodies_Colorado",
+    width: 1146,
+    height: 1077,
+  },
+  {
+    src: Hero_TshirtPrinterTankTops,
+    alt: "Hero_TshirtPrinterTankTops",
+    width: 1146,
+    height: 852,
   },
 ].map(({ width, height, ...img }) => {
-  const fixedWidth = 400;
+  const fixedWidth = 420;
+  const fixedHeight = Math.round((fixedWidth / width) * height);
+
+  return { ...img, width: fixedWidth, height: fixedHeight };
+});
+
+const RacetrackImages = [
+  {
+    href: "/assets/Home/Hero_ScreenPrintingDenver.png",
+    alt: "Hero_ScreenPrintingDenver",
+    width: 1146,
+    height: 844,
+  },
+  {
+    href: "/assets/Home/Hero_CustomEmbroideryColorado.png",
+    alt: "Hero_CustomEmbroideryColorado",
+    width: 1146,
+    height: 392,
+  },
+  {
+    href: "/assets/Home/Hero_CustomTshirtsSpiritWear.png",
+    alt: "Hero_CustomTshirtsSpiritWear",
+    width: 1146,
+    height: 848,
+  },
+  {
+    href: "/assets/Home/Hero_SuziesMockup.png",
+    alt: "Hero_SuziesMockup",
+    width: 1146,
+    height: 518,
+  },
+  {
+    href: "/assets/Home/Hero_CustomTshirtsDenver.png",
+    alt: "Hero_CustomTshirtsDenver",
+    width: 1146,
+    height: 1023,
+  },
+  {
+    href: "/assets/Home/Hero_CustomEmbroideryDenver.png",
+    alt: "Hero_CustomEmbroideryDenver",
+    width: 1146,
+    height: 338,
+  },
+  {
+    href: "/assets/Home/Hero_ScreenPrintedHoodies_Colorado.png",
+    alt: "Hero_ScreenPrintedHoodies_Colorado",
+    width: 1146,
+    height: 1077,
+  },
+  {
+    href: "/assets/Home/Hero_TshirtPrinterTankTops.png",
+    alt: "Hero_TshirtPrinterTankTops",
+    width: 1146,
+    height: 852,
+  },
+].map(({ width, height, ...img }) => {
+  const fixedWidth = 420;
   const fixedHeight = Math.round((fixedWidth / width) * height);
 
   return { ...img, width: fixedWidth, height: fixedHeight };
@@ -175,7 +258,7 @@ const HomePage = () => {
             style={{
               "--totalImageHeights":
                 HeroImages.reduce((total, img) => (total += img.height), 0) +
-                (HeroImages.length - 1) * 100 + // 100px margin between images
+                (HeroImages.length - 1) * 200 + // 200px margin between images
                 "px",
             }}
           >
@@ -185,6 +268,37 @@ const HomePage = () => {
               </li>
             ))}
           </ul>
+          <svg
+            className={styles.hero__imageRacetrack}
+            viewBox="0 0 721.68 398.47"
+            preserveAspectRatio="none" // allows stretching
+          >
+            {RacetrackImages.map((image, imageIndex) => {
+              const miniWidth = 120;
+              const miniHeight = Math.round(
+                (miniWidth / image.width) * image.height
+              );
+              const miniImage = {
+                ...image,
+                width: miniWidth,
+                height: miniHeight,
+              };
+
+              const startingOffset = 12.5 * imageIndex + "%";
+
+              return (
+                <image
+                  key={imageIndex}
+                  aria-hidden={true}
+                  style={{
+                    "--startingOffset": startingOffset,
+                    offsetDistance: "var(--startingOffset)",
+                  }}
+                  {...miniImage}
+                />
+              );
+            })}
+          </svg>
         </div>
       </div>
       <div className={styles.welcomeWrap}>
