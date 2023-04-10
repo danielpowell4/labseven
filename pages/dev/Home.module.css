@@ -739,13 +739,27 @@
 }
 
 .ctaWrap {
-  min-height: 135rem;
+  --ctaHeight: 125rem;
+  --instaReelHeight: 17rem;
+  --newsLetterHeight: 11rem;
+
   position: relative;
   overflow: hidden;
+
+  min-height: var(--ctaHeight);
 }
 
 .cta__bg {
   z-index: 0;
+}
+
+.cta__topSpacer {
+  max-width: var(--gridWidth);
+  min-height: calc(
+    var(--ctaHeight) - var(--instaReelHeight) - var(--newsLetterHeight)
+  );
+  margin: auto;
+  position: relative;
 }
 
 .cta__header {
@@ -753,37 +767,44 @@
   color: var(--background);
   line-height: 1.5;
 
-  top: 10rem;
+  bottom: 15rem;
   font-size: 2rem;
   left: 1.5rem;
+
+  max-width: 28rem; /* lock :first-of-type to 3 lines */
+}
+
+.cta__heading:last-of-type {
+  max-width: 26rem; /* lock to 2 lines */
 }
 
 .cta__namaste {
   position: absolute;
   display: flex; /* has bottom flush */
 
-  width: max-content;
-  max-width: 100%;
-  min-width: 375px;
+  width: 100%;
+  max-width: 420px;
+
   margin: auto;
-  bottom: 72rem;
-  right: 0;
   left: 0;
+  right: 0;
+  bottom: -4rem; /* flush with bottom */
 }
 
 .cta__form {
   background: var(--background);
+  box-shadow: var(--boxShadow);
+  border-radius: var(--rounded);
   padding: 2rem;
+
   position: absolute;
-  width: 100%;
-
-  left: 0;
+  top: 0;
   right: 0;
+  left: 0;
 
+  width: calc(100% - 20px);
+  max-width: 30rem;
   margin: auto;
-  max-width: 45rem;
-
-  bottom: 28rem;
 }
 
 .cta__form__header {
@@ -800,7 +821,6 @@
 
 .cta__footer {
   position: absolute;
-  bottom: 0;
   z-index: 3;
   max-width: 100%;
 }
@@ -822,59 +842,82 @@
 }
 
 @media screen and (min-width: 420px) {
-  .cta__form {
-    bottom: 39rem;
+  /* form shrinks in height rapidly as screen grows */
+  .ctaWrap {
+    --ctaHeight: 118rem;
   }
-}
-
-@media screen and (min-width: 526px) {
   .cta__header {
-    top: 12rem;
-    font-size: 2rem;
-    left: 2rem;
-  }
-  .cta__form {
-    bottom: 41rem;
+    bottom: 17rem;
   }
 }
 
-@media screen and (min-width: 720px) {
-  .cta__form {
-    box-shadow: var(--boxShadow);
-    border-radius: var(--rounded);
+@media screen and (min-width: 460px) {
+  .ctaWrap {
+    --ctaHeight: 110rem;
+  }
+}
+
+@media screen and (min-width: 573px) {
+  /* newsletter words to one line */
+  .ctaWrap {
+    --newsLetterHeight: 10rem;
+  }
+}
+
+@media screen and (min-width: 652px) {
+  /* namaste to right */
+  .ctaWrap {
+    --ctaHeight: 94rem;
+  }
+  .cta__header {
+    bottom: 6rem;
+  }
+  .cta__namaste {
+    max-width: 55%;
+
+    left: unset;
+    right: -4rem;
+  }
+}
+
+@media screen and (min-width: 903px) {
+  /* newsletter to one flex row */
+  .ctaWrap {
+    --newsLetterHeight: 6rem;
   }
 }
 
 @media screen and (min-width: 1200px) {
   /* without break form touches face */
   .ctaWrap {
-    min-height: 75rem;
+    min-height: 79rem;
+  }
+
+  .cta__topSpacer {
+    min-height: 56rem;
   }
 
   .cta__header {
-    left: 7%;
-    width: 40%;
+    left: 0;
+    top: 8rem;
+    bottom: unset;
+    font-size: 2.5rem;
+
+    max-width: 40rem; /* lock :first-of-type to 3 lines */
   }
 
   .cta__heading:last-of-type {
-    max-width: 21rem;
+    max-width: 32rem; /* lock to 2 lines */
   }
 
   .cta__namaste {
-    right: unset;
-    left: 24%;
-    bottom: 19rem;
-    width: 42%;
+    right: 0;
+    left: 0;
+    /* bottom: 0; */
   }
 
   .cta__form {
-    right: 7%;
-    width: 38%;
     top: 6rem;
-    box-shadow: var(--boxShadow);
-    border-radius: var(--rounded);
-
-    bottom: unset;
     left: unset;
   }
 }

@@ -10,7 +10,7 @@
 }
 
 .InstaReel__item {
-  height: 17rem;
-  width: 17rem;
-  flex: 0 0 17rem;
+  height: var(--instaReelHeight); /* 17rem from home page CTA */
+  width: var(--instaReelHeight);
+  flex: 0 0 var(--instaReelHeight);
 }
