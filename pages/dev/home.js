@@ -82,62 +82,6 @@ const HeroImages = [
   return { ...img, width: fixedWidth, height: fixedHeight };
 });
 
-const RacetrackImages = [
-  {
-    href: "/assets/Home/Hero_ScreenPrintingDenver.png",
-    alt: "Hero_ScreenPrintingDenver",
-    width: 1146,
-    height: 844,
-  },
-  {
-    href: "/assets/Home/Hero_CustomEmbroideryColorado.png",
-    alt: "Hero_CustomEmbroideryColorado",
-    width: 1146,
-    height: 392,
-  },
-  {
-    href: "/assets/Home/Hero_CustomTshirtsSpiritWear.png",
-    alt: "Hero_CustomTshirtsSpiritWear",
-    width: 1146,
-    height: 848,
-  },
-  {
-    href: "/assets/Home/Hero_SuziesMockup.png",
-    alt: "Hero_SuziesMockup",
-    width: 1146,
-    height: 518,
-  },
-  {
-    href: "/assets/Home/Hero_CustomTshirtsDenver.png",
-    alt: "Hero_CustomTshirtsDenver",
-    width: 1146,
-    height: 1023,
-  },
-  {
-    href: "/assets/Home/Hero_CustomEmbroideryDenver.png",
-    alt: "Hero_CustomEmbroideryDenver",
-    width: 1146,
-    height: 338,
-  },
-  {
-    href: "/assets/Home/Hero_ScreenPrintedHoodies_Colorado.png",
-    alt: "Hero_ScreenPrintedHoodies_Colorado",
-    width: 1146,
-    height: 1077,
-  },
-  {
-    href: "/assets/Home/Hero_TshirtPrinterTankTops.png",
-    alt: "Hero_TshirtPrinterTankTops",
-    width: 1146,
-    height: 852,
-  },
-].map(({ width, height, ...img }) => {
-  const fixedWidth = 420;
-  const fixedHeight = Math.round((fixedWidth / width) * height);
-
-  return { ...img, width: fixedWidth, height: fixedHeight };
-});
-
 /* - welcome */
 import Welcome_LibertyLadies from "../../public/assets/Home/Welcome_LibertyLadies.png";
 import Welcome_Arrow from "../../public/assets/Home/Welcome_Arrow.svg";
@@ -268,37 +212,6 @@ const HomePage = () => {
               </li>
             ))}
           </ul>
-          <svg
-            className={styles.hero__imageRacetrack}
-            viewBox="0 0 721.68 398.47"
-            preserveAspectRatio="none" // allows stretching
-          >
-            {RacetrackImages.map((image, imageIndex) => {
-              const miniWidth = 120;
-              const miniHeight = Math.round(
-                (miniWidth / image.width) * image.height
-              );
-              const miniImage = {
-                ...image,
-                width: miniWidth,
-                height: miniHeight,
-              };
-
-              const startingOffset = 12.5 * imageIndex + "%";
-
-              return (
-                <image
-                  key={imageIndex}
-                  aria-hidden={true}
-                  style={{
-                    "--startingOffset": startingOffset,
-                    offsetDistance: "var(--startingOffset)",
-                  }}
-                  {...miniImage}
-                />
-              );
-            })}
-          </svg>
         </div>
       </div>
       <div className={styles.welcomeWrap}>
