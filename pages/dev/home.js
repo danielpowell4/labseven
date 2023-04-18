@@ -19,12 +19,12 @@ import {
 /* - hero */
 import Hero_CustomEmbroideryColorado from "../../public/assets/Home/Hero_CustomEmbroideryColorado.png";
 import Hero_CustomEmbroideryDenver from "../../public/assets/Home/Hero_CustomEmbroideryDenver.png";
-import Hero_CustomTshirtsDenver from "../../public/assets/Home/Hero_CustomTshirtsDenver.png";
-import Hero_CustomTshirtsSpiritWear from "../../public/assets/Home/Hero_CustomTshirtsSpiritWear.png";
+import Hero_CustomTShirtsDenver from "../../public/assets/Home/Hero_CustomTShirtsDenver.png";
+import Hero_CustomTShirtsSpiritWear from "../../public/assets/Home/Hero_CustomTShirtsSpiritWear.png";
 import Hero_ScreenPrintedHoodies_Colorado from "../../public/assets/Home/Hero_ScreenPrintedHoodies_Colorado.png";
 import Hero_ScreenPrintingDenver from "../../public/assets/Home/Hero_ScreenPrintingDenver.png";
 import Hero_SuziesMockup from "../../public/assets/Home/Hero_SuziesMockup.png";
-import Hero_TshirtPrinterTankTops from "../../public/assets/Home/Hero_TshirtPrinterTankTops.png";
+import Hero_TShirtPrinterTankTops from "../../public/assets/Home/Hero_TShirtPrinterTankTops.png";
 
 const HeroImages = [
   {
@@ -40,8 +40,8 @@ const HeroImages = [
     height: 392,
   },
   {
-    src: Hero_CustomTshirtsSpiritWear,
-    alt: "Hero_CustomTshirtsSpiritWear",
+    src: Hero_CustomTShirtsSpiritWear,
+    alt: "Hero_CustomTShirtsSpiritWear",
     width: 1146,
     height: 848,
   },
@@ -52,8 +52,8 @@ const HeroImages = [
     height: 518,
   },
   {
-    src: Hero_CustomTshirtsDenver,
-    alt: "Hero_CustomTshirtsDenver",
+    src: Hero_CustomTShirtsDenver,
+    alt: "Hero_CustomTShirtsDenver",
     width: 1146,
     height: 1023,
   },
@@ -70,8 +70,8 @@ const HeroImages = [
     height: 1077,
   },
   {
-    src: Hero_TshirtPrinterTankTops,
-    alt: "Hero_TshirtPrinterTankTops",
+    src: Hero_TShirtPrinterTankTops,
+    alt: "Hero_TShirtPrinterTankTops",
     width: 1146,
     height: 852,
   },
