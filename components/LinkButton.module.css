@@ -1,0 +1,38 @@
+.LinkButton {
+  --buttonBackground: var(--primary);
+}
+
+.LinkButtonAlternate {
+  --buttonBackground: var(--alternate);
+}
+
+.LinkButton,
+.LinkButtonAlternate {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background-color: var(--buttonBackground);
+  color: var(--background);
+  font-family: var(--headingFont);
+  font-weight: var(--headingWeight);
+  cursor: pointer;
+
+  box-shadow: 0 3px 15px 0 rgb(0 0 0 / 10%);
+
+  background-size: 2rem 2rem; /* for animation */
+}
+
+.LinkButton:hover,
+.LinkButton:focus,
+.LinkButtonAlternate:hover,
+.LinkButtonAlternate:focus {
+  transition: all 0.25s ease;
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+.LinkButton:visited,
+.LinkButtonAlternate:visited {
+  color: var(--background);
+}

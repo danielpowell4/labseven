@@ -13,7 +13,8 @@ import {
   InstaReel,
   NewsletterForm,
   DesignIFrame,
-} from "../../components";
+  LinkButton,
+} from "components";
 
 /* images */
 /* - hero */
@@ -187,12 +188,10 @@ const HomePage = () => {
             </h1>
             <h2>Get Quality Custom Apparel Locally and Affordably.</h2>
             <div className={styles.linkContainer}>
-              <Link href="/products" className={styles.LinkButton}>
-                Browse Catalog
-              </Link>
-              <Link href="/contact" className={styles.LinkButtonAlternate}>
+              <LinkButton href="/products">Browse Catalog</LinkButton>
+              <LinkButton href="/contact" className="LinkButtonAlternate">
                 Contact Printing Pro
-              </Link>
+              </LinkButton>
             </div>
           </div>
           <ul
@@ -320,12 +319,10 @@ const HomePage = () => {
               product recommendations, and digital mockups!
             </p>
             <div className={styles.linkContainer}>
-              <Link href="/products" className={styles.LinkButton}>
-                Ok, let's go!
-              </Link>
-              <Link href="/contact" className={styles.LinkButtonAlternate}>
+              <LinkButton href="/order/pick-products">Ok, let's go!</LinkButton>
+              <LinkButton href="/contact" className="LinkButtonAlternate">
                 Talk to a person
-              </Link>
+              </LinkButton>
             </div>
           </div>
           <Image

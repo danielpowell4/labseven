@@ -6,6 +6,7 @@ export { default as DesignIFrame } from "./DesignIFrame";
 export { default as ErrorAlert } from "./ErrorAlert";
 export { default as InstaReel } from "./InstaReel";
 export { default as Layout } from "./Layout";
+export { default as LinkButton } from "./LinkButton";
 export { default as NewsletterForm } from "./NewsletterForm";
 export { default as Pagination } from "./Pagination";
 export { default as ProductCalculator } from "./ProductCalculator";
