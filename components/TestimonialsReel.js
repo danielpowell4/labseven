@@ -4,8 +4,8 @@ import styles from "./TestimonialsReel.module.css";
 import Image from "next/image";
 import { Button } from ".";
 
-import ArrowLeft from "../public/assets/Home/ArrowLeft.svg";
-import ArrowRight from "../public/assets/Home/ArrowRight.svg";
+import ArrowLeft from "../public/assets/Arrows/Left.svg";
+import ArrowRight from "../public/assets/Arrows/Right.svg";
 import Stars from "../public/assets/Home/Testimonials_Stars.svg";
 
 import Casey from "../public/assets/Home/Testimonials_Casey.png";

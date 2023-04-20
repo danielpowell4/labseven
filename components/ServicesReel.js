@@ -7,8 +7,8 @@ import { useCarousel } from "./TestimonialsReel";
 import homeStyles from "../pages/dev/Home.module.css";
 import styles from "./ServicesReel.module.css";
 
-import ArrowLeft from "../public/assets/Home/ArrowLeft.svg";
-import ArrowRight from "../public/assets/Home/ArrowRight.svg";
+import ArrowLeft from "../public/assets/Arrows/Left.svg";
+import ArrowRight from "../public/assets/Arrows/Right.svg";
 
 import ScreenPrinting from "../public/assets/Home/Services_ScreenPrinting.jpg";
 import Embroidery from "../public/assets/Home/Services_Embroidery.jpg";
