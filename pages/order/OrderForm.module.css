@@ -1,12 +1,63 @@
+.background {
+  background: linear-gradient(to right, var(--primary), #4852da);
+
+  min-height: calc(100vh - 14px); /* matches Layout's container */
+
+  padding-top: 5rem; /* push form down */
+  display: flex;
+  justify-content: center;
+}
+
 .formContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   width: calc(100% - 20px);
-  margin: auto;
-  max-width: 660px;
+  max-width: 960px;
   height: 100%;
-  padding: 0 20px;
+  padding: 3.375rem;
+
+  background: var(--background);
+  box-shadow: var(--boxShadow);
+  border-radius: var(--rounded);
+}
+
+.formNav__next,
+.formNav__prev {
+  position: absolute;
+  top: calc(50% - 10px);
+}
+
+.formNav__prev {
+  left: -8rem;
+}
+
+.formNav__next {
+  right: -8rem;
+}
+
+.formContainer h1 {
+  font-size: 3rem;
+}
+
+.form__actions {
+  --actionWidth: 220px;
+
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+}
+
+.form__actions a,
+.form__actions button {
+  width: var(--actionWidth);
+  text-align: center;
+}
+
+.helpText {
+  margin-top: 1rem;
+  font-size: 1rem;
 }

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button, Layout } from "components";
 
 import ArrowLeft from "public/assets/Arrows/Left.svg";
+import Step3_Upload from "public/assets/Home/Step3_Upload.svg";
 
 import styles from "./OrderForm.module.css";
 
@@ -19,7 +20,12 @@ const SizeBreakdown = () => {
               <Image src={ArrowLeft} alt={"Arrow back to Size Breakdown"} />
             </Link>
           </nav>
-          <h1 className={styles.stepTitle}>3. Upload your logo or idea</h1>
+          <Image
+            src={Step3_Upload}
+            alt="Upload logo to cloud"
+            style={{ maxWidth: "9rem", height: "auto" }}
+          />
+          ;<h1 className={styles.stepTitle}>3. Upload your logo or idea</h1>
           <div className={styles.form__body}>
             <code>TODO: form details here!</code>
           </div>

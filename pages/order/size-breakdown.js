@@ -3,10 +3,11 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Layout } from "components";
+import { Layout, LinkButton } from "components";
 
 import ArrowLeft from "public/assets/Arrows/Left.svg";
 import ArrowRight from "public/assets/Arrows/Right.svg";
+import Step2_Sizes from "public/assets/Home/Step2_Sizes.svg";
 
 import styles from "./OrderForm.module.css";
 
@@ -23,12 +24,17 @@ const SizeBreakdown = () => {
               <Image src={ArrowRight} alt={"Arrow forward to Project Notes"} />
             </Link>
           </nav>
+          <Image
+            src={Step2_Sizes}
+            alt="Hand drawn chart of sizes"
+            style={{ maxWidth: "12rem", height: "auto" }}
+          />
           <h1 className={styles.stepTitle}>2. Fill out the size breakdown</h1>
           <div className={styles.form__body}>
             <code>TODO: add size chart here!</code>
           </div>
           <div className={styles.form__actions}>
-            <Link href="/order/project-notes">Looks Good!</Link>
+            <LinkButton href="/order/project-notes">Looks Good!</LinkButton>
           </div>
         </div>
       </div>
