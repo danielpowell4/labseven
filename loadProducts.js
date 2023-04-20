@@ -13,6 +13,14 @@ const camelize = (str) => {
     .replace(/\s+/g, "");
 };
 
+const parameterize = (str) => {
+  return (str || "")
+    .toLowerCase()
+    .replace(/\/|-/, " ")
+    .replace(/'/, "")
+    .replace(/\s+/g, "-");
+};
+
 const loadOrBuildCache = async (filename, fetcher) => {
   const filepath = join(process.cwd(), "public", filename);
   let cachedData;
@@ -174,11 +182,10 @@ async function fetchAllProducts() {
 
     const formattedProducts = await Promise.all(
       parsedProducts.map(async (product) => {
-        const manufacturerSkuCode =
+        const manufacturerCode = parameterize(product.Manufacturer);
+        const manufacturerSkuCode = parameterize(
           `${product.Manufacturer} ${product.ManufacturerSku}`
-            .split(" ")
-            .join("-")
-            .toLowerCase();
+        );
         const defaultStyle = (product.Styles || [])[0]; // first
         const defaultPrice = mode(
           defaultStyle.Sizes.map((size) => size.UnitPrice)
@@ -186,6 +193,7 @@ async function fetchAllProducts() {
         const additionalDetails = await getProductDetail(product);
 
         return {
+          manufacturerCode,
           manufacturerSkuCode,
           defaultPrice: defaultPrice,
           defaultHref: defaultStyle

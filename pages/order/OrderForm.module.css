@@ -1,3 +1,4 @@
+/* START shared */
 .background {
   background: linear-gradient(to right, var(--primary), #4852da);
 
@@ -60,4 +61,29 @@
 .helpText {
   margin-top: 1rem;
   font-size: 1rem;
+}
+/* END shared */
+
+.form__body {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.productGrid {
+  margin: 0 auto 2.5rem;
+  padding: 0;
+}
+
+.productGrid__item {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.productGrid__item__icons {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.5rem;
 }
