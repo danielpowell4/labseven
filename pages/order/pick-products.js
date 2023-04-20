@@ -81,16 +81,17 @@ const FIELD_RESETS = {
   colorNameCode: {},
 };
 
-const productOptionsFor = (productMap, line) => {
+const buildProductOptionsFromCache = (productMap, formRow) => {
   const options = [];
   const values = productMap.values();
 
   for (const product of values) {
+    const categoryCodes = product.Categories.map((cat) => cat.code);
     if (
-      product.categoryCode === line.categoryCode &&
-      product.manufacturerCode === line.manufacturerCode
+      categoryCodes.includes(formRow.categoryCode) &&
+      product.manufacturerCode === formRow.manufacturerCode
     ) {
-      options.push(product.asOptions);
+      options.push(product.asOption);
     }
   }
 
@@ -206,12 +207,9 @@ const PickProduct = ({ categoryOptions }) => {
                   ) || null;
                 const selectedProduct =
                   productCacheMap.get(product.manufacturerSkuCode) || null;
-
-                let defaultProductOptions = selectedManufacturer
-                  ? productOptionsFor(productCacheMap, product)
+                const defaultProductOptions = selectedManufacturer
+                  ? buildProductOptionsFromCache(productCacheMap, product)
                   : [];
-                if (selectedProduct)
-                  defaultProductOptions.push(selectedProduct.asOption);
                 const colorOptions = selectedProduct?.Styles?.length
                   ? selectedProduct.Styles.map((style) => {
                       return {
@@ -271,6 +269,9 @@ const PickProduct = ({ categoryOptions }) => {
                       cacheOptions={!!selectedProduct?.asOption} // force refetch on change
                       isDisabled={!selectedManufacturer}
                       defaultOptions={defaultProductOptions}
+                      noOptionsMessage={({ inputValue }) =>
+                        !inputValue ? "Typing to search..." : "No styles found"
+                      }
                     />
                     <Select
                       id={`products[${index}].colorNameCode`}
