@@ -270,7 +270,7 @@ const PickProduct = ({ categoryOptions }) => {
                       isDisabled={!selectedManufacturer}
                       defaultOptions={defaultProductOptions}
                       noOptionsMessage={({ inputValue }) =>
-                        !inputValue ? "Typing to search..." : "No styles found"
+                        !inputValue ? "Type to search..." : "No styles found"
                       }
                     />
                     <Select
