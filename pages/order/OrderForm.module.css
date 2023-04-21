@@ -73,19 +73,33 @@
 .productGrid {
   margin: 0 auto 2.5rem;
   padding: 0;
+
+  counter-reset: item;
 }
 
 .productGrid__item {
   display: grid;
-  grid-template-columns: repeat(4, 1fr) auto;
+  grid-template-columns: 1rem repeat(4, 1fr) auto;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
+  align-items: baseline;
+}
+
+.productGrid__item::before {
+  display: inline-block;
+  content: counter(item) ".";
+  counter-increment: item;
+
+  font-family: var(--headingFont);
+  font-weight: var(--headingWeight);
+  font-size: smaller;
 }
 
 .productGrid__item__icons {
   display: flex;
   flex-flow: row wrap;
   gap: 0.5rem;
+  align-self: center;
 }
 
 .sizeChart {
