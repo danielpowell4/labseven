@@ -11,13 +11,13 @@ import Step1_Shirt from "public/assets/Home/Step1_Shirt.svg";
 import styles from "./OrderForm.module.css";
 
 import { stringify } from "qs";
-import { useFormik } from "formik";
 import Select from "react-select";
 import AsyncSelect from "react-select/async";
 
 import { getAllProductCategories, getAllProducts } from "lib/products";
+import { useOrderForm } from "lib/orderForm";
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ _params }) {
   // build manufacturer database
   const allProducts = await getAllProducts();
   const manufacturersByCategoryCode = {}; // categoryCode => manufacturerCode[]
@@ -63,24 +63,6 @@ export async function getStaticProps({ params }) {
   };
 }
 
-const INITIAL_PRODUCT = {
-  categoryCode: "",
-  manufacturerCode: "",
-  manufacturerSkuCode: "",
-  colorNameCode: "",
-};
-
-const FIELD_RESETS = {
-  categoryCode: {
-    manufacturerCode: "",
-    manufacturerSkuCode: "",
-    colorNameCode: "",
-  },
-  manufacturerCode: { manufacturerSkuCode: "", colorNameCode: "" },
-  manufacturerSkuCode: { colorNameCode: "" },
-  colorNameCode: {},
-};
-
 const buildProductOptionsFromCache = (productMap, formRow) => {
   const options = [];
   const values = productMap.values();
@@ -99,57 +81,17 @@ const buildProductOptionsFromCache = (productMap, formRow) => {
 };
 
 const PickProduct = ({ categoryOptions }) => {
-  const formik = useFormik({
-    initialValues: {
-      products: [INITIAL_PRODUCT],
-    },
-  });
+  const {
+    formik,
+    addProduct,
+    cloneProduct,
+    removeProduct,
+    updateProduct,
+    upsertProductContext,
+    productCacheMap,
+    updateProductCacheMap,
+  } = useOrderForm();
 
-  // product helpers
-  const addProduct = () => {
-    const prevProducts = formik.values.products;
-    formik.setValues({ products: [...prevProducts, INITIAL_PRODUCT] });
-  };
-  const cloneProduct = (index) => {
-    const prevProducts = formik.values.products;
-    formik.setValues({
-      products: prevProducts.flatMap((p, pIndex) =>
-        index === pIndex ? [p, { ...p, colorNameCode: "" }] : p
-      ),
-    });
-  };
-  const removeProduct = (index) => {
-    const prevProducts = formik.values.products;
-    if (prevProducts.length === 1) {
-      formik.setValues({ products: [INITIAL_PRODUCT] });
-    } else {
-      formik.setValues({
-        products: prevProducts.filter((_p, pIndex) => index !== pIndex),
-      });
-    }
-  };
-  const updateProduct = (index, name, newValue) => {
-    const prevProducts = formik.values.products;
-    const dependentFieldResets = FIELD_RESETS[name];
-
-    formik.setValues({
-      products: prevProducts.map((product, pIndex) =>
-        index === pIndex
-          ? { ...product, ...dependentFieldResets, [name]: newValue }
-          : product
-      ),
-    });
-  };
-
-  // async product options loaders for 'Style...'
-  const [productCacheMap, setProductCacheMap] = React.useState(new Map());
-  const updateProductCacheMap = (product) => {
-    setProductCacheMap((prev) => {
-      const newMap = new Map(prev);
-      newMap.set(product.manufacturerSkuCode, product);
-      return newMap;
-    });
-  };
   const loadOptions = (product, inputValue, currentOpt) => {
     const query = {
       categoryCode: product.categoryCode,
@@ -259,11 +201,9 @@ const PickProduct = ({ categoryOptions }) => {
                         )
                       }
                       onChange={(selected) => {
-                        updateProduct(
-                          index,
-                          "manufacturerSkuCode",
-                          selected?.value
-                        );
+                        const val = selected?.value;
+                        updateProduct(index, "manufacturerSkuCode", val);
+                        if (val) upsertProductContext(productCacheMap.get(val));
                       }}
                       value={selectedProduct?.asOption || null}
                       cacheOptions={!!selectedProduct?.asOption} // force refetch on change
