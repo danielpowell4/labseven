@@ -121,3 +121,12 @@
   height: 3rem;
   border-radius: 0.5rem;
 }
+
+.sizeChart__styles input:disabled {
+  cursor: not-allowed;
+  border-width: 2px;
+}
+
+.sizeChart__totalQuantity {
+  text-align: right;
+}

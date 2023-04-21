@@ -54,6 +54,8 @@ const SizeBreakdown = () => {
     return aPriority - bPriority || a.localeCompare(b);
   });
 
+  let totalQuantity = 0; // added by row rendering
+
   return (
     <Layout>
       <div className={styles.background}>
@@ -97,6 +99,7 @@ const SizeBreakdown = () => {
                 (acc, size) => acc + Number(size),
                 0
               );
+              totalQuantity += productQty;
 
               if (!selectedProduct) {
                 return (
@@ -139,6 +142,7 @@ const SizeBreakdown = () => {
                           step="1"
                           min="0"
                           name={`${sizePrefix}.${size}`}
+                          value={product.sizeChart?.[size] || ""}
                           disabled={!sizeAvailable}
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
@@ -151,6 +155,12 @@ const SizeBreakdown = () => {
                 </li>
               );
             })}
+            <h4 className={styles.sizeChart__totalQuantity}>
+              <em>
+                <sup>*</sup>
+                {`${totalQuantity} Total Pieces`}
+              </em>
+            </h4>
           </div>
           <div className={styles.form__actions}>
             <LinkButton href="/order/project-notes">Looks Good!</LinkButton>
