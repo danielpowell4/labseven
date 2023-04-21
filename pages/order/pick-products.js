@@ -7,6 +7,8 @@ import { Button, Layout, LinkButton } from "components";
 
 import ArrowRight from "public/assets/Arrows/Right.svg";
 import Step1_Shirt from "public/assets/Home/Step1_Shirt.svg";
+import CopyProduct from "public/assets/Order/CopyProduct.svg";
+import RemoveProduct from "public/assets/Order/RemoveProduct.svg";
 
 import styles from "./OrderForm.module.css";
 
@@ -233,16 +235,28 @@ const PickProduct = ({ categoryOptions }) => {
                     />
                     <div className={styles.productGrid__item__icons}>
                       <Button
-                        title="Clone Selection"
+                        title="Copy Product"
                         onClick={() => cloneProduct(index)}
+                        className="ButtonTransparent"
                       >
-                        🔁
+                        <Image
+                          src={CopyProduct}
+                          alt={"Icon to remove product selection from form"}
+                          width={32}
+                          height={32}
+                        />
                       </Button>
                       <Button
-                        title="Remove Selection"
+                        title="Remove Product"
                         onClick={() => removeProduct(index)}
+                        className="ButtonTransparent"
                       >
-                        💥
+                        <Image
+                          src={RemoveProduct}
+                          alt={"Icon to remove product selection from form"}
+                          width={32}
+                          height={32}
+                        />
                       </Button>
                     </div>
                   </li>
