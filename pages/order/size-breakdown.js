@@ -127,13 +127,14 @@ const SizeBreakdown = () => {
                   </div>
 
                   <div className={styles.sizeChart__styles}>
-                    {orderedSizes.map((size) => {
+                    {orderedSizes.map((size, sIndex) => {
                       const sizeAvailable = selectedStyle?.Sizes?.find(
                         (styleSize) => styleSize.Name === size
                       );
 
                       return (
                         <input
+                          key={sIndex}
                           type="number"
                           step="1"
                           min="0"
