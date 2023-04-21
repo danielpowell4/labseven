@@ -109,8 +109,16 @@ const PickProduct = ({ categoryOptions }) => {
             value: product.manufacturerSkuCode,
             label: product.Name + " - " + product.ManufacturerSku,
           };
+          const selectedOption = {
+            value: product.manufacturerSkuCode,
+            label: product.ManufacturerSku,
+          };
           if (!productCacheMap.has(product.manufacturerSkuCode)) {
-            updateProductCacheMap({ ...product, asOption: option });
+            updateProductCacheMap({
+              ...product,
+              asOption: option,
+              asSelectedOption: selectedOption,
+            });
           }
           options.push(option);
         }
@@ -205,7 +213,7 @@ const PickProduct = ({ categoryOptions }) => {
                         updateProduct(index, "manufacturerSkuCode", val);
                         if (val) upsertProductContext(productCacheMap.get(val));
                       }}
-                      value={selectedProduct?.asOption || null}
+                      value={selectedProduct?.asSelectedOption || null}
                       cacheOptions={!!selectedProduct?.asOption} // force refetch on change
                       isDisabled={!selectedManufacturer}
                       defaultOptions={defaultProductOptions}
