@@ -128,12 +128,12 @@ const Upload = () => {
         const file = fileInput.files[i];
         setData(`file #${i + 1} name: ${file.name} size: ${file.size}`);
         await uploadFile(dropbox, UPLOAD_PATH, file);
+        setData(`Upload complete! Check ${UPLOAD_PATH} in Dropbox App folder`);
       }
     } catch (error) {
+      console.error(error);
       setData("Upload failed! check console for details");
     }
-
-    setData(`Upload complete! Check ${UPLOAD_PATH} in Dropbox App folder`);
   };
 
   return (
