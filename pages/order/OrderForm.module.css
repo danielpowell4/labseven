@@ -4,7 +4,6 @@
 
   min-height: calc(100vh - 14px); /* matches Layout's container */
 
-  padding-top: 5rem; /* push form down */
   display: flex;
   justify-content: center;
 }
@@ -20,6 +19,7 @@
   max-width: 1080px;
   height: 100%;
   padding: 3.375rem;
+  margin: 5rem auto;
 
   background: var(--background);
   box-shadow: var(--boxShadow);

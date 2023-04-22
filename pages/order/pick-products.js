@@ -130,156 +130,150 @@ const PickProduct = ({ categoryOptions }) => {
   };
 
   return (
-    <Layout>
-      <div className={styles.background}>
-        <div className={styles.formContainer}>
-          <nav className={styles.formNav} aria-label="Order Form Navigation">
-            <Link
-              href="/order/size-breakdown"
-              className={styles.formNav__next}
-              scroll={false}
-            >
-              <Image src={ArrowRight} alt={"Arrow forward to Size Breakdown"} />
-            </Link>
-          </nav>
-          <Image
-            src={Step1_Shirt}
-            alt="Hand drawn sketch of a t-shirt"
-            style={{ maxWidth: "10rem", height: "auto" }}
-          />
-          <h1 className={styles.stepTitle}>1. Pick your blank products</h1>
-          <div className={styles.form__body}>
-            <ol className={styles.productGrid}>
-              {formik.values.products.map((product, index) => {
-                const selectedCategory =
-                  categoryOptions.find(
-                    (opt) => opt.value === product.categoryCode
-                  ) || null;
-                const manufacturerOptions =
-                  selectedCategory?.manufacturerOptions || [];
-                const selectedManufacturer =
-                  manufacturerOptions.find(
-                    (opt) => opt.value === product.manufacturerCode
-                  ) || null;
-                const selectedProduct =
-                  productCacheMap.get(product.manufacturerSkuCode) || null;
-                const defaultProductOptions = selectedManufacturer
-                  ? buildProductOptionsFromCache(productCacheMap, product)
-                  : [];
-                const colorOptions = selectedProduct?.Styles?.length
-                  ? selectedProduct.Styles.map((style) => {
-                      return {
-                        value: style.nameCode,
-                        label: style.Name,
-                      };
-                    })
-                  : [];
-                const selectedColor =
-                  colorOptions.find(
-                    (opt) => opt.value === product.colorNameCode
-                  ) || null;
+    <Layout className={styles.background}>
+      <div className={styles.formContainer}>
+        <nav className={styles.formNav} aria-label="Order Form Navigation">
+          <Link
+            href="/order/size-breakdown"
+            className={styles.formNav__next}
+            scroll={false}
+          >
+            <Image src={ArrowRight} alt={"Arrow forward to Size Breakdown"} />
+          </Link>
+        </nav>
+        <Image
+          src={Step1_Shirt}
+          alt="Hand drawn sketch of a t-shirt"
+          style={{ maxWidth: "10rem", height: "auto" }}
+        />
+        <h1 className={styles.stepTitle}>1. Pick your blank products</h1>
+        <div className={styles.form__body}>
+          <ol className={styles.productGrid}>
+            {formik.values.products.map((product, index) => {
+              const selectedCategory =
+                categoryOptions.find(
+                  (opt) => opt.value === product.categoryCode
+                ) || null;
+              const manufacturerOptions =
+                selectedCategory?.manufacturerOptions || [];
+              const selectedManufacturer =
+                manufacturerOptions.find(
+                  (opt) => opt.value === product.manufacturerCode
+                ) || null;
+              const selectedProduct =
+                productCacheMap.get(product.manufacturerSkuCode) || null;
+              const defaultProductOptions = selectedManufacturer
+                ? buildProductOptionsFromCache(productCacheMap, product)
+                : [];
+              const colorOptions = selectedProduct?.Styles?.length
+                ? selectedProduct.Styles.map((style) => {
+                    return {
+                      value: style.nameCode,
+                      label: style.Name,
+                    };
+                  })
+                : [];
+              const selectedColor =
+                colorOptions.find(
+                  (opt) => opt.value === product.colorNameCode
+                ) || null;
 
-                return (
-                  <li key={index} className={styles.productGrid__item}>
-                    <Select
-                      id={`products[${index}].category`}
-                      placeholder="Category..."
-                      options={categoryOptions}
-                      onChange={(selected) =>
-                        updateProduct(index, "categoryCode", selected?.value)
-                      }
-                      value={selectedCategory}
-                    />
-                    <Select
-                      id={`products[${index}].manufacturer`}
-                      placeholder="Brand..."
-                      options={manufacturerOptions}
-                      onChange={(selected) =>
-                        updateProduct(
-                          index,
-                          "manufacturerCode",
-                          selected?.value
-                        )
-                      }
-                      value={selectedManufacturer}
-                      isDisabled={!manufacturerOptions.length}
-                    />
-                    <AsyncSelect
-                      id={`products[${index}].sku`}
-                      placeholder="Style..."
-                      loadOptions={(inputValue) =>
-                        loadOptions(
-                          product,
-                          inputValue,
-                          selectedProduct?.asOption
-                        )
-                      }
-                      onChange={(selected) => {
-                        const val = selected?.value;
-                        updateProduct(index, "manufacturerSkuCode", val);
-                        if (val) upsertProductContext(productCacheMap.get(val));
-                      }}
-                      value={selectedProduct?.asSelectedOption || null}
-                      cacheOptions={!!selectedProduct?.asOption} // force refetch on change
-                      isDisabled={!selectedManufacturer}
-                      defaultOptions={defaultProductOptions}
-                      noOptionsMessage={({ inputValue }) =>
-                        !inputValue ? "Type to search..." : "No styles found"
-                      }
-                    />
-                    <Select
-                      id={`products[${index}].colorNameCode`}
-                      placeholder="Color..."
-                      options={colorOptions}
-                      onChange={(selected) =>
-                        updateProduct(index, "colorNameCode", selected?.value)
-                      }
-                      value={selectedColor}
-                      isDisabled={!colorOptions.length}
-                    />
-                    <div className={styles.productGrid__item__icons}>
-                      <Button
-                        title="Copy Product"
-                        onClick={() => cloneProduct(index)}
-                        className="ButtonTransparent"
-                      >
-                        <Image
-                          src={CopyProduct}
-                          alt={"Icon to remove product selection from form"}
-                          width={32}
-                          height={32}
-                        />
-                      </Button>
-                      <Button
-                        title="Remove Product"
-                        onClick={() => removeProduct(index)}
-                        className="ButtonTransparent"
-                      >
-                        <Image
-                          src={RemoveProduct}
-                          alt={"Icon to remove product selection from form"}
-                          width={32}
-                          height={32}
-                        />
-                      </Button>
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
-          <div className={styles.form__actions}>
-            <Button onClick={addProduct} className="ButtonAlternate">
-              Add Another Style
-            </Button>
-            <LinkButton href="/order/size-breakdown" scroll={false}>
-              Proceed
-            </LinkButton>
-          </div>
-          <small className={styles.helpText}>
-            Not sure? <Link href="/products">Browse the catalog.</Link>
-          </small>
+              return (
+                <li key={index} className={styles.productGrid__item}>
+                  <Select
+                    id={`products[${index}].category`}
+                    placeholder="Category..."
+                    options={categoryOptions}
+                    onChange={(selected) =>
+                      updateProduct(index, "categoryCode", selected?.value)
+                    }
+                    value={selectedCategory}
+                  />
+                  <Select
+                    id={`products[${index}].manufacturer`}
+                    placeholder="Brand..."
+                    options={manufacturerOptions}
+                    onChange={(selected) =>
+                      updateProduct(index, "manufacturerCode", selected?.value)
+                    }
+                    value={selectedManufacturer}
+                    isDisabled={!manufacturerOptions.length}
+                  />
+                  <AsyncSelect
+                    id={`products[${index}].sku`}
+                    placeholder="Style..."
+                    loadOptions={(inputValue) =>
+                      loadOptions(
+                        product,
+                        inputValue,
+                        selectedProduct?.asOption
+                      )
+                    }
+                    onChange={(selected) => {
+                      const val = selected?.value;
+                      updateProduct(index, "manufacturerSkuCode", val);
+                      if (val) upsertProductContext(productCacheMap.get(val));
+                    }}
+                    value={selectedProduct?.asSelectedOption || null}
+                    cacheOptions={!!selectedProduct?.asOption} // force refetch on change
+                    isDisabled={!selectedManufacturer}
+                    defaultOptions={defaultProductOptions}
+                    noOptionsMessage={({ inputValue }) =>
+                      !inputValue ? "Type to search..." : "No styles found"
+                    }
+                  />
+                  <Select
+                    id={`products[${index}].colorNameCode`}
+                    placeholder="Color..."
+                    options={colorOptions}
+                    onChange={(selected) =>
+                      updateProduct(index, "colorNameCode", selected?.value)
+                    }
+                    value={selectedColor}
+                    isDisabled={!colorOptions.length}
+                  />
+                  <div className={styles.productGrid__item__icons}>
+                    <Button
+                      title="Copy Product"
+                      onClick={() => cloneProduct(index)}
+                      className="ButtonTransparent"
+                    >
+                      <Image
+                        src={CopyProduct}
+                        alt={"Icon to remove product selection from form"}
+                        width={32}
+                        height={32}
+                      />
+                    </Button>
+                    <Button
+                      title="Remove Product"
+                      onClick={() => removeProduct(index)}
+                      className="ButtonTransparent"
+                    >
+                      <Image
+                        src={RemoveProduct}
+                        alt={"Icon to remove product selection from form"}
+                        width={32}
+                        height={32}
+                      />
+                    </Button>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
         </div>
+        <div className={styles.form__actions}>
+          <Button onClick={addProduct} className="ButtonAlternate">
+            Add Another Style
+          </Button>
+          <LinkButton href="/order/size-breakdown" scroll={false}>
+            Proceed
+          </LinkButton>
+        </div>
+        <small className={styles.helpText}>
+          Not sure? <Link href="/products">Browse the catalog.</Link>
+        </small>
       </div>
     </Layout>
   );
