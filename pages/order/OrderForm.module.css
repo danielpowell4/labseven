@@ -19,7 +19,7 @@
   max-width: 1080px;
   height: 100%;
   padding: 3.375rem;
-  margin: 5rem auto;
+  margin: 5rem auto 10rem;
 
   background: var(--background);
   box-shadow: var(--boxShadow);
