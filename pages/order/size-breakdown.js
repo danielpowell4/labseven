@@ -61,10 +61,18 @@ const SizeBreakdown = () => {
       <div className={styles.background}>
         <div className={styles.formContainer}>
           <nav className={styles.formNav} aria-label="Order Form Navigation">
-            <Link href="/order/pick-products" className={styles.formNav__prev}>
+            <Link
+              href="/order/pick-products"
+              className={styles.formNav__prev}
+              scroll={false}
+            >
               <Image src={ArrowLeft} alt={"Arrow back to Pick Products"} />
             </Link>
-            <Link href="/order/project-notes" className={styles.formNav__next}>
+            <Link
+              href="/order/project-notes"
+              className={styles.formNav__next}
+              scroll={false}
+            >
               <Image src={ArrowRight} alt={"Arrow forward to Project Notes"} />
             </Link>
           </nav>
@@ -163,7 +171,9 @@ const SizeBreakdown = () => {
             </h4>
           </div>
           <div className={styles.form__actions}>
-            <LinkButton href="/order/project-notes">Looks Good!</LinkButton>
+            <LinkButton href="/order/project-notes" scroll={false}>
+              Looks Good!
+            </LinkButton>
           </div>
         </div>
       </div>

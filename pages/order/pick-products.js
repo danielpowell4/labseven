@@ -134,7 +134,11 @@ const PickProduct = ({ categoryOptions }) => {
       <div className={styles.background}>
         <div className={styles.formContainer}>
           <nav className={styles.formNav} aria-label="Order Form Navigation">
-            <Link href="/order/size-breakdown" className={styles.formNav__next}>
+            <Link
+              href="/order/size-breakdown"
+              className={styles.formNav__next}
+              scroll={false}
+            >
               <Image src={ArrowRight} alt={"Arrow forward to Size Breakdown"} />
             </Link>
           </nav>
@@ -268,7 +272,9 @@ const PickProduct = ({ categoryOptions }) => {
             <Button onClick={addProduct} className="ButtonAlternate">
               Add Another Style
             </Button>
-            <LinkButton href="/order/size-breakdown">Proceed</LinkButton>
+            <LinkButton href="/order/size-breakdown" scroll={false}>
+              Proceed
+            </LinkButton>
           </div>
           <small className={styles.helpText}>
             Not sure? <Link href="/products">Browse the catalog.</Link>

@@ -19,7 +19,11 @@ const ProjectNotes = () => {
       <div className={styles.background}>
         <div className={styles.formContainer}>
           <nav className={styles.formNav} aria-label="Order Form Navigation">
-            <Link href="/order/size-breakdown" className={styles.formNav__prev}>
+            <Link
+              href="/order/size-breakdown"
+              className={styles.formNav__prev}
+              scroll={false}
+            >
               <Image src={ArrowLeft} alt={"Arrow back to Size Breakdown"} />
             </Link>
           </nav>
