@@ -50,6 +50,7 @@
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
+  margin-top: 3rem;
 }
 
 .form__actions a,
@@ -143,4 +144,32 @@
 
 .sizeChart__totalQuantity {
   text-align: right;
+}
+
+.notesBlockContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.notesBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+}
+
+.formField label {
+  font-family: var(--headingFont);
+  font-weight: var(--headingWeight);
+  margin-bottom: 0.5rem;
+}
+
+.formField input,
+.formField textarea {
+  border-radius: 0.25rem;
 }

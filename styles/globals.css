@@ -94,9 +94,17 @@ select {
 
 input[type="text"],
 input[type="search"],
-input[type="number"] {
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+textarea {
   border: solid 1px var(--lightText);
   padding: 0.25rem 0.5rem;
+}
+
+textarea {
+  font-family: var(--bodyFont);
+  font-size: 1rem;
 }
 
 select {

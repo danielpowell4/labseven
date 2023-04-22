@@ -29,7 +29,7 @@ const SIZE_PRIORITY = {
 };
 
 const SizeBreakdown = () => {
-  const { formik, updateProduct, productCacheMap } = useOrderForm();
+  const { formik, productCacheMap } = useOrderForm();
 
   const displaySize = new Set();
 
