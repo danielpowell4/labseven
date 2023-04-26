@@ -8,12 +8,19 @@ export default async (req, res) => {
   });
 
   await doc.loadInfo();
-
   const dbxSheet = doc.sheetsByTitle("__dropbox_keys");
 
   const headers = await dbxSheet.loadHeaderRow(); // loads non-empty header row
-  const rows = dropboxSheet.getRows();
-  const firstRow = rows[0]; // only 1
+  const rows = await dbxSheet.getRows();
+  const activeRow = rows[0]; // only 1
 
-  return res.status(200).json({ headers, firstRow });
+  const now = new Date().toISOString();
+
+  activeRow.token = `${now}-token`;
+  activeRow.refreshToken = `${now}-refreshToken`;
+  activeRow.status = `${now}-status`;
+  activeRow.lastUpdated = now;
+  await activeRow.save();
+
+  return res.status(200).json({ message: "Tokens updated!" });
 };
