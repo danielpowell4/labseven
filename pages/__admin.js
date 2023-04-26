@@ -71,6 +71,9 @@ const AdminPage = () => {
               Trigger Build
             </Button>
           )}
+          <a href={"/api/fileUpload/start?authenticated=true"}>
+            Relink Dropbox
+          </a>
         </div>
       </Layout>
     );
