@@ -27,7 +27,7 @@ const refreshDropboxToken = async (activeRow) => {
       );
       const result = await refreshRes.json();
       if (!refreshRes.ok) {
-        throw new Error(`refreshDropboxToken error: ${JSON.stringify(body)}`);
+        throw new Error(`refreshDropboxToken error: ${JSON.stringify(result)}`);
       }
       applyTokens(activeRow, result);
       await activeRow.save();
