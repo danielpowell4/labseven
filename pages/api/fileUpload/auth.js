@@ -36,5 +36,7 @@ export default async (req, res) => {
   applyTokens(activeRow, result);
   await activeRow.save();
 
-  return res.status(200).json({ message: "Account has been linked!" });
+  return res.status(200).json({
+    message: "Account has been linked! You can safely close this tab.",
+  });
 };
