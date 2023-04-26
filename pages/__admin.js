@@ -15,19 +15,45 @@ const containerStyle = {
   textAlign: "center",
 };
 
+const adminReducer = (state, action) => {
+  switch (action.type) {
+    case "AUTHENTICATED": {
+      return { ...state, authenticated: true };
+    }
+    case "BUILD_STARTED": {
+      return { ...state, build: { isTriggering: true } };
+    }
+    case "BUILD_COMPLETE": {
+      return {
+        ...state,
+        build: { isTriggering: false, message: action.message },
+      };
+    }
+    default: {
+      console.error("Unknown action type", action.type);
+      return state;
+    }
+  }
+};
+
+const INITIAL_STATE = {
+  authenticated: false,
+  build: { isTriggering: false },
+};
+
 const AdminPage = () => {
-  const [authenticated, setAuthenticated] = React.useState();
-  const [isTriggering, setIsTriggering] = React.useState(false);
-  const [message, setMessage] = React.useState();
+  const [state, dispatch] = React.useReducer(adminReducer, INITIAL_STATE);
 
   const onTriggerClick = async () => {
-    setIsTriggering(true);
+    dispatch({ type: "BUILD_STARTED" });
     await fetch(DEPLOY_HOOK, { method: "POST" });
-    setMessage("Build has been triggered! This will take 15-20 minutes.");
-    setIsTriggering(false);
+    dispatch({
+      type: "BUILD_COMPLETE",
+      message: "Build has been triggered! This will take 15-20 minutes.",
+    });
   };
 
-  if (authenticated) {
+  if (state.authenticated) {
     return (
       <Layout>
         <Head>
@@ -35,10 +61,13 @@ const AdminPage = () => {
         </Head>
         <div style={containerStyle}>
           <p>You're in the mainframe!</p>
-          {!!message ? (
+          {!!state.build.message ? (
             <p style={{ color: "var(--primary)" }}>{message}</p>
           ) : (
-            <Button onClick={onTriggerClick} isSubmitting={isTriggering}>
+            <Button
+              onClick={onTriggerClick}
+              isSubmitting={state.build.isTriggering}
+            >
               Trigger Build
             </Button>
           )}
@@ -57,7 +86,7 @@ const AdminPage = () => {
         onSubmit={(event) => {
           event.preventDefault();
           if (event.target.password.value === ADMIN_PASSWORD) {
-            setAuthenticated(true);
+            dispatch({ type: "AUTHENTICATED" });
           }
         }}
       >
