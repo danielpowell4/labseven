@@ -5,13 +5,14 @@ import { Button, Layout } from "../components";
 
 import { Dropbox } from "dropbox";
 
+import useSWR from "swr";
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
 export async function getStaticProps() {
   return { props: {} };
 }
 
 const UPLOAD_FILE_SIZE_LIMIT = 150 * 1024 * 1024;
-
-// TODO: move me to ENV
 
 const MonthNameMap = {
   0: "January",
@@ -101,6 +102,7 @@ const uploadFile = async (dropbox, path, file) => {
 
 const Upload = () => {
   const [data, setData] = React.useState("Idle");
+  const tokenQuery = useSWR("/api/fileUpload/getToken", fetcher);
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // stop the page from refreshing
@@ -111,7 +113,7 @@ const Upload = () => {
     const companyName = formEl.elements.companyName.value ?? "no-company-name";
     const fileInput = formEl.elements.fileUpload;
     const dropbox = new Dropbox({
-      accessToken: process.env.NEXT_PUBLIC_DROPBOX_ACCESS_TOKEN,
+      accessToken: tokenQuery.data?.token,
     });
 
     const today = new Date();
@@ -164,6 +166,11 @@ const Upload = () => {
         <details open>
           <summary>Dev Helper</summary>
           <pre>data: {JSON.stringify(data, null, 2)}</pre>
+        </details>
+
+        <details open>
+          <summary>tokenQuery</summary>
+          <pre>{JSON.stringify(tokenQuery)}</pre>
         </details>
       </div>
     </Layout>

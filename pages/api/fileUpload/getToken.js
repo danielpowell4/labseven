@@ -11,11 +11,7 @@ export default async (req, res) => {
   const dbxSheet = doc.sheetsByTitle["__dropbox_keys"];
   const rows = await dbxSheet.getRows();
   const activeRow = rows[0];
-  const asRes = {};
+  // const sheetHeaders = ["token", "refreshToken", "status", "lastUpdated"];
 
-  const headers = ["token", "refreshToken", "status", "lastUpdated"];
-
-  headers.forEach((header) => (asRes[header] = activeRow[header]));
-
-  return res.status(200).json(asRes);
+  return res.status(200).json({ token: activeRow["token"] });
 };
