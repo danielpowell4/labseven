@@ -10,31 +10,35 @@ import { stringify } from "qs";
 const refreshDropboxToken = async (activeRow) => {
   let nextToken;
 
-  try {
-    const params = {
-      grant_type: "refresh_token",
-      refresh_token: activeRow.refreshToken,
-      client_id: process.env.NEXT_PUBLIC_DROPBOX_CLIENT_ID,
-      client_secret: process.env.DROPBOX_CLIENT_SECRET,
-    };
-    const refreshRes = await fetch(
-      `https://api.dropbox.com/oauth2/token?${stringify(params)}`,
-      {
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
+  if (activeRow.refreshToken) {
+    try {
+      const params = {
+        grant_type: "refresh_token",
+        refresh_token: activeRow.refreshToken,
+        client_id: process.env.NEXT_PUBLIC_DROPBOX_CLIENT_ID,
+        client_secret: process.env.DROPBOX_CLIENT_SECRET,
+      };
+      const refreshRes = await fetch(
+        `https://api.dropbox.com/oauth2/token?${stringify(params)}`,
+        {
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        }
+      );
+      const result = await refreshRes.json();
+      if (!refreshRes.ok) {
+        throw new Error(`refreshDropboxToken error: ${JSON.stringify(body)}`);
       }
-    );
-    const result = await refreshRes.json();
-    if (!refreshRes.ok) {
-      throw new Error(`refreshDropboxToken error: ${JSON.stringify(body)}`);
+      applyTokens(activeRow, result);
+      await activeRow.save();
+      console.log("- successfully refreshed dropbox token");
+      nextToken = activeRow.token;
+    } catch (refreshError) {
+      console.log("- failed to refresh dropbox token");
+      console.error(refreshError);
     }
-    applyTokens(activeRow, result);
-    await activeRow.save();
-    console.log("- successfully refreshed dropbox token");
-    nextToken = activeRow.token;
-  } catch (refreshError) {
-    console.log("- failed to refresh dropbox token");
-    console.error(refreshError);
+  } else {
+    console.error("- no refresh token found");
   }
 
   return nextToken;
