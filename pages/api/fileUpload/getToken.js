@@ -30,8 +30,10 @@ const refreshDropboxToken = async (activeRow) => {
     }
     applyTokens(activeRow, result);
     await activeRow.save();
+    console.log("- successfully refreshed dropbox token");
     nextToken = activeRow.token;
   } catch (refreshError) {
+    console.log("- failed to refresh dropbox token");
     console.error(refreshError);
   }
 
@@ -49,24 +51,26 @@ export default async (req, res) => {
   const dbxSheet = doc.sheetsByTitle["__dropbox_keys"];
   const rows = await dbxSheet.getRows();
   const activeRow = rows[0];
-  let token = activeRow["token"];
+  let token;
 
-  // check if token valid
-  const dbx = new Dropbox({ accessToken: token });
   try {
+    // check if token valid
     // send query, if returned w/ 200, all good
+    const dbx = new Dropbox({ accessToken: activeRow["token"] });
     const sendQuery = { query: "handshake" };
     const checkRes = await dbx.checkUser(sendQuery);
     if (checkRes.status === 200 && checkRes.result.result === "handshake") {
       console.log("- current dropbox token is valid");
+      token = activeRow["token"];
     } else {
       throw new Error(
         `- current dropbox token invalid per ${JSON.stringify(checkRes)}`
       );
     }
   } catch (error) {
-    // isn't valid, refresh token if appropriate
+    // is missing or is NOT valid
     if (error.response && error.response.status === 401) {
+      // 401's => try refresh
       console.log(" - token has expired or been revoked");
       token = await refreshDropboxToken(activeRow);
     } else {
