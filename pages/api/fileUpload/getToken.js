@@ -8,11 +8,14 @@ export default async (req, res) => {
   });
 
   await doc.loadInfo();
-  const dbxSheet = doc.sheetsByTitle("__dropbox_keys");
-
-  const headers = await dbxSheet.loadHeaderRow(); // loads non-empty header row
+  const dbxSheet = doc.sheetsByTitle["__dropbox_keys"];
   const rows = await dbxSheet.getRows();
-  const activeRow = rows[0]; // only 1
+  const activeRow = rows[0];
+  const asRes = {};
 
-  return res.status(200).json({ headers, activeRow });
+  const headers = ["token", "refreshToken", "status", "lastUpdated"];
+
+  headers.forEach((header) => (asRes[header] = activeRow[header]));
+
+  return res.status(200).json(asRes);
 };

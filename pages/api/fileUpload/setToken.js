@@ -8,9 +8,8 @@ export default async (req, res) => {
   });
 
   await doc.loadInfo();
-  const dbxSheet = doc.sheetsByTitle("__dropbox_keys");
+  const dbxSheet = doc.sheetsByTitle["__dropbox_keys"];
 
-  const headers = await dbxSheet.loadHeaderRow(); // loads non-empty header row
   const rows = await dbxSheet.getRows();
   const activeRow = rows[0]; // only 1
 
