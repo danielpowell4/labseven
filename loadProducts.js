@@ -64,6 +64,8 @@ function sortProducts(a, b) {
 
 const PRODUCTS_CACHE_PATH = "products_cache.json";
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 async function getAllProducts() {
   const allProducts = await loadOrBuildCache(
     PRODUCTS_CACHE_PATH,
@@ -121,9 +123,26 @@ const buildProductListUrl = (Index = 0) => {
 };
 
 async function getPageOfProducts(startingIndex) {
-  let response = await fetch(buildProductListUrl(startingIndex));
-  let json = await response.json();
-  return json;
+  const maxRetries = 5;
+  let retryCount = 0;
+
+  while (retryCount < maxRetries) {
+    try {
+      let response = await fetch(buildProductListUrl(startingIndex));
+      let json = await response.json();
+      return json;
+    } catch (error) {
+      retryCount++;
+      console.log(
+        `Error fetching page of products. Retrying (${retryCount}/${maxRetries})...`
+      );
+      if (retryCount >= maxRetries) {
+        throw error;
+      } else {
+        await delay(1000 * retryCount);
+      }
+    }
+  }
 }
 
 // https://demo.inksoft.com/demo?Page=Api2#methods_GetProduct
@@ -131,11 +150,28 @@ const PRODUCT_DETAIL_ENDPOINT =
   "https://stores.labseven.co/Lab_Seven_Screen_Printing_Co/Api2/GetProduct";
 
 async function getProductDetail(product) {
-  const response = await fetch(
-    `${PRODUCT_DETAIL_ENDPOINT}?Format=JSON&ProductId=${product.ID}`
-  );
-  const json = await response.json();
-  return json;
+  const maxRetries = 5;
+  let retryCount = 0;
+
+  while (retryCount < maxRetries) {
+    try {
+      const response = await fetch(
+        `${PRODUCT_DETAIL_ENDPOINT}?Format=JSON&ProductId=${product.ID}`
+      );
+      const json = await response.json();
+      return json;
+    } catch (error) {
+      retryCount++;
+      console.log(
+        `Error fetching product detail. Retrying (${retryCount}/${maxRetries})...`
+      );
+      if (retryCount >= maxRetries) {
+        throw error;
+      } else {
+        await delay(1000 * retryCount);
+      }
+    }
+  }
 }
 
 function mode(collection) {
