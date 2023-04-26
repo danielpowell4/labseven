@@ -7,9 +7,8 @@ const dbxConfig = {
   clientSecret: process.env.DROPBOX_CLIENT_SECRET,
 };
 
-// TODO: peg me to domain
-// NOTE: also in /start.js
-const redirectUri = `http://localhost:3000/api/fileUpload/auth`;
+// NOTE: also in /auth.js
+const redirectUri = process.env.DROPBOX_REDIRECT_URL;
 
 // first step for for admins to link are sent after linking w/ Dropbox from __admin
 // see example at https://github.com/dropbox/dropbox-sdk-js/blob/main/examples/javascript/simple-backend/code_flow_example.js
