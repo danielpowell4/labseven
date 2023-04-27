@@ -15,7 +15,7 @@ const Upload = () => {
   const addAttachment = React.useCallback((attachment) => {
     setAttachments((prev) => [...prev, attachment]);
   });
-  const [data, onInputChange] = useFileUpload(addAttachment);
+  const [data, dropzone] = useFileUpload(name, addAttachment);
 
   return (
     <Layout>
@@ -42,14 +42,23 @@ const Upload = () => {
             required
           />
 
-          <label htmlFor="fileUpload">File Upload</label>
-          <input
-            type="file"
-            id="fileUpload"
-            onChange={(e) => onInputChange(name, e)}
-            multiple
-            required
-          />
+          <div
+            style={{
+              border: `2px dashed var(--hr)`,
+              padding: "1rem",
+              background: "lavender",
+              cursor: "pointer",
+            }}
+            {...dropzone.getRootProps()}
+          >
+            <input {...dropzone.getInputProps()} />
+            {dropzone.isDragActive ? (
+              <p>Drop the files here ...</p>
+            ) : (
+              <p>Drag 'n' drop some files here, or click to select files</p>
+            )}
+          </div>
+
           <pre>attachments: {JSON.stringify(attachments, null, 2)}</pre>
         </form>
 
