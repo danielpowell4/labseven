@@ -73,12 +73,12 @@ export default async (req, res) => {
     }
   } catch (error) {
     // is missing or is NOT valid
-    if (error.response && error.response.status === 401) {
+    if (error?.status === 401) {
       // 401's => try refresh
       console.log(" - token has expired or been revoked");
       token = await refreshDropboxToken(activeRow);
     } else {
-      console.error(error);
+      console.error("- error is not 401", error);
     }
   }
 
