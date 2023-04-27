@@ -41,7 +41,6 @@ const Upload = () => {
             onChange={(e) => setName(e.target.value)}
             required
           />
-
           <div
             style={{
               border: `2px dashed var(--hr)`,

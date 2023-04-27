@@ -10,9 +10,24 @@ import Step3_Upload from "public/assets/Home/Step3_Upload.svg";
 
 import styles from "./OrderForm.module.css";
 import { useOrderForm } from "lib/orderForm";
+import useFileUpload from "lib/useFileUpload";
 
 const ProjectNotes = () => {
   const { formik } = useOrderForm();
+
+  const nameVal = React.useMemo(() => formik.values.name, [formik.values.name]);
+  const attachmentVal = React.useRef(formik.values.attachments);
+  React.useEffect(() => {
+    attachmentVal.current = formik.values.attachments;
+  }, [formik.values.attachments]);
+  const addAttachment = React.useCallback(
+    (attachment) => {
+      const prev = attachmentVal.current || [];
+      formik.setFieldValue("attachments", [...prev, attachment]);
+    },
+    [formik.setFieldValue]
+  );
+  const [data, dropzone] = useFileUpload(nameVal, addAttachment);
 
   return (
     <Layout className={styles.background}>
@@ -100,10 +115,28 @@ const ProjectNotes = () => {
               <label htmlFor="attachments" className={styles.form__label}>
                 Attachments
               </label>
-              <div className={styles.form__attachments}>
-                <input type="file" id="attachments" name="attachments" />
-                <small>Note: note currently hooked up to anything!</small>
+              <div
+                style={{
+                  border: `2px dashed var(--hr)`,
+                  padding: "1rem",
+                  background: "lavender",
+                  cursor: "pointer",
+                }}
+                {...dropzone.getRootProps()}
+              >
+                <input {...dropzone.getInputProps()} />
+                {dropzone.isDragActive ? (
+                  <p>Drop the files here ...</p>
+                ) : (
+                  <p>Drag 'n' drop some files here, or click to select files</p>
+                )}
               </div>
+              {formik.values.attachments.length && (
+                <pre>
+                  uploaded: {JSON.stringify(formik.values.attachments, null, 2)}
+                </pre>
+              )}
+              <pre>uploadData: {JSON.stringify(data, null, 2)}</pre>
             </div>
           </div>
         </div>
