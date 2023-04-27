@@ -102,12 +102,16 @@ const ProjectNotes = () => {
               </label>
               <div className={styles.form__attachments}>
                 <input type="file" id="attachments" name="attachments" />
+                <small>Note: note currently hooked up to anything!</small>
               </div>
             </div>
           </div>
         </div>
         <div className={styles.form__actions}>
-          <Button onClick={(e) => alert(`clicked ${e.target.innerHTML}`)}>
+          <Button
+            onClick={formik.handleSubmit}
+            isSubmitting={formik.isSubmitting}
+          >
             Submit
           </Button>
         </div>

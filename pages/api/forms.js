@@ -10,10 +10,18 @@ export default async (req, res) => {
   await doc.loadInfo();
 
   console.log("req.body", req.body);
-  const { __title, ...fields } = req.body;
+  const { __title, rows = [], ...fields } = req.body;
   const sheet = doc.sheetsByTitle[__title];
 
-  await sheet.addRow({ ...fields, addedOn: new Date().toISOString() });
+  if (rows.length) {
+    // many rows (order form)
+    for (const row of rows) {
+      await sheet.addRow({ ...row, addedOn: new Date().toISOString() });
+    }
+  } else {
+    // one row
+    await sheet.addRow({ ...fields, addedOn: new Date().toISOString() });
+  }
 
   return res.status(200).json({ message: "Submission recorded!" });
 };
