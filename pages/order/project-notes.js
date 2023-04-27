@@ -131,7 +131,7 @@ const ProjectNotes = () => {
                   <p>Drag 'n' drop some files here, or click to select files</p>
                 )}
               </div>
-              {formik.values.attachments.length && (
+              {!!formik.values.attachments.length && (
                 <pre>
                   uploaded: {JSON.stringify(formik.values.attachments, null, 2)}
                 </pre>
