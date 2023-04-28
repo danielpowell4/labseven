@@ -191,7 +191,13 @@
 }
 
 .uploadDisplay__item {
+  flex: 1;
   padding: 0.5rem 1rem;
   box-shadow: var(--boxShadow);
   border-radius: var(--rounded);
+}
+
+.uploadDisplay__text {
+  text-overflow: ellipsis;
+  margin: 0;
 }

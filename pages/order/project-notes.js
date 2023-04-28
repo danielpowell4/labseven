@@ -135,10 +135,12 @@ const ProjectNotes = () => {
                       className={styles.uploadDisplay__item}
                       title={fileData.name}
                     >
-                      {fileData.name.substring(0, 12)}
-                      {fileData.name.length > 12 ? "..." : ""}
-                      <br />
-                      {fileData.size}
+                      <p className={styles.uploadDisplay__text}>
+                        {fileData.name}
+                      </p>
+                      <p className={styles.uploadDisplay__text}>
+                        {fileData.size}
+                      </p>
                     </li>
                   ))}
                 </ul>
