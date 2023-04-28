@@ -115,15 +115,7 @@ const ProjectNotes = () => {
               <label htmlFor="attachments" className={styles.form__label}>
                 Attachments
               </label>
-              <div
-                style={{
-                  border: `2px dashed var(--hr)`,
-                  padding: "1rem",
-                  background: "lavender",
-                  cursor: "pointer",
-                }}
-                {...dropzone.getRootProps()}
-              >
+              <div className={styles.dropzoneBox} {...dropzone.getRootProps()}>
                 <input {...dropzone.getInputProps()} />
                 {dropzone.isDragActive ? (
                   <p>Drop the files here ...</p>
@@ -131,13 +123,36 @@ const ProjectNotes = () => {
                   <p>Drag 'n' drop some files here, or click to select files</p>
                 )}
               </div>
-              {!!formik.values.attachments.length && (
-                <pre>
-                  uploaded: {JSON.stringify(formik.values.attachments, null, 2)}
-                </pre>
-              )}
               <pre>uploadData: {JSON.stringify(data, null, 2)}</pre>
             </div>
+            {!!formik.values.attachments.length && (
+              <div className={styles.formField}>
+                <label className={styles.form__label}>Uploaded Files</label>
+                <ul className={styles.uploadDisplayContainer}>
+                  {formik.values.attachments.map((fileData, i) => (
+                    <li
+                      key={i}
+                      className={styles.uploadDisplay__item}
+                      title={fileData.name}
+                    >
+                      {fileData.name.substring(0, 12)}
+                      {fileData.name.length > 12 ? "..." : ""}
+                      <br />
+                      {fileData.size}
+                    </li>
+                  ))}
+                </ul>
+                <details>
+                  <summary>
+                    What will go to sheets (will remove before launch)
+                  </summary>
+                  <pre>
+                    uploaded:{" "}
+                    {JSON.stringify(formik.values.attachments, null, 2)}
+                  </pre>
+                </details>
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.form__actions}>

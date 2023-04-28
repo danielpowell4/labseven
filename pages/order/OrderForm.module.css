@@ -173,3 +173,25 @@
 .formField textarea {
   border-radius: 0.25rem;
 }
+
+.dropzoneBox {
+  border: 2px dashed var(--hr);
+  padding: 1rem;
+  background: lavender;
+  cursor: pointer;
+}
+
+.uploadDisplayContainer {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.uploadDisplay__item {
+  padding: 0.5rem 1rem;
+  box-shadow: var(--boxShadow);
+  border-radius: var(--rounded);
+}
