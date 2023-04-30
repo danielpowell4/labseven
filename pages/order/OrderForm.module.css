@@ -59,6 +59,13 @@
 
 .formContainer h1 {
   font-size: 3rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 862px) {
+  .formContainer h1 {
+    text-align: left;
+  }
 }
 
 .form__actions {
@@ -83,7 +90,6 @@
 /* END shared */
 
 .form__body {
-  max-width: 720px;
   width: 100%;
   margin: 0 auto;
 }
@@ -147,19 +153,19 @@
 }
 
 .sizeChart {
-  display: grid;
-  grid-template-areas: "name sizes qty";
-  grid-template-columns: 15rem auto 3rem;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  text-align: right;
+  max-width: 12rem;
+  margin: auto auto 1.5rem;
 
-  text-align: center; /* for headers */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
   align-items: baseline;
+  position: relative;
 }
 
-.sizeChart__name {
-  grid-area: name;
-  text-align: right;
+.sizeChartHeader {
+  display: none;
 }
 
 .sizeChart__name h3,
@@ -168,11 +174,11 @@
 }
 
 .sizeChart__styles {
-  grid-area: sizes;
-
   display: grid;
-  grid-template-columns: repeat(var(--sizeCount), 3rem);
-  gap: 0.5rem;
+  grid-template-columns: repeat(2, 3rem);
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
 }
 
 .sizeChart__styles input {
@@ -185,19 +191,78 @@
   border-width: 2px;
 }
 
+.sizeChart__itemQuantity {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0;
+}
+
+.sizeChart__itemQuantity label {
+  margin-right: 0.25rem;
+}
+
 .sizeChart__totalQuantity {
-  text-align: right;
+  text-align: center;
 }
 
 @media screen and (min-width: 862px) {
   /* charts from vertical to horizontal */
+  .sizeChart {
+    display: grid;
+    grid-template-areas: "name sizes qty";
+    grid-template-columns: 15rem auto 3rem;
+    gap: 1.5rem;
+    align-items: baseline;
+    text-align: center; /* for headers */
+    position: unset;
+
+    max-width: unset;
+  }
+  .sizeChartHeader {
+    display: grid;
+  }
+  .sizeChart__styles label,
+  .sizeChart__itemQuantity label {
+    display: none;
+  }
+
+  .sizeChart__name {
+    grid-area: name;
+    text-align: right;
+  }
+
+  .sizeChart__styles {
+    grid-area: sizes;
+
+    display: grid;
+    grid-template-columns: repeat(var(--sizeCount), 3rem);
+    gap: 0.5rem;
+    margin-left: unset;
+  }
+
+  .sizeChart__itemQuantity {
+    position: static;
+    bottom: unset;
+    left: unset;
+  }
+
+  .sizeChart__totalQuantity {
+    text-align: right;
+  }
 }
 
 .notesBlockContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   width: 100%;
+}
+
+@media screen and (min-width: 862px) {
+  .notesBlockContainer {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
 }
 
 .notesBlock {

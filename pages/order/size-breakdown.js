@@ -138,27 +138,33 @@ const SizeBreakdown = () => {
 
                 <div className={styles.sizeChart__styles}>
                   {orderedSizes.map((size, sIndex) => {
+                    const sizeInputId = `${sizePrefix}.${size}`;
                     const sizeAvailable = selectedStyle?.Sizes?.find(
                       (styleSize) => styleSize.Name === size
                     );
 
                     return (
-                      <input
-                        key={sIndex}
-                        type="number"
-                        step="1"
-                        min="0"
-                        name={`${sizePrefix}.${size}`}
-                        value={product.sizeChart?.[size] || ""}
-                        disabled={!sizeAvailable}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                      />
+                      <React.Fragment key={sIndex}>
+                        <label htmlFor={sizeInputId}>{size}</label>
+                        <input
+                          type="number"
+                          step="1"
+                          min="0"
+                          name={sizeInputId}
+                          value={product.sizeChart?.[size] || ""}
+                          disabled={!sizeAvailable}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                        />
+                      </React.Fragment>
                     );
                   })}
                 </div>
 
-                <span>{productQty}</span>
+                <div className={styles.sizeChart__itemQuantity}>
+                  <label>Qty.</label>
+                  <span>{productQty}</span>
+                </div>
               </li>
             );
           })}
