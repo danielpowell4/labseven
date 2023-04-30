@@ -1,6 +1,6 @@
 /* START shared */
 .background {
-  background: linear-gradient(to right, var(--primary), #4852da);
+  background: linear-gradient(to right, #4852da, var(--primary));
 
   min-height: calc(100vh - 14px); /* matches Layout's container */
   display: flex;
@@ -12,17 +12,55 @@
 .startHeader {
   color: var(--background);
   text-align: center;
-  margin-top: 4rem;
+  margin-top: 8rem;
+  max-width: 368px;
   font-size: 2.25rem;
   position: relative;
   display: inline-block;
 }
 
+@media (min-width: 612px) {
+  .startHeader {
+    margin-top: 4rem;
+  }
+}
+
 .startArrow {
   position: absolute;
   z-index: 2;
-  top: 1.15rem;
-  left: -5rem;
+
+  top: 5.15rem;
+  left: 1rem;
+  max-width: 3rem;
+}
+
+@media (min-width: 480px) {
+  .startArrow {
+    top: 2.15rem;
+    left: -3rem;
+  }
+}
+
+@media (min-width: 687px) {
+  .startHeader {
+    max-width: unset;
+  }
+  .startArrow {
+    max-width: unset;
+    top: 1.15rem;
+    left: -5rem;
+  }
+}
+
+@media (min-width: 687px) {
+  .startHeader {
+    max-width: unset;
+  }
+  .startArrow {
+    max-width: unset;
+    top: 1.15rem;
+    left: -5rem;
+  }
 }
 
 .formContainer {
