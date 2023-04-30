@@ -151,7 +151,15 @@ import CTA_Namaste from "../../public/assets/Home/CTA_Namaste.png";
 
 import styles from "./Home.module.css";
 
-const ACTION_VERBS = ["Wear", "Share", "Wear", "Sell", "Wear", "Share", "Wear"];
+const ACTION_VERBS = [
+  "Wear",
+  "Share",
+  "Wear",
+  "Share",
+  "Wear",
+  "Share",
+  "Wear",
+];
 
 const HomePage = () => {
   const [heroRef, setHeroRef] = React.useState();
