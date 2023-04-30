@@ -182,6 +182,7 @@ const PickProduct = ({ categoryOptions }) => {
                 <li key={index} className={styles.productGrid__item}>
                   <Select
                     id={`products[${index}].category`}
+                    className={styles.productGrid__item__Select}
                     placeholder="Category..."
                     options={categoryOptions}
                     onChange={(selected) =>
@@ -191,6 +192,7 @@ const PickProduct = ({ categoryOptions }) => {
                   />
                   <Select
                     id={`products[${index}].manufacturer`}
+                    className={styles.productGrid__item__Select}
                     placeholder="Brand..."
                     options={manufacturerOptions}
                     onChange={(selected) =>
@@ -201,6 +203,7 @@ const PickProduct = ({ categoryOptions }) => {
                   />
                   <AsyncSelect
                     id={`products[${index}].sku`}
+                    className={styles.productGrid__item__Select}
                     placeholder="Style..."
                     loadOptions={(inputValue) =>
                       loadOptions(
@@ -224,6 +227,7 @@ const PickProduct = ({ categoryOptions }) => {
                   />
                   <Select
                     id={`products[${index}].colorNameCode`}
+                    className={styles.productGrid__item__Select}
                     placeholder="Color..."
                     options={colorOptions}
                     onChange={(selected) =>
