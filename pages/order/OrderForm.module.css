@@ -29,15 +29,32 @@
 .formNav__next,
 .formNav__prev {
   position: absolute;
-  top: calc(50% - 10px);
+  top: calc(100% + 3rem);
 }
 
 .formNav__prev {
-  left: -8rem;
+  left: calc(50% - 5rem);
 }
 
 .formNav__next {
-  right: -8rem;
+  right: calc(50% - 5rem);
+}
+
+/* move arrows to sides */
+@media screen and (min-width: 1376px) {
+  .formNav__next,
+  .formNav__prev {
+    position: absolute;
+    top: calc(50% - 10px);
+  }
+
+  .formNav__prev {
+    left: -8rem;
+  }
+
+  .formNav__next {
+    right: -8rem;
+  }
 }
 
 .formContainer h1 {
