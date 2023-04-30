@@ -209,7 +209,7 @@ const HomePage = () => {
             style={{
               "--totalImageHeights":
                 HeroImages.reduce((total, img) => (total += img.height), 0) +
-                (HeroImages.length - 1) * 200 + // 200px margin between images
+                (HeroImages.length - 3) * 200 + // 200px margin between images
                 "px",
             }}
           >
