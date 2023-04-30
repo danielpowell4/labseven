@@ -272,9 +272,7 @@ const HomePage = () => {
               You deserve quality apparel that reflects the legitimacy of your
               brand.
             </p>
-            <Link href="/products" className={styles.LinkButton}>
-              Get Started
-            </Link>
+            <LinkButton href="/products">Get Started</LinkButton>
           </div>
         </div>
       </div>
