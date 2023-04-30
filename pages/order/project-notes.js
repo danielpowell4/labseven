@@ -6,10 +6,12 @@ import Link from "next/link";
 import { Button, Layout, ThreeDotLoader } from "components";
 
 import ArrowLeft from "public/assets/Arrows/Left.svg";
+import StartArrow from "public/assets/Order/StartArrow.svg";
 import Step3_Upload from "public/assets/Home/Step3_Upload.svg";
 import UploadedIcon from "public/assets/Order/UploadedIcon.svg";
 
 import styles from "./OrderForm.module.css";
+import homeStyles from "/pages/dev/Home.module.css";
 import utilStyles from "/styles/utils.module.css";
 import { useOrderForm } from "lib/orderForm";
 import useFileUpload from "lib/useFileUpload";
@@ -36,6 +38,16 @@ const ProjectNotes = () => {
 
   return (
     <Layout className={styles.background}>
+      <h2 className={styles.startHeader}>
+        <Image
+          src={StartArrow}
+          alt={"Start Arrow"}
+          className={styles.startArrow}
+          aria-hidden={true}
+        />
+        Start your <span className={homeStyles.Underline1}>awesome</span>{" "}
+        product:
+      </h2>
       <div className={styles.formContainer}>
         <nav className={styles.formNav} aria-label="Order Form Navigation">
           <Link

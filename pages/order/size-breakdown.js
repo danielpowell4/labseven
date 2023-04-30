@@ -7,9 +7,12 @@ import { Layout, LinkButton } from "components";
 
 import ArrowLeft from "public/assets/Arrows/Left.svg";
 import ArrowRight from "public/assets/Arrows/Right.svg";
+import StartArrow from "public/assets/Order/StartArrow.svg";
 import Step2_Sizes from "public/assets/Home/Step2_Sizes.svg";
 
 import styles from "./OrderForm.module.css";
+import homeStyles from "/pages/dev/Home.module.css";
+
 import { useOrderForm } from "lib/orderForm";
 
 const SIZE_PRIORITY = {
@@ -58,6 +61,16 @@ const SizeBreakdown = () => {
 
   return (
     <Layout className={styles.background}>
+      <h2 className={styles.startHeader}>
+        <Image
+          src={StartArrow}
+          alt={"Start Arrow"}
+          className={styles.startArrow}
+          aria-hidden={true}
+        />
+        Start your <span className={homeStyles.Underline1}>awesome</span>{" "}
+        product:
+      </h2>
       <div className={styles.formContainer}>
         <nav className={styles.formNav} aria-label="Order Form Navigation">
           <Link

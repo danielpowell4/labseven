@@ -3,9 +3,26 @@
   background: linear-gradient(to right, var(--primary), #4852da);
 
   min-height: calc(100vh - 14px); /* matches Layout's container */
-
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.startHeader {
+  color: var(--background);
+  text-align: center;
+  margin-top: 4rem;
+  font-size: 2.25rem;
+  position: relative;
+  display: inline-block;
+}
+
+.startArrow {
+  position: absolute;
+  z-index: 2;
+  top: 1.15rem;
+  left: -5rem;
 }
 
 .formContainer {
@@ -19,7 +36,7 @@
   max-width: 1080px;
   height: 100%;
   padding: 3.375rem;
-  margin: 5rem auto 10rem;
+  margin: 2rem auto 10rem;
 
   background: var(--background);
   box-shadow: var(--boxShadow);
@@ -137,7 +154,7 @@
   align-self: center;
 }
 
-@media screen and (min-width: 862px) {
+@media screen and (min-width: 1080px) {
   .productGrid__item {
     display: grid;
     grid-template-columns: 1rem repeat(4, 1fr) auto;

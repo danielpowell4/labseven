@@ -6,11 +6,13 @@ import Link from "next/link";
 import { Button, Layout, LinkButton } from "components";
 
 import ArrowRight from "public/assets/Arrows/Right.svg";
+import StartArrow from "public/assets/Order/StartArrow.svg";
 import Step1_Shirt from "public/assets/Home/Step1_Shirt.svg";
 import CopyProduct from "public/assets/Order/CopyProduct.svg";
 import RemoveProduct from "public/assets/Order/RemoveProduct.svg";
 
 import styles from "./OrderForm.module.css";
+import homeStyles from "/pages/dev/Home.module.css";
 
 import { stringify } from "qs";
 import Select from "react-select";
@@ -131,6 +133,16 @@ const PickProduct = ({ categoryOptions }) => {
 
   return (
     <Layout className={styles.background}>
+      <h2 className={styles.startHeader}>
+        <Image
+          src={StartArrow}
+          alt={"Start Arrow"}
+          className={styles.startArrow}
+          aria-hidden={true}
+        />
+        Start your <span className={homeStyles.Underline1}>awesome</span>{" "}
+        product:
+      </h2>
       <div className={styles.formContainer}>
         <nav className={styles.formNav} aria-label="Order Form Navigation">
           <Link
