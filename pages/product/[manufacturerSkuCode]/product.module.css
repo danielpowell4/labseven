@@ -44,7 +44,7 @@
   padding: 1rem;
   background-color: var(--background);
   border: 1px solid var(--hr);
-  border-radius: 0.25rem;
+  border-radius: var(--babyRound);
 
   display: grid;
   grid-template-columns: 1fr;

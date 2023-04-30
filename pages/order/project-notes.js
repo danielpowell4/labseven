@@ -3,12 +3,14 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button, Layout } from "components";
+import { Button, Layout, ThreeDotLoader } from "components";
 
 import ArrowLeft from "public/assets/Arrows/Left.svg";
 import Step3_Upload from "public/assets/Home/Step3_Upload.svg";
+import UploadedIcon from "public/assets/Order/UploadedIcon.svg";
 
 import styles from "./OrderForm.module.css";
+import utilStyles from "/styles/utils.module.css";
 import { useOrderForm } from "lib/orderForm";
 import useFileUpload from "lib/useFileUpload";
 
@@ -27,7 +29,10 @@ const ProjectNotes = () => {
     },
     [formik.setFieldValue]
   );
-  const [data, dropzone] = useFileUpload(nameVal, addAttachment);
+  const [uploadData, dropzone] = useFileUpload(nameVal, addAttachment);
+  const isUploadDisabled = uploadData?.state === "idle";
+  const showUploadLoader =
+    uploadData?.state === "idle" || uploadData?.state === "loading";
 
   return (
     <Layout className={styles.background}>
@@ -115,44 +120,77 @@ const ProjectNotes = () => {
               <label htmlFor="attachments" className={styles.form__label}>
                 Attachments
               </label>
-              <div className={styles.dropzoneBox} {...dropzone.getRootProps()}>
-                <input {...dropzone.getInputProps()} />
+              {uploadData?.state === "success" && (
+                <p className={styles.successMessage}>{uploadData.message}</p>
+              )}
+              <div
+                className={[
+                  styles.dropzoneBox,
+                  isUploadDisabled && styles.dropzoneBoxIsDisabled,
+                  formik.values.attachments?.length &&
+                    styles.dropzoneBoxHasFiles,
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                {...dropzone.getRootProps()}
+              >
+                <input
+                  {...dropzone.getInputProps()}
+                  disabled={isUploadDisabled}
+                />
                 {dropzone.isDragActive ? (
                   <p>Drop the files here ...</p>
                 ) : (
-                  <p>Drag 'n' drop some files here, or click to select files</p>
+                  <p>Drag & drop or click to browse.</p>
                 )}
               </div>
-              <pre>uploadData: {JSON.stringify(data, null, 2)}</pre>
+              {showUploadLoader && <ThreeDotLoader />}
+              {uploadData?.state === "error" && (
+                <>
+                  <p style={{ color: "var(--danger)" }}>
+                    {uploadData?.message || "Something went wrong."}
+                  </p>
+                  <small>
+                    Please refresh and try again. If you get another error,
+                    please submit this form without attachments and let our team
+                    something went wrong.
+                  </small>
+                </>
+              )}
             </div>
             {!!formik.values.attachments.length && (
               <div className={styles.formField}>
                 <label className={styles.form__label}>Uploaded Files</label>
                 <ul className={styles.uploadDisplayContainer}>
-                  {formik.values.attachments.map((fileData, i) => (
-                    <li
-                      key={i}
-                      className={styles.uploadDisplay__item}
-                      title={fileData.name}
-                    >
-                      <p className={styles.uploadDisplay__text}>
-                        {fileData.name}
-                      </p>
-                      <p className={styles.uploadDisplay__text}>
-                        {fileData.size}
-                      </p>
-                    </li>
-                  ))}
+                  {formik.values.attachments.map((fileData, i) => {
+                    const extension = fileData.name.split(".").pop() || "";
+
+                    return (
+                      <li
+                        key={i}
+                        className={[
+                          styles.uploadDisplay__item,
+                          utilStyles.tooltipped,
+                        ].join(" ")}
+                        aria-label={fileData.name}
+                      >
+                        <Image
+                          src={UploadedIcon}
+                          alt="Hand-sketch of Uploaded File Icon"
+                          style={{ width: "2rem", height: "auto" }}
+                        />
+                        <div className={styles.uploadDisplay__item__caption}>
+                          <p className={styles.uploadDisplay__text}>
+                            {extension.toUpperCase()}
+                          </p>
+                          <p className={styles.uploadDisplay__text}>
+                            {fileData.size}
+                          </p>
+                        </div>
+                      </li>
+                    );
+                  })}
                 </ul>
-                <details>
-                  <summary>
-                    What will go to sheets (will remove before launch)
-                  </summary>
-                  <pre>
-                    uploaded:{" "}
-                    {JSON.stringify(formik.values.attachments, null, 2)}
-                  </pre>
-                </details>
               </div>
             )}
           </div>

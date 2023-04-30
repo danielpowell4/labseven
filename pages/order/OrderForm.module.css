@@ -148,7 +148,7 @@
 
 .notesBlockContainer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
 }
 
@@ -171,14 +171,33 @@
 
 .formField input,
 .formField textarea {
-  border-radius: 0.25rem;
+  border-radius: var(--babyRound);
+}
+
+.formField textarea {
+  resize: none;
 }
 
 .dropzoneBox {
   border: 2px dashed var(--hr);
   padding: 1rem;
-  background: lavender;
+  background: var(--alternateLight);
   cursor: pointer;
+  min-height: 11rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropzoneBoxHasFiles {
+  min-height: unset;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.dropzoneBoxIsDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .uploadDisplayContainer {
@@ -192,12 +211,25 @@
 
 .uploadDisplay__item {
   flex: 1;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   box-shadow: var(--boxShadow);
-  border-radius: var(--rounded);
+  border-radius: var(--babyRound);
+  text-align: center;
+  font-size: small;
+}
+
+.uploadDisplay__item__caption {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.5rem;
+  justify-content: center;
 }
 
 .uploadDisplay__text {
   text-overflow: ellipsis;
   margin: 0;
+}
+
+.successMessage {
+  color: var(--primary);
 }
