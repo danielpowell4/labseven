@@ -197,6 +197,7 @@ const ProjectNotes = () => {
         </div>
         <div className={styles.form__actions}>
           <Button
+            type="submit"
             onClick={formik.handleSubmit}
             isSubmitting={formik.isSubmitting}
           >
