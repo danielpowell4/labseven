@@ -102,11 +102,11 @@
   margin: 0;
 }
 
-@media screen and (min-width: 920px) {
-  .hero__imageReel {
-    animation: imageTurnUp 30s linear infinite;
-  }
+/* @media screen and (min-width: 920px) { */
+.hero__imageReel {
+  animation: imageTurnUp 30s linear infinite;
 }
+/* } */
 
 .hero__imageReel li {
   margin-top: 100px;
