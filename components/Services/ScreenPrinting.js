@@ -20,7 +20,7 @@ const ScreenPrinting = () => {
           src={Banner}
           alt="Hands pulling bright ink over a printing screen"
           fill
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "contain" }}
           sizes="(max-width: 1200px) 50vw, 100vw"
         />
       </div>

@@ -23,7 +23,7 @@ const Embroidery = () => {
           src={Banner}
           alt="Exquisite hats embroidered with vibrant colors and an intricate Colorado flag design"
           fill
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "contain" }}
           sizes="(max-width: 1200px) 50vw, 100vw"
         />
       </div>
@@ -72,7 +72,7 @@ const Embroidery = () => {
           src={NIKE_Banner}
           alt="Athlete models for Nike sporting rad technical apparel"
           fill
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "contain" }}
           sizes="(max-width: 1200px) 50vw, 100vw"
         />
       </div>
