@@ -15,18 +15,21 @@ import styles from "./Services.module.css";
 const ScreenPrinting = () => {
   return (
     <section id="ScreenPrinting" className={styles.serviceSection}>
-      <Image
-        src={Banner}
-        alt="Hands pulling bright ink over a printing screen"
-        height={250}
-      />
+      <div className={styles.bannerContainer}>
+        <Image
+          src={Banner}
+          alt="Hands pulling bright ink over a printing screen"
+          fill
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 1200px) 50vw, 100vw"
+        />
+      </div>
       <div className={styles.sideBySide}>
         <div className={styles.content}>
           <h2 className={styles.serviceHeading}>Screen Printing</h2>
           <p>
             {`Serving Denver and beyond since 2006, Lab Seven offers fresh takes on traditional screen printing methods. We’re up to speed on current print-industry trends, and only use top of the line equipment and materials in our Englewood, Colorado production headquarters. We're constantly improving our formulas to offer bright, soft, and stunning prints that you’ll be as excited to share as we are to print! At Lab Seven, we've perfected the science of t-shirt printing!`}
           </p>
-          <br />
           <p>Stop buying cheap throwaway gear.</p>
           <p>
             <strong>Print shirts you'll actually want to wear.</strong>
