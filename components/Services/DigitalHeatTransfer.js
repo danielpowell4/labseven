@@ -1,11 +1,13 @@
 import { Button, LinkButton } from "components";
 
+import styles from "./Services.module.css";
+
 const DigitalHeatTransfer = () => {
   return (
-    <section>
+    <section id="DigitalHeatTransfer" className={styles.serviceSection}>
       <div>Header Image</div>
       <div>
-        <h2>Digital Heat Transfer</h2>
+        <h2 className={styles.serviceHeading}>Digital Heat Transfer</h2>
         <p>
           Don't let the limitations of traditional screen printing stop you from
           making your vision a reality! Our digital heat transfer decoration

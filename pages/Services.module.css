@@ -1,0 +1,27 @@
+.scrollContainer {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  max-width: var(--gridWidth);
+  margin: 0 auto;
+  overflow: clip;
+
+  align-items: start;
+}
+
+.scrollContainer__aside {
+  position: sticky;
+  top: var(--navHeight);
+  align-self: start;
+}
+
+.sectionNav ul {
+  margin: 0;
+  padding: 0;
+}
+.sectionNav ul li {
+  margin-bottom: 0.375rem;
+}
+
+.sectionNav a {
+  font-size: 1.25rem;
+}

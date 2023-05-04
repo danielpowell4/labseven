@@ -1,11 +1,13 @@
 import { Button } from "components";
 
+import styles from "./Services.module.css";
+
 const StickersDecals = () => {
   return (
-    <section>
+    <section id="StickersDecals" className={styles.serviceSection}>
       <div>Header Image</div>
       <div>
-        <h2>Stickers & Decals</h2>
+        <h2 className={styles.serviceHeading}>Stickers & Decals</h2>
         <p>
           Who doesn't love stickers? Lab Seven is proud to offer full color
           (glossy or matte) die cut vinyl stickers, decals, and transfers.
@@ -86,7 +88,7 @@ const StickersDecals = () => {
             />
           </div>
           <div>
-            <label htmlForm="sticker_logo">Attach Logo</label>
+            <label htmlFor="sticker_logo">Attach Logo</label>
             <input type="file" id="sticker_logo" name="attachments" />
           </div>
           <Button type="submit">Get Started</Button>

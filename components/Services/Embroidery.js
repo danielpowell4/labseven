@@ -1,13 +1,15 @@
 import { LinkButton } from "components";
 
+import styles from "./Services.module.css";
+
 const Embroidery = () => {
   return (
-    <section>
+    <section id="Embroidery" className={styles.serviceSection}>
       <div>Header Image</div>
       <div>
         <div>Image 2 + 3</div>
         <div>
-          <h2>Embroidery</h2>
+          <h2 className={styles.serviceHeading}>Embroidery</h2>
           <p>
             {`What does your outfit say about your business? Custom embroidery from
           Lab Seven is the best way to spruce up your company uniforms or

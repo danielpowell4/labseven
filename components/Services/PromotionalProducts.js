@@ -1,6 +1,8 @@
 import { camelize } from "lib/utils";
 import { Button, LinkButton } from "components";
 
+import styles from "./Services.module.css";
+
 const choices = [
   "Drinkware",
   "Bags & Coolers",
@@ -14,10 +16,10 @@ const choices = [
 
 const PromotionalProducts = () => {
   return (
-    <section>
+    <section id="PromotionalProducts" className={styles.serviceSection}>
       <div>Header Image</div>
       <div>
-        <h2>Promotional Products</h2>
+        <h2 className={styles.serviceHeading}>Promotional Products</h2>
         <p>
           <strong>Keep your customers thinking of you!</strong> Branded
           promotional products offer tactile and useful tools, souvenirs, and

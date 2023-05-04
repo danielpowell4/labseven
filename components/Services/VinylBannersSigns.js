@@ -1,6 +1,8 @@
 import { camelize } from "lib/utils";
 import { Button } from "components";
 
+import styles from "./Services.module.css";
+
 const choices = [
   {
     label: "Material",
@@ -31,10 +33,10 @@ const choices = [
 
 const VinylBannersSigns = () => {
   return (
-    <section>
+    <section id="VinylBannersSigns" className={styles.serviceSection}>
       <div>Header Image</div>
       <div>
-        <h2>Vinyl Banners & Signs</h2>
+        <h2 className={styles.serviceHeading}>Vinyl Banners & Signs</h2>
         <p>
           Need road-side signage to promote an event, sale, or business? Vinyl
           banners are some of the most eye-catching and affordable promotional
@@ -83,7 +85,7 @@ const VinylBannersSigns = () => {
             <div key={label}>
               <label>{label}</label>
               {options.map(({ label: optLabel, value }) => {
-                const optId = `${id}_${camelize(label)}`;
+                const optId = `${id}_${camelize(optLabel)}`;
                 return (
                   <div key={optId}>
                     <input type="radio" name={label} value={value} id={optId} />
@@ -120,7 +122,7 @@ const VinylBannersSigns = () => {
             />
           </div>
           <div>
-            <label htmlForm="banner_logo">Attach Logo</label>
+            <label htmlFor="banner_logo">Attach Logo</label>
             <input type="file" id="banner_logo" name="attachments" />
           </div>
           <Button type="submit">Get Started</Button>

@@ -18,10 +18,11 @@ const ScreenPrinting = () => {
       <Image
         src={Banner}
         alt="Hands pulling bright ink over a printing screen"
+        height={250}
       />
       <div className={styles.sideBySide}>
         <div className={styles.content}>
-          <h2>Screen Printing</h2>
+          <h2 className={styles.serviceHeading}>Screen Printing</h2>
           <p>
             {`Serving Denver and beyond since 2006, Lab Seven offers fresh takes on traditional screen printing methods. We’re up to speed on current print-industry trends, and only use top of the line equipment and materials in our Englewood, Colorado production headquarters. We're constantly improving our formulas to offer bright, soft, and stunning prints that you’ll be as excited to share as we are to print! At Lab Seven, we've perfected the science of t-shirt printing!`}
           </p>
@@ -85,9 +86,11 @@ const ScreenPrinting = () => {
         </form>
       </div>
       <div className={styles.imageReel}>
-        <Image src={HopeHoodies} />
-        <Image src={PhillipLindsay} />
-        <Image src={CatDog} />
+        {[HopeHoodies, PhillipLindsay, CatDog].map((image, imageIndex) => (
+          <div key={imageIndex} className={styles.imageReel__item}>
+            <Image src={image} fill sizes="16vw" />
+          </div>
+        ))}
       </div>
     </section>
   );
