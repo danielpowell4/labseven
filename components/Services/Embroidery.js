@@ -27,8 +27,25 @@ const Embroidery = () => {
           sizes="(max-width: 1200px) 50vw, 100vw"
         />
       </div>
-      <div className={styles.sideBySide}>
-        <div className={styles.productDisplay}>Image 2 + 3</div>
+      <div className={styles.sideBySideGrid}>
+        <div className={styles.productDisplay}>
+          <div
+            className={[
+              styles.flyingContainer,
+              styles.flyingContainer__east,
+            ].join(" ")}
+          >
+            <Image src={PuffEmbroidery} fill />
+          </div>
+          <div
+            className={[
+              styles.flyingContainer,
+              styles.flyingContainer__west,
+            ].join(" ")}
+          >
+            <Image src={DetailEmbroidery} fill />
+          </div>
+        </div>
         <div className={styles.content}>
           <h2 className={styles.serviceHeading}>Embroidery</h2>
           <p>

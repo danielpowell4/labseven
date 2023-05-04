@@ -66,7 +66,7 @@ const VinylBannersSigns = () => {
             { src: Mercury, alt: "" },
             { src: Prism, alt: "" },
           ].map((image, imageIndex) => (
-            <div className={styles.wideImageContainer} key={imageIndex}>
+            <div className={styles.tallImageContainer} key={imageIndex}>
               <Image
                 src={image.src}
                 alt={image.alt}
