@@ -32,24 +32,20 @@ const ServicesPage = () => {
         <aside className={styles.scrollContainer__aside}>
           <nav className={styles.sectionNav}>
             <ul>
-              <li>
-                <Link href="#ScreenPrinting">Screen Printing</Link>
-              </li>
-              <li>
-                <Link href="#Embroidery">Embroidery</Link>
-              </li>
-              <li>
-                <Link href="#StickersDecals">Stickers & Decals</Link>
-              </li>
-              <li>
-                <Link href="#VinylBannersSigns">Vinyl Banners & Signs</Link>
-              </li>
-              <li>
-                <Link href="#DigitalHeatTransfer">Digital Heat Transfer</Link>
-              </li>
-              <li>
-                <Link href="#PromotionalProducts">Promotional Products</Link>
-              </li>
+              {[
+                { id: "ScreenPrinting", name: "Screen Printing" },
+                { id: "Embroidery", name: "Embroidery" },
+                { id: "StickersDecals", name: "Stickers & Decals" },
+                { id: "VinylBannersSigns", name: "Vinyl Banners & Signs" },
+                { id: "DigitalHeatTransfer", name: "Digital Heat Transfer" },
+                { id: "PromotionalProducts", name: "Promotional Products" },
+              ].map(({ id, name }) => (
+                <li key={id}>
+                  <Link href={`#${id}`} scroll={false}>
+                    {name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
         </aside>
