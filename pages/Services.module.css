@@ -25,3 +25,7 @@
 .sectionNav a {
   font-size: 1.25rem;
 }
+
+.scrollContainer main {
+  padding-left: 100px;
+}
