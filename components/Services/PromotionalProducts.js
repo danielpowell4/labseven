@@ -63,10 +63,13 @@ const PromotionalProducts = () => {
             e.preventDefault();
             alert(`clicked 'promo products'`);
           }}
+          className={styles.form}
         >
           <header className={styles.form__header}>
             <Image src={Icon} />
-            <h3>Interested in Promo Products?</h3>
+            <h3 className={styles.form__heading}>
+              Interested in Promo Products?
+            </h3>
           </header>
           <p>
             Pick a category, and we'll e-mail you awesome product

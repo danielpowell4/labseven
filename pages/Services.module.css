@@ -3,8 +3,6 @@
   grid-template-columns: 1fr 3fr;
   max-width: var(--gridWidth);
   margin: 0 auto;
-  overflow: clip;
-
   align-items: start;
 }
 

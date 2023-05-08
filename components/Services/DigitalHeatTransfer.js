@@ -50,10 +50,13 @@ const DigitalHeatTransfer = () => {
             e.preventDefault();
             alert(`clicked ${e.targer.innerHTML}`);
           }}
+          className={styles.form}
         >
           <header className={styles.form__header}>
             <Image src={IconMockup} />
-            <h3>Get Your Free Digital Proof!</h3>
+            <h3 className={styles.form__heading}>
+              Get Your Free Digital Proof!
+            </h3>
           </header>
           <strong>Curious about the final product?</strong>
           <p>

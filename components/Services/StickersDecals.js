@@ -56,11 +56,11 @@ const StickersDecals = () => {
             e.preventDefault();
             alert("you clicked sticker form");
           }}
-          styles={styles.form}
+          className={styles.form}
         >
           <header className={styles.form__header}>
             <Image src={icon} />
-            <h3>Sticker Pricing</h3>
+            <h3 className={styles.form__heading}>Sticker Pricing</h3>
           </header>
           <input name="__title" type="hidden" value="services" />
           <input name="serviceName" type="hidden" value="Stickers & Decals" />

@@ -86,7 +86,7 @@ const VinylBannersSigns = () => {
         >
           <header className={styles.form__header}>
             <Image src={Icon} />
-            <h3>Banner Pricing:</h3>
+            <h3 className={styles.form__heading}>Banner Pricing:</h3>
           </header>
           <input type="hidden" name="__title" value="bannerAndSigns" />
           <input name="__title" type="hidden" value="services" />
