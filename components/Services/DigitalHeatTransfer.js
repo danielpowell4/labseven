@@ -8,9 +8,13 @@ import IconMockup from "public/assets/Services/ScreenPrinting_IconMockup.svg";
 
 import styles from "./Services.module.css";
 
-const DigitalHeatTransfer = () => {
+const DigitalHeatTransfer = ({ sectionRef }) => {
   return (
-    <section id="DigitalHeatTransfer" className={styles.serviceSection}>
+    <section
+      id="DigitalHeatTransfer"
+      className={styles.serviceSection}
+      ref={sectionRef}
+    >
       <div className={styles.bannerContainer}>
         <Image
           src={Banner}

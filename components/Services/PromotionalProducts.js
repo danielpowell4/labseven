@@ -20,9 +20,13 @@ const choices = [
   "Tools, Flashlights, etc.",
 ];
 
-const PromotionalProducts = () => {
+const PromotionalProducts = ({ sectionRef }) => {
   return (
-    <section id="PromotionalProducts" className={styles.serviceSection}>
+    <section
+      id="PromotionalProducts"
+      className={styles.serviceSection}
+      ref={sectionRef}
+    >
       <div className={styles.bannerContainer}>
         <Image
           src={Banner}

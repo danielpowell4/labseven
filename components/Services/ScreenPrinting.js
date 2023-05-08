@@ -12,9 +12,13 @@ import IconMockup from "public/assets/Services/ScreenPrinting_IconMockup.svg";
 
 import styles from "./Services.module.css";
 
-const ScreenPrinting = () => {
+const ScreenPrinting = ({ sectionRef }) => {
   return (
-    <section id="ScreenPrinting" className={styles.serviceSection}>
+    <section
+      id="ScreenPrinting"
+      className={styles.serviceSection}
+      ref={sectionRef}
+    >
       <div className={styles.bannerContainer}>
         <Image
           src={Banner}

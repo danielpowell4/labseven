@@ -15,9 +15,9 @@ import Adidas from "public/assets/Services/Embroidery_Logo04_Adidas.svg";
 
 import styles from "./Services.module.css";
 
-const Embroidery = () => {
+const Embroidery = ({ sectionRef }) => {
   return (
-    <section id="Embroidery" className={styles.serviceSection}>
+    <section id="Embroidery" className={styles.serviceSection} ref={sectionRef}>
       <div className={styles.bannerContainer}>
         <Image
           src={Banner}

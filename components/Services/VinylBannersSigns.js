@@ -38,9 +38,13 @@ const choices = [
   },
 ];
 
-const VinylBannersSigns = () => {
+const VinylBannersSigns = ({ sectionRef }) => {
   return (
-    <section id="VinylBannersSigns" className={styles.serviceSection}>
+    <section
+      id="VinylBannersSigns"
+      className={styles.serviceSection}
+      ref={sectionRef}
+    >
       <div className={styles.bannerContainer}>
         <Image
           src={Banner}

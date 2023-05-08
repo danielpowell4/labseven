@@ -9,9 +9,13 @@ import icon from "public/assets/Services/Stickers_icon.svg";
 
 import styles from "./Services.module.css";
 
-const StickersDecals = () => {
+const StickersDecals = ({ sectionRef }) => {
   return (
-    <section id="StickersDecals" className={styles.serviceSection}>
+    <section
+      id="StickersDecals"
+      className={styles.serviceSection}
+      ref={sectionRef}
+    >
       <div className={styles.bannerContainer}>
         <Image
           src={Banner}
