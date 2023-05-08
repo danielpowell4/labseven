@@ -1,6 +1,8 @@
 import * as React from "react";
 
 import Image from "next/image";
+import Link from "next/link";
+
 import { Button } from ".";
 import { useCarousel } from "./TestimonialsReel";
 
@@ -18,12 +20,24 @@ import PromoProducts from "../public/assets/Home/Services_PromoProducts.jpg";
 import HeatTransfer from "../public/assets/Home/Services_HeatTransfer.jpg";
 
 const SERVICES = [
-  { name: "Screen Printing", background: ScreenPrinting },
-  { name: "Embroidery", background: Embroidery },
-  { name: "Stickers & Decals", background: Stickers },
-  { name: "Vinyl Banners & Signs", background: VinylBanners },
-  { name: "Promo Products", background: PromoProducts },
-  { name: "Digital Heat Transfer", background: HeatTransfer },
+  { id: "ScreenPrinting", name: "Screen Printing", background: ScreenPrinting },
+  { id: "Embroidery", name: "Embroidery", background: Embroidery },
+  { id: "StickersDecals", name: "Stickers & Decals", background: Stickers },
+  {
+    id: "VinylBannersSigns",
+    name: "Vinyl Banners & Signs",
+    background: VinylBanners,
+  },
+  {
+    id: "DigitalHeatTransfer",
+    name: "Digital Heat Transfer",
+    background: HeatTransfer,
+  },
+  {
+    id: "PromotionalProducts",
+    name: "Promo Products",
+    background: PromoProducts,
+  },
 ];
 
 const ServicesReel = ({ services = SERVICES }) => {
@@ -72,8 +86,9 @@ const ServicesReel = ({ services = SERVICES }) => {
         </div>
       </div>
       <div className={styles.ServicesReel__carousel} ref={carouselRef}>
-        {services.map(({ name, background }, serviceIndex) => (
-          <div
+        {services.map(({ id, name, background }, serviceIndex) => (
+          <Link
+            href={`/services/#${id}`}
             key={serviceIndex}
             className={styles.ServicesReel__carousel__item}
           >
@@ -90,7 +105,7 @@ const ServicesReel = ({ services = SERVICES }) => {
               width={"10rem"}
             />
             <h4>{name}</h4>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
