@@ -20,8 +20,28 @@
   margin-bottom: 0.375rem;
 }
 
-.sectionNav a {
+.sectionNav__link {
   font-size: 1.25rem;
+  color: var(--text);
+  position: relative;
+}
+
+.sectionNav__linkActive {
+  font-weight: bold;
+  padding-left: 1rem;
+}
+
+.sectionNav__linkActive:before {
+  content: "";
+  position: absolute;
+  height: 105%;
+  left: 0;
+  width: 4px;
+  background-color: var(--primary);
+}
+
+.sectionNav__link:visited {
+  color: var(--text);
 }
 
 .scrollContainer main {

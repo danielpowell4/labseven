@@ -132,8 +132,18 @@ const ServicesPage = () => {
             <ul>
               {services.map(({ id, name }, serviceIndex) => (
                 <li key={id}>
-                  <Link href={`#${id}`} scroll={false}>
-                    {name} {serviceIndex === activeServiceIndex && "👈"}
+                  <Link
+                    href={`#${id}`}
+                    scroll={false}
+                    className={[
+                      styles.sectionNav__link,
+                      serviceIndex === activeServiceIndex &&
+                        styles.sectionNav__linkActive,
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                  >
+                    {name}
                   </Link>
                 </li>
               ))}
