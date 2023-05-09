@@ -85,7 +85,7 @@ const PromotionalProducts = ({ sectionRef }) => {
             type="hidden"
             value="Promotional Products"
           />
-          <div>
+          <div className={styles.formContainer}>
             {choices.map((choice) => {
               const choiceId = `promoProduct__${camelize(choice)}`;
 

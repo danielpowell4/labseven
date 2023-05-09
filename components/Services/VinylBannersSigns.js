@@ -132,7 +132,7 @@ const VinylBannersSigns = ({ sectionRef }) => {
             const id = `banner_${camelize(label)}`;
 
             return (
-              <div key={label}>
+              <div key={label} className={styles.formContainer}>
                 <label>{label}</label>
                 {options.map(({ label: optLabel, value }) => {
                   const optId = `${id}_${camelize(optLabel)}`;
