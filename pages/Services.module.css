@@ -84,7 +84,7 @@
 .sectionNav__linkActive:before {
   content: "";
   position: absolute;
-  height: 102.5%;
+  height: 100%;
   left: 0;
   width: 4px;
   background-color: var(--primary);
