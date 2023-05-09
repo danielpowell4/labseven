@@ -1,8 +1,9 @@
 import * as React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 
-import { Layout } from "components";
+import { Layout, LinkButton } from "components";
 import {
   DigitalHeatTransfer,
   Embroidery,
@@ -14,10 +15,13 @@ import {
 
 import useIntersectionObserver from "@react-hook/intersection-observer";
 
+import HeroCollection from "public/assets/Services/Services_HeroCollection.png";
+import HeroArrow from "public/assets/Arrows/Services_Hero.svg";
+
 import styles from "./Services.module.css";
 
 const intersectionObsOptions = {
-  threshold: [0.05, 0.1, 0.2, 0.25, 0.35, 0.5, 0.65, 0.75, 0.8, 0.9, 0.95, 1.0],
+  threshold: [0.05, 0.1, 0.2, 0.25, 0.5, 0.75, 0.8, 0.9, 0.95],
 };
 
 const ServicesPage = () => {
@@ -73,8 +77,6 @@ const ServicesPage = () => {
     [-1, 0]
   );
 
-  console.log("activeServiceIndex", activeServiceIndex);
-
   const services = [
     {
       Component: ScreenPrinting,
@@ -123,8 +125,37 @@ const ServicesPage = () => {
           content="Get Custom Printed Apparel Affordably. Backed by a Local Team You Can Trust."
         />
       </Head>
-      <div>
-        <h1>Everything you need to promote your brand.</h1>
+      <div className={styles.hero}>
+        <div className={styles.hero__spacer}>
+          <div className={styles.hero__left}>
+            <h1 className={styles.hero__heading}>
+              Everything you need to promote your brand.
+            </h1>
+            <div className={styles.hero__linkContainer}>
+              <Image
+                aria-hidden={true}
+                priority
+                src={HeroArrow}
+                style={{ position: "absolute", left: "-5rem", top: "5rem" }}
+              />
+              <LinkButton href={`#${services[0].id}`} scroll={false}>
+                Browse Services
+              </LinkButton>
+            </div>
+          </div>
+          <div className={styles.hero__right}>{/* no content */}</div>
+          <div className={styles.hero__imageContainer}>
+            <Image
+              aria-hidden={true}
+              priority
+              src={HeroCollection}
+              alt="A collection of custom printed apparel"
+              fill
+              style={{ objectFit: "scale-down" }}
+              sizes={"55vw"}
+            />
+          </div>
+        </div>
       </div>
       <div className={styles.scrollContainer}>
         <aside className={styles.scrollContainer__aside}>

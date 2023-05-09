@@ -1,15 +1,60 @@
+.hero {
+  min-height: 90vh;
+  background: linear-gradient(to right, var(--primary), #4852da);
+
+  min-height: 85vh;
+  position: relative;
+}
+
+.hero__spacer {
+  max-width: var(--gridWidth);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.hero__heading {
+  color: var(--background);
+  font-size: 2.5rem;
+}
+
+.hero__linkContainer {
+  position: relative;
+}
+
+.hero__left {
+  padding-top: 32vh;
+  align-self: center;
+}
+
+.hero__right {
+  position: relative;
+  align-self: center;
+}
+
+.hero__imageContainer {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+  width: 55vw;
+  height: 100%;
+}
+
 .scrollContainer {
   display: grid;
   grid-template-columns: 1fr 3fr;
   max-width: var(--gridWidth);
   margin: 0 auto;
   align-items: start;
+  padding-bottom: 10rem;
 }
 
 .scrollContainer__aside {
   position: sticky;
-  top: var(--navHeight);
+  top: calc(var(--navHeight) + 2rem);
   align-self: start;
+  margin-top: 8rem;
 }
 
 .sectionNav ul {
@@ -34,7 +79,7 @@
 .sectionNav__linkActive:before {
   content: "";
   position: absolute;
-  height: 105%;
+  height: 102.5%;
   left: 0;
   width: 4px;
   background-color: var(--primary);
