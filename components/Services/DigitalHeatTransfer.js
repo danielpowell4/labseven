@@ -79,13 +79,21 @@ const DigitalHeatTransfer = ({ sectionRef }) => {
           ].map(({ name, label, type }) => {
             const id = `digitalHeatTransfer__${name}`;
             return (
-              <div key={id}>
-                <label htmlFor={id}>{label}</label>
-                <input id={id} name={name} type={type} />
+              <div key={id} className={styles.formContainer}>
+                <input
+                  id={id}
+                  name={name}
+                  type={type}
+                  className={styles.formInput}
+                  placeholder={label}
+                />
+                <label htmlFor={id} className={styles.formLabel}>
+                  {label}
+                </label>
               </div>
             );
           })}
-          <div>
+          <div className={styles.formContainer}>
             <label htmlFor="digitalHeatTransfer__file">Attach Logo</label>
             <input id="digitalHeatTransfer__file" name="file" type="file" />
           </div>

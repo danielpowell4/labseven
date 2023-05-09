@@ -99,24 +99,33 @@ const VinylBannersSigns = ({ sectionRef }) => {
             type="hidden"
             value="Vinyl Banners & Signs"
           />
-          <div>
-            <label htmlFor="banner_width">Size:</label>
-            <div>
+          <div className={styles.formContainerSideBySide}>
+            <div className={styles.formContainer}>
               <input
                 id="banner_width"
                 name="width"
                 type="number"
                 step="0.05"
+                className={styles.formInput}
                 placeholder="Width (in.)"
               />
-              x
+              <label htmlFor={"banner_width"} className={styles.formLabel}>
+                Width (in.)
+              </label>
+            </div>
+            x
+            <div className={styles.formContainer}>
               <input
                 id="banner_height"
                 name="height"
                 type="number"
                 step="0.05"
+                className={styles.formInput}
                 placeholder="Height (in.)"
               />
+              <label htmlFor={"banner_height"} className={styles.formLabel}>
+                Height (in.)
+              </label>
             </div>
           </div>
           {choices.map(({ label, options }) => {
@@ -149,25 +158,31 @@ const VinylBannersSigns = ({ sectionRef }) => {
           </div>
           <hr />
           <div>
-            <div>
-              <label htmlFor="banner_name">Name:</label>
+            <div className={styles.formContainer}>
               <input
                 type="text"
                 id="banner_name"
                 name="name"
                 placeholder="Chuck Sterling"
+                className={styles.formInput}
               />
+              <label htmlFor="banner_name" className={styles.formLabel}>
+                Name
+              </label>
             </div>
-            <div>
-              <label htmlFor="banner_email">Email:</label>
+            <div className={styles.formContainer}>
               <input
                 type="email"
                 id="banner_name"
                 name="name"
                 placeholder="you@goodplace.com"
+                className={styles.formInput}
               />
+              <label htmlFor="banner_email" className={styles.formLabel}>
+                Email
+              </label>
             </div>
-            <div>
+            <div className={styles.formContainer}>
               <label htmlFor="banner_logo">Attach Logo</label>
               <input type="file" id="banner_logo" name="attachments" />
             </div>

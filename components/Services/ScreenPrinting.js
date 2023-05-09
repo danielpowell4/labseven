@@ -94,7 +94,7 @@ const ScreenPrinting = ({ sectionRef }) => {
               </div>
             );
           })}
-          <div>
+          <div className={styles.formContainer}>
             <label htmlFor="screenPrinting__file">Attach Logo</label>
             <input id="screenPrinting__file" name="file" type="file" />
           </div>

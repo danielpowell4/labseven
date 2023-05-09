@@ -68,36 +68,48 @@ const StickersDecals = ({ sectionRef }) => {
           </header>
           <input name="__title" type="hidden" value="services" />
           <input name="serviceName" type="hidden" value="Stickers & Decals" />
-          <div>
-            <label htmlFor="sticker_width">Size:</label>
-            <div>
+          <div className={styles.formContainerSideBySide}>
+            <div className={styles.formContainer}>
               <input
                 id="sticker_width"
                 name="width"
                 type="number"
                 step="0.05"
+                className={styles.formInput}
                 placeholder="Width (in.)"
               />
-              x
+              <label htmlFor={"sticker_width"} className={styles.formLabel}>
+                Width (in.)
+              </label>
+            </div>
+            x
+            <div className={styles.formContainer}>
               <input
                 id="sticker_height"
                 name="height"
                 type="number"
                 step="0.05"
+                className={styles.formInput}
                 placeholder="Height (in.)"
               />
+              <label htmlFor={"sticker_height"} className={styles.formLabel}>
+                Height (in.)
+              </label>
             </div>
           </div>
-          <div>
-            <label htmlFor="sticker_quantity">Quantity:</label>
+          <div className={styles.formContainer}>
             <input
               id="sticker_quantity"
               name="quantity"
               type="number"
               step="1"
               min="50"
+              className={styles.formInput}
               placeholder="(50 Ct Minimum)"
             />
+            <label htmlFor="sticker_quantity" className={styles.formLabel}>
+              Quantity
+            </label>
           </div>
           <hr />
           <div>
@@ -107,25 +119,31 @@ const StickersDecals = ({ sectionRef }) => {
           <hr />
           <div>
             <h3>Ready to order?</h3>
-            <div>
-              <label htmlFor="sticker_name">Name:</label>
+            <div className={styles.formContainer}>
               <input
                 type="text"
                 id="sticker_name"
+                className={styles.formInput}
                 name="name"
                 placeholder="Chuck Sterling"
               />
+              <label htmlFor="sticker_name" className={styles.formLabel}>
+                Name
+              </label>
             </div>
-            <div>
-              <label htmlFor="sticker_email">Email:</label>
+            <div className={styles.formContainer}>
               <input
                 type="email"
                 id="sticker_name"
                 name="name"
+                className={styles.formInput}
                 placeholder="you@goodplace.com"
               />
+              <label htmlFor="sticker_email" className={styles.formLabel}>
+                Email
+              </label>
             </div>
-            <div>
+            <div className={styles.formContainer}>
               <label htmlFor="sticker_logo">Attach Logo</label>
               <input type="file" id="sticker_logo" name="attachments" />
             </div>
