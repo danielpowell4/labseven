@@ -6,6 +6,10 @@
   position: relative;
 }
 
+.backgroundGradient {
+  background: linear-gradient(to right, var(--primary), #4852da);
+}
+
 .hero__spacer {
   max-width: var(--gridWidth);
   margin: 0 auto;

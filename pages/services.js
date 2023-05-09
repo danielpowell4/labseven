@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 
-import { Layout, LinkButton } from "components";
+import { Layout, LinkButton, InstaReel, NewsletterForm } from "components";
 import {
   DigitalHeatTransfer,
   Embroidery,
@@ -19,6 +19,7 @@ import HeroCollection from "public/assets/Services/Services_HeroCollection.png";
 import HeroArrow from "public/assets/Arrows/Services_Hero.svg";
 
 import styles from "./Services.module.css";
+import homeStyles from "./dev/Home.module.css";
 
 const intersectionObsOptions = {
   threshold: [0.05, 0.1, 0.2, 0.25, 0.5, 0.75, 0.8, 0.9, 0.95],
@@ -186,6 +187,25 @@ const ServicesPage = () => {
             <Component key={serviceIndex} sectionRef={ref} />
           ))}
         </main>
+      </div>
+      <div className={homeStyles.ctaWrap + " " + styles.backgroundGradient}>
+        <div className={homeStyles.cta__topSpacer}>
+          <div className={homeStyles.cta__header}>
+            <h3 className={styles.cta__heading}>Ready to get started?</h3>
+          </div>
+          <div className={styles.hero__linkContainer}>
+            <LinkButton className="LinkButtonAlternate" href="#">
+              Call Now
+            </LinkButton>
+            <LinkButton href="/products">Browse Products</LinkButton>
+          </div>
+        </div>
+        <div className={homeStyles.cta__footer}>
+          <InstaReel />
+          <div className={homeStyles.newsletterWrap}>
+            <NewsletterForm />
+          </div>
+        </div>
       </div>
     </Layout>
   );
