@@ -4,6 +4,7 @@
 
   min-height: 85vh;
   position: relative;
+  overflow-x: clip;
 }
 
 .backgroundGradient {
