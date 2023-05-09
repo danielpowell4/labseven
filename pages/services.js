@@ -153,7 +153,7 @@ const ServicesPage = () => {
               alt="A collection of custom printed apparel"
               fill
               style={{ objectFit: "scale-down" }}
-              sizes={"55vw"}
+              sizes={"65vw"}
             />
           </div>
         </div>
