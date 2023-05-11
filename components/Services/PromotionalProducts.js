@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { camelize } from "lib/utils";
 import { Button, LinkButton } from "components";
+import SkinnyFileUpload from "./SkinnyFileUpload";
 
 import Banner from "public/assets/Services/PromoProducts_Banner.jpg";
 import Collection from "public/assets/Services/PromoProducts_Collection.jpg";
@@ -122,10 +123,7 @@ const PromotionalProducts = ({ sectionRef }) => {
               </div>
             );
           })}
-          <div className={styles.formContainer}>
-            <label htmlFor="promoProduct__file">Attach Logo</label>
-            <input id="promoProduct__file" name="file" type="file" />
-          </div>
+          <SkinnyFileUpload id={"promoProduct__file"} />
           <Button type="submit">Upload Your Logo!</Button>
         </form>
       </div>

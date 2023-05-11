@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Button, LinkButton } from "components";
+import SkinnyFileUpload from "./SkinnyFileUpload";
 
 import Banner from "public/assets/Services/HeatTransfer_Banner.jpg";
 import Sample from "public/assets/Services/HeatTransfer_Sample.jpg";
@@ -93,10 +94,7 @@ const DigitalHeatTransfer = ({ sectionRef }) => {
               </div>
             );
           })}
-          <div className={styles.formContainer}>
-            <label htmlFor="digitalHeatTransfer__file">Attach Logo</label>
-            <input id="digitalHeatTransfer__file" name="file" type="file" />
-          </div>
+          <SkinnyFileUpload id={"digitalHeatTransfer__file"} />
           <Button type="submit">Upload Your Logo!</Button>
         </form>
       </div>

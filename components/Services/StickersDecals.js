@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Button } from "components";
+import SkinnyFileUpload from "./SkinnyFileUpload";
 
 import Banner from "public/assets/Services/Stickers_Banner.jpg";
 import Van_Wide from "public/assets/Services/Stickers_Van_Wide.jpg";
@@ -143,10 +144,7 @@ const StickersDecals = ({ sectionRef }) => {
                 Email
               </label>
             </div>
-            <div className={styles.formContainer}>
-              <label htmlFor="sticker_logo">Attach Logo</label>
-              <input type="file" id="sticker_logo" name="attachments" />
-            </div>
+            <SkinnyFileUpload id={"sticker__file"} />
             <Button type="submit">Get Started</Button>
           </div>
         </form>

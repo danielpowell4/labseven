@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Button } from "/components";
+import SkinnyFileUpload from "./SkinnyFileUpload";
 
 import Banner from "public/assets/Services/ScreenPrinting_Banner.jpg";
 
@@ -94,10 +95,7 @@ const ScreenPrinting = ({ sectionRef }) => {
               </div>
             );
           })}
-          <div className={styles.formContainer}>
-            <label htmlFor="screenPrinting__file">Attach Logo</label>
-            <input id="screenPrinting__file" name="file" type="file" />
-          </div>
+          <SkinnyFileUpload id={"screenPrinting__file"} />
           <Button type="submit">Submit!</Button>
         </form>
       </div>

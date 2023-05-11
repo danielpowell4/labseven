@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import { camelize } from "lib/utils";
 import { Button } from "components";
+import SkinnyFileUpload from "./SkinnyFileUpload";
 
 import Banner from "public/assets/Services/VinylBanners_Banner.jpg";
 import Mercury from "public/assets/Services/VinylBanners_01_Mercury.jpg";
@@ -182,10 +183,7 @@ const VinylBannersSigns = ({ sectionRef }) => {
                 Email
               </label>
             </div>
-            <div className={styles.formContainer}>
-              <label htmlFor="banner_logo">Attach Logo</label>
-              <input type="file" id="banner_logo" name="attachments" />
-            </div>
+            <SkinnyFileUpload id="banner__file" />
             <Button type="submit">Get Started</Button>
           </div>
         </form>
