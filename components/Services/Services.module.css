@@ -79,6 +79,10 @@
   margin: 0;
 }
 
+.form button {
+  width: 100%;
+}
+
 .imageReel {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
