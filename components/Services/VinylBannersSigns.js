@@ -1,6 +1,8 @@
 import Image from "next/image";
 
 import { camelize } from "lib/utils";
+import { useSubmit } from "lib/customHooks";
+
 import { Button } from "components";
 import SkinnyFileUpload from "./SkinnyFileUpload";
 
@@ -40,6 +42,8 @@ const choices = [
 ];
 
 const VinylBannersSigns = ({ sectionRef }) => {
+  const [formState, onSubmit] = useSubmit();
+
   return (
     <section
       id="VinylBannersSigns"
@@ -82,13 +86,7 @@ const VinylBannersSigns = ({ sectionRef }) => {
             </div>
           ))}
         </div>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            alert("you clicked banner form");
-          }}
-          className={styles.form}
-        >
+        <form onSubmit={onSubmit} className={styles.form}>
           <header className={styles.form__header}>
             <Image src={Icon} />
             <h3 className={styles.form__heading}>Banner Pricing:</h3>
