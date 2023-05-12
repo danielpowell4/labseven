@@ -93,18 +93,13 @@ const VinylBannersSigns = ({ sectionRef }) => {
             <Image src={Icon} />
             <h3 className={styles.form__heading}>Banner Pricing:</h3>
           </header>
-          <input type="hidden" name="__title" value="bannerAndSigns" />
-          <input name="__title" type="hidden" value="services" />
-          <input
-            name="serviceName"
-            type="hidden"
-            value="Vinyl Banners & Signs"
-          />
+          <input name="__title" type="hidden" value="service_inquiry" />
+          <input name="service" type="hidden" value="Vinyl Banners & Signs" />
           <div className={styles.formContainerSideBySide}>
             <div className={styles.formContainer}>
               <input
                 id="banner__width"
-                name="width"
+                name="quote.width"
                 type="number"
                 step="0.05"
                 className={styles.formInput}
@@ -118,7 +113,7 @@ const VinylBannersSigns = ({ sectionRef }) => {
             <div className={styles.formContainer}>
               <input
                 id="banner__height"
-                name="height"
+                name="quote.height"
                 type="number"
                 step="0.05"
                 className={styles.formInput}
@@ -141,7 +136,7 @@ const VinylBannersSigns = ({ sectionRef }) => {
                     <div key={optId}>
                       <input
                         type="radio"
-                        name={label}
+                        name={`quote.${label}`}
                         value={value}
                         id={optId}
                       />
@@ -183,8 +178,9 @@ const VinylBannersSigns = ({ sectionRef }) => {
                 Email
               </label>
             </div>
-            <SkinnyFileUpload id="banner__file" />
+            <SkinnyFileUpload prefix="banner" />
             <Button type="submit">Get Started</Button>
+            <pre>formState: {JSON.stringify(formState)}</pre>
           </div>
         </form>
       </div>

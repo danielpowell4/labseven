@@ -73,8 +73,8 @@ const ScreenPrinting = ({ sectionRef }) => {
             Just upload your logo, drawing, or finished design and a Lab Seven
             artist will be in touch with a complimentary digital proof!
           </p>
-          <input name="__title" type="hidden" value="services" />
-          <input name="serviceName" type="hidden" value="Screen Printing" />
+          <input name="__title" type="hidden" value="service_inquiry" />
+          <input name="service" type="hidden" value="Screen Printing" />
           {[
             { name: "name", label: "Name", type: "text" },
             { name: "email", label: "Email", type: "email" },
@@ -95,7 +95,7 @@ const ScreenPrinting = ({ sectionRef }) => {
               </div>
             );
           })}
-          <SkinnyFileUpload prefix={"screenPrinting"} />
+          <SkinnyFileUpload prefix="screenPrinting" />
           <Button type="submit">Submit!</Button>
         </form>
       </div>

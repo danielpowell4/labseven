@@ -80,12 +80,8 @@ const PromotionalProducts = ({ sectionRef }) => {
             Pick a category, and we'll e-mail you awesome product
             recommendations and pricing!
           </p>
-          <input name="__title" type="hidden" value="services" />
-          <input
-            name="serviceName"
-            type="hidden"
-            value="Promotional Products"
-          />
+          <input name="__title" type="hidden" value="service_inquiry" />
+          <input name="service" type="hidden" value="Promotional Products" />
           <div className={styles.formContainer}>
             {choices.map((choice) => {
               const choiceId = `promoProduct__${camelize(choice)}`;
@@ -123,7 +119,7 @@ const PromotionalProducts = ({ sectionRef }) => {
               </div>
             );
           })}
-          <SkinnyFileUpload prefix={"promoProduct"} />
+          <SkinnyFileUpload prefix="promoProduct" />
           <Button type="submit">Upload Your Logo!</Button>
         </form>
       </div>

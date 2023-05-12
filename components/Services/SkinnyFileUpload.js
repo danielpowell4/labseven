@@ -13,7 +13,7 @@ import styles from "./Services.module.css";
 
 /** connects to dropbox, used in services page forms */
 const SkinnyFileUpload = ({ prefix }) => {
-  const id = `${prefix}__attachments`;
+  const id = `${prefix}__files`;
   const nameInputSelector = `SELECTOR:#${prefix}__name`;
   const [attachments, setAttachments] = React.useState([]);
   const addAttachment = React.useCallback(
@@ -33,7 +33,12 @@ const SkinnyFileUpload = ({ prefix }) => {
   return (
     <div className={styles.formContainer}>
       <label className={styles.form__label}>Attachments</label>
-      <input id={id} type="hidden" value={JSON.stringify(attachments)} />
+      <input
+        id={id}
+        name="files"
+        type="hidden"
+        value={JSON.stringify(attachments)}
+      />
       {uploadData?.state === "success" && (
         <p style={{ color: `var(--primary)` }}>{uploadData.message}</p>
       )}

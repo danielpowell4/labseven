@@ -68,12 +68,8 @@ const DigitalHeatTransfer = ({ sectionRef }) => {
             Just upload your logo, drawing, or finished design and a Lab Seven
             artist will be in touch with a complimentary digital proof!
           </p>
-          <input name="__title" type="hidden" value="services" />
-          <input
-            name="serviceName"
-            type="hidden"
-            value="Digital Heat Transfer"
-          />
+          <input name="__title" type="hidden" value="service_inquiry" />
+          <input name="service" type="hidden" value="Digital Heat Transfer" />
           {[
             { name: "name", label: "Name", type: "text" },
             { name: "email", label: "Email", type: "email" },
@@ -94,7 +90,7 @@ const DigitalHeatTransfer = ({ sectionRef }) => {
               </div>
             );
           })}
-          <SkinnyFileUpload prefix={"digitalHeatTransfer"} />
+          <SkinnyFileUpload prefix="digitalHeatTransfer" />
           <Button type="submit">Upload Your Logo!</Button>
         </form>
       </div>

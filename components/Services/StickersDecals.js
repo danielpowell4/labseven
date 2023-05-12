@@ -67,8 +67,8 @@ const StickersDecals = ({ sectionRef }) => {
             <Image src={icon} />
             <h3 className={styles.form__heading}>Sticker Pricing</h3>
           </header>
-          <input name="__title" type="hidden" value="services" />
-          <input name="serviceName" type="hidden" value="Stickers & Decals" />
+          <input name="__title" type="hidden" value="service_inquiry" />
+          <input name="service" type="hidden" value="Stickers & Decals" />
           <div className={styles.formContainerSideBySide}>
             <div className={styles.formContainer}>
               <input
@@ -144,7 +144,7 @@ const StickersDecals = ({ sectionRef }) => {
                 Email
               </label>
             </div>
-            <SkinnyFileUpload prefix={"sticker"} />
+            <SkinnyFileUpload prefix="sticker" />
             <Button type="submit">Get Started</Button>
           </div>
         </form>
