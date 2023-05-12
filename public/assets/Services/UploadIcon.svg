@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.93 14.06">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #6a6a6a;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1_--_Wireframe" data-name="Layer 1 -- Wireframe">
+    <g>
+      <path class="cls-1" d="m15.8,4.83s-.1-4.83-5.78-4.83S3.99,6,3.99,6c-.12,0-3.99.03-3.99,3.99s4.02,4.07,4.02,4.07h11.68s4.23-.7,4.23-4.61-4.13-4.62-4.13-4.62Zm-4.71,4.13v1.98h-2.25v-1.98h-3.03l2.08-2.66,2.08-2.66,2.07,2.66,2.08,2.66h-3.03Z"/>
+      <polygon class="cls-2" points="14.12 8.96 11.09 8.96 11.09 10.94 8.84 10.94 8.84 8.96 5.81 8.96 7.89 6.3 9.97 3.64 12.04 6.3 14.12 8.96"/>
+    </g>
+  </g>
+</svg>

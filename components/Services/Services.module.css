@@ -187,17 +187,6 @@
   transition: inherit;
 }
 
-/**
-* When the element is focused, remove the label transform.
-* Also, do this when the placeholder is _not_ shown, i.e. when 
-* there's something in the input at all.
-*/
-/* input:not(:placeholder-shown) + label,
-input:focus + label {
-  transform: translate(0, 0) scale(1);
-  cursor: pointer;
-} */
-
 .error-input .formInput {
   border: 2px solid var(--danger);
   color: var(--danger);
@@ -208,3 +197,58 @@ input:focus + label {
 }
 
 /* END forms */
+
+/* START file upload */
+
+.dropzoneButton {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--lightText);
+  padding: 0.25rem;
+  border-radius: 4px;
+  font-size: small;
+}
+
+.dropzoneButtonIsDragActive {
+  border: 2px solid var(--primary);
+}
+
+.dropzoneButtonIsDisabled {
+  background-color: var(--hr);
+  border: 1px solid var(--hr);
+  cursor: not-allowed;
+}
+
+.dropzoneButtonHasFiles {
+  margin-bottom: 1.25rem;
+}
+
+.dropzoneButtonHasFiles p {
+  margin: 0;
+}
+
+.uploadDisplayContainer {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.uploadDisplay__item {
+  box-shadow: var(--boxShadow);
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  flex-flow: inherit;
+  gap: 1rem;
+}
+
+.uploadDisplay__text {
+  margin: 0;
+}
+
+/* END file upload */

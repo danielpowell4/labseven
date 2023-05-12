@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { ThreeDotLoader } from "components";
 
+import UploadIcon from "public/assets/Services/UploadIcon.svg";
 import UploadedIcon from "public/assets/Order/UploadedIcon.svg";
 
 import utilStyles from "/styles/utils.module.css";
@@ -32,19 +33,21 @@ const SkinnyFileUpload = ({ id }) => {
       </label>
       <input type="hidden" value={JSON.stringify(attachments)} />
       {uploadData?.state === "success" && (
-        <p className={styles.successMessage}>{uploadData.message}</p>
+        <p style={{ color: `var(--primary)` }}>{uploadData.message}</p>
       )}
       <div
         className={[
-          styles.dropzoneBox,
-          isUploadDisabled && styles.dropzoneBoxIsDisabled,
-          attachments.length && styles.dropzoneBoxHasFiles,
+          styles.dropzoneButton,
+          dropzone.isDragActive && styles.dropzoneButtonIsDragActive,
+          isUploadDisabled && styles.dropzoneButtonIsDisabled,
+          attachments.length && styles.dropzoneButtonHasFiles,
         ]
           .filter(Boolean)
           .join(" ")}
         {...dropzone.getRootProps()}
       >
         <input {...dropzone.getInputProps()} disabled={isUploadDisabled} />
+        <Image src={UploadIcon} alt="Upload to cloud icon" />
         {dropzone.isDragActive ? (
           <p>Drop the files here ...</p>
         ) : (
@@ -66,39 +69,34 @@ const SkinnyFileUpload = ({ id }) => {
       )}
 
       {!!attachments.length && (
-        <div className={styles.formField}>
-          <label className={styles.form__label}>Uploaded Files</label>
-          <ul className={styles.uploadDisplayContainer}>
-            {attachments.map((fileData, i) => {
-              const extension = fileData.name.split(".").pop() || "";
+        <ul className={styles.uploadDisplayContainer}>
+          {attachments.map((fileData, i) => {
+            const extension = fileData.name.split(".").pop() || "";
 
-              return (
-                <li
-                  key={i}
-                  className={[
-                    styles.uploadDisplay__item,
-                    utilStyles.tooltipped,
-                  ].join(" ")}
-                  aria-label={fileData.name}
-                >
-                  <Image
-                    src={UploadedIcon}
-                    alt="Hand-sketch of Uploaded File Icon"
-                    style={{ width: "2rem", height: "auto" }}
-                  />
-                  <div className={styles.uploadDisplay__item__caption}>
-                    <p className={styles.uploadDisplay__text}>
-                      {extension.toUpperCase()}
-                    </p>
-                    <p className={styles.uploadDisplay__text}>
-                      {fileData.size}
-                    </p>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+            return (
+              <li
+                key={i}
+                className={[
+                  styles.uploadDisplay__item,
+                  utilStyles.tooltipped,
+                ].join(" ")}
+                aria-label={fileData.name}
+              >
+                <Image
+                  src={UploadedIcon}
+                  alt="Hand-sketch of Uploaded File Icon"
+                  style={{ width: "2rem", height: "auto" }}
+                />
+                <div className={styles.uploadDisplay__item__caption}>
+                  <p className={styles.uploadDisplay__text}>
+                    {extension.toUpperCase()}
+                  </p>
+                  <p className={styles.uploadDisplay__text}>{fileData.size}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
       )}
     </div>
   );
