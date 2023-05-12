@@ -12,8 +12,9 @@ import useFileUpload from "lib/useFileUpload";
 import styles from "./Services.module.css";
 
 /** connects to dropbox, used in services page forms */
-const SkinnyFileUpload = ({ id }) => {
-  const nameVal = "Test Name"; // TODO: grab me
+const SkinnyFileUpload = ({ prefix }) => {
+  const id = `${prefix}__attachments`;
+  const nameInputSelector = `SELECTOR:#${prefix}__name`;
   const [attachments, setAttachments] = React.useState([]);
   const addAttachment = React.useCallback(
     (attachment) => {
@@ -21,17 +22,18 @@ const SkinnyFileUpload = ({ id }) => {
     },
     [setAttachments]
   );
-  const [uploadData, dropzone] = useFileUpload(nameVal, addAttachment);
+  const [uploadData, dropzone] = useFileUpload(
+    nameInputSelector,
+    addAttachment
+  );
   const isUploadDisabled = uploadData?.state === "idle";
   const showUploadLoader =
     uploadData?.state === "idle" || uploadData?.state === "loading";
 
   return (
     <div className={styles.formContainer}>
-      <label htmlFor="attachments" className={styles.form__label}>
-        Attachments
-      </label>
-      <input type="hidden" value={JSON.stringify(attachments)} />
+      <label className={styles.form__label}>Attachments</label>
+      <input id={id} type="hidden" value={JSON.stringify(attachments)} />
       {uploadData?.state === "success" && (
         <p style={{ color: `var(--primary)` }}>{uploadData.message}</p>
       )}

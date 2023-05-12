@@ -123,7 +123,7 @@ const PromotionalProducts = ({ sectionRef }) => {
               </div>
             );
           })}
-          <SkinnyFileUpload id={"promoProduct__file"} />
+          <SkinnyFileUpload prefix={"promoProduct"} />
           <Button type="submit">Upload Your Logo!</Button>
         </form>
       </div>

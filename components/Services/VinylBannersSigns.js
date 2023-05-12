@@ -103,40 +103,40 @@ const VinylBannersSigns = ({ sectionRef }) => {
           <div className={styles.formContainerSideBySide}>
             <div className={styles.formContainer}>
               <input
-                id="banner_width"
+                id="banner__width"
                 name="width"
                 type="number"
                 step="0.05"
                 className={styles.formInput}
                 placeholder="Width (in.)"
               />
-              <label htmlFor={"banner_width"} className={styles.formLabel}>
+              <label htmlFor={"banner__width"} className={styles.formLabel}>
                 Width (in.)
               </label>
             </div>
             x
             <div className={styles.formContainer}>
               <input
-                id="banner_height"
+                id="banner__height"
                 name="height"
                 type="number"
                 step="0.05"
                 className={styles.formInput}
                 placeholder="Height (in.)"
               />
-              <label htmlFor={"banner_height"} className={styles.formLabel}>
+              <label htmlFor={"banner__height"} className={styles.formLabel}>
                 Height (in.)
               </label>
             </div>
           </div>
           {choices.map(({ label, options }) => {
-            const id = `banner_${camelize(label)}`;
+            const id = `banner__${camelize(label)}`;
 
             return (
               <div key={label} className={styles.formContainer}>
                 <label>{label}</label>
                 {options.map(({ label: optLabel, value }) => {
-                  const optId = `${id}_${camelize(optLabel)}`;
+                  const optId = `${id}__${camelize(optLabel)}`;
                   return (
                     <div key={optId}>
                       <input
@@ -162,24 +162,24 @@ const VinylBannersSigns = ({ sectionRef }) => {
             <div className={styles.formContainer}>
               <input
                 type="text"
-                id="banner_name"
+                id="banner__name"
                 name="name"
                 placeholder="Chuck Sterling"
                 className={styles.formInput}
               />
-              <label htmlFor="banner_name" className={styles.formLabel}>
+              <label htmlFor="banner__name" className={styles.formLabel}>
                 Name
               </label>
             </div>
             <div className={styles.formContainer}>
               <input
                 type="email"
-                id="banner_name"
+                id="banner__email"
                 name="name"
                 placeholder="you@goodplace.com"
                 className={styles.formInput}
               />
-              <label htmlFor="banner_email" className={styles.formLabel}>
+              <label htmlFor="banner__email" className={styles.formLabel}>
                 Email
               </label>
             </div>

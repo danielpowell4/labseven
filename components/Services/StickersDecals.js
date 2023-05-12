@@ -72,35 +72,35 @@ const StickersDecals = ({ sectionRef }) => {
           <div className={styles.formContainerSideBySide}>
             <div className={styles.formContainer}>
               <input
-                id="sticker_width"
+                id="sticker__width"
                 name="width"
                 type="number"
                 step="0.05"
                 className={styles.formInput}
                 placeholder="Width (in.)"
               />
-              <label htmlFor={"sticker_width"} className={styles.formLabel}>
+              <label htmlFor={"sticker__width"} className={styles.formLabel}>
                 Width (in.)
               </label>
             </div>
             x
             <div className={styles.formContainer}>
               <input
-                id="sticker_height"
+                id="sticker__height"
                 name="height"
                 type="number"
                 step="0.05"
                 className={styles.formInput}
                 placeholder="Height (in.)"
               />
-              <label htmlFor={"sticker_height"} className={styles.formLabel}>
+              <label htmlFor={"sticker__height"} className={styles.formLabel}>
                 Height (in.)
               </label>
             </div>
           </div>
           <div className={styles.formContainer}>
             <input
-              id="sticker_quantity"
+              id="sticker__quantity"
               name="quantity"
               type="number"
               step="1"
@@ -108,7 +108,7 @@ const StickersDecals = ({ sectionRef }) => {
               className={styles.formInput}
               placeholder="(50 Ct Minimum)"
             />
-            <label htmlFor="sticker_quantity" className={styles.formLabel}>
+            <label htmlFor="sticker__quantity" className={styles.formLabel}>
               Quantity
             </label>
           </div>
@@ -123,28 +123,28 @@ const StickersDecals = ({ sectionRef }) => {
             <div className={styles.formContainer}>
               <input
                 type="text"
-                id="sticker_name"
+                id="sticker__name"
                 className={styles.formInput}
                 name="name"
                 placeholder="Chuck Sterling"
               />
-              <label htmlFor="sticker_name" className={styles.formLabel}>
+              <label htmlFor="sticker__name" className={styles.formLabel}>
                 Name
               </label>
             </div>
             <div className={styles.formContainer}>
               <input
                 type="email"
-                id="sticker_name"
+                id="sticker__email"
                 name="name"
                 className={styles.formInput}
                 placeholder="you@goodplace.com"
               />
-              <label htmlFor="sticker_email" className={styles.formLabel}>
+              <label htmlFor="sticker__email" className={styles.formLabel}>
                 Email
               </label>
             </div>
-            <SkinnyFileUpload id={"sticker__file"} />
+            <SkinnyFileUpload prefix={"sticker"} />
             <Button type="submit">Get Started</Button>
           </div>
         </form>

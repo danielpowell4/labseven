@@ -95,7 +95,7 @@ const ScreenPrinting = ({ sectionRef }) => {
               </div>
             );
           })}
-          <SkinnyFileUpload id={"screenPrinting__file"} />
+          <SkinnyFileUpload prefix={"screenPrinting"} />
           <Button type="submit">Submit!</Button>
         </form>
       </div>

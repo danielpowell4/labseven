@@ -94,7 +94,7 @@ const DigitalHeatTransfer = ({ sectionRef }) => {
               </div>
             );
           })}
-          <SkinnyFileUpload id={"digitalHeatTransfer__file"} />
+          <SkinnyFileUpload prefix={"digitalHeatTransfer"} />
           <Button type="submit">Upload Your Logo!</Button>
         </form>
       </div>
