@@ -245,6 +245,7 @@
 
 .uploadDisplay__item {
   box-shadow: var(--boxShadow);
+  flex: 1;
   padding: 0.5rem;
   border-radius: 4px;
   display: flex;
@@ -254,6 +255,7 @@
 
 .uploadDisplay__text {
   margin: 0;
+  font-size: small;
 }
 
 /* END file upload */
