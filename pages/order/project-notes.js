@@ -46,7 +46,7 @@ const ProjectNotes = () => {
           aria-hidden={true}
         />
         Start your <span className={homeStyles.Underline1}>awesome</span>{" "}
-        product:
+        project:
       </h2>
       <div className={styles.formContainer}>
         <nav className={styles.formNav} aria-label="Order Form Navigation">
