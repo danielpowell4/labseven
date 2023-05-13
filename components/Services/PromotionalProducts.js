@@ -1,8 +1,10 @@
 import Image from "next/image";
 
 import { camelize } from "lib/utils";
+import { useSubmit } from "lib/customHooks";
 import { Button, LinkButton } from "components";
 import SkinnyFileUpload from "./SkinnyFileUpload";
+import ThankYou from "./ThankYou";
 
 import Banner from "public/assets/Services/PromoProducts_Banner.jpg";
 import Collection from "public/assets/Services/PromoProducts_Collection.jpg";
@@ -20,6 +22,86 @@ const choices = [
   "Chargers & Tech.",
   "Tools, Flashlights, etc.",
 ];
+
+const PromotionalProductsForm = () => {
+  const [formState, onSubmit] = useSubmit();
+
+  if (formState === "submitted") {
+    return (
+      <div className={styles.form}>
+        <header className={styles.form__header}>
+          <Image src={Icon} />
+          <h3 className={styles.form__heading}>
+            Interested in Promo Products?
+          </h3>
+        </header>
+        <ThankYou />
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={onSubmit} className={styles.form}>
+      <header className={styles.form__header}>
+        <Image src={Icon} />
+        <h3 className={styles.form__heading}>Interested in Promo Products?</h3>
+      </header>
+      <p>
+        Pick a category, and we'll e-mail you awesome product recommendations
+        and pricing!
+      </p>
+      <input name="__title" type="hidden" value="service_inquiry" />
+      <input name="service" type="hidden" value="Promotional Products" />
+      <div className={styles.formContainer}>
+        {choices.map((choice) => {
+          const choiceId = `promoProduct__${camelize(choice)}`;
+
+          return (
+            <div key={choice}>
+              <input
+                type="radio"
+                name={"quote.Item Type"}
+                id={choiceId}
+                value={choice}
+              />
+              <label htmlFor={choiceId}>{choice}</label>
+            </div>
+          );
+        })}
+      </div>
+      {[
+        { name: "name", label: "Name", type: "text" },
+        { name: "email", label: "Email", type: "email" },
+      ].map(({ name, label, type }) => {
+        const id = `promoProduct__${name}`;
+        return (
+          <div key={id} className={styles.formContainer}>
+            <input
+              id={id}
+              name={name}
+              type={type}
+              className={styles.formInput}
+              placeholder={label}
+            />
+            <label htmlFor={id} className={styles.formLabel}>
+              {label}
+            </label>
+          </div>
+        );
+      })}
+      <SkinnyFileUpload prefix="promoProduct" />
+      <Button type="submit" isSubmitting={formState === "submitting"}>
+        Upload Your Logo!
+      </Button>
+      {formState === "error" && (
+        <p style={{ color: "var(--danger)" }}>
+          Oh no! An error occurred. If this problem continues please let our
+          team know.
+        </p>
+      )}
+    </form>
+  );
+};
 
 const PromotionalProducts = ({ sectionRef }) => {
   return (
@@ -63,65 +145,7 @@ const PromotionalProducts = ({ sectionRef }) => {
             />
           </div>
         </div>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            alert(`clicked 'promo products'`);
-          }}
-          className={styles.form}
-        >
-          <header className={styles.form__header}>
-            <Image src={Icon} />
-            <h3 className={styles.form__heading}>
-              Interested in Promo Products?
-            </h3>
-          </header>
-          <p>
-            Pick a category, and we'll e-mail you awesome product
-            recommendations and pricing!
-          </p>
-          <input name="__title" type="hidden" value="service_inquiry" />
-          <input name="service" type="hidden" value="Promotional Products" />
-          <div className={styles.formContainer}>
-            {choices.map((choice) => {
-              const choiceId = `promoProduct__${camelize(choice)}`;
-
-              return (
-                <div key={choice}>
-                  <input
-                    type="radio"
-                    name={"Item Type"}
-                    id={choiceId}
-                    value={choice}
-                  />
-                  <label htmlFor={choiceId}>{choice}</label>
-                </div>
-              );
-            })}
-          </div>
-          {[
-            { name: "name", label: "Name", type: "text" },
-            { name: "email", label: "Email", type: "email" },
-          ].map(({ name, label, type }) => {
-            const id = `promoProduct__${name}`;
-            return (
-              <div key={id} className={styles.formContainer}>
-                <input
-                  id={id}
-                  name={name}
-                  type={type}
-                  className={styles.formInput}
-                  placeholder={label}
-                />
-                <label htmlFor={id} className={styles.formLabel}>
-                  {label}
-                </label>
-              </div>
-            );
-          })}
-          <SkinnyFileUpload prefix="promoProduct" />
-          <Button type="submit">Upload Your Logo!</Button>
-        </form>
+        <PromotionalProductsForm />
       </div>
     </section>
   );

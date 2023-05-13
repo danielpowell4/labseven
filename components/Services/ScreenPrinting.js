@@ -1,7 +1,9 @@
 import Image from "next/image";
 
+import { useSubmit } from "lib/customHooks";
 import { Button } from "/components";
 import SkinnyFileUpload from "./SkinnyFileUpload";
+import ThankYou from "./ThankYou";
 
 import Banner from "public/assets/Services/ScreenPrinting_Banner.jpg";
 
@@ -12,6 +14,68 @@ import CatDog from "public/assets/Services/ScreenPrinting_03_CatDog.jpg";
 import IconMockup from "public/assets/Services/ScreenPrinting_IconMockup.svg";
 
 import styles from "./Services.module.css";
+
+const ScreenPrintingForm = () => {
+  const [formState, onSubmit] = useSubmit();
+
+  if (formState === "submitted") {
+    return (
+      <div className={styles.form}>
+        <header className={styles.form__header}>
+          <Image src={IconMockup} />
+          <h3 className={styles.form__heading}>Get Your Free Digital Proof!</h3>
+        </header>
+        <ThankYou />
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={onSubmit} className={styles.form}>
+      <header className={styles.form__header}>
+        <Image src={IconMockup} />
+        <h3 className={styles.form__heading}>Get Your Free Digital Proof!</h3>
+      </header>
+      <strong>Curious about the final product?</strong>
+      <p>
+        Just upload your logo, drawing, or finished design and a Lab Seven
+        artist will be in touch with a complimentary digital proof!
+      </p>
+      <input name="__title" type="hidden" value="service_inquiry" />
+      <input name="service" type="hidden" value="Screen Printing" />
+      {[
+        { name: "name", label: "Name", type: "text" },
+        { name: "email", label: "Email", type: "email" },
+      ].map(({ name, label, type }) => {
+        const id = `screenPrinting__${name}`;
+        return (
+          <div key={id} className={styles.formContainer}>
+            <input
+              id={id}
+              name={name}
+              type={type}
+              className={styles.formInput}
+              placeholder={label}
+            />
+            <label htmlFor={id} className={styles.formLabel}>
+              {label}
+            </label>
+          </div>
+        );
+      })}
+      <SkinnyFileUpload prefix="screenPrinting" />
+      <Button type="submit" isSubmitting={formState === "submitting"}>
+        Submit!
+      </Button>
+      {formState === "error" && (
+        <p style={{ color: "var(--danger)" }}>
+          Oh no! An error occurred. If this problem continues please let our
+          team know.
+        </p>
+      )}
+    </form>
+  );
+};
 
 const ScreenPrinting = ({ sectionRef }) => {
   return (
@@ -55,49 +119,7 @@ const ScreenPrinting = ({ sectionRef }) => {
             Start a Project
           </Button>
         </div>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            alert(`trying to submit screen printing form`);
-          }}
-          className={styles.form}
-        >
-          <header className={styles.form__header}>
-            <Image src={IconMockup} />
-            <h3 className={styles.form__heading}>
-              Get Your Free Digital Proof!
-            </h3>
-          </header>
-          <strong>Curious about the final product?</strong>
-          <p>
-            Just upload your logo, drawing, or finished design and a Lab Seven
-            artist will be in touch with a complimentary digital proof!
-          </p>
-          <input name="__title" type="hidden" value="service_inquiry" />
-          <input name="service" type="hidden" value="Screen Printing" />
-          {[
-            { name: "name", label: "Name", type: "text" },
-            { name: "email", label: "Email", type: "email" },
-          ].map(({ name, label, type }) => {
-            const id = `screenPrinting__${name}`;
-            return (
-              <div key={id} className={styles.formContainer}>
-                <input
-                  id={id}
-                  name={name}
-                  type={type}
-                  className={styles.formInput}
-                  placeholder={label}
-                />
-                <label htmlFor={id} className={styles.formLabel}>
-                  {label}
-                </label>
-              </div>
-            );
-          })}
-          <SkinnyFileUpload prefix="screenPrinting" />
-          <Button type="submit">Submit!</Button>
-        </form>
+        <ScreenPrintingForm />
       </div>
       <div className={styles.imageReel}>
         {[HopeHoodies, PhillipLindsay, CatDog].map((image, imageIndex) => (

@@ -5,6 +5,7 @@ import { useSubmit } from "lib/customHooks";
 
 import { Button } from "components";
 import SkinnyFileUpload from "./SkinnyFileUpload";
+import ThankYou from "./ThankYou";
 
 import Banner from "public/assets/Services/VinylBanners_Banner.jpg";
 import Mercury from "public/assets/Services/VinylBanners_01_Mercury.jpg";
@@ -41,9 +42,128 @@ const choices = [
   },
 ];
 
-const VinylBannersSigns = ({ sectionRef }) => {
+const VinylBannersSignsForm = () => {
   const [formState, onSubmit] = useSubmit();
 
+  if (formState === "submitted") {
+    return (
+      <div className={styles.form}>
+        <header className={styles.form__header}>
+          <Image src={Icon} />
+          <h3 className={styles.form__heading}>Banner Pricing:</h3>
+        </header>
+        <ThankYou />
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={onSubmit} className={styles.form}>
+      <header className={styles.form__header}>
+        <Image src={Icon} />
+        <h3 className={styles.form__heading}>Banner Pricing:</h3>
+      </header>
+      <input name="__title" type="hidden" value="service_inquiry" />
+      <input name="service" type="hidden" value="Vinyl Banners & Signs" />
+      <div className={styles.formContainerSideBySide}>
+        <div className={styles.formContainer}>
+          <input
+            id="banner__width"
+            name="quote.width"
+            type="number"
+            step="0.05"
+            className={styles.formInput}
+            placeholder="Width (in.)"
+          />
+          <label htmlFor={"banner__width"} className={styles.formLabel}>
+            Width (in.)
+          </label>
+        </div>
+        x
+        <div className={styles.formContainer}>
+          <input
+            id="banner__height"
+            name="quote.height"
+            type="number"
+            step="0.05"
+            className={styles.formInput}
+            placeholder="Height (in.)"
+          />
+          <label htmlFor={"banner__height"} className={styles.formLabel}>
+            Height (in.)
+          </label>
+        </div>
+      </div>
+      {choices.map(({ label, options }) => {
+        const id = `banner__${camelize(label)}`;
+
+        return (
+          <div key={label} className={styles.formContainer}>
+            <label>{label}</label>
+            {options.map(({ label: optLabel, value }) => {
+              const optId = `${id}__${camelize(optLabel)}`;
+              return (
+                <div key={optId}>
+                  <input
+                    type="radio"
+                    name={`quote.${label}`}
+                    value={value}
+                    id={optId}
+                  />
+                  <label htmlFor={optId}>{optLabel}</label>
+                </div>
+              );
+            })}
+          </div>
+        );
+      })}
+      <hr />
+      <div>
+        <h4>$0.00 each</h4>
+        <h3>Ready to Order?</h3>
+      </div>
+      <hr />
+      <div>
+        <div className={styles.formContainer}>
+          <input
+            type="text"
+            id="banner__name"
+            name="name"
+            placeholder="Chuck Sterling"
+            className={styles.formInput}
+          />
+          <label htmlFor="banner__name" className={styles.formLabel}>
+            Name
+          </label>
+        </div>
+        <div className={styles.formContainer}>
+          <input
+            type="email"
+            id="banner__email"
+            name="email"
+            placeholder="you@goodplace.com"
+            className={styles.formInput}
+          />
+          <label htmlFor="banner__email" className={styles.formLabel}>
+            Email
+          </label>
+        </div>
+        <SkinnyFileUpload prefix="banner" />
+        <Button type="submit" isSubmitting={formState === "submitting"}>
+          Get Started
+        </Button>
+        {formState === "error" && (
+          <p style={{ color: "var(--danger)" }}>
+            Oh no! An error occurred. If this problem continues please let our
+            team know.
+          </p>
+        )}
+      </div>
+    </form>
+  );
+};
+
+const VinylBannersSigns = ({ sectionRef }) => {
   return (
     <section
       id="VinylBannersSigns"
@@ -86,101 +206,7 @@ const VinylBannersSigns = ({ sectionRef }) => {
             </div>
           ))}
         </div>
-        <form onSubmit={onSubmit} className={styles.form}>
-          <header className={styles.form__header}>
-            <Image src={Icon} />
-            <h3 className={styles.form__heading}>Banner Pricing:</h3>
-          </header>
-          <input name="__title" type="hidden" value="service_inquiry" />
-          <input name="service" type="hidden" value="Vinyl Banners & Signs" />
-          <div className={styles.formContainerSideBySide}>
-            <div className={styles.formContainer}>
-              <input
-                id="banner__width"
-                name="quote.width"
-                type="number"
-                step="0.05"
-                className={styles.formInput}
-                placeholder="Width (in.)"
-              />
-              <label htmlFor={"banner__width"} className={styles.formLabel}>
-                Width (in.)
-              </label>
-            </div>
-            x
-            <div className={styles.formContainer}>
-              <input
-                id="banner__height"
-                name="quote.height"
-                type="number"
-                step="0.05"
-                className={styles.formInput}
-                placeholder="Height (in.)"
-              />
-              <label htmlFor={"banner__height"} className={styles.formLabel}>
-                Height (in.)
-              </label>
-            </div>
-          </div>
-          {choices.map(({ label, options }) => {
-            const id = `banner__${camelize(label)}`;
-
-            return (
-              <div key={label} className={styles.formContainer}>
-                <label>{label}</label>
-                {options.map(({ label: optLabel, value }) => {
-                  const optId = `${id}__${camelize(optLabel)}`;
-                  return (
-                    <div key={optId}>
-                      <input
-                        type="radio"
-                        name={`quote.${label}`}
-                        value={value}
-                        id={optId}
-                      />
-                      <label htmlFor={optId}>{optLabel}</label>
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
-          <hr />
-          <div>
-            <h4>$0.00 each</h4>
-            <h3>Ready to Order?</h3>
-          </div>
-          <hr />
-          <div>
-            <div className={styles.formContainer}>
-              <input
-                type="text"
-                id="banner__name"
-                name="name"
-                placeholder="Chuck Sterling"
-                className={styles.formInput}
-              />
-              <label htmlFor="banner__name" className={styles.formLabel}>
-                Name
-              </label>
-            </div>
-            <div className={styles.formContainer}>
-              <input
-                type="email"
-                id="banner__email"
-                name="name"
-                placeholder="you@goodplace.com"
-                className={styles.formInput}
-              />
-              <label htmlFor="banner__email" className={styles.formLabel}>
-                Email
-              </label>
-            </div>
-            <SkinnyFileUpload prefix="banner" />
-            <Button type="submit">Get Started</Button>
-            <pre>formState: {JSON.stringify(formState)}</pre>
-          </div>
-        </form>
+        <VinylBannersSignsForm />
       </div>
     </section>
   );
