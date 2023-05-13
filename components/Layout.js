@@ -15,7 +15,7 @@ const siteTitle =
 const description =
   "Lab Seven Screen Printing Co. is the leader in Denver Screen Printing, Custom T-shirt Printing, Graphic Design, and Embroidery in Colorado. Design your own t-shirt in our design studio or work with one of our artists to bring your custom tee to life.";
 
-const Layout = ({ children, className, hideNav = false }) => {
+const Layout = ({ children, className, hideNav = false, ...rest }) => {
   return (
     <>
       <Head>
@@ -28,6 +28,7 @@ const Layout = ({ children, className, hideNav = false }) => {
       <div className={`${montserrat.variable}`}>
         {!hideNav && <SiteNav />}
         <div
+          {...rest}
           className={`${styles.container}${className ? ` ${className}` : ``}`}
           style={!hideNav ? { paddingTop: `var(--navHeight)` } : {}}
         >

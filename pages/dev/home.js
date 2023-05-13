@@ -168,7 +168,7 @@ const HomePage = () => {
   });
 
   return (
-    <Layout>
+    <Layout style={{ overflowX: "hidden" }}>
       <Head>
         <meta name="robots" content="noindex" />
         <meta
