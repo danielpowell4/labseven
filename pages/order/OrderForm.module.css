@@ -416,3 +416,33 @@
 .successMessage {
   color: var(--primary);
 }
+
+.thankYouSideBySide {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.thankYouText h1 {
+  font-size: 2rem;
+}
+
+.thankYouFooter {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: 820px) {
+  .thankYouSideBySide {
+    margin: 4rem auto;
+    text-align: left;
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 3fr 2fr;
+  }
+}
