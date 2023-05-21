@@ -67,6 +67,70 @@ export async function getStaticProps({ _params }) {
   };
 }
 
+const buildOptions = (product) => {
+  let label = product.Name + " - " + product.ManufacturerSku;
+  if (label.startsWith(product.Manufacturer)) {
+    label = label.substring(product.Manufacturer.length + 1);
+  }
+
+  return {
+    asOption: {
+      value: product.manufacturerSkuCode,
+      label,
+    },
+    asSelectedOption: {
+      value: product.manufacturerSkuCode,
+      label: product.ManufacturerSku,
+    },
+  };
+};
+
+const addOptionsToCache = async (
+  productCacheMap,
+  updateProductCacheMap,
+  query = {}
+) => {
+  const res = await fetch(`/api/products?${stringify(query)}`);
+  const data = await res.json();
+
+  for (const product of data.products) {
+    if (!productCacheMap.has(product.manufacturerSkuCode)) {
+      updateProductCacheMap({ ...product, ...buildOptions(product) });
+    }
+  }
+};
+
+const loadOptions = (
+  productCacheMap,
+  updateProductCacheMap,
+  product,
+  inputValue,
+  currentOpt
+) => {
+  const query = {
+    categoryCode: product.categoryCode,
+    manufacturerCode: product.manufacturerCode,
+    q: inputValue,
+    perPage: 99999,
+  };
+
+  return fetch(`/api/products?${stringify(query)}`)
+    .then((res) => res.json())
+    .then((data) => {
+      const options = [];
+
+      for (const product of data.products) {
+        if (!productCacheMap.has(product.manufacturerSkuCode)) {
+          const productOptions = buildOptions(product);
+          updateProductCacheMap({ ...product, ...productOptions });
+        }
+        options.push(productOptions.asOption);
+      }
+      if (currentOpt) options.push(currentOpt);
+      return options;
+    });
+};
+
 const buildProductOptionsFromCache = (productMap, formRow) => {
   const options = [];
   const values = productMap.values();
@@ -95,41 +159,6 @@ const PickProduct = ({ categoryOptions }) => {
     productCacheMap,
     updateProductCacheMap,
   } = useOrderForm();
-
-  const loadOptions = (product, inputValue, currentOpt) => {
-    const query = {
-      categoryCode: product.categoryCode,
-      manufacturerCode: product.manufacturerCode,
-      q: inputValue,
-    };
-
-    return fetch(`/api/products?${stringify(query)}`)
-      .then((res) => res.json())
-      .then((data) => {
-        const options = [];
-
-        for (const product of data.products) {
-          const option = {
-            value: product.manufacturerSkuCode,
-            label: product.Name + " - " + product.ManufacturerSku,
-          };
-          const selectedOption = {
-            value: product.manufacturerSkuCode,
-            label: product.ManufacturerSku,
-          };
-          if (!productCacheMap.has(product.manufacturerSkuCode)) {
-            updateProductCacheMap({
-              ...product,
-              asOption: option,
-              asSelectedOption: selectedOption,
-            });
-          }
-          options.push(option);
-        }
-        if (currentOpt) options.push(currentOpt);
-        return options;
-      });
-  };
 
   return (
     <Layout className={styles.background}>
@@ -172,11 +201,13 @@ const PickProduct = ({ categoryOptions }) => {
                 manufacturerOptions.find(
                   (opt) => opt.value === product.manufacturerCode
                 ) || null;
-              const selectedProduct =
-                productCacheMap.get(product.manufacturerSkuCode) || null;
               const defaultProductOptions = selectedManufacturer
                 ? buildProductOptionsFromCache(productCacheMap, product)
-                : [];
+                : true;
+              const isLoadingOptions =
+                Boolean(selectedManufacturer) && !defaultProductOptions.length;
+              const selectedProduct =
+                productCacheMap.get(product.manufacturerSkuCode) || null;
               const colorOptions = selectedProduct?.Styles?.length
                 ? selectedProduct.Styles.map((style) => {
                     return {
@@ -207,9 +238,23 @@ const PickProduct = ({ categoryOptions }) => {
                     className={styles.productGrid__item__Select}
                     placeholder="Brand..."
                     options={manufacturerOptions}
-                    onChange={(selected) =>
-                      updateProduct(index, "manufacturerCode", selected?.value)
-                    }
+                    onChange={(selected) => {
+                      if (selected?.value) {
+                        addOptionsToCache(
+                          productCacheMap,
+                          updateProductCacheMap,
+                          {
+                            categoryCode: product.categoryCode,
+                            manufacturerCode: selected.value,
+                          }
+                        );
+                      }
+                      return updateProduct(
+                        index,
+                        "manufacturerCode",
+                        selected?.value
+                      );
+                    }}
                     value={selectedManufacturer}
                     isDisabled={!manufacturerOptions.length}
                   />
@@ -219,6 +264,8 @@ const PickProduct = ({ categoryOptions }) => {
                     placeholder="Style..."
                     loadOptions={(inputValue) =>
                       loadOptions(
+                        productCacheMap,
+                        updateProductCacheMap,
                         product,
                         inputValue,
                         selectedProduct?.asOption
@@ -233,6 +280,7 @@ const PickProduct = ({ categoryOptions }) => {
                     cacheOptions={!!selectedProduct?.asOption} // force refetch on change
                     isDisabled={!selectedManufacturer}
                     defaultOptions={defaultProductOptions}
+                    isLoading={isLoadingOptions}
                     noOptionsMessage={({ inputValue }) =>
                       !inputValue ? "Type to search..." : "No styles found"
                     }
