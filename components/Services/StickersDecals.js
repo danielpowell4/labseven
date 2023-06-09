@@ -2,7 +2,7 @@ import * as React from "react";
 
 import Image from "next/image";
 
-import { camelize } from "lib/utils";
+import { camelize, formatUSD } from "lib/utils";
 import { useSubmit } from "lib/customHooks";
 
 import { Button } from "components";
@@ -45,6 +45,31 @@ const calculateArea = (values) => {
   }
 };
 
+const buildQuote = (values) => {
+  const qty = values["quote.quantity"] || 0;
+  if (qty < 50) return "UNDER_MINIMUM";
+
+  const area = calculateArea(values);
+  const areaCost = 0.012;
+  const perPiece = area * areaCost;
+  const productionCost = qty * perPiece;
+
+  let customerPrice;
+  if (qty >= 50 && qty < 200) customerPrice = productionCost * 3.75 + 35;
+  if (qty >= 200 && qty < 500) customerPrice = productionCost * 3.25 + 25;
+  if (qty >= 500 && qty < 1000) customerPrice = productionCost * 2.75 + 20;
+  if (qty >= 1000 && qty <= 5000) customerPrice = productionCost * 2 + 15;
+
+  if (customerPrice === undefined) return "OUT_OF_RANGE"; // 5000+
+  return [customerPrice / qty, customerPrice];
+};
+
+const formatArea = (area) =>
+  `${new Intl.NumberFormat("en-US", {
+    style: "decimal",
+    maximumFractionDigits: 2,
+  }).format(area)} in²`;
+
 const StickerDecalsForm = () => {
   const [formState, onSubmit] = useSubmit();
   const [values, setValues] = React.useState({});
@@ -63,7 +88,7 @@ const StickerDecalsForm = () => {
 
   const setValueAsNumber = (e) => {
     const { name, value } = e.target;
-    const numberValue = Number(value);
+    const numberValue = value === "" ? "" : Number(value);
     if (isNaN(numberValue)) return;
 
     switch (name) {
@@ -87,6 +112,7 @@ const StickerDecalsForm = () => {
   };
 
   const area = calculateArea(values);
+  const calculatedQuote = buildQuote(values);
 
   return (
     <form onSubmit={onSubmit} className={styles.form}>
@@ -228,6 +254,8 @@ const StickerDecalsForm = () => {
           min="50"
           className={styles.formInput}
           placeholder="(50 Ct Minimum)"
+          value={values["quote.quantity"]}
+          onChange={setValueAsNumber}
         />
         <label htmlFor="sticker__quantity" className={styles.formLabel}>
           Quantity
@@ -237,18 +265,50 @@ const StickerDecalsForm = () => {
       <div>
         {values["quote.shape"] === "circle" && (
           <p>
-            π × {values["quote.radius"] ?? 0}
-            <sup>2</sup> = {area.toFixed(2)} square inches
+            π × ({values["quote.radius"] ?? 0} in)
+            <sup>2</sup> = {formatArea(area)}
           </p>
         )}
         {values["quote.shape"] === "rectangle" && (
           <p>
             {values["quote.width"] ?? 0}" × {values["quote.height"] ?? 0}" ={" "}
-            {area.toFixed(2)} square inches
+            {formatArea(area)}
           </p>
         )}
-        <h4>$0.00 each</h4>
-        <h4>$0.00 total</h4>
+        {calculatedQuote === "UNDER_MINIMUM" ? (
+          <>
+            <p>We have a 50 count minimum</p>
+            <input
+              type="hidden"
+              name="quote.priceShownToCustomer"
+              value="We have a 50 count minimum"
+            />
+          </>
+        ) : calculatedQuote === "OUT_OF_RANGE" ? (
+          <>
+            <p>Contact our team for bulk pricing!</p>
+            <input
+              type="hidden"
+              name="quote.priceShownToCustomer"
+              value="Contact our team for bulk pricing!"
+            />
+          </>
+        ) : (
+          <>
+            <h4>{formatUSD(calculatedQuote[0])} each</h4>
+            <input
+              type="hidden"
+              name="quote.perStickerPrice"
+              value={formatUSD(calculatedQuote[0])}
+            />
+            <h4>{formatUSD(calculatedQuote[1])} total</h4>
+            <input
+              type="hidden"
+              name="quote.totalPrice"
+              value={formatUSD(calculatedQuote[1])}
+            />
+          </>
+        )}
       </div>
       <hr />
       <div>

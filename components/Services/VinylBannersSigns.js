@@ -2,7 +2,7 @@ import * as React from "react";
 
 import Image from "next/image";
 
-import { camelize } from "lib/utils";
+import { camelize, formatUSD } from "lib/utils";
 import { useSubmit } from "lib/customHooks";
 
 import { Button } from "components";
@@ -93,10 +93,7 @@ const VinylBannersSignsForm = () => {
       .find((opt) => opt.label === "Single / Double Sided Printing")
       .options.find((opt) => opt.value === selectedSides)?.pricePerSqFt || 0;
   const pricePerSqFt = materialPricePerSqFt + sidePerSqFt;
-  const priceShownToCustomer = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(pricePerSqFt * sqFtRounded);
+  const priceShownToCustomer = formatUSD(pricePerSqFt * sqFtRounded);
 
   return (
     <form onSubmit={onSubmit} className={styles.form}>
