@@ -51,6 +51,7 @@ const choices = [
 
 const VinylBannersSignsForm = () => {
   const [formState, onSubmit] = useSubmit();
+  const [values, setValues] = React.useState({});
 
   if (formState === "submitted") {
     return (
@@ -63,8 +64,6 @@ const VinylBannersSignsForm = () => {
       </div>
     );
   }
-
-  const [values, setValues] = React.useState({});
 
   // dimensions
   const widthFt = values["quote.width_feet"] || 0;
