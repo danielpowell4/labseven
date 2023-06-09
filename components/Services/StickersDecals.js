@@ -1,6 +1,10 @@
+import * as React from "react";
+
 import Image from "next/image";
 
+import { camelize } from "lib/utils";
 import { useSubmit } from "lib/customHooks";
+
 import { Button } from "components";
 import SkinnyFileUpload from "./SkinnyFileUpload";
 import ThankYou from "./ThankYou";
@@ -12,8 +16,38 @@ import icon from "public/assets/Services/Stickers_icon.svg";
 
 import styles from "./Services.module.css";
 
+const choices = [
+  {
+    label: "Shape",
+    value: "shape",
+    options: [
+      { label: "Circle", value: "circle" },
+      { label: "Rectangle", value: "rectangle" },
+    ],
+  },
+];
+
+const calculateArea = (values) => {
+  const shape = values["quote.shape"];
+
+  switch (shape) {
+    case "circle": {
+      const radius = values["quote.radius"] || 0;
+      return Math.PI * radius * radius;
+    }
+    case "rectangle": {
+      const width = values["quote.width"] || 0;
+      const height = values["quote.height"] || 0;
+      return width * height;
+    }
+    default:
+      return 0;
+  }
+};
+
 const StickerDecalsForm = () => {
   const [formState, onSubmit] = useSubmit();
+  const [values, setValues] = React.useState({});
 
   if (formState === "submitted") {
     return (
@@ -27,6 +61,33 @@ const StickerDecalsForm = () => {
     );
   }
 
+  const setValueAsNumber = (e) => {
+    const { name, value } = e.target;
+    const numberValue = Number(value);
+    if (isNaN(numberValue)) return;
+
+    switch (name) {
+      case "quote.diameter": {
+        const newValues = {
+          [name]: numberValue,
+          ["quote.radius"]: numberValue / 2,
+        };
+        return setValues((prev) => ({ ...prev, ...newValues }));
+      }
+      case "quote.radius": {
+        const newValues = {
+          [name]: numberValue,
+          ["quote.diameter"]: numberValue * 2,
+        };
+        return setValues((prev) => ({ ...prev, ...newValues }));
+      }
+      default:
+        return setValues((prev) => ({ ...prev, [name]: numberValue }));
+    }
+  };
+
+  const area = calculateArea(values);
+
   return (
     <form onSubmit={onSubmit} className={styles.form}>
       <header className={styles.form__header}>
@@ -35,35 +96,129 @@ const StickerDecalsForm = () => {
       </header>
       <input name="__title" type="hidden" value="service_inquiry" />
       <input name="service" type="hidden" value="Stickers & Decals" />
-      <div className={styles.formContainerSideBySide}>
-        <div className={styles.formContainer}>
-          <input
-            id="sticker__width"
-            name="quote.width"
-            type="number"
-            step="0.05"
-            className={styles.formInput}
-            placeholder="Width (in.)"
-          />
-          <label htmlFor={"sticker__width"} className={styles.formLabel}>
-            Width (in.)
-          </label>
+      {choices.map(({ label, value, options }) => {
+        const id = `sticker__${camelize(value)}`;
+
+        return (
+          <div key={label} className={styles.formContainer}>
+            <label>{label}</label>
+            {options.map(({ label: optLabel, value: optValue }) => {
+              const optId = `${id}__${camelize(optLabel)}`;
+              const fieldName = `quote.${value}`;
+              const formVal = values[fieldName];
+              return (
+                <div key={optId}>
+                  <input
+                    type="radio"
+                    name={fieldName}
+                    value={optValue}
+                    checked={formVal === optValue}
+                    onChange={(event) =>
+                      setValues((prev) => ({
+                        ...prev,
+                        [event.target.name]: event.target.value,
+                      }))
+                    }
+                    id={optId}
+                  />
+                  <label htmlFor={optId}>{optLabel}</label>
+                </div>
+              );
+            })}
+          </div>
+        );
+      })}
+
+      {values["quote.shape"] === "circle" && (
+        <div
+          className={styles.formContainerSideBySide}
+          style={{ gap: "0.5rem" }}
+        >
+          <div className={styles.formContainer}>
+            <input
+              id="sticker__diameter"
+              name="quote.diameter"
+              type="number"
+              step="0.125" // 1/8"
+              min="0"
+              className={styles.formInput}
+              placeholder="Inches"
+              value={values["quote.diameter"]}
+              onChange={setValueAsNumber}
+            />
+            <label htmlFor={"sticker__diameter"} className={styles.formLabel}>
+              Diameter (in.)
+            </label>
+          </div>
+          or
+          <div className={styles.formContainer}>
+            <input
+              id="sticker__radius"
+              name="quote.radius"
+              type="number"
+              step="0.0625" // 1/16"
+              min="0"
+              className={styles.formInput}
+              placeholder="Inches"
+              value={values["quote.radius"]}
+              onChange={setValueAsNumber}
+            />
+            <label htmlFor={"sticker__radius"} className={styles.formLabel}>
+              Radius (in.)
+            </label>
+          </div>
         </div>
-        x
-        <div className={styles.formContainer}>
-          <input
-            id="sticker__height"
-            name="quote.height"
-            type="number"
-            step="0.05"
-            className={styles.formInput}
-            placeholder="Height (in.)"
-          />
-          <label htmlFor={"sticker__height"} className={styles.formLabel}>
-            Height (in.)
-          </label>
+      )}
+
+      {values["quote.shape"] === "rectangle" && (
+        <div
+          className={styles.formContainerSideBySide}
+          style={{ gap: "0.5rem" }}
+        >
+          <div className={styles.formContainer}>
+            <input
+              id="sticker__width"
+              name="quote.width"
+              type="number"
+              step="0.125"
+              min="0"
+              className={styles.formInput}
+              placeholder="Width (in.)"
+              value={values["quote.width"]}
+              onChange={setValueAsNumber}
+            />
+            <label htmlFor={"sticker__width"} className={styles.formLabel}>
+              Width (in.)
+            </label>
+          </div>
+          x
+          <div className={styles.formContainer}>
+            <input
+              id="sticker__height"
+              name="quote.height"
+              type="number"
+              step="0.125"
+              min="0"
+              className={styles.formInput}
+              placeholder="Height (in.)"
+              value={values["quote.height"]}
+              onChange={setValueAsNumber}
+            />
+            <label htmlFor={"sticker__height"} className={styles.formLabel}>
+              Height (in.)
+            </label>
+          </div>
         </div>
-      </div>
+      )}
+
+      {!values["quote.shape"] && (
+        <div className={styles.formContainer}>
+          <p style={{ minHeight: 36, margin: 0 }}>
+            Select 'Shape' to enter Size.
+          </p>
+        </div>
+      )}
+
       <div className={styles.formContainer}>
         <input
           id="sticker__quantity"
@@ -80,6 +235,18 @@ const StickerDecalsForm = () => {
       </div>
       <hr />
       <div>
+        {values["quote.shape"] === "circle" && (
+          <p>
+            π × {values["quote.radius"] ?? 0}
+            <sup>2</sup> = {area.toFixed(2)} square inches
+          </p>
+        )}
+        {values["quote.shape"] === "rectangle" && (
+          <p>
+            {values["quote.width"] ?? 0}" × {values["quote.height"] ?? 0}" ={" "}
+            {area.toFixed(2)} square inches
+          </p>
+        )}
         <h4>$0.00 each</h4>
         <h4>$0.00 total</h4>
       </div>

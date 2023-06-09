@@ -179,7 +179,7 @@ const VinylBannersSignsForm = () => {
       <div className={styles.formContainer}>
         <label>Dimensions</label>
         <p style={{ margin: 0 }}>
-          {widthFt}' {widthIn}" x {heightFt}' {heightIn}" = {sqFtRounded} ft
+          {widthFt}' {widthIn}" × {heightFt}' {heightIn}" = {sqFtRounded} ft
           <sup>2</sup>
         </p>
         <input type="hidden" name="quote.sq_ft" value={sqFtRounded} />
@@ -198,7 +198,7 @@ const VinylBannersSignsForm = () => {
                 <div key={optId}>
                   <input
                     type="radio"
-                    name={`quote.${label}`}
+                    name={fieldName}
                     value={value}
                     checked={formVal === value}
                     onChange={(event) =>
