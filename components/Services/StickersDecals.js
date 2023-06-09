@@ -71,8 +71,6 @@ const formatArea = (area) =>
   }).format(area)} in²`;
 
 const checkIsSquare = (values) => {
-  if (values["quote.shape"] !== "rectangle") return false;
-
   const width = values["quote.width"];
   if (width == null) return false;
   const height = values["quote.height"];
@@ -144,9 +142,11 @@ const StickerDecalsForm = () => {
               const fieldName = `quote.${value}`;
               const formVal = values[fieldName];
               const displayLabel =
-                optLabel === "Rectangle" && checkIsSquare(values)
-                  ? "Square"
-                  : optLabel;
+                optLabel === "Circle"
+                  ? optLabel
+                  : checkIsSquare(values)
+                  ? "Square or Die Cut"
+                  : "Rectangle or Die Cut";
 
               return (
                 <div key={optId}>
@@ -389,8 +389,8 @@ const StickersDecals = ({ sectionRef }) => {
           <h2 className={styles.serviceHeading}>Stickers & Decals</h2>
           <p>
             Who doesn't love stickers? Lab Seven is proud to offer full color
-            (glossy or matte) die cut vinyl stickers, decals, and transfers.
-            <strong>Die-cut stickers can be cut in any shape you'd like</strong>
+            (glossy or matte) die cut vinyl stickers, decals, and transfers.{" "}
+            <strong>Die cut stickers can be cut in any shape you'd like</strong>
             , and offer a fun and affordable way to raise brand awareness!
           </p>
           <p>
