@@ -70,6 +70,17 @@ const formatArea = (area) =>
     maximumFractionDigits: 2,
   }).format(area)} in²`;
 
+const checkIsSquare = (values) => {
+  if (values["quote.shape"] !== "rectangle") return false;
+
+  const width = values["quote.width"];
+  if (width == null) return false;
+  const height = values["quote.height"];
+  if (height == null) return false;
+
+  return width === height;
+};
+
 const StickerDecalsForm = () => {
   const [formState, onSubmit] = useSubmit();
   const [values, setValues] = React.useState({});
@@ -112,6 +123,7 @@ const StickerDecalsForm = () => {
   };
 
   const area = calculateArea(values);
+  const isSquare = checkIsSquare(values);
   const calculatedQuote = buildQuote(values);
 
   return (
@@ -132,6 +144,9 @@ const StickerDecalsForm = () => {
               const optId = `${id}__${camelize(optLabel)}`;
               const fieldName = `quote.${value}`;
               const formVal = values[fieldName];
+              const displayLabel =
+                optLabel === "Rectangle" && isSquare ? "Square" : optLabel;
+
               return (
                 <div key={optId}>
                   <input
@@ -147,7 +162,7 @@ const StickerDecalsForm = () => {
                     }
                     id={optId}
                   />
-                  <label htmlFor={optId}>{optLabel}</label>
+                  <label htmlFor={optId}>{displayLabel}</label>
                 </div>
               );
             })}
@@ -298,13 +313,13 @@ const StickerDecalsForm = () => {
             <h4>{formatUSD(calculatedQuote[0])} each</h4>
             <input
               type="hidden"
-              name="quote.perStickerPrice"
+              name="quote.perStickerPriceShownToCustomer"
               value={formatUSD(calculatedQuote[0])}
             />
             <h4>{formatUSD(calculatedQuote[1])} total</h4>
             <input
               type="hidden"
-              name="quote.totalPrice"
+              name="quote.totalPriceShownToCustomer"
               value={formatUSD(calculatedQuote[1])}
             />
           </>
