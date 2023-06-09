@@ -145,8 +145,8 @@ const StickerDecalsForm = () => {
                 optLabel === "Circle"
                   ? optLabel
                   : checkIsSquare(values)
-                  ? "Square or Die Cut"
-                  : "Rectangle or Die Cut";
+                  ? "Square or Die-Cut"
+                  : "Rectangle or Die-Cut";
 
               return (
                 <div key={optId}>
@@ -390,11 +390,11 @@ const StickersDecals = ({ sectionRef }) => {
           <p>
             Who doesn't love stickers? Lab Seven is proud to offer full color
             (glossy or matte) die cut vinyl stickers, decals, and transfers.{" "}
-            <strong>Die cut stickers can be cut in any shape you'd like</strong>
+            <strong>Die-cut stickers can be cut in any shape you'd like</strong>
             , and offer a fun and affordable way to raise brand awareness!
           </p>
           <p>
-            We currently offer both <strong>die cut stickers</strong> (great for
+            We currently offer both <strong>die-cut stickers</strong> (great for
             water bottles and laptops) and{" "}
             <strong>vinyl transfer decals</strong> (great for windows or company
             vehicles and work truck decals).
