@@ -123,7 +123,6 @@ const StickerDecalsForm = () => {
   };
 
   const area = calculateArea(values);
-  const isSquare = checkIsSquare(values);
   const calculatedQuote = buildQuote(values);
 
   return (
@@ -145,7 +144,9 @@ const StickerDecalsForm = () => {
               const fieldName = `quote.${value}`;
               const formVal = values[fieldName];
               const displayLabel =
-                optLabel === "Rectangle" && isSquare ? "Square" : optLabel;
+                optLabel === "Rectangle" && checkIsSquare(values)
+                  ? "Square"
+                  : optLabel;
 
               return (
                 <div key={optId}>
@@ -286,7 +287,7 @@ const StickerDecalsForm = () => {
         )}
         {values["quote.shape"] === "rectangle" && (
           <p>
-            {values["quote.width"] ?? 0}" × {values["quote.height"] ?? 0}" ={" "}
+            {values["quote.width"] || "0"}" × {values["quote.height"] || "0"}" ={" "}
             {formatArea(area)}
           </p>
         )}
