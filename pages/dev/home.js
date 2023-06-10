@@ -134,7 +134,6 @@ import Services_World from "../../public/assets/Home/Services_World.svg";
 import Services_Handshake from "../../public/assets/Home/Services_Handshake.svg";
 import Services_PiggyBank from "../../public/assets/Home/Services_PiggyBank.svg";
 import Services_Star from "../../public/assets/Home/Services_Star.svg";
-import Background_Wavy from "../../public/assets/Home/Background_Wavy.svg";
 import UniformMan from "../../public/assets/Home/UniformMan.png";
 /* - design */
 import Design_Paint from "../../public/assets/Home/Design_Paint.svg";
@@ -146,7 +145,6 @@ import Reviews_Megaphone from "../../public/assets/Home/Reviews_Megaphone.svg";
 import Reviews_Arrow from "../../public/assets/Home/Reviews_Arrow.svg";
 /* - cta */
 import Consultation_Phone from "../../public/assets/Home/Consultation_Phone.svg";
-import Green_Wave from "../../public/assets/Home/Green_Wave.svg";
 import CTA_Namaste from "../../public/assets/Home/CTA_Namaste.png";
 
 import styles from "./Home.module.css";
@@ -160,6 +158,21 @@ const ACTION_VERBS = [
   "Share",
   "Wear",
 ];
+
+const SectionDivider = () => (
+  <div className={styles.SectionDivider}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1728 180"
+      aria-hidden="true"
+    >
+      <path
+        style={{ fill: "var(--background)" }}
+        d="m1727.46,0v108.35c-123.61,55.23-287.83,56.6-426.96,33.57-1.06-.18-2.12-.35-3.18-.53C1088.47,106.6,897.29,24.8,682.64,7.07c-117.45-9.7-229.84,1.15-342.55,36.38-60.86,19.03-118.02,46.94-178.34,67.28-13.02,4.39-94.7,27.54-161.75,40.32V0h1727.46Z"
+      />
+    </svg>
+  </div>
+);
 
 const HomePage = () => {
   const [heroRef, setHeroRef] = React.useState();
@@ -339,17 +352,10 @@ const HomePage = () => {
           />
         </div>
       </div>
-      <div className={styles.servicesWrap}>
-        <Image
-          className={styles.services__bg}
-          src={Background_Wavy}
-          alt="Background images"
-          aria-hidden={true}
-          fill
-          sizes="100vw"
-          style={{ objectFit: "cover", objectPosition: "top" }}
-        />
-
+      <div
+        className={[styles.servicesWrap, styles.hasSectionDivider].join(" ")}
+      >
+        <SectionDivider />
         <div className={styles.services__spacer}>
           <h2 className={styles.services__heading}>
             <span className={styles.Underline3}>Real world</span>
@@ -491,19 +497,8 @@ const HomePage = () => {
         </h2>
         <TestimonialsReel />
       </div>
-      <div
-        className={styles.ctaWrap}
-        style={{ backgroundImage: `url(/assets/Home/Green_Wave.svg)` }}
-      >
-        {/* <Image
-          className={styles.cta__bg}
-          src={Green_Wave}
-          fill
-          sizes="100vw"
-          style={{ objectFit: "cover", objectPosition: "center top" }}
-          aria-hidden={true}
-          alt="Green wave background"
-        /> */}
+      <div className={[styles.ctaWrap, styles.hasSectionDivider].join(" ")}>
+        <SectionDivider />
         <div className={styles.cta__topSpacer}>
           <div className={styles.cta__header}>
             <h3 className={styles.cta__heading}>
