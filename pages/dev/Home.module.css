@@ -723,12 +723,12 @@
 
 .hasSectionDivider {
   /* width + height matches asset viewbox */
-  --section-divider-width: 1728;
+  /* --section-divider-width: 1728;
   --section-divider-height: 180;
   --section-divider-ratio: calc(
     100% * var(--section-divider-height) / var(--section-divider-width)
-  );
-  padding-top: var(--section-divider-ratio);
+  ); */
+  /* padding-top: var(--section-divider-ratio); */
 }
 
 .hasSectionDivider .SectionDivider {
@@ -885,7 +885,7 @@
 @media screen and (min-width: 1200px) {
   /* without break form touches face */
   .ctaWrap {
-    --ctaHeight: 82rem;
+    --ctaHeight: 79rem;
   }
 
   .cta__topSpacer {
