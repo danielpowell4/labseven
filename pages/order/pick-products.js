@@ -67,7 +67,7 @@ export async function getStaticProps({ _params }) {
   };
 }
 
-const buildOptions = (product) => {
+export const buildOptions = (product) => {
   let label = product.Name + " - " + product.ManufacturerSku;
   if (label.startsWith(product.Manufacturer)) {
     label = label.substring(product.Manufacturer.length + 1);
@@ -85,25 +85,13 @@ const buildOptions = (product) => {
   };
 };
 
-const addOptionsToCache = async (
-  productCacheMap,
-  updateProductCacheMap,
-  query = {}
-) => {
-  const res = await fetch(`/api/products?${stringify(query)}`);
-  const data = await res.json();
-
-  for (const product of data.products) {
-    if (!productCacheMap.has(product.manufacturerSkuCode)) {
-      updateProductCacheMap({ ...product, ...buildOptions(product) });
-    }
-  }
-};
+const IN_FLIGHT_REQUESTS = new Set();
 
 const loadOptions = (
   productCacheMap,
   updateProductCacheMap,
   product,
+  productIndex,
   inputValue,
   currentOpt
 ) => {
@@ -114,7 +102,16 @@ const loadOptions = (
     perPage: 99999,
   };
 
-  return fetch(`/api/products?${stringify(query)}`)
+  const querystring = stringify(query);
+  const queryKey = `Product Num ${productIndex + 1} - ${stringify(query)}`;
+  if (IN_FLIGHT_REQUESTS.has(queryKey)) {
+    console.log("already loading options for", queryKey);
+    return Promise.resolve([]);
+  }
+
+  IN_FLIGHT_REQUESTS.add(queryKey);
+
+  return fetch(`/api/products?${querystring}`)
     .then((res) => res.json())
     .then((data) => {
       const options = [];
@@ -123,11 +120,17 @@ const loadOptions = (
         if (!productCacheMap.has(product.manufacturerSkuCode)) {
           const productOptions = buildOptions(product);
           updateProductCacheMap({ ...product, ...productOptions });
+          options.push(productOptions.asOption);
         }
-        options.push(productOptions.asOption);
       }
       if (currentOpt) options.push(currentOpt);
+      IN_FLIGHT_REQUESTS.delete(queryKey); // purge inFlightRequest
       return options;
+    })
+    .catch((err) => {
+      console.error(err);
+      IN_FLIGHT_REQUESTS.delete(queryKey); // purge inFlightRequest
+      return [];
     });
 };
 
@@ -136,7 +139,7 @@ const buildProductOptionsFromCache = (productMap, formRow) => {
   const values = productMap.values();
 
   for (const product of values) {
-    const categoryCodes = product.Categories.map((cat) => cat.code);
+    const categoryCodes = product.Categories?.map((cat) => cat.code) || [];
     if (
       categoryCodes.includes(formRow.categoryCode) &&
       product.manufacturerCode === formRow.manufacturerCode
@@ -201,11 +204,33 @@ const PickProduct = ({ categoryOptions }) => {
                 manufacturerOptions.find(
                   (opt) => opt.value === product.manufacturerCode
                 ) || null;
-              const defaultProductOptions = selectedManufacturer
-                ? buildProductOptionsFromCache(productCacheMap, product)
-                : true;
+              const hasSelectedManufacturer = Boolean(selectedManufacturer);
+              let defaultProductOptions = hasSelectedManufacturer;
+              if (hasSelectedManufacturer) {
+                const optionsFromCache = buildProductOptionsFromCache(
+                  productCacheMap,
+                  product
+                );
+                if (optionsFromCache.length)
+                  defaultProductOptions = optionsFromCache;
+
+                if (
+                  !optionsFromCache.length ||
+                  optionsFromCache.some((opt) => opt.quickAdd)
+                ) {
+                  // trigger load
+                  loadOptions(
+                    productCacheMap,
+                    updateProductCacheMap,
+                    product,
+                    index,
+                    ""
+                  );
+                }
+              }
               const isLoadingOptions =
-                Boolean(selectedManufacturer) && !defaultProductOptions.length;
+                hasSelectedManufacturer &&
+                !Array.isArray(defaultProductOptions);
               const selectedProduct =
                 productCacheMap.get(product.manufacturerSkuCode) || null;
               const colorOptions = selectedProduct?.Styles?.length
@@ -225,6 +250,7 @@ const PickProduct = ({ categoryOptions }) => {
                 <li key={index} className={styles.productGrid__item}>
                   <Select
                     id={`products[${index}].category`}
+                    instanceId={`products[${index}].category`}
                     className={styles.productGrid__item__Select}
                     placeholder="Category..."
                     options={categoryOptions}
@@ -235,49 +261,37 @@ const PickProduct = ({ categoryOptions }) => {
                   />
                   <Select
                     id={`products[${index}].manufacturer`}
+                    instanceId={`products[${index}].manufacturer`}
                     className={styles.productGrid__item__Select}
                     placeholder="Brand..."
                     options={manufacturerOptions}
-                    onChange={(selected) => {
-                      if (selected?.value) {
-                        addOptionsToCache(
-                          productCacheMap,
-                          updateProductCacheMap,
-                          {
-                            categoryCode: product.categoryCode,
-                            manufacturerCode: selected.value,
-                          }
-                        );
-                      }
-                      return updateProduct(
-                        index,
-                        "manufacturerCode",
-                        selected?.value
-                      );
-                    }}
+                    onChange={(selected) =>
+                      updateProduct(index, "manufacturerCode", selected?.value)
+                    }
                     value={selectedManufacturer}
                     isDisabled={!manufacturerOptions.length}
                   />
                   <AsyncSelect
                     id={`products[${index}].sku`}
+                    instanceId={`products[${index}].sku`}
                     className={styles.productGrid__item__Select}
                     placeholder="Style..."
-                    loadOptions={(inputValue) =>
-                      loadOptions(
+                    loadOptions={(inputValue) => {
+                      return loadOptions(
                         productCacheMap,
                         updateProductCacheMap,
                         product,
                         inputValue,
+                        index,
                         selectedProduct?.asOption
-                      )
-                    }
+                      );
+                    }}
                     onChange={(selected) => {
                       const val = selected?.value;
                       updateProduct(index, "manufacturerSkuCode", val);
                       if (val) upsertProductContext(productCacheMap.get(val));
                     }}
                     value={selectedProduct?.asSelectedOption || null}
-                    cacheOptions={!!selectedProduct?.asOption} // force refetch on change
                     isDisabled={!selectedManufacturer}
                     defaultOptions={defaultProductOptions}
                     isLoading={isLoadingOptions}
@@ -287,6 +301,7 @@ const PickProduct = ({ categoryOptions }) => {
                   />
                   <Select
                     id={`products[${index}].colorNameCode`}
+                    instanceId={`products[${index}].colorNameCode`}
                     className={styles.productGrid__item__Select}
                     placeholder="Color..."
                     options={colorOptions}

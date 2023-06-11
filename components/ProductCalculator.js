@@ -1,11 +1,13 @@
 import * as React from "react";
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
-import { Button } from ".";
+import { Button, LinkButton } from ".";
 import { titleize, formatUSD } from "../lib/utils";
 
 import axios from "axios";
+import { stringify } from "qs";
 
 import calcStyles from "./ProductCalculator.module.css";
+import { buildOptions } from "pages/order/pick-products";
 
 // https://demo.inksoft.com/demo?Page=Api2#methods_GetQuote
 const QUOTE_ENDPOINT =
@@ -122,6 +124,24 @@ const ProductCalculator = ({ productData }) => {
       { SideId: defaultSide.Side, NumColors: 2 },
       ...otherSides.map((s) => ({ SideId: s.Side, NumColors: 0 })),
     ],
+  };
+
+  const productToAdd = {
+    // for formRow
+    categoryCode: productData.Categories[0].code,
+    manufacturerCode: productData.manufacturerCode,
+    manufacturerSkuCode: productData.manufacturerSkuCode,
+    colorNameCode: productData.activeStyle.nameCode,
+
+    // minimal context
+    ...buildOptions(productData),
+    Name: productData.Name,
+    Categories: productData.Categories.map((cat) => ({ code: cat.code })),
+    Styles: productData.Styles.map((style) => ({
+      nameCode: style.nameCode,
+      Name: style.Name,
+      Sizes: style.Sizes.map((size) => ({ Name: size.Name })),
+    })),
   };
 
   return (
@@ -292,6 +312,11 @@ const ProductCalculator = ({ productData }) => {
                     + 10 Pieces
                   </Button>
                 </div>
+                <LinkButton
+                  href={`/order/add-to-cart?${stringify(productToAdd)}`}
+                >
+                  Start Order
+                </LinkButton>
               </div>
             )}
           </Form>
