@@ -1,7 +1,13 @@
 .serviceSection {
   scroll-margin-top: calc(var(--navHeight) - 80px);
-  padding: 80px 0 100px;
+  padding: 80px 1rem 100px;
   border-bottom: 2px solid var(--hr);
+}
+
+@media screen and (min-width: 1200px) {
+  .serviceSection {
+    padding: 80px 0 100px;
+  }
 }
 
 .serviceSection:first-of-type {
@@ -38,7 +44,8 @@
 
 .sideBySide {
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
+  max-width: 100%;
   gap: 2rem;
   margin-top: 5rem;
   align-items: flex-start;
@@ -47,16 +54,29 @@
 .content,
 .form,
 .productDisplay {
-  flex: 1;
+  flex: 1 0 100%;
+  width: 100%;
 }
 
-.content {
-  flex-basis: 400px;
-}
+@media screen and (min-width: 720px) {
+  .sideBySide {
+    flex-flow: row;
+  }
+  .content,
+  .form,
+  .productDisplay {
+    flex: 1;
+    width: unset;
+  }
 
-.form,
-.productDisplay {
-  flex-basis: 300px;
+  .content {
+    flex-basis: 400px;
+  }
+
+  .form,
+  .productDisplay {
+    flex-basis: 300px;
+  }
 }
 
 .form {

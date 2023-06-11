@@ -159,7 +159,7 @@ const ACTION_VERBS = [
   "Wear",
 ];
 
-const SectionDivider = () => (
+export const SectionDivider = () => (
   <div className={styles.SectionDivider}>
     <svg
       xmlns="http://www.w3.org/2000/svg"

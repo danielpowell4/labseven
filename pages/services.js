@@ -21,6 +21,8 @@ import HeroArrow from "public/assets/Arrows/Services_Hero.svg";
 import styles from "./Services.module.css";
 import homeStyles from "./dev/Home.module.css";
 
+import { SectionDivider } from "./dev/home";
+
 const intersectionObsOptions = {
   threshold: [0.05, 0.1, 0.2, 0.25, 0.5, 0.75, 0.8, 0.9, 0.95],
 };
@@ -188,16 +190,20 @@ const ServicesPage = () => {
           ))}
         </main>
       </div>
-      <div className={homeStyles.ctaWrap + " " + styles.backgroundGradient}>
-        <div className={homeStyles.cta__topSpacer}>
-          <div className={homeStyles.cta__header}>
-            <h3 className={styles.cta__heading}>Ready to get started?</h3>
-          </div>
-          <div className={styles.hero__linkContainer}>
-            <LinkButton className="LinkButtonAlternate" href="#">
-              Call Now
-            </LinkButton>
-            <LinkButton href="/products">Browse Products</LinkButton>
+      <div className={[styles.ctaWrap, homeStyles.hasSectionDivider].join(" ")}>
+        <SectionDivider />
+        <div className={styles.cta__topSpacer}>
+          <div className={styles.cta__header}>
+            <h3 className={styles.cta__header__text}>
+              Ready to{" "}
+              <span className={homeStyles.Underline5}>get started</span>?
+            </h3>
+            <div className={styles.cta__header__links}>
+              <LinkButton className="LinkButtonAlternate" href="#">
+                Call Now
+              </LinkButton>
+              <LinkButton href="/products">Browse Products</LinkButton>
+            </div>
           </div>
         </div>
         <div className={homeStyles.cta__footer}>
