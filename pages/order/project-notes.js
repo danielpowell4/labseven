@@ -170,7 +170,7 @@ const ProjectNotes = () => {
                 </>
               )}
             </div>
-            {!!formik.values.attachments.length && (
+            {!!formik.values.attachments?.length && (
               <div className={styles.formField}>
                 <label className={styles.form__label}>Uploaded Files</label>
                 <ul className={styles.uploadDisplayContainer}>
