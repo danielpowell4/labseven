@@ -1,5 +1,4 @@
-import { GoogleSpreadsheet } from "google-spreadsheet";
-
+import { kv } from "@vercel/kv";
 import { Dropbox } from "dropbox";
 import fetch from "cross-fetch";
 import { applyTokens } from "lib/utils";
@@ -21,20 +20,10 @@ export default async (req, res) => {
   const dbx = new Dropbox(dbxConfig);
   const { result } = await dbx.auth.getAccessTokenFromCode(redirectUri, code);
 
-  // save to google sheets
-  const doc = new GoogleSpreadsheet(process.env.GOOGLE_SPREADSHEET_ID);
-  await doc.useServiceAccountAuth({
-    client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    private_key: process.env.GOOGLE_SERVICE_PRIVATE_KEY,
-  });
-
-  await doc.loadInfo();
-  const dbxSheet = doc.sheetsByTitle["__dropbox_keys"];
-
-  const rows = await dbxSheet.getRows();
-  const activeRow = rows[0]; // only 1
-  applyTokens(activeRow, result);
-  await activeRow.save();
+  // save to kv store
+  const kvDropboxBlob = (await kv.get("__dropbox_keys")) ?? {};
+  applyTokens(kvDropboxBlob, result);
+  await kv.set("__dropbox_keys", kvDropboxBlob);
 
   return res.status(200).json({
     message: "Account has been linked! You can safely close this tab.",
