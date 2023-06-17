@@ -48,7 +48,7 @@ const ProjectNotes = () => {
         Start your <span className={homeStyles.Underline1}>awesome</span>{" "}
         project:
       </h2>
-      <div className={styles.formContainer}>
+      <form onSubmit={formik.handleSubmit} className={styles.formContainer}>
         <nav className={styles.formNav} aria-label="Order Form Navigation">
           <Link
             href="/order/size-breakdown"
@@ -208,15 +208,11 @@ const ProjectNotes = () => {
           </div>
         </div>
         <div className={styles.form__actions}>
-          <Button
-            type="submit"
-            onClick={formik.handleSubmit}
-            isSubmitting={formik.isSubmitting}
-          >
+          <Button type="submit" isSubmitting={formik.isSubmitting}>
             Submit
           </Button>
         </div>
-      </div>
+      </form>
     </Layout>
   );
 };
