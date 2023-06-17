@@ -59,7 +59,7 @@ export default async (req, res) => {
 
   try {
     // check if token valid
-    // send query, if returned w/ 200, all good
+    // send query, if returned w/ 200 + same query, all good
     const dbx = new Dropbox({ accessToken: activeRow["token"] });
     const sendQuery = { query: "handshake" };
     const checkRes = await dbx.checkUser(sendQuery);
