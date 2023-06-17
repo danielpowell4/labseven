@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { SiteNav, SiteFooter } from ".";
+import { SiteNav, SiteFooter, FixedFooter } from ".";
 import styles from "./layout.module.css";
 import { Montserrat } from "next/font/google";
 
@@ -35,6 +35,7 @@ const Layout = ({ children, className, hideNav = false, ...rest }) => {
           {children}
         </div>
         <SiteFooter />
+        <FixedFooter />
       </div>
     </>
   );

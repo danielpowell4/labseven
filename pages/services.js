@@ -122,7 +122,6 @@ const ServicesPage = () => {
   return (
     <Layout>
       <Head>
-        <meta name="robots" content="noindex" />
         <meta
           name="description"
           content="Get Custom Printed Apparel Affordably. Backed by a Local Team You Can Trust."

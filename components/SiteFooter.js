@@ -34,7 +34,7 @@ const SiteFooter = () => {
               >
                 3244 S Platte River Dr
                 <br />
-                Englewood, CO, 80110
+                Englewood, CO 80110
               </a>
             </p>
             <p>
@@ -62,7 +62,7 @@ const SiteFooter = () => {
               >
                 5265 W 48th Ave
                 <br />
-                Denver, CO, 80212
+                Denver, CO 80212
               </a>
             </p>
             <p>

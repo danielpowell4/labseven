@@ -4,6 +4,7 @@ export { default as ColorOption } from "./ColorOption";
 export { default as CtaForm } from "./CtaForm";
 export { default as DesignIFrame } from "./DesignIFrame";
 export { default as ErrorAlert } from "./ErrorAlert";
+export { default as FixedFooter } from "./FixedFooter";
 export { default as InstaReel } from "./InstaReel";
 export { default as Layout } from "./Layout";
 export { default as LinkButton } from "./LinkButton";

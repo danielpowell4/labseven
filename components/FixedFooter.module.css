@@ -1,0 +1,56 @@
+.Nav {
+  position: fixed;
+  z-index: 9;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--fixedNavHeight);
+  background-color: var(--background);
+  border-top: 1px solid var(--hr);
+
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.Nav ul {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+  height: 100%;
+}
+
+.Nav ul li {
+  height: 100%;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ActiveItem:before {
+  position: absolute;
+  content: "";
+  top: -1px;
+  height: 4px;
+  width: 100%;
+  background-color: var(--primary);
+}
+
+.ActiveItem a,
+.ActiveItem a:visited {
+  color: var(--primary);
+}
+
+/* 612px also in globals to change --fixedNavHeight */
+@media screen and (min-width: 612px) {
+  .Nav {
+    display: none;
+  }
+}

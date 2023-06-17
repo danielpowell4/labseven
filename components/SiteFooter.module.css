@@ -2,6 +2,7 @@
   width: 100%;
   background-color: #fff;
   border-top: 2px solid var(--hr);
+  margin-bottom: var(--fixedNavHeight);
 }
 
 .Footer__top {

@@ -50,12 +50,19 @@ li {
   --gridWidth: 1156px;
   --maxWidth: 1800px;
   --navHeight: 58px;
+  --fixedNavHeight: 58px;
 }
 
 @media (prefers-contrast: more) {
   :root {
     --primary: #3929ff;
     --alternate: #0a6148;
+  }
+}
+
+@media screen and (min-width: 612px) {
+  :root {
+    --fixedNavHeight: 0;
   }
 }
 

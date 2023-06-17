@@ -1,0 +1,42 @@
+.ContactPage {
+  max-width: var(--gridWidth);
+  margin: 0 auto;
+}
+
+.leadWrap {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-content: center;
+  gap: 1rem;
+}
+
+.contactMethods {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hours th,
+.hours td {
+  padding: 0.5rem 1rem;
+}
+
+.hours tr:nth-child(even) {
+  background-color: var(--hr);
+}
+
+.hours__row__day {
+  text-align: right;
+}
+
+.hours__row__hours {
+  text-align: left;
+}
+
+.hours__row__icon {
+  background-color: var(--background);
+}
