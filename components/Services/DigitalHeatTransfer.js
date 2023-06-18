@@ -102,7 +102,9 @@ const DigitalHeatTransfer = ({ sectionRef }) => {
             textured garments (like tote bags or nylon jackets),{" "}
             <strong>if we can't print it, we can 'press' it!</strong>
           </p>
-          <LinkButton href="#">Call Now to Learn More</LinkButton>
+          <div className={styles.linkContainer}>
+            <LinkButton href="#">Call Now to Learn More</LinkButton>
+          </div>
           <div className={styles.wideImageContainer}>
             <Image
               src={Sample}

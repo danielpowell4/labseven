@@ -103,21 +103,23 @@ const ScreenPrinting = ({ sectionRef }) => {
           <p>
             <strong>Print shirts you'll actually want to wear.</strong>
           </p>
-          <Button
-            className="ButtonAlternate"
-            onClick={(e) => {
-              alert(`you clicked ${e.target.innerHTML}`);
-            }}
-          >
-            Get a Quote
-          </Button>
-          <Button
-            onClick={(e) => {
-              alert(`you clicked ${e.target.innerHTML}`);
-            }}
-          >
-            Start a Project
-          </Button>
+          <div className={styles.linkContainer}>
+            <Button
+              className="ButtonAlternate"
+              onClick={(e) => {
+                alert(`you clicked ${e.target.innerHTML}`);
+              }}
+            >
+              Get a Quote
+            </Button>
+            <Button
+              onClick={(e) => {
+                alert(`you clicked ${e.target.innerHTML}`);
+              }}
+            >
+              Start a Project
+            </Button>
+          </div>
         </div>
         <ScreenPrintingForm />
       </div>

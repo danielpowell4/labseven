@@ -132,7 +132,9 @@ const PromotionalProducts = ({ sectionRef }) => {
             business on everybody's mind. Browse the catalog or give us a call
             to explore the exciting world of customizable promo products!
           </p>
-          <LinkButton href="#">Browse Promotional Items</LinkButton>
+          <div className={styles.linkContainer}>
+            <LinkButton href="#">Browse Promotional Items</LinkButton>
+          </div>
           <div className={styles.wideImageContainer}>
             <Image
               src={Collection}

@@ -18,6 +18,13 @@
   border-bottom: 0;
 }
 
+.linkContainer {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
 .bannerContainer {
   position: relative;
   width: 100%;
@@ -118,13 +125,20 @@
 }
 
 .logoList {
-  margin: 60px 0;
+  margin: 20px 0;
   padding: 0;
-
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
   align-items: center;
-  gap: 1rem;
+}
+
+@media screen and (min-width: 680px) {
+  .logoList {
+    margin: 60px 0;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
 }
 
 .logoList__brand {
