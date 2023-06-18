@@ -137,7 +137,7 @@
 /* cta simpler + shorter version of home page */
 .ctaWrap {
   --ctaHeight: 62rem;
-  --instaReelHeight: 17rem;
+  --instaReelHeight: 264px;
   --newsLetterHeight: 11rem;
 
   position: relative;

@@ -709,7 +709,7 @@
 
 .ctaWrap {
   --ctaHeight: 125rem;
-  --instaReelHeight: 17rem;
+  --instaReelHeight: 264px;
   --newsLetterHeight: 11rem;
 
   position: relative;
