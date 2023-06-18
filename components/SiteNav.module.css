@@ -28,24 +28,43 @@
 }
 
 .header__spacer {
+  display: grid;
+  grid-template-columns: 2rem auto 2rem;
+  grid-template-areas: "colorado logo america";
+  align-items: center;
+}
+
+.header__spacer {
   width: 100%;
   margin: auto;
-
-  display: flex;
   flex-direction: inherit;
   justify-content: space-between;
 }
 
 .logo {
+  grid-area: logo;
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 18rem; /* matches grid's aside */
 }
 
 .locales {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  display: contents; /* passthrough */
+}
+
+.locales__colorado,
+.locales__america {
+  position: absolute;
+  top: 1.15rem;
+}
+
+.locales__colorado {
+  left: 1rem;
+}
+
+.locales__america {
+  right: 1rem;
 }
 
 .callNow {
@@ -61,6 +80,7 @@
 
 .callNow__anchor {
   color: var(--primary);
+  display: none; /* hide on mobile */
   font-size: 1.15rem;
   font-family: var(--headingFont);
   font-weight: bold;
@@ -124,23 +144,35 @@
     align-items: center;
   }
   .header__spacer {
+    display: flex;
     width: 100%;
     max-width: var(--gridWidth);
     padding-right: var(--localeWidth);
     margin-right: auto;
   }
   .logo {
-    justify-content: center;
+    /* placeholder */
   }
   .callNow {
     justify-content: flex-end;
   }
   .callNow__anchor {
     padding: 0;
+    display: block;
   }
   .locales {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     position: absolute;
     right: 1rem;
+  }
+  .locales__colorado,
+  .locales__america {
+    position: relative;
+    top: unset;
+    left: unset;
+    right: unset;
   }
 }
 

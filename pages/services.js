@@ -138,7 +138,7 @@ const ServicesPage = () => {
                 aria-hidden={true}
                 priority
                 src={HeroArrow}
-                style={{ position: "absolute", left: "-5rem", top: "5rem" }}
+                className={styles.hero__arrow}
               />
               <LinkButton href={`#${services[0].id}`} scroll={false}>
                 Browse Services

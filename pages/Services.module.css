@@ -1,10 +1,8 @@
 .hero {
-  min-height: 90vh;
   background: linear-gradient(to right, var(--primary), #4852da);
-
-  min-height: 85vh;
   position: relative;
   overflow-x: clip;
+  z-index: 1;
 }
 
 .backgroundGradient {
@@ -12,10 +10,10 @@
 }
 
 .hero__spacer {
-  max-width: var(--gridWidth);
-  margin: 0 auto;
+  padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(2, 50%);
+  grid-template-columns: 1fr;
+  z-index: 2;
 }
 
 .hero__heading {
@@ -28,22 +26,48 @@
 }
 
 .hero__left {
-  padding-top: 32vh;
+  padding: 5vh 0;
   align-self: center;
 }
 
 .hero__right {
+  /* empty spacer */
   position: relative;
   align-self: center;
 }
 
+.hero__arrow {
+  display: none;
+}
+
 .hero__imageContainer {
   position: absolute;
-
   top: 0;
-  left: 50%;
-  width: 65vw;
+  width: 100%;
   height: 100%;
+  z-index: -1;
+}
+
+@media screen and (min-width: 880px) {
+  .hero {
+    min-height: 85vh;
+  }
+  .hero__spacer {
+    max-width: var(--gridWidth);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+  .hero__left {
+    padding-top: 32vh;
+  }
+  .hero__imageContainer {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 65vw;
+    height: 100%;
+  }
 }
 
 .scrollContainer {
@@ -84,6 +108,12 @@
 }
 
 @media screen and (min-width: 1200px) {
+  .hero__arrow {
+    display: block;
+    position: absolute;
+    left: -5rem;
+    top: 5rem;
+  }
   .scrollContainer {
     display: grid;
     grid-template-columns: 1fr 3fr;

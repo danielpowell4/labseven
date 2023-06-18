@@ -1,6 +1,6 @@
 .serviceSection {
   scroll-margin-top: calc(var(--navHeight) - 80px);
-  padding: 80px 1rem 100px;
+  padding: 40px 1rem 40px;
   border-bottom: 2px solid var(--hr);
 }
 
@@ -65,7 +65,7 @@
   flex-flow: column;
   max-width: 100%;
   gap: 2rem;
-  margin-top: 5rem;
+  margin-top: 2rem;
   align-items: flex-start;
 }
 
@@ -78,6 +78,7 @@
 
 @media screen and (min-width: 720px) {
   .sideBySide {
+    margin-top: 5rem;
     flex-flow: row;
   }
   .content,

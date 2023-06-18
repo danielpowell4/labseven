@@ -90,12 +90,14 @@ const SiteNav = () => {
             alt="Colorado Flag"
             height={20}
             width={30}
+            className={styles.locales__colorado}
           />
           <Image
             src="/assets/USA-Flag.svg"
             alt="USA Flag"
             height={20}
             width={30}
+            className={styles.locales__america}
           />
         </div>
       </header>
