@@ -231,6 +231,7 @@
   width: 100%;
   margin: auto;
   position: relative;
+  overflow-x: clip;
 }
 
 .welcome__image {
