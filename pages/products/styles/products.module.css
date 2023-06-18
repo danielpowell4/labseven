@@ -15,7 +15,7 @@
 .grid__aside {
   box-sizing: border-box;
   padding: 0.5rem 0.5rem 6rem;
-  padding-top: 4.5rem; /* until menu overlay fixed */
+  padding-top: 2.5rem;
 
   position: sticky;
   top: 1.15rem;
