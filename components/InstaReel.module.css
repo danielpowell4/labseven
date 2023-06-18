@@ -7,10 +7,11 @@
   overflow: auto;
   justify-content: space-between;
   scroll-snap-type: x mandatory;
+  overflow-y: hidden;
 }
 
 .InstaReel__item {
-  height: var(--instaReelHeight); /* 17rem from home page CTA */
+  height: var(--instaReelHeight); /* 264px from home page CTA */
   width: var(--instaReelHeight);
   flex: 0 0 var(--instaReelHeight);
 }
