@@ -11,7 +11,9 @@ import ThankYou from "./ThankYou";
 
 import Banner from "public/assets/Services/Stickers_Banner.jpg";
 import Van_Wide from "public/assets/Services/Stickers_Van_Wide.jpg";
-import WaterBottle_Wide from "public/assets/Services/Stickers_WaterBottle_Wide.jpg";
+import DiecutGallery from "public/assets/Services/Stickers_DiecutGallery.jpg";
+import Waterbottle from "public/assets/Services/Stickers_Waterbottle.jpg";
+
 import icon from "public/assets/Services/Stickers_icon.svg";
 
 import styles from "./Services.module.css";
@@ -399,20 +401,35 @@ const StickersDecals = ({ sectionRef }) => {
             <strong>vinyl transfer decals</strong> (great for windows or company
             vehicles and work truck decals).
           </p>
-          {[
-            { src: Van_Wide, alt: "" },
-            { src: WaterBottle_Wide, alt: "" },
-          ].map((image, imageIndex) => (
-            <div className={styles.wideImageContainer} key={imageIndex}>
+          <div className={styles.wideImageContainer}>
+            <Image
+              src={Van_Wide}
+              alt={"Professional sticker on a work truck driver door"}
+              fill
+              style={{ objectFit: "contain" }}
+              sizes="(max-width: 1200px) 30vw, 80vw"
+            />
+          </div>
+          <div className={styles.sideBySideImageContainer}>
+            <div className={styles.sideBySideImageContainer__frame}>
               <Image
-                src={image.src}
-                alt={image.alt}
+                src={Waterbottle}
+                alt={"Professional sticker on a work truck driver door"}
                 fill
                 style={{ objectFit: "contain" }}
-                sizes="(max-width: 1200px) 30vw, 80vw"
+                sizes="(max-width: 1200px) 10vw, 50vw"
               />
             </div>
-          ))}
+            <div className={styles.sideBySideImageContainer__frame}>
+              <Image
+                src={DiecutGallery}
+                alt={"Professional sticker on a work truck driver door"}
+                fill
+                style={{ objectFit: "contain" }}
+                sizes="(max-width: 1200px) 10vw, 50vw"
+              />
+            </div>
+          </div>
         </div>
         <StickerDecalsForm />
       </div>

@@ -37,6 +37,17 @@
   height: 12rem;
 }
 
+.sideBySideImageContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.sideBySideImageContainer__frame {
+  position: relative;
+  width: 100%;
+  height: 12rem;
+}
+
 .tallImageContainer {
   position: relative;
   width: 100%;
