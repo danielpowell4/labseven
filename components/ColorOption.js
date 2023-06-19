@@ -22,7 +22,14 @@ const ColorOption = ({ style, isActive = false, replace = false }) => {
             backgroundColor: `#${style.HtmlColor1}`,
             border: isWhite && !isActive ? `1px solid var(--hr)` : undefined,
           }}
-        />
+        >
+          {Boolean(style.HtmlColor2) && (
+            <span
+              className={styles.styleOption__color2}
+              style={{ "--color": `#${style.HtmlColor2}` }}
+            />
+          )}
+        </span>
       </Link>
     </li>
   );
