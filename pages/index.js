@@ -235,6 +235,7 @@ const HomePage = () => {
                   aria-hidden={true}
                   priority={imageIndex < 2}
                   quality={50}
+                  sizes={`${image.width}px`}
                   placeholder="blur"
                   {...image}
                 />
@@ -249,6 +250,7 @@ const HomePage = () => {
             src={Welcome_LibertyLadies}
             alt="Happy customers wearing sweatshirts"
             style={{ maxWidth: "100%", height: "auto" }}
+            sizes="(max-width: 1060px) 80vw, (max-width: 1200px) 50vw, 100vw"
             priority
           />
         </div>
