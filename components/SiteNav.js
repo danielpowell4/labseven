@@ -91,14 +91,21 @@ const ArrowDown = ({ size = 10, ...rest }) => (
 const SiteNav = () => {
   // call now flyout
   const callContainerRef = React.useRef();
+  const hasMounted = React.useRef(false);
   const [isFlyoutOpen, setIsFlyoutOpen] = React.useState(false);
+
+  // check if is first mount
+  React.useEffect(() => {
+    hasMounted.current = true;
+  });
 
   // show nav onScrollUp
   const prevScrollPos = React.useRef();
   const scrollY = useScrollPosition(); // defaults to 30fps
   const [navNisible, setNavNisible] = React.useState(true);
   React.useEffect(() => {
-    const justLoaded = typeof prevScrollPos.current === "undefined";
+    const justLoaded =
+      !hasMounted.current || typeof prevScrollPos.current === "undefined";
     const nearTop = scrollY < 100;
     const isScrollingUp = prevScrollPos?.current > scrollY;
 
@@ -106,7 +113,9 @@ const SiteNav = () => {
     if (!shouldShow) setIsFlyoutOpen(false); // close call now flyout
     setNavNisible(shouldShow);
 
-    prevScrollPos.current = scrollY; // stash for next scroll
+    if (hasMounted.current) {
+      prevScrollPos.current = scrollY; // stash for next scroll
+    }
   }, [scrollY]);
 
   return (
