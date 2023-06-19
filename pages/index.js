@@ -1,7 +1,7 @@
 import * as React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
+
 import useIntersectionObserver from "@react-hook/intersection-observer";
 
 import {
@@ -231,7 +231,13 @@ const HomePage = () => {
           >
             {HeroImages.map((image, imageIndex) => (
               <li key={imageIndex} style={{ marginTop: 200 }}>
-                <Image aria-hidden={true} priority {...image} />
+                <Image
+                  aria-hidden={true}
+                  priority={imageIndex < 2}
+                  quality={50}
+                  placeholder="blur"
+                  {...image}
+                />
               </li>
             ))}
           </ul>
