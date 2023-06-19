@@ -5,15 +5,16 @@ import Link from "next/link";
 import useIntersectionObserver from "@react-hook/intersection-observer";
 
 import {
+  CallLink,
+  CtaForm,
+  DesignIFrame,
+  InstaReel,
   Layout,
+  LinkButton,
+  NewsletterForm,
   RotatingLogo,
   ServicesReel,
   TestimonialsReel,
-  CtaForm,
-  InstaReel,
-  NewsletterForm,
-  DesignIFrame,
-  LinkButton,
 } from "components";
 
 /* images */
@@ -209,9 +210,11 @@ const HomePage = () => {
             </h1>
             <h2>Get Quality Custom Apparel Locally and Affordably.</h2>
             <div className={styles.linkContainer}>
-              <LinkButton href="/products">Browse Catalog</LinkButton>
-              <LinkButton href="/contact" className="LinkButtonAlternate">
-                Contact Printing Pro
+              <LinkButton href="#your-plan" scroll={false}>
+                Start Project
+              </LinkButton>
+              <LinkButton href="/products" className="LinkButtonAlternate">
+                Instant Quote
               </LinkButton>
             </div>
           </div>
@@ -297,7 +300,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className={styles.howTo}>
+      <div className={styles.howTo} id="your-plan">
         <h2 className={styles.howTo__heading}>
           <span className={styles.Underline1}>Your plan</span>
           {` for awesome apparel:`}
@@ -339,9 +342,9 @@ const HomePage = () => {
             </p>
             <div className={styles.linkContainer}>
               <LinkButton href="/order/pick-products">Ok, let's go!</LinkButton>
-              <LinkButton href="/contact" className="LinkButtonAlternate">
+              <CallLink className="LinkButtonAlternate">
                 Talk to a person
-              </LinkButton>
+              </CallLink>
             </div>
           </div>
           <Image

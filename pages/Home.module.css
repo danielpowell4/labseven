@@ -231,7 +231,8 @@
   width: 100%;
   margin: auto;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: hidden; /* for iOS < 16 */
+  overflow-x: clip;
 }
 
 .welcome__image {
@@ -368,6 +369,7 @@
 }
 
 .howTo {
+  scroll-margin-top: var(--navHeight);
   max-width: var(--gridWidth);
   width: 100%;
   margin: auto;
