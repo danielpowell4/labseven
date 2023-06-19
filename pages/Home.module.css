@@ -616,18 +616,13 @@
   }
 }
 
-/* .designWrap {
-  display: none;
-}
-
-@media screen and (min-width: 920px) { */
 .designWrap {
+  scroll-margin-top: var(--navHeight);
   padding: 8rem 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-/* } */
 
 .design__header {
   position: relative;

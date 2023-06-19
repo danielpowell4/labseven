@@ -444,7 +444,7 @@ const HomePage = () => {
           <ServicesReel />
         </div>
       </div>
-      <div className={styles.designWrap}>
+      <div className={styles.designWrap} id="design">
         <Image
           src={Design_Paint}
           alt="Sketch of Artist's Color Palette"

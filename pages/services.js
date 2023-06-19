@@ -33,6 +33,33 @@ const intersectionObsOptions = {
   threshold: [0.05, 0.1, 0.2, 0.25, 0.5, 0.75, 0.8, 0.9, 0.95],
 };
 
+export const SERVICE_SECTIONS = [
+  {
+    id: "ScreenPrinting",
+    name: "Screen Printing",
+  },
+  {
+    id: "Embroidery",
+    name: "Embroidery",
+  },
+  {
+    id: "StickersDecals",
+    name: "Stickers & Decals",
+  },
+  {
+    id: "VinylBannersSigns",
+    name: "Vinyl Banners & Signs",
+  },
+  {
+    id: "DigitalHeatTransfer",
+    name: "Digital Heat Transfer",
+  },
+  {
+    id: "PromotionalProducts",
+    name: "Promotional Products",
+  },
+];
+
 const ServicesPage = () => {
   // section refs
   const screenPrintingRef = React.useRef();

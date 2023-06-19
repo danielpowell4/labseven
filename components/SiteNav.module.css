@@ -67,6 +67,84 @@
   right: 1rem;
 }
 
+.links {
+  font-family: var(--headingFont);
+}
+
+.links,
+.links__list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.links__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.navDivider {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background-color: var(--hr);
+  content: "";
+}
+
+.links a,
+.links a:visited {
+  color: var(--mediumText);
+}
+
+.links a:hover {
+  color: var(--primary);
+}
+
+.links__list__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  height: 2.5rem;
+}
+
+.linkSubmenu {
+  margin: 0;
+  padding: 0;
+  display: none; /* hidden by default */
+}
+
+.linkSubmenu li:not(:last-of-type) {
+  margin-bottom: 0.5rem;
+}
+
+.links__list__itemWithSubmenu > a[aria-expanded="true"] ~ .linkSubmenu {
+  display: block;
+  position: absolute;
+  top: 2rem;
+  background: var(--background);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 3px 15px 0 rgb(0 0 0 / 10%);
+  width: 16rem;
+  z-index: 2;
+}
+
+.links__list__itemWithSubmenu > a[aria-expanded="true"] {
+  color: var(--primary);
+}
+
+.links__list__itemWithSubmenu > svg {
+  --fillColor: currentColor;
+}
+
+.links__list__itemWithSubmenu > a[aria-expanded="true"] ~ svg {
+  --fillColor: var(--primary);
+}
+
 .callNow {
   position: relative;
   display: flex;
@@ -82,9 +160,8 @@
 .callNow__anchor {
   color: var(--primary);
   display: none; /* hide on mobile */
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-family: var(--headingFont);
-  font-weight: bold;
   height: 100%;
   padding: 1rem 0;
   border: none;
@@ -137,6 +214,25 @@
 .callNow__flyout__number,
 .callNow__flyout__number:visited {
   color: var(--primary);
+}
+
+a.navAccentLink {
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-size: 2rem 2rem; /* for animation */
+}
+
+a.navAccentLink:visited {
+  color: var(--primary);
+}
+
+.navAccentLink:hover,
+.navAccentLink:focus {
+  text-decoration: none;
+  transition: all 0.25s ease;
+  transform: scale(1.15);
 }
 
 @media (min-width: 612px) {

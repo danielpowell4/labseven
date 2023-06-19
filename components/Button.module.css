@@ -17,9 +17,7 @@
   font-family: var(--headingFont);
   font-weight: var(--headingWeight);
   cursor: pointer;
-
   box-shadow: 0 3px 15px 0 rgb(0 0 0 / 10%);
-
   background-size: 2rem 2rem; /* for animation */
 }
 
