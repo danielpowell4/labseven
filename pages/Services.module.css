@@ -1,7 +1,7 @@
 .hero {
   background: linear-gradient(to right, var(--primary), #4852da);
   position: relative;
-  overflow-x: clip;
+  overflow-x: hidden;
   z-index: 1;
 }
 
