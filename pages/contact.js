@@ -70,9 +70,9 @@ const StoreHours = () => {
         <table className={styles.hours}>
           <thead>
             <tr className={styles.hours__row}>
+              <th className={styles.hours__row__icon}>{/* icon */}</th>
               <th className={styles.hours__row__day}>Day</th>
               <th className={styles.hours__row__hours}>Hours</th>
-              <th className={styles.hours__row__icon}>{/* icon */}</th>
             </tr>
           </thead>
           <tbody>
@@ -109,8 +109,6 @@ const StoreHours = () => {
 
               return (
                 <tr key={label}>
-                  <td className={styles.hours__row__day}>{label}</td>
-                  <td className={styles.hours__row__hours}>{dayRange}</td>
                   <td className={styles.hours__row__icon}>
                     {isToday && (
                       <span
@@ -127,6 +125,8 @@ const StoreHours = () => {
                       </span>
                     )}
                   </td>
+                  <td className={styles.hours__row__day}>{label}</td>
+                  <td className={styles.hours__row__hours}>{dayRange}</td>
                 </tr>
               );
             })}
