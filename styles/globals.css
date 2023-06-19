@@ -60,7 +60,7 @@ li {
   }
 }
 
-@media screen and (min-width: 612px) {
+@media screen and (min-width: 1118px) {
   :root {
     --fixedNavHeight: 0;
   }

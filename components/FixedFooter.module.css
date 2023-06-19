@@ -48,8 +48,8 @@
   color: var(--primary);
 }
 
-/* 612px also in globals to change --fixedNavHeight */
-@media screen and (min-width: 612px) {
+/* 1118px also in globals to change --fixedNavHeight */
+@media screen and (min-width: 1118px) {
   .Nav {
     display: none;
   }

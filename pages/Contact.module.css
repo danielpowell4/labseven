@@ -1,6 +1,13 @@
 .ContactPage {
+  padding: 2rem 1rem;
   max-width: var(--gridWidth);
   margin: 0 auto;
+}
+
+@media screen and (min-width: 1200px) {
+  .ContactPage {
+    padding: 0;
+  }
 }
 
 .leadWrap {
