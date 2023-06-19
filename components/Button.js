@@ -14,6 +14,7 @@ const Button = ({
       className={`${styles[className]}${
         isSubmitting ? ` ${styles.ButtonIsSubmitting}` : ""
       }`}
+      aria-busy={String(isSubmitting)}
       {...rest}
     >
       {children}
