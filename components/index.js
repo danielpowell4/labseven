@@ -1,4 +1,5 @@
 export { default as Button } from "./Button";
+export { default as CallLink } from "./CallLink";
 export { default as CategoryMenu } from "./CategoryMenu";
 export { default as ColorOption } from "./ColorOption";
 export { default as CtaForm } from "./CtaForm";

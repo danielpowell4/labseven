@@ -43,13 +43,7 @@ const OrderThankYou = () => {
           </div>
           <div className={styles.thankYouFooter}>
             Questions or just can't wait? Give us a call!
-            <Button
-              onClick={() => {
-                alert("ring ring ring");
-              }}
-            >
-              Call now!
-            </Button>
+            <CallLink>Call now</CallLink>
           </div>
         </div>
       </div>

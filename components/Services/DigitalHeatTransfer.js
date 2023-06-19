@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { useSubmit } from "lib/customHooks";
 
-import { Button, LinkButton } from "components";
+import { Button, CallLink } from "components";
 import SkinnyFileUpload from "./SkinnyFileUpload";
 import ThankYou from "./ThankYou";
 
@@ -103,7 +103,7 @@ const DigitalHeatTransfer = ({ sectionRef }) => {
             <strong>if we can't print it, we can 'press' it!</strong>
           </p>
           <div className={styles.linkContainer}>
-            <LinkButton href="#">Call Now to Learn More</LinkButton>
+            <CallLink>Call Now to Learn More</CallLink>
           </div>
           <div className={styles.wideImageContainer}>
             <Image

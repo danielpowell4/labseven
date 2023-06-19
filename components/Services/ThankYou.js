@@ -1,4 +1,4 @@
-import { Button } from "/components";
+import { CallLink } from "/components";
 
 const ThankYou = () => {
   return (
@@ -13,12 +13,7 @@ const ThankYou = () => {
       </p>
       <br />
       <p>Still have questions or just can't wait?</p>
-      <Button
-        className="ButtonAlternate"
-        onClick={() => alert("tell guy and get this button to work")}
-      >
-        Call Now
-      </Button>
+      <CallLink className="LinkButtonAlternate">Call Now</CallLink>
     </>
   );
 };

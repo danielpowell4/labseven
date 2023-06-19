@@ -3,7 +3,13 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 
-import { Layout, LinkButton, InstaReel, NewsletterForm } from "components";
+import {
+  CallLink,
+  InstaReel,
+  Layout,
+  LinkButton,
+  NewsletterForm,
+} from "components";
 import {
   DigitalHeatTransfer,
   Embroidery,
@@ -198,9 +204,7 @@ const ServicesPage = () => {
               <span className={homeStyles.Underline5}>get started</span>?
             </h3>
             <div className={styles.cta__header__links}>
-              <LinkButton className="LinkButtonAlternate" href="#">
-                Call Now
-              </LinkButton>
+              <CallLink className="LinkButtonAlternate">Call Now</CallLink>
               <LinkButton href="/products">Browse Products</LinkButton>
             </div>
           </div>
