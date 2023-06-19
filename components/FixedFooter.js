@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import styles from "./FixedFooter.module.css";
 
 const LINKS = [
-  { href: "/dev/home", label: "Home" },
+  { href: "/", label: "Home" },
   { href: "/products", label: "Catalog" },
   { href: "/services", label: "Services" },
   { href: "/contact", label: "Contact" },

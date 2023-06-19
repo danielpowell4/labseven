@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-import { Layout, Button } from "components";
+import { Layout, CallLink } from "components";
 
 import ThatsIt_Hoodie from "public/assets/Home/ThatsIt_Hoodie.svg";
 
 import styles from "./OrderForm.module.css";
-import homeStyles from "pages/dev/Home.module.css";
+import homeStyles from "pages/Home.module.css";
 
 const OrderThankYou = () => {
   return (

@@ -12,7 +12,7 @@ import CopyProduct from "public/assets/Order/CopyProduct.svg";
 import RemoveProduct from "public/assets/Order/RemoveProduct.svg";
 
 import styles from "./OrderForm.module.css";
-import homeStyles from "/pages/dev/Home.module.css";
+import homeStyles from "/pages/Home.module.css";
 
 import { stringify } from "qs";
 import Select from "react-select";

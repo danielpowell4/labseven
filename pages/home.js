@@ -18,14 +18,14 @@ import {
 
 /* images */
 /* - hero */
-import Hero_CustomEmbroideryColorado from "../../public/assets/Home/Hero_CustomEmbroideryColorado.png";
-import Hero_CustomEmbroideryDenver from "../../public/assets/Home/Hero_CustomEmbroideryDenver.png";
-import Hero_CustomTShirtsDenver from "../../public/assets/Home/Hero_CustomTShirtsDenver.png";
-import Hero_CustomTShirtsSpiritWear from "../../public/assets/Home/Hero_CustomTShirtsSpiritWear.png";
-import Hero_ScreenPrintedHoodies_Colorado from "../../public/assets/Home/Hero_ScreenPrintedHoodies_Colorado.png";
-import Hero_ScreenPrintingDenver from "../../public/assets/Home/Hero_ScreenPrintingDenver.png";
-import Hero_SuziesMockup from "../../public/assets/Home/Hero_SuziesMockup.png";
-import Hero_TShirtPrinterTankTops from "../../public/assets/Home/Hero_TShirtPrinterTankTops.png";
+import Hero_CustomEmbroideryColorado from "public/assets/Home/Hero_CustomEmbroideryColorado.png";
+import Hero_CustomEmbroideryDenver from "public/assets/Home/Hero_CustomEmbroideryDenver.png";
+import Hero_CustomTShirtsDenver from "public/assets/Home/Hero_CustomTShirtsDenver.png";
+import Hero_CustomTShirtsSpiritWear from "public/assets/Home/Hero_CustomTShirtsSpiritWear.png";
+import Hero_ScreenPrintedHoodies_Colorado from "public/assets/Home/Hero_ScreenPrintedHoodies_Colorado.png";
+import Hero_ScreenPrintingDenver from "public/assets/Home/Hero_ScreenPrintingDenver.png";
+import Hero_SuziesMockup from "public/assets/Home/Hero_SuziesMockup.png";
+import Hero_TShirtPrinterTankTops from "public/assets/Home/Hero_TShirtPrinterTankTops.png";
 
 const HeroImages = [
   {
@@ -84,12 +84,12 @@ const HeroImages = [
 });
 
 /* - welcome */
-import Welcome_LibertyLadies from "../../public/assets/Home/Welcome_LibertyLadies.png";
-import Welcome_Arrow from "../../public/assets/Home/Welcome_Arrow.svg";
+import Welcome_LibertyLadies from "public/assets/Home/Welcome_LibertyLadies.png";
+import Welcome_Arrow from "public/assets/Home/Welcome_Arrow.svg";
 /* - deserve */
-import Deserve_Hats from "../../public/assets/Home/Deserve_Hats.jpg";
-import Deserve_Hoodies from "../../public/assets/Home/Deserve_Hoodies.jpg";
-import Deserve_Volunteers from "../../public/assets/Home/Deserve_Volunteers.jpg";
+import Deserve_Hats from "public/assets/Home/Deserve_Hats.jpg";
+import Deserve_Hoodies from "public/assets/Home/Deserve_Hoodies.jpg";
+import Deserve_Volunteers from "public/assets/Home/Deserve_Volunteers.jpg";
 /* TODO: pick colors for each slider */
 const DeserveImages = [
   {
@@ -125,27 +125,27 @@ const DeserveImages = [
 ];
 const DeserveImage = DeserveImages[0]; // Math.floor(Math.random() * DeserveImages.length)];
 /* - steps */
-import Step1_Shirt from "../../public/assets/Home/Step1_Shirt.svg";
-import Step2_Sizes from "../../public/assets/Home/Step2_Sizes.svg";
-import Step3_Upload from "../../public/assets/Home/Step3_Upload.svg";
-import ThatsIt_Hoodie from "../../public/assets/Home/ThatsIt_Hoodie.svg";
+import Step1_Shirt from "public/assets/Home/Step1_Shirt.svg";
+import Step2_Sizes from "public/assets/Home/Step2_Sizes.svg";
+import Step3_Upload from "public/assets/Home/Step3_Upload.svg";
+import ThatsIt_Hoodie from "public/assets/Home/ThatsIt_Hoodie.svg";
 /* - services */
-import Services_World from "../../public/assets/Home/Services_World.svg";
-import Services_Handshake from "../../public/assets/Home/Services_Handshake.svg";
-import Services_PiggyBank from "../../public/assets/Home/Services_PiggyBank.svg";
-import Services_Star from "../../public/assets/Home/Services_Star.svg";
-import UniformMan from "../../public/assets/Home/UniformMan.png";
+import Services_World from "public/assets/Home/Services_World.svg";
+import Services_Handshake from "public/assets/Home/Services_Handshake.svg";
+import Services_PiggyBank from "public/assets/Home/Services_PiggyBank.svg";
+import Services_Star from "public/assets/Home/Services_Star.svg";
+import UniformMan from "public/assets/Home/UniformMan.png";
 /* - design */
-import Design_Paint from "../../public/assets/Home/Design_Paint.svg";
-import Design_BlueArrow from "../../public/assets/Home/Design_BlueArrow.svg";
-import Design_Blob1 from "../../public/assets/Home/Design_Blob1.svg";
-import Design_Blob2 from "../../public/assets/Home/Design_Blob2.svg";
+import Design_Paint from "public/assets/Home/Design_Paint.svg";
+import Design_BlueArrow from "public/assets/Home/Design_BlueArrow.svg";
+import Design_Blob1 from "public/assets/Home/Design_Blob1.svg";
+import Design_Blob2 from "public/assets/Home/Design_Blob2.svg";
 /* - reviews */
-import Reviews_Megaphone from "../../public/assets/Home/Reviews_Megaphone.svg";
-import Reviews_Arrow from "../../public/assets/Home/Reviews_Arrow.svg";
+import Reviews_Megaphone from "public/assets/Home/Reviews_Megaphone.svg";
+import Reviews_Arrow from "public/assets/Home/Reviews_Arrow.svg";
 /* - cta */
-import Consultation_Phone from "../../public/assets/Home/Consultation_Phone.svg";
-import CTA_Namaste from "../../public/assets/Home/CTA_Namaste.png";
+import Consultation_Phone from "public/assets/Home/Consultation_Phone.svg";
+import CTA_Namaste from "public/assets/Home/CTA_Namaste.png";
 
 import styles from "./Home.module.css";
 

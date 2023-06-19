@@ -25,9 +25,9 @@ import HeroCollection from "public/assets/Services/Services_HeroCollection.png";
 import HeroArrow from "public/assets/Arrows/Services_Hero.svg";
 
 import styles from "./Services.module.css";
-import homeStyles from "./dev/Home.module.css";
+import homeStyles from "./Home.module.css";
 
-import { SectionDivider } from "./dev/home";
+import { SectionDivider } from "./home";
 
 const intersectionObsOptions = {
   threshold: [0.05, 0.1, 0.2, 0.25, 0.5, 0.75, 0.8, 0.9, 0.95],
