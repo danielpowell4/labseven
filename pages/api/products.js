@@ -19,7 +19,7 @@ const sortCallback = {
 
 export default async (req, res) => {
   const currentPage = req.query.page || 1;
-  const perPage = req.query.perPage || 15;
+  const perPage = req.query.perPage || 16; /* 4 x 4 */
   const categoryCode = req.query.productCategoryCode;
   const subCategoryCode = req.query.subCategoryCode;
   const manufacturerCode = req.query.manufacturerCode;

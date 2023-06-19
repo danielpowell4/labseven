@@ -1,8 +1,12 @@
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import pageStyles from "./Pagination.module.css";
+
+import ArrowLeft from "public/assets/Arrows/Left.svg";
+import ArrowRight from "../public/assets/Arrows/Right.svg";
 
 const PageItem = ({ pageNumber, active, children, placeholder = false }) => {
   const router = useRouter();
@@ -50,9 +54,7 @@ const Pagination = ({ pagination }) => {
       {/* back arrow */}
       {pagination.currentPage != 1 && (
         <PageItem pageNumber={pagination.prevPage}>
-          <span role="img" aria-label="Previous Page">
-            ⬅️
-          </span>
+          <Image src={ArrowLeft} width={16} alt={"Arrow to previous page"} />
         </PageItem>
       )}
 
@@ -105,9 +107,7 @@ const Pagination = ({ pagination }) => {
       {/* next page */}
       {pagination.currentPage != pagination.totalPages && (
         <PageItem pageNumber={pagination.nextPage || pagination.totalPages}>
-          <span role="img" aria-label="Next Page">
-            ➡️
-          </span>
+          <Image src={ArrowRight} width={16} alt={"Arrow to Next Page"} />
         </PageItem>
       )}
     </ul>
