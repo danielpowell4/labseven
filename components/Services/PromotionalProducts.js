@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { camelize } from "lib/utils";
 import { useSubmit } from "lib/customHooks";
-import { Button, LinkButton } from "components";
+import { Button, CallLink } from "components";
 import SkinnyFileUpload from "./SkinnyFileUpload";
 import ThankYou from "./ThankYou";
 
@@ -133,7 +133,7 @@ const PromotionalProducts = ({ sectionRef }) => {
             to explore the exciting world of customizable promo products!
           </p>
           <div className={styles.linkContainer}>
-            <LinkButton href="#">Browse Promotional Items</LinkButton>
+            <CallLink>Call For Info</CallLink>
           </div>
           <div className={styles.wideImageContainer}>
             <Image

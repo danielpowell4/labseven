@@ -14,6 +14,7 @@ import CatDog from "public/assets/Services/ScreenPrinting_03_CatDog.jpg";
 import IconMockup from "public/assets/Services/ScreenPrinting_IconMockup.svg";
 
 import styles from "./Services.module.css";
+import LinkButton from "components/LinkButton";
 
 const ScreenPrintingForm = () => {
   const [formState, onSubmit] = useSubmit();
@@ -104,21 +105,10 @@ const ScreenPrinting = ({ sectionRef }) => {
             <strong>Print shirts you'll actually want to wear.</strong>
           </p>
           <div className={styles.linkContainer}>
-            <Button
-              className="ButtonAlternate"
-              onClick={(e) => {
-                alert(`you clicked ${e.target.innerHTML}`);
-              }}
-            >
+            <LinkButton className="LinkButtonAlternate" href={"/products"}>
               Get a Quote
-            </Button>
-            <Button
-              onClick={(e) => {
-                alert(`you clicked ${e.target.innerHTML}`);
-              }}
-            >
-              Start a Project
-            </Button>
+            </LinkButton>
+            <LinkButton href={"/#your-plan"}>Start a Project</LinkButton>
           </div>
         </div>
         <ScreenPrintingForm />
