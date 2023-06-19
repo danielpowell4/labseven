@@ -94,14 +94,15 @@ const SiteNav = () => {
   const [isFlyoutOpen, setIsFlyoutOpen] = React.useState(false);
 
   // show nav onScrollUp
-  const prevScrollPos = React.useRef(0);
+  const prevScrollPos = React.useRef();
   const scrollY = useScrollPosition(); // defaults to 30fps
   const [navNisible, setNavNisible] = React.useState(true);
   React.useEffect(() => {
+    const justLoaded = typeof prevScrollPos.current === "undefined";
     const nearTop = scrollY < 100;
-    const isScrollingUp = prevScrollPos.current > scrollY;
+    const isScrollingUp = prevScrollPos?.current > scrollY;
 
-    const shouldShow = nearTop || isScrollingUp;
+    const shouldShow = justLoaded || nearTop || isScrollingUp;
     if (!shouldShow) setIsFlyoutOpen(false); // close call now flyout
     setNavNisible(shouldShow);
 
