@@ -51,6 +51,7 @@ const Testimonial = ({ customerName, blurb, avatar }) => (
         style={{ borderRadius: "50%", objectFit: "cover" }}
         width={120}
         height={120}
+        quality={100}
       />
       <strong>{customerName}</strong>
       <Image
