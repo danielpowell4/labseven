@@ -29,19 +29,19 @@
   transform: scale(1.15);
 }
 
-.ButtonIsSubmitting:after {
+.ButtonIsSubmitting .LoadingIndicator {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   border-radius: var(--babyRound);
-  content: "...";
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--buttonBackground);
   filter: brightness(115%);
+  margin: 0;
 }
 
 .ButtonTransparent {

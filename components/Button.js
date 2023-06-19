@@ -1,6 +1,8 @@
 import * as React from "react";
 import styles from "./Button.module.css";
 
+import { ThreeDotLoader } from "components";
+
 const Button = ({
   children,
   className = "Button",
@@ -15,6 +17,7 @@ const Button = ({
       {...rest}
     >
       {children}
+      {isSubmitting && <ThreeDotLoader className={styles.LoadingIndicator} />}
     </button>
   );
 };
