@@ -80,8 +80,6 @@ export async function getStaticProps() {
     }
   }
 
-  console.log(includedColors);
-
   const sortedColorAudit = colorAudit
     .map((item) => ({
       ...item,
@@ -102,10 +100,10 @@ export async function getStaticProps() {
 
 const HEADER_NAMES = [
   "group",
-  "styleName",
   "systemCount",
-  "CSS Color Name",
+  "styleName",
   "color",
+  "CSS Color Name",
   "CSS Hex",
 ];
 
