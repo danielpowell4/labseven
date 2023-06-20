@@ -1,0 +1,1130 @@
+[
+  {
+    "CSS Color Name": "CadetBlue",
+    "CSS Hex": "#5F9EA0",
+    "group": "Blue",
+    "r": 95,
+    "g": 158,
+    "b": 160
+  },
+  {
+    "CSS Color Name": "SteelBlue",
+    "CSS Hex": "#4682B4",
+    "group": "Blue",
+    "r": 70,
+    "g": 130,
+    "b": 180
+  },
+  {
+    "CSS Color Name": "LightSteelBlue",
+    "CSS Hex": "#B0C4DE",
+    "group": "Blue",
+    "r": 176,
+    "g": 196,
+    "b": 222
+  },
+  {
+    "CSS Color Name": "LightBlue",
+    "CSS Hex": "#ADD8E6",
+    "group": "Blue",
+    "r": 173,
+    "g": 216,
+    "b": 230
+  },
+  {
+    "CSS Color Name": "PowderBlue",
+    "CSS Hex": "#B0E0E6",
+    "group": "Blue",
+    "r": 176,
+    "g": 224,
+    "b": 230
+  },
+  {
+    "CSS Color Name": "LightSkyBlue",
+    "CSS Hex": "#87CEFA",
+    "group": "Blue",
+    "r": 135,
+    "g": 206,
+    "b": 250
+  },
+  {
+    "CSS Color Name": "SkyBlue",
+    "CSS Hex": "#87CEEB",
+    "group": "Blue",
+    "r": 135,
+    "g": 206,
+    "b": 235
+  },
+  {
+    "CSS Color Name": "CornflowerBlue",
+    "CSS Hex": "#6495ED",
+    "group": "Blue",
+    "r": 100,
+    "g": 149,
+    "b": 237
+  },
+  {
+    "CSS Color Name": "DeepSkyBlue",
+    "CSS Hex": "#00BFFF",
+    "group": "Blue",
+    "r": 0,
+    "g": 191,
+    "b": 255
+  },
+  {
+    "CSS Color Name": "DodgerBlue",
+    "CSS Hex": "#1E90FF",
+    "group": "Blue",
+    "r": 30,
+    "g": 144,
+    "b": 255
+  },
+  {
+    "CSS Color Name": "RoyalBlue",
+    "CSS Hex": "#4169E1",
+    "group": "Blue",
+    "r": 65,
+    "g": 105,
+    "b": 225
+  },
+  {
+    "CSS Color Name": "Blue",
+    "CSS Hex": "#0000FF",
+    "group": "Blue",
+    "r": 0,
+    "g": 0,
+    "b": 255
+  },
+  {
+    "CSS Color Name": "MediumBlue",
+    "CSS Hex": "#0000CD",
+    "group": "Blue",
+    "r": 0,
+    "g": 0,
+    "b": 205
+  },
+  {
+    "CSS Color Name": "DarkBlue",
+    "CSS Hex": "#00008B",
+    "group": "Blue",
+    "r": 0,
+    "g": 0,
+    "b": 139
+  },
+  {
+    "CSS Color Name": "Navy",
+    "CSS Hex": "#000080",
+    "group": "Blue",
+    "r": 0,
+    "g": 0,
+    "b": 128
+  },
+  {
+    "CSS Color Name": "MidnightBlue",
+    "CSS Hex": "#191970",
+    "group": "Blue",
+    "r": 25,
+    "g": 25,
+    "b": 112
+  },
+  {
+    "CSS Color Name": "Cornsilk",
+    "CSS Hex": "#FFF8DC",
+    "group": "Brown",
+    "r": 255,
+    "g": 248,
+    "b": 220
+  },
+  {
+    "CSS Color Name": "BlanchedAlmond",
+    "CSS Hex": "#FFEBCD",
+    "group": "Brown",
+    "r": 255,
+    "g": 235,
+    "b": 205
+  },
+  {
+    "CSS Color Name": "Bisque",
+    "CSS Hex": "#FFE4C4",
+    "group": "Brown",
+    "r": 255,
+    "g": 228,
+    "b": 196
+  },
+  {
+    "CSS Color Name": "NavajoWhite",
+    "CSS Hex": "#FFDEAD",
+    "group": "Brown",
+    "r": 255,
+    "g": 222,
+    "b": 173
+  },
+  {
+    "CSS Color Name": "Wheat",
+    "CSS Hex": "#F5DEB3",
+    "group": "Brown",
+    "r": 245,
+    "g": 222,
+    "b": 179
+  },
+  {
+    "CSS Color Name": "BurlyWood",
+    "CSS Hex": "#DEB887",
+    "group": "Brown",
+    "r": 222,
+    "g": 184,
+    "b": 135
+  },
+  {
+    "CSS Color Name": "Tan",
+    "CSS Hex": "#D2B48C",
+    "group": "Brown",
+    "r": 210,
+    "g": 180,
+    "b": 140
+  },
+  {
+    "CSS Color Name": "RosyBrown",
+    "CSS Hex": "#BC8F8F",
+    "group": "Brown",
+    "r": 188,
+    "g": 143,
+    "b": 143
+  },
+  {
+    "CSS Color Name": "SandyBrown",
+    "CSS Hex": "#F4A460",
+    "group": "Brown",
+    "r": 244,
+    "g": 164,
+    "b": 96
+  },
+  {
+    "CSS Color Name": "GoldenRod",
+    "CSS Hex": "#DAA520",
+    "group": "Brown",
+    "r": 218,
+    "g": 165,
+    "b": 32
+  },
+  {
+    "CSS Color Name": "DarkGoldenRod",
+    "CSS Hex": "#B8860B",
+    "group": "Brown",
+    "r": 184,
+    "g": 134,
+    "b": 11
+  },
+  {
+    "CSS Color Name": "Peru",
+    "CSS Hex": "#CD853F",
+    "group": "Brown",
+    "r": 205,
+    "g": 133,
+    "b": 63
+  },
+  {
+    "CSS Color Name": "Chocolate",
+    "CSS Hex": "#D2691E",
+    "group": "Brown",
+    "r": 210,
+    "g": 105,
+    "b": 30
+  },
+  {
+    "CSS Color Name": "Olive",
+    "CSS Hex": "#808000",
+    "group": "Brown",
+    "r": 128,
+    "g": 128,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "SaddleBrown",
+    "CSS Hex": "#8B4513",
+    "group": "Brown",
+    "r": 139,
+    "g": 69,
+    "b": 19
+  },
+  {
+    "CSS Color Name": "Sienna",
+    "CSS Hex": "#A0522D",
+    "group": "Brown",
+    "r": 160,
+    "g": 82,
+    "b": 45
+  },
+  {
+    "CSS Color Name": "Brown",
+    "CSS Hex": "#A52A2A",
+    "group": "Brown",
+    "r": 165,
+    "g": 42,
+    "b": 42
+  },
+  {
+    "CSS Color Name": "Maroon",
+    "CSS Hex": "#800000",
+    "group": "Brown",
+    "r": 128,
+    "g": 0,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "GreenYellow",
+    "CSS Hex": "#ADFF2F",
+    "group": "Green",
+    "r": 173,
+    "g": 255,
+    "b": 47
+  },
+  {
+    "CSS Color Name": "Chartreuse",
+    "CSS Hex": "#7FFF00",
+    "group": "Green",
+    "r": 127,
+    "g": 255,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "LawnGreen",
+    "CSS Hex": "#7CFC00",
+    "group": "Green",
+    "r": 124,
+    "g": 252,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "Lime",
+    "CSS Hex": "#00FF00",
+    "group": "Green",
+    "r": 0,
+    "g": 255,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "LimeGreen",
+    "CSS Hex": "#32CD32",
+    "group": "Green",
+    "r": 50,
+    "g": 205,
+    "b": 50
+  },
+  {
+    "CSS Color Name": "PaleGreen",
+    "CSS Hex": "#98FB98",
+    "group": "Green",
+    "r": 152,
+    "g": 251,
+    "b": 152
+  },
+  {
+    "CSS Color Name": "LightGreen",
+    "CSS Hex": "#90EE90",
+    "group": "Green",
+    "r": 144,
+    "g": 238,
+    "b": 144
+  },
+  {
+    "CSS Color Name": "MediumSpringGreen",
+    "CSS Hex": "#00FA9A",
+    "group": "Green",
+    "r": 0,
+    "g": 250,
+    "b": 154
+  },
+  {
+    "CSS Color Name": "SpringGreen",
+    "CSS Hex": "#00FF7F",
+    "group": "Green",
+    "r": 0,
+    "g": 255,
+    "b": 127
+  },
+  {
+    "CSS Color Name": "MediumSeaGreen",
+    "CSS Hex": "#3CB371",
+    "group": "Green",
+    "r": 60,
+    "g": 179,
+    "b": 113
+  },
+  {
+    "CSS Color Name": "SeaGreen",
+    "CSS Hex": "#2E8B57",
+    "group": "Green",
+    "r": 46,
+    "g": 139,
+    "b": 87
+  },
+  {
+    "CSS Color Name": "ForestGreen",
+    "CSS Hex": "#228B22",
+    "group": "Green",
+    "r": 34,
+    "g": 139,
+    "b": 34
+  },
+  {
+    "CSS Color Name": "Green",
+    "CSS Hex": "#008000",
+    "group": "Green",
+    "r": 0,
+    "g": 128,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "DarkGreen",
+    "CSS Hex": "#006400",
+    "group": "Green",
+    "r": 0,
+    "g": 100,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "YellowGreen",
+    "CSS Hex": "#9ACD32",
+    "group": "Green",
+    "r": 154,
+    "g": 205,
+    "b": 50
+  },
+  {
+    "CSS Color Name": "OliveDrab",
+    "CSS Hex": "#6B8E23",
+    "group": "Green",
+    "r": 107,
+    "g": 142,
+    "b": 35
+  },
+  {
+    "CSS Color Name": "DarkOliveGreen",
+    "CSS Hex": "#556B2F",
+    "group": "Green",
+    "r": 85,
+    "g": 107,
+    "b": 47
+  },
+  {
+    "CSS Color Name": "MediumAquaMarine",
+    "CSS Hex": "#66CDAA",
+    "group": "Green",
+    "r": 102,
+    "g": 205,
+    "b": 170
+  },
+  {
+    "CSS Color Name": "DarkSeaGreen",
+    "CSS Hex": "#8FBC8F",
+    "group": "Green",
+    "r": 143,
+    "g": 188,
+    "b": 143
+  },
+  {
+    "CSS Color Name": "LightSeaGreen",
+    "CSS Hex": "#20B2AA",
+    "group": "Green",
+    "r": 32,
+    "g": 178,
+    "b": 170
+  },
+  {
+    "CSS Color Name": "DarkCyan",
+    "CSS Hex": "#008B8B",
+    "group": "Green",
+    "r": 0,
+    "g": 139,
+    "b": 139
+  },
+  {
+    "CSS Color Name": "Teal",
+    "CSS Hex": "#008080",
+    "group": "Green",
+    "r": 0,
+    "g": 128,
+    "b": 128
+  },
+  {
+    "CSS Color Name": "Gainsboro",
+    "CSS Hex": "#DCDCDC",
+    "group": "Grey",
+    "r": 220,
+    "g": 220,
+    "b": 220
+  },
+  {
+    "CSS Color Name": "LightGray",
+    "CSS Hex": "#D3D3D3",
+    "group": "Grey",
+    "r": 211,
+    "g": 211,
+    "b": 211
+  },
+  {
+    "CSS Color Name": "Silver",
+    "CSS Hex": "#C0C0C0",
+    "group": "Grey",
+    "r": 192,
+    "g": 192,
+    "b": 192
+  },
+  {
+    "CSS Color Name": "DarkGray",
+    "CSS Hex": "#A9A9A9",
+    "group": "Grey",
+    "r": 169,
+    "g": 169,
+    "b": 169
+  },
+  {
+    "CSS Color Name": "DimGray",
+    "CSS Hex": "#696969",
+    "group": "Grey",
+    "r": 105,
+    "g": 105,
+    "b": 105
+  },
+  {
+    "CSS Color Name": "Gray",
+    "CSS Hex": "#808080",
+    "group": "Grey",
+    "r": 128,
+    "g": 128,
+    "b": 128
+  },
+  {
+    "CSS Color Name": "LightSlateGray",
+    "CSS Hex": "#778899",
+    "group": "Grey",
+    "r": 119,
+    "g": 136,
+    "b": 153
+  },
+  {
+    "CSS Color Name": "SlateGray",
+    "CSS Hex": "#708090",
+    "group": "Grey",
+    "r": 112,
+    "g": 128,
+    "b": 144
+  },
+  {
+    "CSS Color Name": "DarkSlateGray",
+    "CSS Hex": "#2F4F4F",
+    "group": "Grey",
+    "r": 47,
+    "g": 79,
+    "b": 79
+  },
+  {
+    "CSS Color Name": "Black",
+    "CSS Hex": "#000000",
+    "group": "Grey",
+    "r": 0,
+    "g": 0,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "Aqua",
+    "CSS Hex": "#00FFFF",
+    "group": "Light Blue",
+    "r": 0,
+    "g": 255,
+    "b": 255
+  },
+  {
+    "CSS Color Name": "Cyan",
+    "CSS Hex": "#00FFFF",
+    "group": "Light Blue",
+    "r": 0,
+    "g": 255,
+    "b": 255
+  },
+  {
+    "CSS Color Name": "LightCyan",
+    "CSS Hex": "#E0FFFF",
+    "group": "Light Blue",
+    "r": 224,
+    "g": 255,
+    "b": 255
+  },
+  {
+    "CSS Color Name": "PaleTurquoise",
+    "CSS Hex": "#AFEEEE",
+    "group": "Light Blue",
+    "r": 175,
+    "g": 238,
+    "b": 238
+  },
+  {
+    "CSS Color Name": "Aquamarine",
+    "CSS Hex": "#7FFFD4",
+    "group": "Light Blue",
+    "r": 127,
+    "g": 255,
+    "b": 212
+  },
+  {
+    "CSS Color Name": "Turquoise",
+    "CSS Hex": "#40E0D0",
+    "group": "Light Blue",
+    "r": 64,
+    "g": 224,
+    "b": 208
+  },
+  {
+    "CSS Color Name": "MediumTurquoise",
+    "CSS Hex": "#48D1CC",
+    "group": "Light Blue",
+    "r": 72,
+    "g": 209,
+    "b": 204
+  },
+  {
+    "CSS Color Name": "DarkTurquoise",
+    "CSS Hex": "#00CED1",
+    "group": "Light Blue",
+    "r": 0,
+    "g": 206,
+    "b": 209
+  },
+  {
+    "CSS Color Name": "Orange",
+    "CSS Hex": "#FFA500",
+    "group": "Orange",
+    "r": 255,
+    "g": 165,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "DarkOrange",
+    "CSS Hex": "#FF8C00",
+    "group": "Orange",
+    "r": 255,
+    "g": 140,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "Coral",
+    "CSS Hex": "#FF7F50",
+    "group": "Orange",
+    "r": 255,
+    "g": 127,
+    "b": 80
+  },
+  {
+    "CSS Color Name": "Tomato",
+    "CSS Hex": "#FF6347",
+    "group": "Orange",
+    "r": 255,
+    "g": 99,
+    "b": 71
+  },
+  {
+    "CSS Color Name": "OrangeRed",
+    "CSS Hex": "#FF4500",
+    "group": "Orange",
+    "r": 255,
+    "g": 69,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "Pink",
+    "CSS Hex": "#FFC0CB",
+    "group": "Pink",
+    "r": 255,
+    "g": 192,
+    "b": 203
+  },
+  {
+    "CSS Color Name": "LightPink",
+    "CSS Hex": "#FFB6C1",
+    "group": "Pink",
+    "r": 255,
+    "g": 182,
+    "b": 193
+  },
+  {
+    "CSS Color Name": "HotPink",
+    "CSS Hex": "#FF69B4",
+    "group": "Pink",
+    "r": 255,
+    "g": 105,
+    "b": 180
+  },
+  {
+    "CSS Color Name": "DeepPink",
+    "CSS Hex": "#FF1493",
+    "group": "Pink",
+    "r": 255,
+    "g": 20,
+    "b": 147
+  },
+  {
+    "CSS Color Name": "PaleVioletRed",
+    "CSS Hex": "#DB7093",
+    "group": "Pink",
+    "r": 219,
+    "g": 112,
+    "b": 147
+  },
+  {
+    "CSS Color Name": "MediumVioletRed",
+    "CSS Hex": "#C71585",
+    "group": "Pink",
+    "r": 199,
+    "g": 21,
+    "b": 133
+  },
+  {
+    "CSS Color Name": "Lavender",
+    "CSS Hex": "#E6E6FA",
+    "group": "Purple",
+    "r": 230,
+    "g": 230,
+    "b": 250
+  },
+  {
+    "CSS Color Name": "Thistle",
+    "CSS Hex": "#D8BFD8",
+    "group": "Purple",
+    "r": 216,
+    "g": 191,
+    "b": 216
+  },
+  {
+    "CSS Color Name": "Plum",
+    "CSS Hex": "#DDA0DD",
+    "group": "Purple",
+    "r": 221,
+    "g": 160,
+    "b": 221
+  },
+  {
+    "CSS Color Name": "Orchid",
+    "CSS Hex": "#DA70D6",
+    "group": "Purple",
+    "r": 218,
+    "g": 112,
+    "b": 214
+  },
+  {
+    "CSS Color Name": "Violet",
+    "CSS Hex": "#EE82EE",
+    "group": "Purple",
+    "r": 238,
+    "g": 130,
+    "b": 238
+  },
+  {
+    "CSS Color Name": "Fuchsia",
+    "CSS Hex": "#FF00FF",
+    "group": "Purple",
+    "r": 255,
+    "g": 0,
+    "b": 255
+  },
+  {
+    "CSS Color Name": "Magenta",
+    "CSS Hex": "#FF00FF",
+    "group": "Purple",
+    "r": 255,
+    "g": 0,
+    "b": 255
+  },
+  {
+    "CSS Color Name": "MediumOrchid",
+    "CSS Hex": "#BA55D3",
+    "group": "Purple",
+    "r": 186,
+    "g": 85,
+    "b": 211
+  },
+  {
+    "CSS Color Name": "DarkOrchid",
+    "CSS Hex": "#9932CC",
+    "group": "Purple",
+    "r": 153,
+    "g": 50,
+    "b": 204
+  },
+  {
+    "CSS Color Name": "DarkViolet",
+    "CSS Hex": "#9400D3",
+    "group": "Purple",
+    "r": 148,
+    "g": 0,
+    "b": 211
+  },
+  {
+    "CSS Color Name": "BlueViolet",
+    "CSS Hex": "#8A2BE2",
+    "group": "Purple",
+    "r": 138,
+    "g": 43,
+    "b": 226
+  },
+  {
+    "CSS Color Name": "DarkMagenta",
+    "CSS Hex": "#8B008B",
+    "group": "Purple",
+    "r": 139,
+    "g": 0,
+    "b": 139
+  },
+  {
+    "CSS Color Name": "Purple",
+    "CSS Hex": "#800080",
+    "group": "Purple",
+    "r": 128,
+    "g": 0,
+    "b": 128
+  },
+  {
+    "CSS Color Name": "MediumPurple",
+    "CSS Hex": "#9370DB",
+    "group": "Purple",
+    "r": 147,
+    "g": 112,
+    "b": 219
+  },
+  {
+    "CSS Color Name": "MediumSlateBlue",
+    "CSS Hex": "#7B68EE",
+    "group": "Purple",
+    "r": 123,
+    "g": 104,
+    "b": 238
+  },
+  {
+    "CSS Color Name": "SlateBlue",
+    "CSS Hex": "#6A5ACD",
+    "group": "Purple",
+    "r": 106,
+    "g": 90,
+    "b": 205
+  },
+  {
+    "CSS Color Name": "DarkSlateBlue",
+    "CSS Hex": "#483D8B",
+    "group": "Purple",
+    "r": 72,
+    "g": 61,
+    "b": 139
+  },
+  {
+    "CSS Color Name": "RebeccaPurple",
+    "CSS Hex": "#663399",
+    "group": "Purple",
+    "r": 102,
+    "g": 51,
+    "b": 153
+  },
+  {
+    "CSS Color Name": "Indigo",
+    "CSS Hex": "#4B0082",
+    "group": "Purple",
+    "r": 75,
+    "g": 0,
+    "b": 130
+  },
+  {
+    "CSS Color Name": "LightSalmon",
+    "CSS Hex": "#FFA07A",
+    "group": "Red",
+    "r": 255,
+    "g": 160,
+    "b": 122
+  },
+  {
+    "CSS Color Name": "Salmon",
+    "CSS Hex": "#FA8072",
+    "group": "Red",
+    "r": 250,
+    "g": 128,
+    "b": 114
+  },
+  {
+    "CSS Color Name": "DarkSalmon",
+    "CSS Hex": "#E9967A",
+    "group": "Red",
+    "r": 233,
+    "g": 150,
+    "b": 122
+  },
+  {
+    "CSS Color Name": "LightCoral",
+    "CSS Hex": "#F08080",
+    "group": "Red",
+    "r": 240,
+    "g": 128,
+    "b": 128
+  },
+  {
+    "CSS Color Name": "IndianRed",
+    "CSS Hex": "#CD5C5C",
+    "group": "Red",
+    "r": 205,
+    "g": 92,
+    "b": 92
+  },
+  {
+    "CSS Color Name": "Crimson",
+    "CSS Hex": "#DC143C",
+    "group": "Red",
+    "r": 220,
+    "g": 20,
+    "b": 60
+  },
+  {
+    "CSS Color Name": "Red",
+    "CSS Hex": "#FF0000",
+    "group": "Red",
+    "r": 255,
+    "g": 0,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "FireBrick",
+    "CSS Hex": "#B22222",
+    "group": "Red",
+    "r": 178,
+    "g": 34,
+    "b": 34
+  },
+  {
+    "CSS Color Name": "DarkRed",
+    "CSS Hex": "#8B0000",
+    "group": "Red",
+    "r": 139,
+    "g": 0,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "White",
+    "CSS Hex": "#FFFFFF",
+    "group": "White",
+    "r": 255,
+    "g": 255,
+    "b": 255
+  },
+  {
+    "CSS Color Name": "Snow",
+    "CSS Hex": "#FFFAFA",
+    "group": "White",
+    "r": 255,
+    "g": 250,
+    "b": 250
+  },
+  {
+    "CSS Color Name": "HoneyDew",
+    "CSS Hex": "#F0FFF0",
+    "group": "White",
+    "r": 240,
+    "g": 255,
+    "b": 240
+  },
+  {
+    "CSS Color Name": "MintCream",
+    "CSS Hex": "#F5FFFA",
+    "group": "White",
+    "r": 245,
+    "g": 255,
+    "b": 250
+  },
+  {
+    "CSS Color Name": "Azure",
+    "CSS Hex": "#F0FFFF",
+    "group": "White",
+    "r": 240,
+    "g": 255,
+    "b": 255
+  },
+  {
+    "CSS Color Name": "AliceBlue",
+    "CSS Hex": "#F0F8FF",
+    "group": "White",
+    "r": 240,
+    "g": 248,
+    "b": 255
+  },
+  {
+    "CSS Color Name": "GhostWhite",
+    "CSS Hex": "#F8F8FF",
+    "group": "White",
+    "r": 248,
+    "g": 248,
+    "b": 255
+  },
+  {
+    "CSS Color Name": "WhiteSmoke",
+    "CSS Hex": "#F5F5F5",
+    "group": "White",
+    "r": 245,
+    "g": 245,
+    "b": 245
+  },
+  {
+    "CSS Color Name": "SeaShell",
+    "CSS Hex": "#FFF5EE",
+    "group": "White",
+    "r": 255,
+    "g": 245,
+    "b": 238
+  },
+  {
+    "CSS Color Name": "Beige",
+    "CSS Hex": "#F5F5DC",
+    "group": "White",
+    "r": 245,
+    "g": 245,
+    "b": 220
+  },
+  {
+    "CSS Color Name": "OldLace",
+    "CSS Hex": "#FDF5E6",
+    "group": "White",
+    "r": 253,
+    "g": 245,
+    "b": 230
+  },
+  {
+    "CSS Color Name": "FloralWhite",
+    "CSS Hex": "#FFFAF0",
+    "group": "White",
+    "r": 255,
+    "g": 250,
+    "b": 240
+  },
+  {
+    "CSS Color Name": "Ivory",
+    "CSS Hex": "#FFFFF0",
+    "group": "White",
+    "r": 255,
+    "g": 255,
+    "b": 240
+  },
+  {
+    "CSS Color Name": "AntiqueWhite",
+    "CSS Hex": "#FAEBD7",
+    "group": "White",
+    "r": 250,
+    "g": 235,
+    "b": 215
+  },
+  {
+    "CSS Color Name": "Linen",
+    "CSS Hex": "#FAF0E6",
+    "group": "White",
+    "r": 250,
+    "g": 240,
+    "b": 230
+  },
+  {
+    "CSS Color Name": "LavenderBlush",
+    "CSS Hex": "#FFF0F5",
+    "group": "White",
+    "r": 255,
+    "g": 240,
+    "b": 245
+  },
+  {
+    "CSS Color Name": "MistyRose",
+    "CSS Hex": "#FFE4E1",
+    "group": "White",
+    "r": 255,
+    "g": 228,
+    "b": 225
+  },
+  {
+    "CSS Color Name": "Gold",
+    "CSS Hex": "#FFD700",
+    "group": "Yellow",
+    "r": 255,
+    "g": 215,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "Yellow",
+    "CSS Hex": "#FFFF00",
+    "group": "Yellow",
+    "r": 255,
+    "g": 255,
+    "b": 0
+  },
+  {
+    "CSS Color Name": "LightYellow",
+    "CSS Hex": "#FFFFE0",
+    "group": "Yellow",
+    "r": 255,
+    "g": 255,
+    "b": 224
+  },
+  {
+    "CSS Color Name": "LemonChiffon",
+    "CSS Hex": "#FFFACD",
+    "group": "Yellow",
+    "r": 255,
+    "g": 250,
+    "b": 205
+  },
+  {
+    "CSS Color Name": "LightGoldenRodYellow",
+    "CSS Hex": "#FAFAD2",
+    "group": "Yellow",
+    "r": 250,
+    "g": 250,
+    "b": 210
+  },
+  {
+    "CSS Color Name": "PapayaWhip",
+    "CSS Hex": "#FFEFD5",
+    "group": "Yellow",
+    "r": 255,
+    "g": 239,
+    "b": 213
+  },
+  {
+    "CSS Color Name": "Moccasin",
+    "CSS Hex": "#FFE4B5",
+    "group": "Yellow",
+    "r": 255,
+    "g": 228,
+    "b": 181
+  },
+  {
+    "CSS Color Name": "PeachPuff",
+    "CSS Hex": "#FFDAB9",
+    "group": "Yellow",
+    "r": 255,
+    "g": 218,
+    "b": 185
+  },
+  {
+    "CSS Color Name": "PaleGoldenRod",
+    "CSS Hex": "#EEE8AA",
+    "group": "Yellow",
+    "r": 238,
+    "g": 232,
+    "b": 170
+  },
+  {
+    "CSS Color Name": "Khaki",
+    "CSS Hex": "#F0E68C",
+    "group": "Yellow",
+    "r": 240,
+    "g": 230,
+    "b": 140
+  },
+  {
+    "CSS Color Name": "DarkKhaki",
+    "CSS Hex": "#BDB76B",
+    "group": "Yellow",
+    "r": 189,
+    "g": 183,
+    "b": 107
+  }
+]
