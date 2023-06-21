@@ -14,6 +14,13 @@
   justify-content: center;
 }
 
+/* Chromium Only */
+@supports (contain: paint) and (not (-moz-appearance: none)) {
+  .Nav {
+    padding-bottom: 12px; /* --fixedNavHeight a tid bit bigger */
+  }
+}
+
 .Nav ul {
   display: flex;
   flex-flow: row wrap;

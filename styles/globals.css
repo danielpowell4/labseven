@@ -60,6 +60,12 @@ li {
   }
 }
 
+@supports (contain: paint) and (not (-moz-appearance: none)) {
+  :root {
+    --fixedNavHeight: 70px;
+  }
+}
+
 @media screen and (min-width: 1118px) {
   :root {
     --fixedNavHeight: 0;
