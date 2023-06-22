@@ -22,7 +22,9 @@
 }
 
 .Button:hover,
-.Button:focus {
+.Button:focus,
+.ButtonAlternate:hover,
+.ButtonAlternate:focus {
   transition: all 0.25s ease;
   transform: scale(1.15);
 }
