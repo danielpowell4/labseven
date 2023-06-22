@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { LinkButton } from "components";
+import { CallLink, LinkButton } from "components";
 
 import Banner from "public/assets/Services/Embroidery_Banner.jpg";
 import NIKE_Banner from "public/assets/Services/Embroidery_NIKE_Banner.jpg";
@@ -59,9 +59,7 @@ const Embroidery = ({ sectionRef }) => {
             {`, and `}
             <strong>{`backpacks.`}</strong>
           </p>
-          <LinkButton href="/products" className="LinkButtonAlternate">
-            Browse Catalog
-          </LinkButton>
+          <CallLink className="LinkButtonAlternate">Call for Quote</CallLink>
         </div>
       </div>
       <div>
