@@ -18,6 +18,7 @@
   font-family: var(--headingFont);
   font-weight: var(--headingWeight);
   cursor: pointer;
+  text-align: center;
 
   box-shadow: 0 3px 15px 0 rgb(0 0 0 / 10%);
 

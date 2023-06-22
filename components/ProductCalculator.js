@@ -300,7 +300,9 @@ const ProductCalculator = ({ productData }) => {
                   </li>
                 </ul>
                 <div className={calcStyles.incentiveIncrease}>
-                  <p>Want a better price?</p>
+                  <p className={calcStyles.incentiveIncrease__text}>
+                    Want a better price?
+                  </p>
                   <Button
                     type="submit"
                     className="ButtonAlternate"

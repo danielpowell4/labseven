@@ -25,23 +25,6 @@
   margin: auto;
 }
 
-@media screen and (min-width: 800px) {
-  .formEl {
-    width: auto;
-  }
-  .divider {
-    max-width: 16rem;
-  }
-  .formActions {
-    justify-content: flex-start;
-    margin: 0;
-  }
-  .formActions button {
-    width: inherit;
-    margin: 0;
-  }
-}
-
 .formSideGrid {
   display: grid;
   grid-template-columns: auto 8.5rem;
@@ -105,7 +88,8 @@
 .quoteGrid {
   display: flex;
   gap: 1rem;
-  justify-content: space-between;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 1rem;
 }
@@ -124,8 +108,30 @@
 .incentiveIncrease {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
 }
 
-.incentiveIncrease p {
+.incentiveIncrease__text {
   font-size: 12px;
+}
+
+@media screen and (min-width: 800px) {
+  .formEl {
+    width: auto;
+  }
+  .divider {
+    max-width: 16rem;
+  }
+  .formActions {
+    justify-content: flex-start;
+    margin: 0;
+  }
+  .formActions button {
+    width: inherit;
+    margin: 0;
+  }
+  .quoteGrid {
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
 }
