@@ -5,6 +5,8 @@ import { Layout, LinkButton, RotatingLogo } from "/components";
 import styles from "./Contact.module.css";
 import utilStyles from "/styles/utils.module.css";
 
+import { WaveCta } from ".";
+
 // Monday - Friday: 9:00AM - 5:00PM
 // Saturday - Sunday: CLOSED
 // 0 = Sunday, 6 = Saturday
@@ -133,6 +135,7 @@ const StoreHours = () => {
           </tbody>
         </table>
       </div>
+      <WaveCta />
     </Layout>
   );
 };
