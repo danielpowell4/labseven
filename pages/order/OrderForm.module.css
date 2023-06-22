@@ -210,6 +210,7 @@
 
 .sizeChart {
   text-align: right;
+  width: 100%;
   max-width: 12rem;
   margin: auto auto 1.5rem;
 
