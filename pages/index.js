@@ -150,15 +150,7 @@ import CTA_Namaste from "public/assets/Home/CTA_Namaste.png";
 
 import styles from "./Home.module.css";
 
-const ACTION_VERBS = [
-  "Wear",
-  "Share",
-  "Wear",
-  "Share",
-  "Wear",
-  "Share",
-  "Wear",
-];
+const ACTION_VERBS = ["Wear", "Share", "Wear"];
 
 export const SectionDivider = () => (
   <div className={styles.SectionDivider}>
@@ -240,9 +232,9 @@ const HomePage = () => {
             <h1>
               <div className={styles.verbsContainer}>
                 <div className={styles.verbsContainer__reel}>
-                  {ACTION_VERBS.map((verb, vIndex) => (
+                  {ACTION_VERBS.map((verb) => (
                     <div
-                      key={vIndex}
+                      key={verb}
                       className={styles.verbsContainer__reel__item}
                     >
                       {verb}
