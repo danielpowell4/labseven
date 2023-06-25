@@ -162,6 +162,7 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
             />
           ) : activeStyle.hasMainImage ? (
             <Image
+              priority
               className={productStyles.gallery__main}
               src={activeStyle.mainImageUrl}
               width={800}
