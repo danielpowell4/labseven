@@ -162,10 +162,10 @@
 
 @keyframes rotatingVerb {
   0% {
-    margin-top: calc(2 * var(--verbHeight));
+    margin-top: 0;
   }
   16% {
-    margin-top: calc(2 * var(--verbHeight));
+    margin-top: 0;
   }
   30% {
     margin-top: var(--verbHeight);

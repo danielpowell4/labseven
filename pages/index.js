@@ -150,7 +150,7 @@ import CTA_Namaste from "public/assets/Home/CTA_Namaste.png";
 
 import styles from "./Home.module.css";
 
-const ACTION_VERBS = ["Wear", "Share", "Wear"];
+const ACTION_VERBS = ["Wear", "Share"];
 
 export const SectionDivider = () => (
   <div className={styles.SectionDivider}>
