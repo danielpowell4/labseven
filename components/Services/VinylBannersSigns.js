@@ -57,7 +57,10 @@ const VinylBannersSignsForm = () => {
     return (
       <div className={styles.form}>
         <header className={styles.form__header}>
-          <Image src={Icon} />
+          <Image
+            src={Icon}
+            alt="Hand drawn stretched banner with dollar sign"
+          />
           <h3 className={styles.form__heading}>Banner Pricing:</h3>
         </header>
         <ThankYou />
@@ -98,7 +101,7 @@ const VinylBannersSignsForm = () => {
   return (
     <form onSubmit={onSubmit} className={styles.form}>
       <header className={styles.form__header}>
-        <Image src={Icon} />
+        <Image src={Icon} alt="Hand drawn stretched banner with dollar sign" />
         <h3 className={styles.form__heading}>Banner Pricing:</h3>
       </header>
       <input name="__title" type="hidden" value="service_inquiry" />

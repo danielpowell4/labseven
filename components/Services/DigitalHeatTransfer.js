@@ -19,7 +19,10 @@ const DigitalHeatTransferForm = () => {
     return (
       <div className={styles.form}>
         <header className={styles.form__header}>
-          <Image src={IconMockup} />
+          <Image
+            src={IconMockup}
+            alt="Hand drawn icon of T-shirt with question mark on it"
+          />
           <h3 className={styles.form__heading}>Get Your Free Digital Proof!</h3>
         </header>
         <ThankYou />
@@ -30,7 +33,10 @@ const DigitalHeatTransferForm = () => {
   return (
     <form onSubmit={onSubmit} className={styles.form}>
       <header className={styles.form__header}>
-        <Image src={IconMockup} />
+        <Image
+          src={IconMockup}
+          alt="Hand drawn icon of T-shirt with question mark on it"
+        />
         <h3 className={styles.form__heading}>Get Your Free Digital Proof!</h3>
       </header>
       <strong>Curious about the final product?</strong>

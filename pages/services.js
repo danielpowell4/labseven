@@ -172,6 +172,7 @@ const ServicesPage = () => {
                 priority
                 src={HeroArrow}
                 className={styles.hero__arrow}
+                alt="Hand drawn arrow pointing down the page"
               />
               <LinkButton href={`#${services[0].id}`} scroll={false}>
                 Browse Services

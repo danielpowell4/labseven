@@ -35,7 +35,11 @@ const Embroidery = ({ sectionRef }) => {
               styles.flyingContainer__east,
             ].join(" ")}
           >
-            <Image src={PuffEmbroidery} fill />
+            <Image
+              src={PuffEmbroidery}
+              alt="Amazing example of multi color embroidery on hats"
+              fill
+            />
           </div>
           <div
             className={[
@@ -43,7 +47,11 @@ const Embroidery = ({ sectionRef }) => {
               styles.flyingContainer__west,
             ].join(" ")}
           >
-            <Image src={DetailEmbroidery} fill />
+            <Image
+              src={DetailEmbroidery}
+              alt="Close up example image showcasing precision embroidery"
+              fill
+            />
           </div>
         </div>
         <div className={styles.content}>

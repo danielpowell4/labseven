@@ -30,7 +30,10 @@ const PromotionalProductsForm = () => {
     return (
       <div className={styles.form}>
         <header className={styles.form__header}>
-          <Image src={Icon} />
+          <Image
+            src={Icon}
+            alt="Hand drawn promotional coffee cup steaming with love"
+          />
           <h3 className={styles.form__heading}>
             Interested in Promo Products?
           </h3>
@@ -43,7 +46,10 @@ const PromotionalProductsForm = () => {
   return (
     <form onSubmit={onSubmit} className={styles.form}>
       <header className={styles.form__header}>
-        <Image src={Icon} />
+        <Image
+          src={Icon}
+          alt="Hand drawn promotional coffee cup steaming with love"
+        />
         <h3 className={styles.form__heading}>Interested in Promo Products?</h3>
       </header>
       <p>

@@ -23,7 +23,10 @@ const ScreenPrintingForm = () => {
     return (
       <div className={styles.form}>
         <header className={styles.form__header}>
-          <Image src={IconMockup} />
+          <Image
+            src={IconMockup}
+            alt="Hand drawn icon of T-shirt sporting dollar sign design"
+          />
           <h3 className={styles.form__heading}>Get Your Free Digital Proof!</h3>
         </header>
         <ThankYou />
@@ -34,7 +37,10 @@ const ScreenPrintingForm = () => {
   return (
     <form onSubmit={onSubmit} className={styles.form}>
       <header className={styles.form__header}>
-        <Image src={IconMockup} />
+        <Image
+          src={IconMockup}
+          alt="Hand drawn icon of T-shirt sporting dollar sign design"
+        />
         <h3 className={styles.form__heading}>Get Your Free Digital Proof!</h3>
       </header>
       <strong>Curious about the final product?</strong>
@@ -92,6 +98,7 @@ const ScreenPrinting = ({ sectionRef }) => {
           fill
           style={{ objectFit: "contain" }}
           sizes="(max-width: 1200px) 50vw, 100vw"
+          priority
         />
       </div>
       <div className={styles.sideBySide}>
@@ -114,9 +121,22 @@ const ScreenPrinting = ({ sectionRef }) => {
         <ScreenPrintingForm />
       </div>
       <div className={styles.imageReel}>
-        {[HopeHoodies, PhillipLindsay, CatDog].map((image, imageIndex) => (
-          <div key={imageIndex} className={styles.imageReel__item}>
-            <Image src={image} fill sizes="16vw" />
+        {[
+          {
+            src: HopeHoodies,
+            alt: "Example work of high contrast print with topographic design",
+          },
+          {
+            src: PhillipLindsay,
+            alt: "Example screen print of Broncos player Phillip Lindsay saluting",
+          },
+          {
+            src: CatDog,
+            alt: "Example screen print awesome, intricate design of a cat and dog",
+          },
+        ].map((image) => (
+          <div key={image.alt} className={styles.imageReel__item}>
+            <Image src={image.src} alt={image.alt} fill sizes="16vw" />
           </div>
         ))}
       </div>

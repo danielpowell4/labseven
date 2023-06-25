@@ -48,7 +48,13 @@ const InstaReel = ({ className = "" }) => {
     <div className={`${className} ${styles.InstaReel}`}>
       {imageCollection.map(({ src, alt }) => (
         <div key={alt} className={styles.InstaReel__item}>
-          <Image src={src} alt={alt} priority={false} blur sizes={"264px"} />
+          <Image
+            src={src}
+            alt={alt}
+            priority={false}
+            placeholder="blur"
+            sizes={"264px"}
+          />
         </div>
       ))}
     </div>

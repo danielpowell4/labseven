@@ -89,7 +89,10 @@ const StickerDecalsForm = () => {
     return (
       <div className={styles.form}>
         <header className={styles.form__header}>
-          <Image src={icon} />
+          <Image
+            src={icon}
+            alt="Hand drawn icon of sticky note with dollar sign"
+          />
           <h3 className={styles.form__heading}>Sticker Pricing</h3>
         </header>
         <ThankYou />
@@ -128,7 +131,10 @@ const StickerDecalsForm = () => {
   return (
     <form onSubmit={onSubmit} className={styles.form}>
       <header className={styles.form__header}>
-        <Image src={icon} />
+        <Image
+          src={icon}
+          alt="Hand drawn icon of sticky note with dollar sign"
+        />
         <h3 className={styles.form__heading}>Sticker Pricing</h3>
       </header>
       <input name="__title" type="hidden" value="service_inquiry" />
