@@ -22,10 +22,11 @@ function MyApp({ Component, pageProps }) {
       {!!GOOGLE_ANALYTICS_ID && (
         <>
           <Script
+            defer
             src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`}
             strategy="lazyOnload"
           />
-          <Script id="google-analytics" strategy="lazyOnload">
+          <Script defer id="google-analytics" strategy="lazyOnload">
             {`window.dataLayer = window.dataLayer || [];
             function gtag(){window.dataLayer.push(arguments);}
             gtag('js', new Date());
