@@ -234,7 +234,9 @@ async function fetchAllProducts() {
           defaultPrice: defaultPrice,
           defaultHref: defaultStyle
             ? encodeURI(
-                `/product/${manufacturerSkuCode}/${camelize(defaultStyle.Name)}`
+                `https://www.labseven.co/product/${manufacturerSkuCode}/${camelize(
+                  defaultStyle.Name
+                )}`
               )
             : "",
           ...product,
