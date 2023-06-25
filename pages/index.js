@@ -229,10 +229,9 @@ const HomePage = () => {
   return (
     <Layout style={{ overflowX: "hidden" }}>
       <Head>
-        <meta name="robots" content="noindex" />
         <meta
           name="description"
-          content="Get Custom Printed Apparel Affordably. Backed by a Local Team You Can Trust."
+          content="Get Custom Printed Apparel Affordably. Backed by a Local Team You Can Trust. Screen Printing, Embroidery, Stickers and More."
         />
       </Head>
       <div className={styles.hero} ref={setHeroRef}>

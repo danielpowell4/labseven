@@ -136,8 +136,9 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
                         maxWidth: "100%",
                         height: "auto",
                         objectFit: "cover",
-                        objectPosition: "center"
-                      }} />
+                        objectPosition: "center",
+                      }}
+                    />
                   </button>
                 ) : (
                   <p>Missing image for {side.Side}</p>
@@ -156,8 +157,9 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
                 maxWidth: "100%",
                 height: "auto",
                 objectFit: "contain",
-                objectPosition: "center"
-              }} />
+                objectPosition: "center",
+              }}
+            />
           ) : activeStyle.hasMainImage ? (
             <Image
               className={productStyles.gallery__main}
@@ -169,8 +171,9 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
                 maxWidth: "100%",
                 height: "auto",
                 objectFit: "contain",
-                objectPosition: "center"
-              }} />
+                objectPosition: "center",
+              }}
+            />
           ) : (
             <p className={productStyles.gallery__main}>Missing image!</p>
           )}
