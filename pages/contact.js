@@ -118,7 +118,7 @@ const StoreHours = () => {
                         style={{
                           color: isOpen ? "var(--primary)" : "var(--danger)",
                         }}
-                        aria-role="img"
+                        role="img"
                         aria-label={
                           isOpen ? "We are open" : "We are currently closed"
                         }
