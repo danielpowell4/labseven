@@ -51,15 +51,14 @@ export async function getStaticProps({ params }) {
   const categoryProductData = allProducts.filter((product) =>
     subcategoryData.ItemIds.includes(product.ID)
   );
-  const [productData, pagination] = paginate(categoryProductData, 1, 15);
+  const [productData, pagination] = paginate(categoryProductData, 1, 16);
 
   return {
     props: {
       categoryData,
       subcategoryData,
       allProductCategoryData,
-      productData,
-      pagination,
+      fallbackData: { products: productData, pagination },
     },
   };
 }
@@ -68,11 +67,10 @@ const SubCategory = ({
   categoryData,
   subcategoryData,
   allProductCategoryData,
-  productData,
-  pagination,
+  fallbackData,
 }) => {
   const { data, error, isLoading, setQuote, query, setQuery } =
-    usePaginatedProducts(productData, pagination);
+    usePaginatedProducts(fallbackData);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (

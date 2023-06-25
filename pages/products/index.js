@@ -16,21 +16,20 @@ import productsStyles from "./styles/products.module.css";
 
 export async function getStaticProps() {
   const allProducts = await getAllProducts();
-  const [productData, pagination] = paginate(allProducts, 1, 15);
+  const [productData, pagination] = paginate(allProducts, 1, 16);
   const allProductCategoryData = await getAllProductCategories();
 
   return {
     props: {
-      productData,
-      pagination,
+      fallbackData: { products: productData, pagination },
       allProductCategoryData,
     },
   };
 }
 
-const Products = ({ productData, pagination, allProductCategoryData }) => {
+const Products = ({ fallbackData, allProductCategoryData }) => {
   const { data, error, isLoading, setQuote, query, setQuery } =
-    usePaginatedProducts(productData, pagination);
+    usePaginatedProducts(fallbackData);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
