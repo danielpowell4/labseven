@@ -129,10 +129,10 @@
   }
 }
 
-.verbsContainer {
-  display: flex;
-  flex-direction: row;
-  margin-left: -0.75rem;
+@media screen and (min-width: 420px) {
+  .verbsContainer {
+    margin-left: -0.75rem;
+  }
 }
 
 .verbsContainer__reel {
@@ -148,6 +148,8 @@
 }
 
 .verbsContainer__reel__item {
+  --verbHeight: -40px; /* used in animation */
+
   border-radius: 0.5rem;
   padding: 0 0.25rem;
   min-height: 40px;
@@ -155,35 +157,64 @@
 }
 
 .verbsContainer__reel__item:first-of-type {
-  --verbHeight: -40px;
-
-  animation: rotatingVerb 3s ease infinite;
+  animation: firstVerb 3s ease infinite;
 }
 
-@keyframes rotatingVerb {
+.verbsContainer__reel__item:last-of-type {
+  animation: lastVerb 3s ease infinite;
+}
+
+@keyframes firstVerb {
   0% {
-    margin-top: 0;
+    transform: translateY(0);
   }
   16% {
-    margin-top: 0;
+    transform: translateY(0);
   }
   30% {
-    margin-top: var(--verbHeight);
+    transform: translateY(var(--verbHeight));
   }
   44% {
-    margin-top: var(--verbHeight);
+    transform: translateY(var(--verbHeight));
   }
   58% {
-    margin-top: var(--verbHeight);
+    transform: translateY(var(--verbHeight));
   }
   72% {
-    margin-top: var(--verbHeight);
+    transform: translateY(var(--verbHeight));
   }
   86% {
-    margin-top: 0;
+    transform: translateY(0);
   }
   100% {
-    margin-top: 0;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lastVerb {
+  0% {
+    transform: translateY(var(--verbHeight));
+  }
+  16% {
+    transform: translateY(var(--verbHeight));
+  }
+  30% {
+    transform: translateY(0);
+  }
+  44% {
+    transform: translateY(0);
+  }
+  58% {
+    transform: translateY(0);
+  }
+  72% {
+    transform: translateY(0);
+  }
+  86% {
+    transform: translateY(var(--verbHeight));
+  }
+  100% {
+    transform: translateY(var(--verbHeight));
   }
 }
 
