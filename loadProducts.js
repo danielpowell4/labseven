@@ -239,6 +239,7 @@ async function fetchAllProducts() {
             : "",
           ...product,
           Featured: additionalDetails.Data.Featured,
+          FeaturedSort: additionalDetails.Data.Featured ? Math.random() : -1,
           LongDescription: additionalDetails.Data.LongDescription,
           Categories: (product.Categories || []).map((category) => {
             const isSubCategory = category["Path"].includes(" / ");
