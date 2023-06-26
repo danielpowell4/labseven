@@ -157,14 +157,14 @@
 }
 
 .verbsContainer__reel__item:first-of-type {
-  animation: firstVerb 3s ease infinite;
+  animation: verbReel 3s ease infinite;
 }
 
 .verbsContainer__reel__item:last-of-type {
-  animation: lastVerb 3s ease infinite;
+  animation: verbReel 3s ease infinite;
 }
 
-@keyframes firstVerb {
+@keyframes verbReel {
   0% {
     transform: translateY(0);
   }
@@ -188,33 +188,6 @@
   }
   100% {
     transform: translateY(0);
-  }
-}
-
-@keyframes lastVerb {
-  0% {
-    transform: translateY(var(--verbHeight));
-  }
-  16% {
-    transform: translateY(var(--verbHeight));
-  }
-  30% {
-    transform: translateY(0);
-  }
-  44% {
-    transform: translateY(0);
-  }
-  58% {
-    transform: translateY(0);
-  }
-  72% {
-    transform: translateY(0);
-  }
-  86% {
-    transform: translateY(var(--verbHeight));
-  }
-  100% {
-    transform: translateY(var(--verbHeight));
   }
 }
 
