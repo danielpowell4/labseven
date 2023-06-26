@@ -102,7 +102,7 @@ const SiteNav = () => {
   // show nav onScrollUp
   const prevScrollPos = React.useRef();
   const scrollY = useScrollPosition(); // defaults to 30fps
-  const [navNisible, setNavNisible] = React.useState(true);
+  const [navVisible, setNavVisible] = React.useState(true);
   React.useEffect(() => {
     const justLoaded =
       !hasMounted.current || typeof prevScrollPos.current === "undefined";
@@ -111,7 +111,7 @@ const SiteNav = () => {
 
     const shouldShow = justLoaded || nearTop || isScrollingUp;
     if (!shouldShow) setIsFlyoutOpen(false); // close call now flyout
-    setNavNisible(shouldShow);
+    setNavVisible(shouldShow);
 
     if (hasMounted.current) {
       prevScrollPos.current = scrollY; // stash for next scroll
@@ -121,7 +121,7 @@ const SiteNav = () => {
   return (
     <div
       className={`${styles.SiteNav}${
-        navNisible ? "" : ` ${styles.SiteNav__hidden}`
+        navVisible ? "" : ` ${styles.SiteNav__hidden}`
       }`}
     >
       <header className={styles.header}>
