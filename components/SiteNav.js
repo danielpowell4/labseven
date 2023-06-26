@@ -91,39 +91,10 @@ const ArrowDown = ({ size = 10, ...rest }) => (
 const SiteNav = () => {
   // call now flyout
   const callContainerRef = React.useRef();
-  const hasMounted = React.useRef(false);
   const [isFlyoutOpen, setIsFlyoutOpen] = React.useState(false);
 
-  // check if is first mount
-  React.useEffect(() => {
-    hasMounted.current = true;
-  });
-
-  // show nav onScrollUp
-  const prevScrollPos = React.useRef();
-  const scrollY = useScrollPosition(); // defaults to 30fps
-  const [navVisible, setNavVisible] = React.useState(true);
-  React.useEffect(() => {
-    const justLoaded =
-      !hasMounted.current || typeof prevScrollPos.current === "undefined";
-    const nearTop = scrollY < 100;
-    const isScrollingUp = prevScrollPos?.current > scrollY;
-
-    const shouldShow = justLoaded || nearTop || isScrollingUp;
-    if (!shouldShow) setIsFlyoutOpen(false); // close call now flyout
-    setNavVisible(shouldShow);
-
-    if (hasMounted.current) {
-      prevScrollPos.current = scrollY; // stash for next scroll
-    }
-  }, [scrollY]);
-
   return (
-    <div
-      className={`${styles.SiteNav}${
-        navVisible ? "" : ` ${styles.SiteNav__hidden}`
-      }`}
-    >
+    <div className={styles.SiteNav}>
       <header className={styles.header}>
         <div className={styles.header__spacer}>
           <a className={styles.logo} href="//labseven.co">

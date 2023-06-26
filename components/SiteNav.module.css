@@ -1,14 +1,9 @@
 .SiteNav {
-  /* stick to top */
   position: fixed;
-  top: 0;
+  top: var(--navTop); /* set in Layout.js + stick to top & change on scroll */
   transition: top 0.3s;
   width: 100%;
   z-index: 9;
-}
-
-.SiteNav__hidden {
-  top: calc(0px - var(--navHeight));
 }
 
 .header {
