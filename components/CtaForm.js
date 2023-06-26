@@ -37,6 +37,7 @@ const CtaForm = () => {
       )}
       {[
         { type: "hidden", name: "__title", value: "schedule_consult" },
+        { type: "hidden", name: "page_url", value: window?.location?.href },
         { type: "text", name: "full_name", label: "Full Name", required: true },
         { type: "email", name: "email", label: "Email", required: true },
         {
