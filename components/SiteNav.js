@@ -216,7 +216,7 @@ const SiteNav = () => {
                         },
                         {
                           name: "Colorado Springs",
-                          number: "(720) 283-3160",
+                          number: "(719) 283-3160",
                           telHref: "tel:+17192833160",
                         },
                         {
