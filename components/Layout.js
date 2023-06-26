@@ -54,7 +54,9 @@ const Layout = ({ children, className, ...rest }) => {
       </Head>
       <div
         className={`${montserrat.variable}`}
-        style={{ "--navTop": navVisible ? 0 : "calc(0px - var(--navHeight))" }}
+        style={{
+          "--navTop": navVisible ? "0px" : "calc(0px - var(--navHeight))",
+        }}
       >
         <SiteNav />
         <div

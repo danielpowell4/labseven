@@ -1,7 +1,7 @@
 .SiteNav {
   position: fixed;
   top: var(--navTop); /* set in Layout.js + stick to top & change on scroll */
-  transition: top 0.3s;
+  transition: top 0.3s; /* services .scrollContainer__aside */
   width: 100%;
   z-index: 9;
 }

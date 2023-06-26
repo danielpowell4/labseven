@@ -76,11 +76,13 @@
 
 .scrollContainer__aside {
   position: sticky;
-  top: 0;
   align-self: start;
   padding-top: 0;
   background-color: var(--background);
   z-index: 4; /* above 'main' + flying images */
+  top: calc(var(--navTop) + var(--navHeight) - 1px);
+  transition: top 0.3s; /* matches SiteNav */
+  border-top: 1px solid var(--hr);
 }
 
 .sectionNav ul {
@@ -123,6 +125,7 @@
     top: calc(var(--navHeight) + 2rem);
     margin-top: 8rem;
     padding-top: 0;
+    border-top: none;
   }
   .scrollContainer main {
     padding-left: 100px;
