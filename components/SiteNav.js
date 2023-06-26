@@ -198,17 +198,45 @@ const SiteNav = () => {
                           {`(303) 814-3389`}
                         </a>
                       </li>
-                      <li>
-                        <span className={styles.callNow__flyout__label}>
-                          Lakeside
-                        </span>
-                        <a
-                          href="tel:+17207086192"
-                          className={styles.callNow__flyout__number}
-                        >
-                          {`(720) 708-6192`}
-                        </a>
-                      </li>
+                      {[
+                        {
+                          name: "Lakeside",
+                          number: "(720) 708-6192",
+                          telHref: "tel:+17207086192",
+                        },
+                        {
+                          name: "Aurora",
+                          number: "(303) 529-6583",
+                          telHref: "tel:+13035296583",
+                        },
+                        {
+                          name: "Boulder",
+                          number: "(720) 780-1205",
+                          telHref: "tel:+17207801205",
+                        },
+                        {
+                          name: "Colorado Springs",
+                          number: "(720) 283-3160",
+                          telHref: "tel:+17192833160",
+                        },
+                        {
+                          name: "Fort Collins",
+                          number: "(720) 730-5435",
+                          telHref: "tel:+17207305435",
+                        },
+                      ].map((location) => (
+                        <li key={location.name}>
+                          <span className={styles.callNow__flyout__label}>
+                            {location.name}
+                          </span>
+                          <a
+                            href={location.telHref}
+                            className={styles.callNow__flyout__number}
+                          >
+                            {location.number}
+                          </a>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </li>
