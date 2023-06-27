@@ -1,9 +1,12 @@
+import { useRouter } from "next/router";
+
 import styles from "./CtaForm.module.css";
 import { Button } from ".";
 import { useSubmit } from "../lib/customHooks";
 
 const CtaForm = () => {
   const [formState, onSubmit] = useSubmit();
+  const router = useRouter();
 
   if (formState === "submitted") {
     return (
@@ -37,7 +40,7 @@ const CtaForm = () => {
       )}
       {[
         { type: "hidden", name: "__title", value: "schedule_consult" },
-        { type: "hidden", name: "page_url", value: window?.location?.href },
+        { type: "hidden", name: "page_url", value: router.asPath },
         { type: "text", name: "full_name", label: "Full Name", required: true },
         { type: "email", name: "email", label: "Email", required: true },
         {
