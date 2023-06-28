@@ -187,6 +187,19 @@ const SizeBreakdown = () => {
               {`${totalQuantity} Total Pieces`}
             </em>
           </h4>
+          <p
+            className={[
+              styles.sizeChart__minimum,
+              Boolean(formik.touched.products?.length) &&
+                Boolean(totalQuantity) &&
+                totalQuantity < 12 &&
+                styles.sizeChart__error,
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            <small>We have a minimum of 12 Total Pieces per order.</small>
+          </p>
         </div>
         <div className={styles.form__actions}>
           <LinkButton href="/order/project-notes" scroll={false}>

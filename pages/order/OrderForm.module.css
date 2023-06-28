@@ -273,8 +273,17 @@
   margin-right: 0.25rem;
 }
 
-.sizeChart__totalQuantity {
+.sizeChart__totalQuantity,
+.sizeChart__minimum {
   text-align: center;
+}
+
+.sizeChart__minimum {
+  margin: 0;
+}
+
+.sizeChart__error {
+  color: var(--danger);
 }
 
 @media screen and (min-width: 862px) {
@@ -318,7 +327,8 @@
     left: unset;
   }
 
-  .sizeChart__totalQuantity {
+  .sizeChart__totalQuantity,
+  .sizeChart__minimum {
     text-align: right;
   }
 }
