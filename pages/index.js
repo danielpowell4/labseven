@@ -220,12 +220,6 @@ const HomePage = () => {
 
   return (
     <Layout style={{ overflowX: "hidden" }}>
-      <Head>
-        <meta
-          name="description"
-          content="Get Custom Printed Apparel Affordably. Backed by a Local Team You Can Trust. Screen Printing, Embroidery, Stickers and More."
-        />
-      </Head>
       <div className={styles.hero} ref={setHeroRef}>
         <div className={styles.hero__spacer}>
           <div className={styles.hero__text}>
