@@ -157,7 +157,7 @@ const ServicesPage = () => {
       <Head>
         <meta
           name="description"
-          content="Get Custom Printed Apparel Affordably. Backed by a Local Team You Can Trust."
+          content="We offer Denver Screen Printing, Custom T-shirt Printing, Graphic Design, and Embroidery in Colorado. Work with our local team to get started today."
         />
       </Head>
       <div className={styles.hero}>
