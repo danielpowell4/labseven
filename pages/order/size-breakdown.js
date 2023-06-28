@@ -198,7 +198,7 @@ const SizeBreakdown = () => {
               .filter(Boolean)
               .join(" ")}
           >
-            <small>We have a minimum of 12 Total Pieces per order.</small>
+            <small>We have a minimum of 12 Total Pieces per order</small>
           </p>
         </div>
         <div className={styles.form__actions}>
