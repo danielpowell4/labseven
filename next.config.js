@@ -9,6 +9,13 @@ module.exports = {
         destination: "/",
         permanent: false,
       },
+      ...["aurora", "boulder", "colorado-springs", "fort-collins"].map(
+        (locationName) => ({
+          source: `/${locationName}`,
+          destination: "/",
+          permanent: false,
+        })
+      ),
       {
         source: "/threads/:slug*",
         destination: "/",
