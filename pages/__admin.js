@@ -62,7 +62,7 @@ const AdminPage = () => {
         <div style={containerStyle}>
           <p>You're in the mainframe!</p>
           {!!state.build.message ? (
-            <p style={{ color: "var(--primary)" }}>{message}</p>
+            <p style={{ color: "var(--primary)" }}>{state.build.message}</p>
           ) : (
             <Button
               onClick={onTriggerClick}
