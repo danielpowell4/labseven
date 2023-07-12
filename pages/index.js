@@ -279,7 +279,10 @@ const HomePage = () => {
             src={Welcome_LibertyLadies}
             alt="Happy customers wearing sweatshirts"
             style={{ maxWidth: "100%", height: "auto" }}
-            sizes="(max-width: 1060px) 80vw, (max-width: 1200px) 50vw, 100vw"
+            width={928}
+            height={482}
+            sizes="100vw, (min-width: 1060px) 80vw, (min-width: 1200px) 50vw"
+            placeholder="blur"
             priority
           />
         </div>
