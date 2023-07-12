@@ -1,5 +1,4 @@
 import * as React from "react";
-import Head from "next/head";
 import Image from "next/image";
 
 import useIntersectionObserver from "@react-hook/intersection-observer";
@@ -542,5 +541,9 @@ const HomePage = () => {
     </Layout>
   );
 };
+
+export async function getStaticProps() {
+  return { props: {} };
+}
 
 export default HomePage;

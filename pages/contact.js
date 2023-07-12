@@ -30,7 +30,7 @@ function getUserTimeZone() {
   }
 }
 
-const StoreHours = () => {
+const ContactPage = () => {
   const userZone = getUserTimeZone();
   const currentTime = new Date();
   const userCurrentTime = new Date(
@@ -140,4 +140,8 @@ const StoreHours = () => {
   );
 };
 
-export default StoreHours;
+export async function getStaticProps() {
+  return { props: {} };
+}
+
+export default ContactPage;
