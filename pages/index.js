@@ -274,16 +274,14 @@ const HomePage = () => {
         </div>
       </div>
       <div className={styles.welcomeWrap}>
-        <div className={styles.welcome__image}>
-          <Image
-            src={Welcome_LibertyLadies}
-            alt="Happy customers wearing sweatshirts"
-            style={{ maxWidth: "100%", height: "auto" }}
-            sizes="(max-width: 928px) 100%, 928px"
-            placeholder="empty" // avoid orange flash
-            priority
-          />
-        </div>
+        <Image
+          src={Welcome_LibertyLadies}
+          alt="Happy customers wearing sweatshirts"
+          className={styles.welcome__image}
+          sizes="(max-width: 928px) 100%, 928px"
+          placeholder="empty" // avoid orange flash
+          priority
+        />
         <div className={styles.welcome}>
           <div className={styles.welcome__block}>
             <div className={styles.welcome__block__header}>
