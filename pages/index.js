@@ -279,7 +279,7 @@ const HomePage = () => {
             src={Welcome_LibertyLadies}
             alt="Happy customers wearing sweatshirts"
             style={{ maxWidth: "100%", height: "auto" }}
-            sizes="(max-width: 1060px) 100vw, 928px"
+            sizes="(max-width: 928px) 100%, 928px"
             placeholder="empty" // avoid orange flash
             priority
           />

@@ -51,6 +51,7 @@ const Layout = ({ children, className, ...rest }) => {
         <meta property="og:type" content="website" />
         <meta name="og:title" content={siteTitle} />
         <meta name="og:description" content={description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div
         className={`${montserrat.variable}`}

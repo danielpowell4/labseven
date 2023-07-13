@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domains: ["stores.labseven.co"],
+    remotePatterns: [{ protocol: "https", hostname: "**.labseven.com" }],
   },
   async redirects() {
     return [
