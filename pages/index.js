@@ -84,7 +84,7 @@ const HeroImages = [
 });
 
 /* - welcome */
-import Welcome_LibertyLadies from "public/assets/Home/Welcome_LibertyLadies.png";
+import Welcome_LibertyLadies from "public/assets/Home/Welcome_LibertyLadies.jpg";
 import Welcome_Arrow from "public/assets/Home/Welcome_Arrow.svg";
 /* - deserve */
 import Deserve_Hats from "public/assets/Home/Deserve_Hats.jpg";
