@@ -1,6 +1,7 @@
 .breadcrumbs {
   display: flex;
-  margin-left: 26px;
+  max-width: var(--gridWidth);
+  margin: 0.5rem auto;
 }
 
 .breadcrumbs a,
@@ -9,7 +10,6 @@
   text-decoration: underline;
   color: var(--lightText);
   font-size: 15px;
-  margin-top: 10px;
 }
 
 .breadcrumbs a:not(:last-of-type):after {
@@ -26,6 +26,9 @@
     "title"
     "gallery"
     "details";
+
+  max-width: var(--gridWidth);
+  margin: 0 auto;
 }
 
 .title {
@@ -52,6 +55,7 @@
     "main"
     "sides";
   grid-gap: 1rem;
+  align-items: center;
 }
 
 .gallery__main {
@@ -134,7 +138,6 @@
       "gallery title"
       "gallery details";
     grid-gap: 0 2rem;
-    padding: 10px;
   }
 
   .title {

@@ -150,8 +150,8 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
             <Image
               className={productStyles.gallery__main}
               src={activeSide.imageUrl}
-              width={800}
-              height={800}
+              width={500}
+              height={500}
               alt={`Sample of ${productData.Name} in ${activeStyle.Name} from side ${activeSide.Side}`}
               style={{
                 maxWidth: "100%",
@@ -165,8 +165,8 @@ const Product = ({ productData, categoryData, subcategoryData }) => {
               priority
               className={productStyles.gallery__main}
               src={activeStyle.mainImageUrl}
-              width={800}
-              height={800}
+              width={500}
+              height={500}
               alt={`Sample of ${productData.Name} in ${activeStyle.Name} style`}
               style={{
                 maxWidth: "100%",
