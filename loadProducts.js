@@ -226,6 +226,7 @@ async function fetchAllProducts() {
         const defaultPrice = mode(
           defaultStyle.Sizes.map((size) => size.UnitPrice)
         );
+        const keywords = (product.Keywords || []).map((word) => word.trim());
         const additionalDetails = await getProductDetail(product);
 
         return {
@@ -240,6 +241,7 @@ async function fetchAllProducts() {
               )
             : "",
           ...product,
+          Keywords: keywords,
           Featured: additionalDetails.Data.Featured,
           FeaturedSort: additionalDetails.Data.Featured ? Math.random() : -1,
           LongDescription: additionalDetails.Data.LongDescription,
@@ -293,10 +295,10 @@ async function fetchAllProducts() {
             product.Manufacturer,
             product.ManufacturerSku,
             additionalDetails.Data.LongDescription,
-            ...(product.Keywords || []),
+            ...keywords,
           ]
-            .filter((term) => !!term)
-            .map((term) => term.toLowerCase()),
+            .filter(Boolean)
+            .map((term) => term.trim().toLowerCase()),
         };
       })
     );

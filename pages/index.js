@@ -19,7 +19,7 @@ import {
 
 const DesignIFrame = dynamic(() => import("components/DesignIFrame"), {
   ssr: false,
-  loading: ThreeDotLoader,
+  loading: () => <ThreeDotLoader />,
 });
 
 /* images */
