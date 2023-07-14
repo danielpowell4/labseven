@@ -1,7 +1,6 @@
 import { getAllProductCategories, getAllProducts } from "lib/products";
 
 const BASE_URL = "https://www.labseven.co";
-const lastMod = new Date().toISOString().substring(0, 10); // YYYY-MM-DD
 
 function escapeXMLChars(url) {
   return url
@@ -15,38 +14,31 @@ function escapeXMLChars(url) {
 function generateSiteMap(paths) {
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-     <!-- Manually hand coded URLs -->
      <url>
        <loc>${BASE_URL}</loc>
        <priority>1.00</priority>
-       <lastmod>${lastMod}</lastmod>
      </url>
      <url>
        <loc>${BASE_URL}/services</loc>
        <priority>1.00</priority>
-       <lastmod>${lastMod}</lastmod>
      </url>
      <url>
        <loc>${BASE_URL}/contact</loc>
        <priority>0.9</priority>
-       <lastmod>${lastMod}</lastmod>
      </url>
      <url>
        <loc>${BASE_URL}/products</loc>
        <priority>1.00</priority>
-       <lastmod>${lastMod}</lastmod>
      </url>
      <url>
        <loc>${BASE_URL}/order/pick-products</loc>
        <priority>0.7</priority>
-       <lastmod>${lastMod}</lastmod>
      </url>
   ${paths
     .map(({ loc, priority }) => {
       return `<url>
        <loc>${escapeXMLChars(loc)}</loc>
        <priority>${priority}</priority>
-       <lastmod>${lastMod}</lastmod>
      </url>
        `;
     })
@@ -80,7 +72,7 @@ export async function getServerSideProps({ res }) {
     const defaultHref = product.defaultHref;
 
     if (defaultHref) {
-      paths.push({ loc: BASE_URL + defaultHref, priority: 0.5 });
+      paths.push({ loc: defaultHref, priority: 0.5 });
     }
   }
 
