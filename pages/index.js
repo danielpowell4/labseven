@@ -1,12 +1,12 @@
 import * as React from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
 import useIntersectionObserver from "@react-hook/intersection-observer";
 
 import {
   CallLink,
   CtaForm,
-  DesignIFrame,
   InstaReel,
   Layout,
   LinkButton,
@@ -14,7 +14,13 @@ import {
   RotatingLogo,
   ServicesReel,
   TestimonialsReel,
+  ThreeDotLoader,
 } from "components";
+
+const DesignIFrame = dynamic(() => import("components/DesignIFrame"), {
+  ssr: false,
+  loading: ThreeDotLoader,
+});
 
 /* images */
 /* - hero */
