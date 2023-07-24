@@ -76,7 +76,7 @@ const SiteFooter = () => {
             </p>
             <p>
               <strong>Email</strong>:{" "}
-              <a href="mailto:kevin@labseven.co">kevin@labseven.co</a>
+              <a href="mailto:info@labseven.co">info@labseven.co</a>
             </p>
           </div>
         </div>
