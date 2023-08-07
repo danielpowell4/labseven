@@ -25,7 +25,7 @@ const SiteFooter = () => {
         <div className={styles.Footer__locations}>
           <div className={styles.Footer__location}>
             <h4 className={styles.Footer__location__name}>
-              Lab Seven at River Point <sub>HQ</sub>
+              Lab Seven at River Point
             </h4>
             <p>
               <a

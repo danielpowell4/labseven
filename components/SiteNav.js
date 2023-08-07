@@ -185,11 +185,6 @@ const SiteNav = () => {
                       <li>
                         <span className={styles.callNow__flyout__label}>
                           River Point
-                          <sub
-                            className={styles.callNow__flyout__label__accent}
-                          >
-                            HQ
-                          </sub>
                         </span>
                         <a
                           href="tel:+13038143389"
