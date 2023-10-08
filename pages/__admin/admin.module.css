@@ -1,0 +1,8 @@
+.adminContainer {
+  margin: 5rem auto;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
