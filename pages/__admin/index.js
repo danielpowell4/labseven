@@ -3,7 +3,6 @@ import Head from "next/head";
 import { Button, Layout, LinkButton, ThreeDotLoader } from "../../components";
 
 const DEPLOY_HOOK =
-  "https://jsonplaceholder.typicode.com/todos/1" ||
   "https://api.vercel.com/v1/integrations/deploy/prj_mpmMsTfC3Z7RdGJDKaJ4HNDcvJu2/dPyynr1IF6";
 
 import styles from "./admin.module.css";
