@@ -2,8 +2,6 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import useScrollPosition from "@react-hook/window-scroll";
-
 import { SERVICE_SECTIONS } from "pages/services";
 import styles from "./SiteNav.module.css";
 
