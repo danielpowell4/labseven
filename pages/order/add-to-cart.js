@@ -3,7 +3,7 @@ import * as React from "react";
 import Image from "next/image";
 
 import { useRouter } from "next/router";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/router";
 
 import set from "lodash.set";
 

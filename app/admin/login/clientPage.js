@@ -1,9 +1,11 @@
+"use client";
+
 import * as React from "react";
-import Head from "next/head";
-import { Button, Layout } from "components";
+import { Button } from "components";
 import { useAdminAuth } from "lib/auth";
 
-import styles from "./admin.module.css";
+import Layout from "../AdminLayout";
+import styles from "../admin.module.css";
 
 const ADMIN_PASSWORD = "hack_in";
 
@@ -12,9 +14,6 @@ const AdminLoginPage = () => {
 
   return (
     <Layout>
-      <Head>
-        <meta name="robots" content="noindex" />
-      </Head>
       <form
         className={styles.adminContainer}
         onSubmit={(event) => {

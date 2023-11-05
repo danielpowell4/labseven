@@ -10,7 +10,7 @@ const dbxConfig = {
 // NOTE: also in /auth.js
 const redirectUri = process.env.DROPBOX_REDIRECT_URL;
 
-// first step for for admins to link are sent after linking w/ Dropbox from __admin
+// first step for for admins to link are sent after linking w/ Dropbox from admin
 // see example at https://github.com/dropbox/dropbox-sdk-js/blob/main/examples/javascript/simple-backend/code_flow_example.js
 export default async (req, res) => {
   const { authenticated } = req.query;

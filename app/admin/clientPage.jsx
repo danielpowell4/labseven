@@ -1,6 +1,8 @@
+"use client";
+
 import * as React from "react";
-import Head from "next/head";
-import { Button, Layout, LinkButton, ThreeDotLoader } from "../../components";
+import { Button, LinkButton, ThreeDotLoader } from "../../components";
+import AdminLayout from "./AdminLayout";
 
 const DEPLOY_HOOK =
   "https://api.vercel.com/v1/integrations/deploy/prj_mpmMsTfC3Z7RdGJDKaJ4HNDcvJu2/dPyynr1IF6";
@@ -69,31 +71,26 @@ const AdminHomePage = () => {
   };
 
   return (
-    <Layout>
-      <Head>
-        <meta name="robots" content="noindex" />
-      </Head>
-      <div className={styles.adminContainer}>
-        <p>You're in the mainframe!</p>
-        {!!state.build.message ? (
-          <p style={{ color: state.build.color }}>{state.build.message}</p>
-        ) : (
-          <Button
-            onClick={onTriggerClick}
-            isSubmitting={state.build.isTriggering}
-          >
-            Trigger Site Rebuild
-          </Button>
-        )}
-        <LinkButton
-          href={"/api/fileUpload/start?authenticated=true"}
-          target={"_blank"}
+    <div className={styles.adminContainer}>
+      <p>You're in the mainframe!</p>
+      {!!state.build.message ? (
+        <p style={{ color: state.build.color }}>{state.build.message}</p>
+      ) : (
+        <Button
+          onClick={onTriggerClick}
+          isSubmitting={state.build.isTriggering}
         >
-          Relink Dropbox
-        </LinkButton>
-        <Button onClick={onLogoutClick}>Logout</Button>
-      </div>
-    </Layout>
+          Trigger Site Rebuild
+        </Button>
+      )}
+      <LinkButton
+        href={"/api/fileUpload/start?authenticated=true"}
+        target={"_blank"}
+      >
+        Relink Dropbox
+      </LinkButton>
+      <Button onClick={onLogoutClick}>Logout</Button>
+    </div>
   );
 };
 
@@ -108,22 +105,16 @@ const ClientSideAuth = (Component) => {
 
     if (!isClientSide || auth.authenticated !== "YES") {
       return (
-        <Layout>
-          <Head>
-            <meta name="robots" content="noindex" />
-          </Head>
+        <AdminLayout>
           <ThreeDotLoader />
-        </Layout>
+        </AdminLayout>
       );
     }
 
     return (
-      <Layout>
-        <Head>
-          <meta name="robots" content="noindex" />
-        </Head>
+      <AdminLayout>
         <Component />
-      </Layout>
+      </AdminLayout>
     );
   };
 

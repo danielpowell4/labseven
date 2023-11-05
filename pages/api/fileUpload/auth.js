@@ -12,7 +12,7 @@ const dbxConfig = {
 // NOTE: also in /start.js
 const redirectUri = process.env.DROPBOX_REDIRECT_URL;
 
-// where admins are sent after linking w/ Dropbox from __admin
+// where admins are sent after linking w/ Dropbox from admin
 // see example at https://github.com/dropbox/dropbox-sdk-js/blob/main/examples/javascript/simple-backend/code_flow_example.js
 export default async (req, res) => {
   // exchange code for token

@@ -6,3 +6,8 @@
   gap: 1rem;
   text-align: center;
 }
+
+.container {
+  margin: 0 auto;
+  min-height: calc(100vh - 14px);
+}
