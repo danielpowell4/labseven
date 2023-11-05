@@ -5,8 +5,6 @@ import * as React from "react";
 
 import "styles/globals.css";
 
-// import { SiteNav, SiteFooter, FixedFooter } from ".";
-// import styles from "./layout.module.css";
 import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({
