@@ -3,7 +3,7 @@
 import { del } from "@vercel/blob";
 import { sql } from "@vercel/postgres";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -65,7 +65,7 @@ export async function deleteProject(_prevState, formData) {
     await del(deletedProject.primary_blob_url);
     await del(deletedProject.secondary_blob_url);
 
-    return handleSuccess("Deleted", rows[0]);
+    return handleSuccess("Removed", rows[0]);
   } catch (error) {
     console.error(error);
     return { message: `Something went wrong: ${error.message}` };
@@ -106,6 +106,7 @@ const handleSuccess = (verb, project) => {
   cookieStore.set("flash:success", message, { maxAge: 0 });
 
   revalidatePath("/admin/projects", "layout");
+  revalidateTag("projects");
 
   return redirect("/admin/projects");
 };

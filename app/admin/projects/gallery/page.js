@@ -3,12 +3,13 @@
 import InfiniteScroll from "./InfiniteScroll";
 
 export default async function GalleryPage() {
-  const origin = process.env.VERCEL_URL || "http://localhost:3000";
-  const endpoint = `${origin}/api/project/list`;
-  console.log("endpoint");
+  const origin =
+    process.env.VERCEL_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://labseven.co";
 
   const firstPage = await fetch(`${origin}/api/project/list`, {
-    cache: "no-cache",
+    next: { tags: ["projects"] },
   }).then((res) => res.json());
 
   if (!firstPage.items.length) {

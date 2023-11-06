@@ -48,21 +48,19 @@ export default function InfiniteScroll({ firstPage }) {
     isLoading || (size > 1 && pages && typeof pages[size - 2] === "undefined");
 
   return (
-    <>
-      <ul className={styles.galleryGrid}>
-        {projects.map((project) => {
-          return (
-            <li key={project.id} style={{ overflow: "hidden" }}>
-              <pre>{JSON.stringify(project, null, 2)}</pre>
-            </li>
-          );
-        })}
-        {isLoadingMore || hasNextPage ? (
-          <li ref={loadMoreRef} style={{ gridColumn: "1/-1" }}>
-            <ThreeDotLoader />
+    <ul className={styles.galleryGrid}>
+      {projects.map((project) => {
+        return (
+          <li key={project.id} style={{ overflow: "hidden" }}>
+            <pre>{JSON.stringify(project, null, 2)}</pre>
           </li>
-        ) : null}
-      </ul>
-    </>
+        );
+      })}
+      {isLoadingMore || hasNextPage ? (
+        <li ref={loadMoreRef} style={{ gridColumn: "1/-1" }}>
+          <ThreeDotLoader />
+        </li>
+      ) : null}
+    </ul>
   );
 }
