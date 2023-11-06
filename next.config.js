@@ -5,6 +5,10 @@ module.exports = {
         protocol: "https",
         hostname: "stores.labseven.co",
       },
+      {
+        protocol: "https",
+        hostname: "*.blob.vercel-storage.com",
+      },
     ],
   },
   async redirects() {

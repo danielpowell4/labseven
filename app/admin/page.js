@@ -1,14 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { Button, LinkButton, ThreeDotLoader } from "../../components";
-import AdminLayout from "./AdminLayout";
+import { Button, LinkButton } from "../../components";
 
 const DEPLOY_HOOK =
   "https://api.vercel.com/v1/integrations/deploy/prj_mpmMsTfC3Z7RdGJDKaJ4HNDcvJu2/dPyynr1IF6";
 
 import styles from "./admin.module.css";
-import { useAdminAuth } from "lib/auth";
 
 const INITIAL_STATE = {
   build: { isTriggering: false, message: null },
@@ -48,7 +46,6 @@ const adminReducer = (state, action) => {
 
 const AdminHomePage = () => {
   const [state, dispatch] = React.useReducer(adminReducer, INITIAL_STATE);
-  const [_auth, authDispatch] = useAdminAuth();
 
   const onTriggerClick = async () => {
     dispatch({ type: "BUILD_STARTED" });
@@ -66,13 +63,8 @@ const AdminHomePage = () => {
     }
   };
 
-  const onLogoutClick = () => {
-    authDispatch({ type: "LOGOUT" });
-  };
-
   return (
     <div className={styles.adminContainer}>
-      <p>You're in the mainframe!</p>
       {!!state.build.message ? (
         <p style={{ color: state.build.color }}>{state.build.message}</p>
       ) : (
@@ -89,36 +81,8 @@ const AdminHomePage = () => {
       >
         Relink Dropbox
       </LinkButton>
-      <Button onClick={onLogoutClick}>Logout</Button>
     </div>
   );
 };
 
-const ClientSideAuth = (Component) => {
-  const AuthenticatedComponent = () => {
-    const [isClientSide, setIsClientSide] = React.useState(false);
-    const [auth] = useAdminAuth();
-
-    React.useEffect(() => {
-      setIsClientSide(true);
-    }, []);
-
-    if (!isClientSide || auth.authenticated !== "YES") {
-      return (
-        <AdminLayout>
-          <ThreeDotLoader />
-        </AdminLayout>
-      );
-    }
-
-    return (
-      <AdminLayout>
-        <Component />
-      </AdminLayout>
-    );
-  };
-
-  return AuthenticatedComponent;
-};
-
-export default ClientSideAuth(AdminHomePage);
+export default AdminHomePage;

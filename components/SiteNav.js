@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -192,11 +194,6 @@ const SiteNav = () => {
                         </a>
                       </li>
                       {[
-                        {
-                          name: "Lakeside",
-                          number: "(720) 708-6192",
-                          telHref: "tel:+17207086192",
-                        },
                         {
                           name: "Aurora",
                           number: "(303) 529-6583",

@@ -6,8 +6,13 @@
   --buttonBackground: var(--alternate);
 }
 
+.ButtonDanger {
+  --buttonBackground: var(--danger);
+}
+
 .Button,
-.ButtonAlternate {
+.ButtonAlternate,
+.ButtonDanger {
   position: relative;
   padding: 0.5rem 1rem;
   border: 0;
@@ -25,7 +30,9 @@
 .Button:hover,
 .Button:focus,
 .ButtonAlternate:hover,
-.ButtonAlternate:focus {
+.ButtonAlternate:focus,
+.ButtonDanger:hover,
+.ButtonDanger:focus {
   transition: all 0.25s ease;
   transform: scale(1.15);
 }

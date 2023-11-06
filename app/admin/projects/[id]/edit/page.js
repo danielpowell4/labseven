@@ -1,0 +1,31 @@
+import { ProjectForm } from "app/admin/projects/form/ProjectForm";
+
+import { sql } from "@vercel/postgres";
+
+export const dynamic = "force-dynamic";
+
+export default async function PageWrapper({ params: { id } }) {
+  "use server";
+
+  const { rows } = await sql`SELECT * from projects WHERE id = ${id}`;
+  const project = rows[0];
+
+  return (
+    <>
+      <h2>Update Project {id}</h2>
+      <ProjectForm
+        initialState={{
+          data: {
+            name: project.name,
+            description: project.description,
+            primary_blob_url: project.primary_blob_url,
+            secondary_blob_url: project.secondary_blob_url,
+          },
+          errors: {},
+        }}
+        projectId={id}
+        submitText="Update"
+      />
+    </>
+  );
+}

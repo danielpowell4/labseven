@@ -7,7 +7,71 @@
   text-align: center;
 }
 
+.adminGrid {
+  max-width: var(--gridWidth);
+  margin: auto;
+}
+
+.adminNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.adminNav__nav__list {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.adminTable {
+  width: 100%;
+  margin-bottom: 4rem;
+}
+
+.adminTable thead tr th {
+  text-align: left;
+}
+
+.adminTable td {
+  border-bottom: 1px solid var(--hr);
+}
+
 .container {
   margin: 0 auto;
   min-height: calc(100vh - 14px);
 }
+
+.flash {
+  --success: var(--primary);
+  --error: var(--danger);
+  --info: var(--hr);
+  --warning: yellow;
+
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--rounded);
+  border: 2px solid var(--accentColor);
+  width: 100%;
+}
+
+/* START - forms */
+.adminForm {
+  margin-bottom: 4rem;
+}
+
+.inputWrapper {
+  --inputWidth: 320px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  width: var(--inputWidth);
+}
+
+.inputWrapper label {
+  font-weight: bold;
+}
+/* END - forms */

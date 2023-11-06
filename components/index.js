@@ -1,3 +1,5 @@
+"use client";
+
 export { default as Button } from "./Button";
 export { default as CallLink } from "./CallLink";
 export { default as CategoryMenu } from "./CategoryMenu";
