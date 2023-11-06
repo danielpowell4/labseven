@@ -43,19 +43,6 @@
   min-height: calc(100vh - 14px);
 }
 
-.flash {
-  --success: var(--primary);
-  --error: var(--danger);
-  --info: var(--hr);
-  --warning: yellow;
-
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: var(--rounded);
-  border: 2px solid var(--accentColor);
-  width: 100%;
-}
-
 /* START - forms */
 .adminForm {
   margin-bottom: 4rem;

@@ -1,0 +1,16 @@
+.flash {
+  --success: var(--primary);
+  --error: var(--danger);
+  --info: var(--hr);
+  --warning: yellow;
+
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--rounded);
+  border: 2px solid var(--accentColor);
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

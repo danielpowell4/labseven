@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
 import { getTodaysCookie } from "../log-in/utils";
-import FlashMessages from "./FlashMessages";
+import FlashMessages from "app/flash-messages";
 import { Suspense } from "react";
 
 const AdminLayout = ({ children }) => {

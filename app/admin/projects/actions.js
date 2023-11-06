@@ -105,7 +105,7 @@ const handleSuccess = (verb, project) => {
   const cookieStore = cookies();
   cookieStore.set("flash:success", message, { maxAge: 0 });
 
-  revalidatePath("/admin/projects");
+  revalidatePath("/admin/projects", "layout");
 
   return redirect("/admin/projects");
 };

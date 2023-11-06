@@ -1,6 +1,7 @@
 "use server";
 
-import styles from "app/admin/admin.module.css";
+import Message from "./Message";
+
 import { cookies } from "next/headers";
 
 const FlashMessages = async () => {
@@ -26,14 +27,8 @@ const FlashMessages = async () => {
 
   return (
     <div className="flash-messages">
-      {messages.map(({ type, message }) => (
-        <div
-          key={type}
-          className={styles.flash}
-          style={{ "--accentColor": `var(--${type})` }}
-        >
-          {message}
-        </div>
+      {messages.map((messageProps, messageIndex) => (
+        <Message key={messageIndex} {...messageProps} />
       ))}
     </div>
   );
