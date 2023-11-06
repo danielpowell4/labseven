@@ -184,7 +184,12 @@ const SiteNav = () => {
                     <ul>
                       <li>
                         <span className={styles.callNow__flyout__label}>
-                          River Point
+                          Englewood
+                          <sub
+                            className={styles.callNow__flyout__label__accent}
+                          >
+                            HQ
+                          </sub>
                         </span>
                         <a
                           href="tel:+13038143389"
@@ -194,6 +199,11 @@ const SiteNav = () => {
                         </a>
                       </li>
                       {[
+                        {
+                          name: "Denver",
+                          number: "(720) 708-6192",
+                          telHref: "tel:+17207086192",
+                        },
                         {
                           name: "Aurora",
                           number: "(303) 529-6583",

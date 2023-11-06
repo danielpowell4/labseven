@@ -202,6 +202,11 @@
   color: var(--mediumText);
 }
 
+.callNow__flyout__label__accent {
+  color: var(--primary);
+  margin-left: 0.25rem;
+}
+
 .callNow__flyout__number,
 .callNow__flyout__number:visited {
   color: var(--primary);

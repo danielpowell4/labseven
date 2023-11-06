@@ -26,9 +26,7 @@ const SiteFooter = () => {
         </div>
         <div className={styles.Footer__locations}>
           <div className={styles.Footer__location}>
-            <h4 className={styles.Footer__location__name}>
-              Lab Seven at River Point
-            </h4>
+            <h4 className={styles.Footer__location__name}>Lab Seven</h4>
             <p>
               <a
                 target="__blank"
@@ -40,41 +38,15 @@ const SiteFooter = () => {
               </a>
             </p>
             <p>
-              <strong>Monday - Friday</strong>: 9:00AM - 5:00PM
+              <strong>Monday - Thursday</strong>: 8:30AM - 4:30PM
+              <br />
+              <strong>Friday</strong>: 8:30AM - 4:00PM
               <br />
               <strong>Saturday - Sunday:</strong> CLOSED
             </p>
             <p>
               <strong>Phone</strong>:{" "}
               <a href="tel:3038143389">(303) 814-3389</a>
-            </p>
-            <p>
-              <strong>Email</strong>:{" "}
-              <a href="mailto:info@labseven.co">info@labseven.co</a>
-            </p>
-          </div>
-          <div className={styles.Footer__location}>
-            <h4 className={styles.Footer__location__name}>
-              Lab Seven at Lakeside
-            </h4>
-            <p>
-              <a
-                target="__blank"
-                href="https://www.google.com/maps/dir//5265+W+48th+Ave,+Denver,+CO+80212/@39.7842758,-105.0562265,17z/data=!3m1!4b1!4m9!4m8!1m1!4e2!1m5!1m1!1s0x876b87966ca4b1cf:0x38c3e30d07cd49cb!2m2!1d-105.0540378!2d39.7842758"
-              >
-                5265 W 48th Ave
-                <br />
-                Denver, CO 80212
-              </a>
-            </p>
-            <p>
-              <strong>Monday - Friday</strong>: 9:00AM - 5:00PM
-              <br />
-              <strong>Saturday - Sunday</strong>: CLOSED
-            </p>
-            <p>
-              <strong>Phone</strong>:{" "}
-              <a href="tel:7207086192">(720) 708-6192</a>
             </p>
             <p>
               <strong>Email</strong>:{" "}

@@ -7,17 +7,18 @@ import utilStyles from "/styles/utils.module.css";
 
 import { WaveCta } from ".";
 
-// Monday - Friday: 9:00AM - 5:00PM
+// Monday - Thursday: 8:30AM - 4:30PM
+// Friday: 8:30AM - 4:00PM
 // Saturday - Sunday: CLOSED
 // 0 = Sunday, 6 = Saturday
 const STORE_HOURS = [
-  { label: "Monday", wDay: 1, open: 9, close: 17 },
-  { label: "Tuesday", wDay: 2, open: 9, close: 17 },
-  { label: "Wednesday", wDay: 3, open: 9, close: 17 },
-  { label: "Thursday", wDay: 4, open: 9, close: 17 },
-  { label: "Friday", wDay: 5, open: 9, close: 17 },
-  { label: "Saturday", wDay: 6, open: 0, close: 0 },
-  { label: "Sunday", wDay: 0, open: 0, close: 0 },
+  { label: "Monday", wDay: 1, open: [8, 30], close: [16, 30] },
+  { label: "Tuesday", wDay: 2, open: [8, 30], close: [16, 30] },
+  { label: "Wednesday", wDay: 3, open: [8, 30], close: [16, 30] },
+  { label: "Thursday", wDay: 4, open: [8, 30], close: [16, 30] },
+  { label: "Friday", wDay: 5, open: [8, 40], close: [16, 0] },
+  { label: "Saturday", wDay: 6, open: [0, 0], close: [0, 0] },
+  { label: "Sunday", wDay: 0, open: [0, 0], close: [0, 0] },
 ];
 
 function getUserTimeZone() {
@@ -80,8 +81,9 @@ const ContactPage = () => {
           <tbody>
             {STORE_HOURS.map(({ label, wDay, open, close }) => {
               const openTime = new Date();
-              openTime.setUTCHours(open + denverOffset);
-              openTime.setMinutes(0);
+              const [openHours, openMinutes] = open;
+              openTime.setUTCHours(openHours + denverOffset);
+              openTime.setMinutes(openMinutes);
               const openString = openTime.toLocaleString("en-US", {
                 hour: "numeric",
                 minute: "2-digit",
@@ -89,8 +91,9 @@ const ContactPage = () => {
                 timeZone: userZone,
               });
               const closeTime = new Date();
-              closeTime.setUTCHours(close + denverOffset);
-              closeTime.setMinutes(0);
+              const [closeHours, closeMinutes] = close;
+              closeTime.setUTCHours(closeHours + denverOffset);
+              closeTime.setMinutes(closeMinutes);
               const closeString = closeTime.toLocaleString("en-US", {
                 hour: "numeric",
                 minute: "2-digit",
@@ -134,6 +137,7 @@ const ContactPage = () => {
             })}
           </tbody>
         </table>
+        <p>After hours pickup by appointment only. Call to schedule!</p>
       </div>
       <WaveCta />
     </Layout>
