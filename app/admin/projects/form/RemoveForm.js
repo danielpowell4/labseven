@@ -22,7 +22,7 @@ export function RemoveProjectForm({ projectId }) {
 
   return (
     <form action={formAction}>
-      <input type="hidden" name="projectId" value={projectId} />
+      <input type="hidden" name="id" value={projectId} />
       <DeleteButton />
       {state?.message && (
         <p aria-live="polite" role="status" style={{ color: "var(--danger)" }}>
