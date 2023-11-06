@@ -1,31 +1,26 @@
 "use server";
 
 import styles from "app/admin/admin.module.css";
-import { headers } from "next/headers";
+import { cookies } from "next/headers";
 
 const FlashMessages = async () => {
-  // get base url, fallback prod
-  const headerStore = headers();
-  const port = headerStore.get("x-forwarded-proto") ?? "https";
-  const host = headerStore.get("x-forwarded-host") ?? "labseven.co";
-  const origin = `${port}://${host}`;
-  const messagesEndpoint = new URL(`${origin}/api/flash-messages`);
+  const cookieStore = cookies();
 
-  console.log("origin", origin);
+  const messages = ["success", "error", "warning", "info"]
+    .flatMap((key) => {
+      const messageOrMessages = cookieStore.get(`flash:${key}`)?.value;
 
-  let messages = [];
+      if (!messageOrMessages) return [];
+      if (Array.isArray(messageOrMessages)) {
+        return messageOrMessages.map((message) => ({
+          type: key,
+          message,
+        }));
+      }
 
-  try {
-    const res = await fetch(messagesEndpoint, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      cache: "no-cache",
-    }).then((res) => res.json());
-    messages = res.messages;
-    console.log("messages", messages);
-  } catch (err) {
-    console.error("Error: failed to get messages -", err);
-  }
+      return [{ type: key, message: messageOrMessages }];
+    })
+    .filter(({ message }) => Boolean(message));
 
   if (!messages.length) return null;
 

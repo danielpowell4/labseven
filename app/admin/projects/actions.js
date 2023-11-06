@@ -91,8 +91,7 @@ const handleSuccess = (verb, projectId) => {
 
   // add flash
   const cookieStore = cookies();
-  cookieStore.set("flash:success", message, { secure: false });
-  console.log(message);
+  cookieStore.set("flash:success", message, { maxAge: 0 });
 
   revalidatePath("/admin/projects");
 

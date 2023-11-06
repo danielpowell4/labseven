@@ -17,7 +17,9 @@ export async function adminLogin(_prevState, formData) {
       maxAge: 60 * 60 * 24 * 1, // 1 day
     });
     const message = "Welcome to the mainframe!";
-    cookieStore.set("flash:success", "Welcome to the mainframe!");
+    cookieStore.set("flash:success", message, {
+      maxAge: 0,
+    });
 
     return redirect("/admin");
   }
