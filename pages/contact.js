@@ -137,7 +137,7 @@ const ContactPage = () => {
             })}
           </tbody>
         </table>
-        <p>After hours pickup by appointment only. Call to schedule!</p>
+        <p>After hours pickup by appointment available. Call to schedule!</p>
       </div>
       <WaveCta />
     </Layout>
