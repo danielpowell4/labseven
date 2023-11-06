@@ -21,7 +21,16 @@ export function RemoveProjectForm({ projectId }) {
   const [state, formAction] = useFormState(deleteProject, initialState);
 
   return (
-    <form action={formAction}>
+    <form
+      action={(...args) => {
+        const confirmed = window.confirm(
+          "Are you sure you want to delete this project?"
+        );
+        if (confirmed) {
+          return formAction(...args);
+        }
+      }}
+    >
       <input type="hidden" name="id" value={projectId} />
       <DeleteButton />
       {state?.message && (
