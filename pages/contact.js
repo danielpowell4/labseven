@@ -16,7 +16,7 @@ const STORE_HOURS = [
   { label: "Tuesday", wDay: 2, open: [8, 30], close: [16, 30] },
   { label: "Wednesday", wDay: 3, open: [8, 30], close: [16, 30] },
   { label: "Thursday", wDay: 4, open: [8, 30], close: [16, 30] },
-  { label: "Friday", wDay: 5, open: [8, 40], close: [16, 0] },
+  { label: "Friday", wDay: 5, open: [8, 30], close: [16, 0] },
   { label: "Saturday", wDay: 6, open: [0, 0], close: [0, 0] },
   { label: "Sunday", wDay: 0, open: [0, 0], close: [0, 0] },
 ];
