@@ -102,9 +102,13 @@ const ContactPage = () => {
               });
 
               const dayRange =
-                openString === closeString
-                  ? "Closed"
-                  : `${openString} - ${closeString}`;
+                openString === closeString ? (
+                  "Closed"
+                ) : (
+                  <>
+                    <time>{openString}</time> - <time>{closeString}</time>
+                  </>
+                );
 
               const isToday = wDay === userCurrentTime.getDay();
               const isOpen =

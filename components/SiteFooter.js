@@ -38,9 +38,10 @@ const SiteFooter = () => {
               </a>
             </p>
             <p>
-              <strong>Monday - Thursday</strong>: 8:30AM - 4:30PM
+              <strong>Monday - Thursday</strong>: <time>8:30AM</time> -{" "}
+              <time>4:30PM</time>
               <br />
-              <strong>Friday</strong>: 8:30AM - 4:00PM
+              <strong>Friday</strong>: <time>8:30AM</time> - <time>4:00PM</time>
               <br />
               <strong>Saturday - Sunday:</strong> CLOSED
             </p>
