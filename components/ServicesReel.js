@@ -40,6 +40,7 @@ const SERVICES = [
   },
 ];
 
+/** this is for the home page */
 const ServicesReel = ({ services = SERVICES }) => {
   const carouselRef = React.useRef();
   const { activeIndex, showNext, showPrev } = useCarousel(services);
