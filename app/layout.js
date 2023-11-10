@@ -1,5 +1,5 @@
 // This is server-side rendered
-// As of Nov '23 it's only being used by the admin portal
+// As of Nov '23 it's only being used by a subset of the site
 
 import * as React from "react";
 
@@ -8,9 +8,9 @@ import "styles/globals.css";
 import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({
-  weights: [800],
+  weights: [700],
   subsets: ["latin"],
-  variable: "--font-montserrat",
+  variable: "--montserrat",
 });
 
 const siteTitle =
@@ -28,7 +28,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={montserrat.className}>
+    <html
+      lang="en"
+      className={montserrat.variable}
+      style={{
+        "--navTop": "0px", // TODO: incorporate navVisible check
+      }}
+    >
       <body>{children}</body>
     </html>
   );

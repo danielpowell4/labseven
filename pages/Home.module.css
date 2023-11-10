@@ -547,7 +547,7 @@
 }
 
 @media screen and (min-width: 1000px) {
-  /* to floating carousel*/
+  /* to floating carousel */
   .servicesWrap {
     --servicesHeight: 62rem;
   }

@@ -7,9 +7,9 @@ import { Montserrat } from "next/font/google";
 import useScrollPosition from "@react-hook/window-scroll";
 
 const montserrat = Montserrat({
-  weights: [800],
+  weights: [700],
   subsets: ["latin"],
-  variable: "--font-montserrat",
+  variable: "--montserrat",
 });
 
 const siteTitle =
@@ -54,7 +54,7 @@ const Layout = ({ children, className, ...rest }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div
-        className={`${montserrat.variable}`}
+        className={montserrat.variable}
         style={{
           "--navTop": navVisible ? "0px" : "calc(0px - var(--navHeight))",
         }}

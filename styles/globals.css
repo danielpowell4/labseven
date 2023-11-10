@@ -37,9 +37,10 @@ li {
   --bodyFont: "proxima-nova", -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
     sans-serif;
-  --headingFont: "Montserrat", -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-    sans-serif;
+
+  --headingFont: var(--montserrat), "Montserrat", -apple-system,
+    BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+    Droid Sans, Helvetica Neue, sans-serif;
   --headingWeight: 700;
 
   --boxShadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
