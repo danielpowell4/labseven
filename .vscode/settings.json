@@ -1,3 +1,11 @@
 {
+  "cSpell.customDictionaries": {
+    "labseven": {
+      "addWords": true,
+      "description": "Labseven dictionary",
+      "path": "./.vscode/dictionaries/labseven.txt"
+    }
+  },
+  "cSpell.dictionaries": ["labseven"],
   "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
