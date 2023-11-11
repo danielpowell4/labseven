@@ -158,6 +158,7 @@
   display: flex;
   font-size: 1rem;
   font-family: var(--headingFont);
+  font-weight: var(--headingWeight);
   height: 100%;
   padding: 1rem 0;
   border: none;
@@ -218,6 +219,7 @@ a.navAccentLink {
   border-radius: 4px;
   padding: 0.5rem;
   background-size: 2rem 2rem; /* for animation */
+  font-weight: var(--headingWeight);
 }
 
 a.navAccentLink:visited {
