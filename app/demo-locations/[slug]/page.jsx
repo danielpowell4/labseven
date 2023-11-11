@@ -160,7 +160,7 @@ const LocationPage = async ({ params }) => {
           </div>
         </div>
         <div className={styles.formPositioner}>
-          <ScreenPrintingForm />
+          <ScreenPrintingForm serviceName={`Proof for ${location.name}`} />
         </div>
         <p>
           Discover Lab Seven Aurora, your local source for screen-printing,

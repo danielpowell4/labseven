@@ -18,7 +18,7 @@ import IconMockup from "public/assets/Services/ScreenPrinting_IconMockup.svg";
 import styles from "./Services.module.css";
 import LinkButton from "components/LinkButton";
 
-export const ScreenPrintingForm = () => {
+export const ScreenPrintingForm = ({ serviceName = "Screen Printing" }) => {
   const [formState, onSubmit] = useSubmit();
 
   if (formState === "submitted") {
@@ -51,7 +51,7 @@ export const ScreenPrintingForm = () => {
         artist will be in touch with a complimentary digital proof!
       </p>
       <input name="__title" type="hidden" value="service_inquiry" />
-      <input name="service" type="hidden" value="Screen Printing" />
+      <input name="service" type="hidden" value={serviceName} />
       {[
         { name: "name", label: "Name", type: "text" },
         { name: "email", label: "Email", type: "email" },
