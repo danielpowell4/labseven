@@ -25,6 +25,7 @@
     "eslint-config-next": "^14.0.1",
     "formik": "^2.2.9",
     "google-spreadsheet": "^3.3.0",
+    "gray-matter": "^4.0.3",
     "lodash.set": "^4.3.2",
     "next": "^14.0.2",
     "qs": "^6.10.3",
@@ -34,6 +35,9 @@
     "react-fast-compare": "^3.2.0",
     "react-infinite-scroll-hook": "^4.1.1",
     "react-select": "^5.7.2",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
+    "remark-plain-text": "^0.2.0",
     "sharp": "^0.32.0",
     "swr": "^2.2.4"
   },

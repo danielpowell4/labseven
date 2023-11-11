@@ -13,16 +13,11 @@ module.exports = {
   },
   async redirects() {
     return [
-      {
-        source: "/locations/:name*",
-        destination: "/",
-        permanent: false,
-      },
       ...["aurora", "boulder", "colorado-springs", "fort-collins"].map(
         (locationName) => ({
           source: `/${locationName}`,
-          destination: "/",
-          permanent: false,
+          destination: `/locations/${locationName}`,
+          permanent: true,
         })
       ),
       {
