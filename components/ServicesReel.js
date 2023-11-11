@@ -45,6 +45,7 @@ const ServicesReel = ({
   services = SERVICES,
   title = "What does your business need?",
   titleAccent = "your business",
+  itemSize = "10rem",
 }) => {
   const carouselRef = React.useRef();
   const { activeIndex, showNext, showPrev } = useCarousel(services);
@@ -58,18 +59,23 @@ const ServicesReel = ({
     carouselRef.current.scrollTo({ behavior: "smooth", left: offset });
   }, [activeIndex]);
 
-  const titleAccentStart = title.indexOf(titleAccent);
-  const titleAccentEnd = titleAccentStart + titleAccent.length;
+  const [titleBefore, titleAfter] = title.split(titleAccent);
 
   return (
     <div className={styles.ServicesReel}>
       <div className={styles.ServicesReel__header}>
         <h3 className={styles.ServicesReel__heading}>
-          {title.slice(0, titleAccentStart)}
-          <span className={homeStyles.Underline4}>
-            {title.slice(titleAccentStart, titleAccentEnd)}
+          {titleBefore}
+          <span
+            className={
+              titleAccent.length > 8
+                ? homeStyles.Underline4
+                : homeStyles.Underline6
+            }
+          >
+            {titleAccent}
           </span>
-          {title.slice(titleAccentEnd)}
+          {titleAfter}
         </h3>
         <div className={styles.ServicesReel__nav}>
           <Button
@@ -96,7 +102,11 @@ const ServicesReel = ({
           </Button>
         </div>
       </div>
-      <div className={styles.ServicesReel__carousel} ref={carouselRef}>
+      <div
+        className={styles.ServicesReel__carousel}
+        style={{ "--itemSize": itemSize }}
+        ref={carouselRef}
+      >
         {services.map(({ id, name, background }, serviceIndex) => (
           <Link
             href={`/services/#${id}`}
@@ -109,11 +119,11 @@ const ServicesReel = ({
               aria-hidden={true}
               style={{
                 position: "absolute",
-                height: "10rem",
-                width: "10rem",
+                height: itemSize,
+                width: itemSize,
               }}
-              height={"10rem"}
-              width={"10rem"}
+              height={itemSize}
+              width={itemSize}
             />
             <h4>{name}</h4>
           </Link>

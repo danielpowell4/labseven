@@ -1,7 +1,6 @@
 import { SiteFooter, SiteNav, ServicesReel } from "components";
 
 import styles from "./location.module.css";
-import Link from "next/link";
 
 import { Suspense } from "react";
 
@@ -14,8 +13,12 @@ const LocationLayout = ({ children }) => {
       <div style={{ marginTop: "var(--navHeight)" }}>
         <Suspense>{children}</Suspense>
       </div>
-      <div style={{ position: "relative" }}>
-        <ServicesReel />
+      <div className={styles.reelPositioner}>
+        <ServicesReel
+          title="Your local one-stop shop for merch"
+          titleAccent="local"
+          itemSize="14rem"
+        />
       </div>
       <WaveCta />
       <SiteFooter />

@@ -151,3 +151,9 @@
   margin-left: 4rem;
   margin-bottom: 4rem;
 }
+
+.reelPositioner {
+  margin: 2rem auto 4rem;
+  max-width: var(--gridWidth);
+  width: 100%;
+}

@@ -483,7 +483,9 @@ const HomePage = () => {
             </li>
           </ul>
 
-          <ServicesReel />
+          <div className={styles.services__reelPositioner}>
+            <ServicesReel />
+          </div>
         </div>
       </div>
       <div className={styles.designWrap} id="design">

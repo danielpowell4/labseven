@@ -3,9 +3,6 @@
   background: var(--background);
 
   width: 100%;
-  position: absolute;
-  bottom: 0;
-
   overflow: hidden; /* hide overflow items */
 }
 
@@ -28,8 +25,6 @@
 }
 
 .ServicesReel__carousel {
-  --itemSize: 10rem;
-
   margin-top: 2rem;
   display: flex;
   flex-flow: row wrap;
@@ -76,11 +71,6 @@
   .ServicesReel {
     box-shadow: var(--boxShadow);
     border-radius: var(--rounded);
-
-    max-width: 40rem;
-    top: 38rem;
-    bottom: unset;
-    right: 0;
   }
 
   .ServicesReel__heading {
@@ -109,11 +99,5 @@
     flex: 0 0 var(--itemSize);
     border-radius: 1rem;
     position: relative;
-  }
-}
-
-@media screen and (min-width: 1275px) {
-  .ServicesReel {
-    top: 38rem;
   }
 }
