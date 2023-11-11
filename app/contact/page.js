@@ -5,7 +5,7 @@ import { Layout, LinkButton, RotatingLogo } from "/components";
 import styles from "./Contact.module.css";
 import utilStyles from "/styles/utils.module.css";
 
-import { WaveCta } from ".";
+import { WaveCta } from "../../pages";
 
 // Monday - Thursday: 8:30AM - 4:30PM
 // Friday: 8:30AM - 4:00PM
