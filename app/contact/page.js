@@ -33,7 +33,7 @@ function getUserTimeZone() {
   }
 }
 
-const ContactPage = () => {
+const ContactPage = ({ searchParams }) => {
   const userZone = getUserTimeZone();
   const currentTime = new Date();
   const userCurrentTime = new Date(
@@ -49,7 +49,7 @@ const ContactPage = () => {
       <Head>
         <meta
           name="description"
-          content="(303) 814-3389 | S Platte River Dr Englewood, CO 80110 | Contact our Local Team You Can Trust"
+          content="(303) 814-3389 | 3244 S Platte River Dr Englewood, CO 80110 | Contact our Local Team You Can Trust"
         />
       </Head>
       <div className={styles.ContactPage}>
@@ -69,7 +69,7 @@ const ContactPage = () => {
           <p>
             Phone:{" "}
             <React.Suspense fallback={<ThreeDotLoader />}>
-              <ContactPhone />
+              <ContactPhone locationSlug={searchParams.location} />
             </React.Suspense>
           </p>
           <p>Email: info@labseven.co</p>
