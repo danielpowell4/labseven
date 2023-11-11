@@ -52,6 +52,7 @@ const LocationPage = async ({ params }) => {
     <div className={styles.locationPage}>
       <div className={styles.hero}>
         <Image
+          priority
           className={styles.hero__bg}
           src={BannerImage.src}
           alt={BannerImage.alt}

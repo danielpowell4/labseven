@@ -6,6 +6,7 @@ import * as React from "react";
 import "styles/globals.css";
 
 import { Montserrat } from "next/font/google";
+import GoogleAnalytics from "./GoogleAnalytics";
 
 const montserrat = Montserrat({
   weights: [700],
@@ -35,7 +36,10 @@ export default function RootLayout({ children }) {
         "--navTop": "0px", // TODO: incorporate navVisible check
       }}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <GoogleAnalytics />
+      </body>
     </html>
   );
 }
