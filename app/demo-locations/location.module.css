@@ -85,12 +85,14 @@
   /* match hero stacking context */
   position: relative;
   z-index: 1;
+  display: flow-root;
 }
 
 .welcome__block {
   padding: 2rem 3rem;
   width: 100%;
   background-color: var(--background);
+  margin-bottom: 4rem;
 }
 
 .welcome__block__header {
@@ -140,4 +142,12 @@
     box-shadow: var(--boxShadow);
     border-radius: var(--rounded);
   }
+}
+
+.formPositioner {
+  float: right;
+  max-width: 20rem;
+  margin-top: -12rem;
+  margin-left: 4rem;
+  margin-bottom: 4rem;
 }

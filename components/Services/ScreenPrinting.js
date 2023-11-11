@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 import { useSubmit } from "lib/customHooks";
@@ -16,7 +18,7 @@ import IconMockup from "public/assets/Services/ScreenPrinting_IconMockup.svg";
 import styles from "./Services.module.css";
 import LinkButton from "components/LinkButton";
 
-const ScreenPrintingForm = () => {
+export const ScreenPrintingForm = () => {
   const [formState, onSubmit] = useSubmit();
 
   if (formState === "submitted") {
