@@ -1,0 +1,143 @@
+.locationPage {
+  position: relative;
+}
+
+.hero {
+  background: linear-gradient(to right, var(--primary), #4852da);
+  position: relative;
+  overflow-x: clip;
+  z-index: 1;
+  margin-top: -1rem;
+}
+
+.backgroundGradient {
+  background: linear-gradient(to right, var(--primary), #4852da);
+}
+
+/* image in back */
+.hero__bg {
+  z-index: 0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, var(--primary), #4852da);
+  opacity: 0.3;
+}
+
+.hero__spacer {
+  position: relative;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  z-index: 2;
+}
+
+.hero__heading {
+  color: var(--background);
+  font-size: 2.5rem;
+}
+
+.hero__arrowContainer {
+  position: relative;
+}
+
+.hero__left {
+  padding: 5vh 0;
+  align-self: center;
+}
+
+.hero__arrow {
+  display: none;
+}
+
+@media screen and (min-width: 880px) {
+  .hero {
+    min-height: 85vh;
+  }
+  .hero__spacer {
+    max-width: var(--gridWidth);
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+  .hero__left {
+    padding-top: 42vh;
+  }
+  .hero__arrow {
+    display: block;
+    position: absolute;
+    left: -3rem;
+    rotate: -20deg;
+  }
+}
+
+.main {
+  max-width: var(--gridWidth);
+  margin: 0 auto;
+
+  /* match hero stacking context */
+  position: relative;
+  z-index: 1;
+}
+
+.welcome__block {
+  padding: 2rem 3rem;
+  width: 100%;
+  background-color: var(--background);
+}
+
+.welcome__block__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.welcome__block__header svg {
+  display: none; /* hide on mobile */
+}
+
+.welcome__block__heading {
+  max-width: 240px;
+  width: 80%;
+  font-size: 2rem;
+  margin: 2rem 0 0;
+}
+
+.welcome__block p {
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+.welcome__block__actions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+@media screen and (min-width: 420px) {
+  /* show logo */
+  .welcome__block__header svg {
+    display: block;
+  }
+
+  .welcome__block p {
+    padding-right: 4rem;
+  }
+}
+
+@media screen and (min-width: 1059px) {
+  .welcome__block {
+    max-width: 35rem;
+    margin-top: -5rem;
+    margin-left: 7rem;
+    box-shadow: var(--boxShadow);
+    border-radius: var(--rounded);
+  }
+}

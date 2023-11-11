@@ -4,10 +4,13 @@ import { isMobile } from "lib/utils";
 
 import styles from "./LinkButton.module.css";
 
-const telLink = "tel:+13038143389"; // (303) 814-3389
 const contactLink = "/contact";
 
-const CallLink = ({ className = "LinkButton", ...props }) => {
+const CallLink = ({
+  className = "LinkButton",
+  telLink = "tel:+13038143389",
+  ...props
+}) => {
   const href = isMobile() ? telLink : contactLink;
 
   return (
