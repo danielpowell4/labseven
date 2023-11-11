@@ -18,6 +18,7 @@ const LocationLayout = ({ children }) => {
           title="Your local one-stop shop for merch"
           titleAccent="local"
           itemSize="14rem"
+          disabledOffset={4}
         />
       </div>
       <WaveCta />

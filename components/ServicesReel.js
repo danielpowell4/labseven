@@ -46,16 +46,18 @@ const ServicesReel = ({
   title = "What does your business need?",
   titleAccent = "your business",
   itemSize = "10rem",
+  disabledOffset = 3,
 }) => {
   const carouselRef = React.useRef();
   const { activeIndex, showNext, showPrev } = useCarousel(services);
   const prevDisabled = activeIndex === 0;
-  const nextDisabled = activeIndex === services.length - 3;
+  const nextDisabled = activeIndex === services.length - disabledOffset;
 
   React.useEffect(() => {
     const oneRem = 16;
+    const imageSize = Number(itemSize.replace("rem", ""));
     const offset =
-      activeIndex * oneRem * (10 + 2); /* fontSize + (size + gap) */
+      activeIndex * oneRem * (imageSize + 2); /* fontSize + (size + gap) */
     carouselRef.current.scrollTo({ behavior: "smooth", left: offset });
   }, [activeIndex]);
 
