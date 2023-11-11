@@ -7,9 +7,9 @@ import { CallLink, LinkButton, RotatingLogo } from "components";
 import { ScreenPrintingForm } from "components/Services/ScreenPrinting";
 import HeroArrow from "public/assets/Arrows/Services_Hero.svg";
 import styles from "../location.module.css";
+import { getAllLocationSlugs, getLocationData } from "lib/parseMd";
 
 // location data + banner images
-import { getLocationData } from "../parseMd";
 import EnglewoodBanner from "public/assets/Locations/englewood.webp";
 import DenverBanner from "public/assets/Locations/denver.webp";
 import AuroraBanner from "public/assets/Locations/aurora.webp";
@@ -26,7 +26,7 @@ const locationBanners = {
 };
 
 export async function generateStaticParams() {
-  const locationSlugs = Object.keys(locationBanners);
+  const locationSlugs = getAllLocationSlugs();
   return locationSlugs.map((slug) => ({ slug }));
 }
 

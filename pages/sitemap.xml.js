@@ -55,6 +55,11 @@ function SiteMap() {
 export async function getServerSideProps({ res }) {
   const paths = [];
 
+  const allLocations = await getAllLocationSlugs();
+  for (const location of allLocations) {
+    paths.push({ loc: `${BASE_URL}/locations/${location}`, priority: 0.8 });
+  }
+
   const allCategories = await getAllProductCategories();
   for (const category of allCategories) {
     paths.push({ loc: `${BASE_URL}/products/${category.code}`, priority: 0.8 });
