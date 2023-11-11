@@ -41,7 +41,11 @@ const SERVICES = [
 ];
 
 /** this is for the home page */
-const ServicesReel = ({ services = SERVICES }) => {
+const ServicesReel = ({
+  services = SERVICES,
+  title = "What does your business need?",
+  titleAccent = "your business",
+}) => {
   const carouselRef = React.useRef();
   const { activeIndex, showNext, showPrev } = useCarousel(services);
   const prevDisabled = activeIndex === 0;
@@ -54,12 +58,18 @@ const ServicesReel = ({ services = SERVICES }) => {
     carouselRef.current.scrollTo({ behavior: "smooth", left: offset });
   }, [activeIndex]);
 
+  const titleAccentStart = title.indexOf(titleAccent);
+  const titleAccentEnd = titleAccentStart + titleAccent.length;
+
   return (
     <div className={styles.ServicesReel}>
       <div className={styles.ServicesReel__header}>
         <h3 className={styles.ServicesReel__heading}>
-          What does <span className={homeStyles.Underline4}>your business</span>{" "}
-          need?
+          {title.slice(0, titleAccentStart)}
+          <span className={homeStyles.Underline4}>
+            {title.slice(titleAccentStart, titleAccentEnd)}
+          </span>
+          {title.slice(titleAccentEnd)}
         </h3>
         <div className={styles.ServicesReel__nav}>
           <Button
