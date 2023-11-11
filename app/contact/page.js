@@ -6,6 +6,8 @@ import styles from "./Contact.module.css";
 import utilStyles from "/styles/utils.module.css";
 
 import { WaveCta } from "../../pages";
+import ContactPhone from "./ContactPhone";
+import { ThreeDotLoader } from "components";
 
 // Monday - Thursday: 8:30AM - 4:30PM
 // Friday: 8:30AM - 4:00PM
@@ -64,7 +66,12 @@ const ContactPage = () => {
         </div>
 
         <div className={styles.contactMethods}>
-          <p>Phone: (303) 814-3389</p>
+          <p>
+            Phone:{" "}
+            <React.Suspense fallback={<ThreeDotLoader />}>
+              <ContactPhone />
+            </React.Suspense>
+          </p>
           <p>Email: info@labseven.co</p>
           <LinkButton href="/order/pick-products">Start Order</LinkButton>
         </div>

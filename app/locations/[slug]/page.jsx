@@ -7,7 +7,7 @@ import { CallLink, LinkButton, RotatingLogo } from "components";
 import { ScreenPrintingForm } from "components/Services/ScreenPrinting";
 import HeroArrow from "public/assets/Arrows/Services_Hero.svg";
 import styles from "../location.module.css";
-import { getAllLocationSlugs, getLocationData } from "lib/parseMd";
+import { getAllLocationSlugs, getLocationData } from "lib/locations";
 
 // location data + banner images
 import EnglewoodBanner from "public/assets/Locations/englewood.webp";
@@ -85,7 +85,9 @@ const LocationPage = async ({ params }) => {
             Apparel, Company Uniforms and Branded Merch.
           </p>
           <div className={styles.welcome__block__actions}>
-            <CallLink telLink={location.telLink}>{location.callCta}</CallLink>
+            <CallLink telLink={location.telLink} locationSlug={location.slug}>
+              {location.callCta}
+            </CallLink>
             <LinkButton className="LinkButtonAlternate" href={"/products"}>
               Instant Quote
             </LinkButton>

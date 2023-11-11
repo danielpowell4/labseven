@@ -9,9 +9,15 @@ const contactLink = "/contact";
 const CallLink = ({
   className = "LinkButton",
   telLink = "tel:+13038143389",
+  locationSlug,
   ...props
 }) => {
-  const href = isMobile() ? telLink : contactLink;
+  let href = contactLink;
+  if (isMobile()) {
+    href = telLink;
+  } else if (locationSlug) {
+    href = `${contactLink}?location=${locationSlug}`;
+  }
 
   return (
     <Link className={styles[className]} href={href} {...props}>
