@@ -7,7 +7,6 @@ callCta: "Call Lab Seven Aurora"
 phoneFormatted: "(303) 529-6583"
 telLink: "+13035296583"
 position: 3
-bannerImage: AuroraBanner
 ---
 
 Discover Lab Seven Aurora, your local source for screen-printing, embroidery, and custom apparel. With unbeatable customer service and top quality t-shirt printing, we've been serving Aurora, Centennial, and Parker since 2006.

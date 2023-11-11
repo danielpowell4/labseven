@@ -25,6 +25,17 @@ const locationBanners = {
   "fort-collins": FortCollinsBanner,
 };
 
+export async function generateMetadata({ params }) {
+  const slug = params.slug;
+  const location = await getLocationData(slug);
+
+  // calculate title + description
+  const title = `${location.name} Screen Printing & Custom T-Shirt Printing | Lab Seven Screen Printing Co.`;
+  const description = `Lab Seven Screen Printing Co. is the leader in ${location.name} Screen Printing, Custom T-shirt Printing, Graphic Design, and Embroidery in Colorado. Design your own t-shirt in our design studio or work with one of our artists to bring your custom tee to life.`;
+
+  return { title, description };
+}
+
 export async function generateStaticParams() {
   const locationSlugs = getAllLocationSlugs();
   return locationSlugs.map((slug) => ({ slug }));
