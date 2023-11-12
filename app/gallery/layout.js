@@ -1,6 +1,4 @@
-import { SiteFooter, SiteNav, ServicesReel } from "components";
-
-import { Suspense } from "react";
+import { SiteFooter, SiteNav } from "components";
 
 import { HowToSteps, WaveCta } from "pages/index";
 
