@@ -19,7 +19,11 @@ export default async function ProjectTable() {
         <tr>
           <th>{/* actions */}</th>
           <th>ID</th>
-          <th>Name</th>
+          <th>
+            Name
+            <br />
+            URL Slug
+          </th>
           <th>Description</th>
           <th>Primary Image</th>
           <th>Hover Image</th>
@@ -37,6 +41,7 @@ export default async function ProjectTable() {
                   flexDirection: "column",
                 }}
               >
+                <LinkButton href={`/gallery/${row.slug}`}>View</LinkButton>
                 <LinkButton href={`/admin/projects/${row.id}/edit`}>
                   Edit
                 </LinkButton>
@@ -44,7 +49,11 @@ export default async function ProjectTable() {
               </span>
             </td>
             <td>{row.id}</td>
-            <td>{row.name}</td>
+            <td>
+              {row.name}
+              <br />
+              {row.slug}
+            </td>
             <td>{row.description?.substring(0, 120) ?? "-"}</td>
             <td>
               <Image src={row.primary_blob_url} width={123} height={185} />

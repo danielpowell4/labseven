@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import styles from "./gallery.module.css";
 
@@ -54,20 +55,22 @@ export default function InfiniteScroll({ firstPage }) {
       {projects.map((project, projectIndex) => {
         return (
           <li key={project.id} className={styles.galleryGrid__item}>
-            <Image
-              src={project.primary_blob_url}
-              width={375}
-              height={563}
-              priority={projectIndex < 6}
-              className={styles.primaryImage}
-            />
-            <Image
-              src={project.secondary_blob_url}
-              width={375}
-              height={563}
-              priority={false}
-              className={styles.secondaryImage}
-            />
+            <Link href={`/gallery/${project.uuid}`}>
+              <Image
+                src={project.primary_blob_url}
+                width={375}
+                height={563}
+                priority={projectIndex < 6}
+                className={styles.primaryImage}
+              />
+              <Image
+                src={project.secondary_blob_url}
+                width={375}
+                height={563}
+                priority={false}
+                className={styles.secondaryImage}
+              />
+            </Link>
           </li>
         );
       })}

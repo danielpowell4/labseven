@@ -32,9 +32,11 @@
 
 .adminTable thead tr th {
   text-align: left;
+  vertical-align: bottom;
 }
 
 .adminTable td {
+  vertical-align: top;
   border-bottom: 1px solid var(--hr);
 }
 
