@@ -9,7 +9,10 @@ import styles from "../gallery.module.css";
 import productStyles from "pages/product/[manufacturerSkuCode]/product.module.css";
 
 import ItemGallery from "./ItemGallery";
+
 import OtherProjects, { OtherProjectsSkeleton } from "./OtherProjects";
+import LinkedProduct from "./LinkedProduct";
+import { ThreeDotLoader } from "components";
 
 export default async function PageWrapper({ params: { slug } }) {
   const { rows } = await sql`SELECT * from projects WHERE slug = ${slug}`;
@@ -27,14 +30,19 @@ export default async function PageWrapper({ params: { slug } }) {
       <div className={productStyles.pageContainer}>
         <div className={productStyles.title}>
           <h1>{project.name}</h1>
-          {project.description && <p>{project.description}</p>}
+          <Suspense fallback={<ThreeDotLoader />}>
+            <LinkedProduct project={project} />
+          </Suspense>
         </div>
         <ItemGallery project={project} />
-        <div className={styles.otherProjectContainer}>
-          <h4>You Might Also Like</h4>
-          <Suspense fallback={<OtherProjectsSkeleton />}>
-            <OtherProjects project={project} />
-          </Suspense>
+        <div className={productStyles.details}>
+          <p>{project.description && <p>{project.description}</p>}</p>
+          <div className={styles.otherProjectContainer}>
+            <h4>You Might Also Like</h4>
+            <Suspense fallback={<OtherProjectsSkeleton />}>
+              <OtherProjects project={project} />
+            </Suspense>
+          </div>
         </div>
       </div>
     </>
