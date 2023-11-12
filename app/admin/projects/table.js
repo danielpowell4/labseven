@@ -45,12 +45,12 @@ export default async function ProjectTable() {
             </td>
             <td>{row.id}</td>
             <td>{row.name}</td>
-            <td>{row.description ?? "-"}</td>
+            <td>{row.description?.substring(0, 120) ?? "-"}</td>
             <td>
-              <Image src={row.primary_blob_url} width={80} height={80} />
+              <Image src={row.primary_blob_url} width={123} height={185} />
             </td>
             <td>
-              <Image src={row.secondary_blob_url} width={80} height={80} />
+              <Image src={row.secondary_blob_url} width={123} height={185} />
             </td>
           </tr>
         ))}
