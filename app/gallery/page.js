@@ -11,7 +11,7 @@ async function GalleryPage() {
       : "https://labseven.co";
 
   const firstPage = await fetch(`${origin}/api/project/list`, {
-    next: { tags: ["projects"] },
+    next: { tags: ["projects"], revalidate: 3600 },
   }).then((res) => res.json());
 
   if (!firstPage.items.length) {
