@@ -4,8 +4,6 @@ import { Suspense } from "react";
 
 import { HowToSteps, WaveCta } from "pages/index";
 
-import styles from "./gallery.module.css";
-
 const GalleryLayout = ({ children }) => {
   return (
     <>

@@ -22,16 +22,29 @@
 }
 
 .primaryImage {
-  z-index: 1;
+  position: relative;
+  z-index: 2;
 }
 
 .secondaryImage {
-  z-index: 0;
+  z-index: 1;
   display: none;
 }
 
+.galleryGrid__item:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 99%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right, #ccc, #ddd);
+  z-index: 0;
+}
+
 .galleryGrid__item:hover .secondaryImage {
-  z-index: 2;
+  z-index: 3;
   display: block;
   position: absolute;
   top: 0;
