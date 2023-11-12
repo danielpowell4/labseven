@@ -55,7 +55,7 @@ export default function InfiniteScroll({ firstPage }) {
       {projects.map((project, projectIndex) => {
         return (
           <li key={project.id} className={styles.galleryGrid__item}>
-            <Link href={`/gallery/${project.uuid}`}>
+            <Link href={`/gallery/${project.slug}`}>
               <Image
                 src={project.primary_blob_url}
                 width={375}

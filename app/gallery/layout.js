@@ -8,9 +8,7 @@ const GalleryLayout = ({ children }) => {
   return (
     <>
       <SiteNav />
-      <div style={{ paddingTop: "var(--navHeight)" }}>
-        <Suspense>{children}</Suspense>
-      </div>
+      <div style={{ paddingTop: "var(--navHeight)" }}>{children}</div>
       <HowToSteps title={"Ready to get started?"} titleAccent="get started?" />
       <WaveCta />
       <SiteFooter />

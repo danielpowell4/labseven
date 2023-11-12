@@ -39,8 +39,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(to right, #ccc, #ddd);
   z-index: 0;
+  animation: tahoeLoadingShimmer 1s cubic-bezier(0.08, 0.52, 0.52, 1) infinite
+    alternate;
 }
 
 .galleryGrid__item:hover .secondaryImage {
@@ -49,4 +50,18 @@
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.galleryGrid__itemSkeleton {
+  width: 375px;
+  height: 563px;
+}
+
+@keyframes tahoeLoadingShimmer {
+  0% {
+    background-color: #f5f6f7;
+  }
+  100% {
+    background-color: #ebedf0;
+  }
 }
