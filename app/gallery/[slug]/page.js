@@ -5,6 +5,7 @@ import { sql } from "@vercel/postgres";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import styles from "../gallery.module.css";
 import productStyles from "pages/product/[manufacturerSkuCode]/product.module.css";
 
 import ItemGallery from "./ItemGallery";
@@ -29,7 +30,7 @@ export default async function PageWrapper({ params: { slug } }) {
           {project.description && <p>{project.description}</p>}
         </div>
         <ItemGallery project={project} />
-        <div>
+        <div className={styles.otherProjectContainer}>
           <h4>You Might Also Like</h4>
           <Suspense fallback={<OtherProjectsSkeleton />}>
             <OtherProjects project={project} />
