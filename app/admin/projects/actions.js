@@ -80,6 +80,21 @@ export async function deleteProject(_prevState, formData) {
   }
 }
 
+export async function purgeCache() {
+  const cookieStore = cookies();
+  cookieStore.set("flash:success", "Cache has been cleared!", { maxAge: 0 });
+
+  // just in case
+  revalidatePath("/admin/projects", "layout");
+  revalidatePath("/gallery", "layout");
+  revalidateTag("projects");
+
+  // all per https://nextjs.org/docs/app/api-reference/functions/revalidatePath#revalidating-all-data
+  revalidatePath("/", "layout");
+
+  return redirect("/admin/projects");
+}
+
 // START - utils
 const parseData = (formData) => ({
   name: formData.get("name"),
