@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import styles from "./gallery.module.css";
 
 import useInfiniteScroll from "react-infinite-scroll-hook";
@@ -52,7 +54,7 @@ export default function InfiniteScroll({ firstPage }) {
       {projects.map((project) => {
         return (
           <li key={project.id} style={{ overflow: "hidden" }}>
-            <pre>{JSON.stringify(project, null, 2)}</pre>
+            <Image src={project.primary_blob_url} width={123} height={185} />
           </li>
         );
       })}

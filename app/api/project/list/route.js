@@ -13,13 +13,11 @@ export async function GET(request) {
 
   try {
     if (cursor) {
-      console.log("- cursor", cursor);
       queryRes =
-        await sql`SELECT * from projects WHERE projects.id > ${cursor} ORDER BY projects.id LIMIT ${limit}`;
+        await sql`SELECT * from projects WHERE projects.id < ${cursor} ORDER BY projects.id DESC LIMIT ${limit}`;
     } else {
-      console.log("- no cursor");
       queryRes =
-        await sql`SELECT * from projects ORDER BY projects.id LIMIT ${limit}`;
+        await sql`SELECT * from projects ORDER BY projects.id DESC LIMIT ${limit}`;
     }
 
     const items = queryRes?.rows ?? [];
