@@ -53,12 +53,20 @@ export default function InfiniteScroll({ firstPage }) {
     <ul className={styles.galleryGrid}>
       {projects.map((project, projectIndex) => {
         return (
-          <li key={project.id} style={{ overflow: "hidden" }}>
+          <li key={project.id} className={styles.galleryGrid__item}>
             <Image
               src={project.primary_blob_url}
               width={375}
               height={562}
               priority={projectIndex < 6}
+              className={styles.primaryImage}
+            />
+            <Image
+              src={project.secondary_blob_url}
+              width={375}
+              height={562}
+              priority={false}
+              className={styles.secondaryImage}
             />
           </li>
         );
