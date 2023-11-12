@@ -79,7 +79,7 @@ const FormFields = ({ formState = {}, submitText = "Submit" }) => {
         />
         {primaryUploading && <ThreeDotLoader />}
         {!primaryUploading && primaryPreviewUrl && (
-          <Image src={primaryPreviewUrl} width={80} height={80} />
+          <Image src={primaryPreviewUrl} width={125} height={185} />
         )}
         <input
           type="hidden"
@@ -113,7 +113,7 @@ const FormFields = ({ formState = {}, submitText = "Submit" }) => {
         />
         {secondaryUploading && <ThreeDotLoader />}
         {!secondaryUploading && secondaryPreviewUrl && (
-          <Image src={secondaryPreviewUrl} width={80} height={80} />
+          <Image src={secondaryPreviewUrl} width={123} height={185} />
         )}
         <input
           type="hidden"
