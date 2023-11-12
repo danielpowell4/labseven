@@ -55,7 +55,7 @@ export async function OtherProjectsSkeleton() {
           className={[
             styles.otherProjectGallery__item,
             styles.otherProjectGallery__itemSkeleton,
-          ]}
+          ].join(" ")}
         />
       ))}
     </ul>
