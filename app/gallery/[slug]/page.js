@@ -30,7 +30,7 @@ export default async function PageWrapper({ params: { slug } }) {
         </div>
         <ItemGallery project={project} />
         <div>
-          <h4>Other Work</h4>
+          <h4>You Might Also Like</h4>
           <Suspense fallback={<OtherProjectsSkeleton />}>
             <OtherProjects project={project} />
           </Suspense>
