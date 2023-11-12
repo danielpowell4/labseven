@@ -217,6 +217,72 @@ export const WaveCta = () => (
   </div>
 );
 
+export const HowToSteps = ({
+  title = "Your plan for awesome apparel:",
+  titleAccent = "Your plan",
+}) => {
+  const [titleBefore, titleAfter] = title.split(titleAccent);
+
+  return (
+    <div className={styles.howTo} id="your-plan">
+      <h2 className={styles.howTo__heading}>
+        {titleBefore}
+        <span className={styles.Underline1}>{titleAccent}</span>
+        {titleAfter}
+      </h2>
+      <ol className={styles.howTo__steps}>
+        <li>
+          <Image
+            src={Step1_Shirt}
+            alt="Hand drawn sketch of a t-shirt"
+            style={{ maxWidth: "100%", height: "auto" }}
+          />
+          <h4>Pick your products</h4>
+        </li>
+        <li>
+          <Image
+            src={Step2_Sizes}
+            alt="Hand drawn chart of sizes"
+            style={{ maxWidth: "100%", height: "auto" }}
+          />
+          <h4>Fill out the size breakdown</h4>
+        </li>
+        <li>
+          <Image
+            src={Step3_Upload}
+            alt="Upload logo to cloud"
+            style={{ maxWidth: "100%", height: "auto" }}
+          />
+          <h4>Upload your logo idea</h4>
+        </li>
+      </ol>
+      <div className={styles.howTo__block}>
+        <div className={styles.howTo__block__text}>
+          <h3 className={styles.howTo__block__heading}>
+            <span className={styles.Underline2}>That's it!</span>
+          </h3>
+          <p>
+            We'll send you a no-commitment proposal, complete with pricing,
+            product recommendations, and digital mockups!
+          </p>
+          <div className={styles.linkContainer}>
+            <LinkButton href="/order/pick-products">Ok, let's go!</LinkButton>
+            <CallLink className="LinkButtonAlternate">
+              Talk to a person
+            </CallLink>
+          </div>
+        </div>
+        <Image
+          src={ThatsIt_Hoodie}
+          width={200}
+          alt="Cool hoodie and beanie"
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      </div>
+    </div>
+  );
+};
+
 const HomePage = () => {
   const [heroRef, setHeroRef] = React.useState();
   const { isIntersecting: heroIsVisible } = useIntersectionObserver(heroRef, {
@@ -342,61 +408,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className={styles.howTo} id="your-plan">
-        <h2 className={styles.howTo__heading}>
-          <span className={styles.Underline1}>Your plan</span>
-          {` for awesome apparel:`}
-        </h2>
-        <ol className={styles.howTo__steps}>
-          <li>
-            <Image
-              src={Step1_Shirt}
-              alt="Hand drawn sketch of a t-shirt"
-              style={{ maxWidth: "100%", height: "auto" }}
-            />
-            <h4>Pick your products</h4>
-          </li>
-          <li>
-            <Image
-              src={Step2_Sizes}
-              alt="Hand drawn chart of sizes"
-              style={{ maxWidth: "100%", height: "auto" }}
-            />
-            <h4>Fill out the size breakdown</h4>
-          </li>
-          <li>
-            <Image
-              src={Step3_Upload}
-              alt="Upload logo to cloud"
-              style={{ maxWidth: "100%", height: "auto" }}
-            />
-            <h4>Upload your logo idea</h4>
-          </li>
-        </ol>
-        <div className={styles.howTo__block}>
-          <div className={styles.howTo__block__text}>
-            <h3 className={styles.howTo__block__heading}>
-              <span className={styles.Underline2}>That's it!</span>
-            </h3>
-            <p>
-              We'll send you a no-commitment proposal, complete with pricing,
-              product recommendations, and digital mockups!
-            </p>
-            <div className={styles.linkContainer}>
-              <LinkButton href="/order/pick-products">Ok, let's go!</LinkButton>
-              <CallLink className="LinkButtonAlternate">
-                Talk to a person
-              </CallLink>
-            </div>
-          </div>
-          <Image
-            src={ThatsIt_Hoodie}
-            width={200}
-            alt="Cool hoodie and beanie"
-            style={{ maxWidth: "100%", height: "auto" }}
-          />
-        </div>
-      </div>
+      <HowToSteps />
       <div
         className={[styles.servicesWrap, styles.hasSectionDivider].join(" ")}
       >

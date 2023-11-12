@@ -374,6 +374,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: 200ms ease all;
+}
+
+.howTo li:hover {
+  transform: scale(1.1);
 }
 
 .howTo__steps li::before {
