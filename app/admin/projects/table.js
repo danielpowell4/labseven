@@ -1,5 +1,6 @@
 import { sql } from "@vercel/postgres";
 import Image from "next/image";
+import Link from "next/link";
 
 import styles from "app/admin/admin.module.css";
 import { LinkButton } from "components";
@@ -53,6 +54,12 @@ export default async function ProjectTable() {
               {row.name}
               <br />
               {row.slug}
+              {Boolean(row.product_path) && (
+                <>
+                  <br />
+                  <Link href={row.product_path}>View Linked Product</Link>
+                </>
+              )}
             </td>
             <td>{row.description?.substring(0, 120) ?? "-"}</td>
             <td>

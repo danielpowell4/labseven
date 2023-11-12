@@ -24,12 +24,19 @@ export async function createProject(prevState, formData) {
   }
 
   // insert
-  const { name, description, primary_blob_url, secondary_blob_url } = data;
+  const {
+    name,
+    slug,
+    product_path,
+    description,
+    primary_blob_url,
+    secondary_blob_url,
+  } = data;
   const { rows } = await sql`
     INSERT INTO projects
-      (updated_at, name, slug, description, primary_blob_url, secondary_blob_url)
+      (updated_at, name, slug, product_path, description, primary_blob_url, secondary_blob_url)
     VALUES
-      (${new Date()}, ${name}, ${slug}, ${description}, ${primary_blob_url}, ${secondary_blob_url})
+      (${new Date()}, ${name}, ${slug}, ${product_path}, ${description}, ${primary_blob_url}, ${secondary_blob_url})
     RETURNING *
   `;
 
@@ -51,6 +58,7 @@ export async function updateProject(projectId, prevState, formData) {
       updated_at = ${new Date()},
       name = ${data.name},
       slug = ${data.slug},
+      product_path = ${data.product_path},
       description = ${data.description},
       primary_blob_url = ${data.primary_blob_url},
       secondary_blob_url = ${data.secondary_blob_url}
@@ -99,7 +107,8 @@ export async function purgeCache() {
 const parseData = (formData) => ({
   name: formData.get("name"),
   slug: slugify(formData.get("name")),
-  description: formData.get("description") ?? null,
+  product_path: formData.get("productPath") || null,
+  description: formData.get("description") || null,
   primary_blob_url: formData.get("primary_blob_url"),
   secondary_blob_url: formData.get("secondary_blob_url"),
 });
@@ -133,6 +142,12 @@ const validateData = async (data, projectId) => {
 
     if (sameSlug.rows.length > 0) {
       errors.name = "slug already taken (name must be unique)";
+    }
+  }
+
+  if (data.product_path) {
+    if (!data.product_path.startsWith("/product/")) {
+      errors.productPath = "must start with /product/";
     }
   }
 

@@ -53,6 +53,23 @@ const FormFields = ({ formState = {}, submitText = "Submit" }) => {
         />
         <ErrorMessage message={formState.errors?.description} />
       </div>
+      <div className={styles.inputWrapper} style={{ "--inputWidth": "660px" }}>
+        <label htmlFor="name">Project Path</label>
+        <input
+          id="productPath"
+          name="productPath"
+          type="text"
+          defaultValue={formState.data?.productPath}
+          required
+        />
+        <small>
+          Hint: https://www.labseven.co
+          <span style={{ backgroundColor: "var(--primary)" }}>
+            /product/american-apparel-6456/purple
+          </span>
+        </small>
+        <ErrorMessage message={formState.errors?.productPath} />
+      </div>
       <div className={styles.inputWrapper}>
         <label htmlFor="primaryBlob">Primary Image</label>
         <input
