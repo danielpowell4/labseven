@@ -149,7 +149,7 @@
   }
 
   .gallery {
-    height: calc(100vh - 5rem);
+    height: min(calc(100dvh - 5rem), 60rem);
     position: sticky;
     top: 1.75rem;
 
