@@ -17,8 +17,8 @@ export default async function PageWrapper({ params: { id } }) {
         initialState={{
           data: {
             name: project.name,
-            slug: project.slug,
             description: project.description,
+            productPath: project.product_path,
             primary_blob_url: project.primary_blob_url,
             secondary_blob_url: project.secondary_blob_url,
           },

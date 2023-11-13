@@ -10,9 +10,9 @@ import { redirect } from "next/navigation";
 const slugify = (str) => {
   return (str || "")
     .toLowerCase()
-    .replaceAll(/\//, " ")
-    .replaceAll(/[^a-zA-Z0-9 -]/g, "")
-    .replaceAll(/[_\s-]+/g, "-")
+    .replace(/\//, " ")
+    .replace(/[^a-zA-Z0-9 -]/g, "")
+    .replace(/[_\s-]+/g, "-")
     .replace(/'/, "")
     .replace(/\s+/g, "-");
 };
