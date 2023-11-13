@@ -155,7 +155,7 @@ const SiteNav = () => {
                   </ul>
                 </li>
                 <li className={styles.links__list__item}>
-                  <Link href="/#design">Start Designing</Link>
+                  <Link href="/gallery">Our Work</Link>
                 </li>
                 <li className={styles.links__list__item}>
                   <Link href="/contact">Contact</Link>
