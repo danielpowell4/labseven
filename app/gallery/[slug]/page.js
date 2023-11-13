@@ -12,6 +12,7 @@ import ItemGallery from "./ItemGallery";
 
 import OtherProjects, { OtherProjectsSkeleton } from "./OtherProjects";
 import LinkedProduct from "./LinkedProduct";
+import ProjectDescription from "./ProjectDescription";
 import { ThreeDotLoader } from "components";
 
 export default async function PageWrapper({ params: { slug } }) {
@@ -36,7 +37,9 @@ export default async function PageWrapper({ params: { slug } }) {
         </div>
         <ItemGallery project={project} />
         <div className={productStyles.details}>
-          <p>{project.description && <p>{project.description}</p>}</p>
+          <Suspense fallback={<ThreeDotLoader />}>
+            <ProjectDescription project={project} />
+          </Suspense>
           <div className={styles.otherProjectContainer}>
             <h4>You Might Also Like</h4>
             <Suspense fallback={<OtherProjectsSkeleton />}>
