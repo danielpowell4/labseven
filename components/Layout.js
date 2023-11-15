@@ -10,6 +10,7 @@ const montserrat = Montserrat({
   weights: [700],
   subsets: ["latin"],
   variable: "--montserrat",
+  display: "swap",
 });
 
 const siteTitle =
@@ -57,6 +58,7 @@ const Layout = ({ children, className, ...rest }) => {
         className={montserrat.variable}
         style={{
           "--navTop": navVisible ? "0px" : "calc(0px - var(--navHeight))",
+          "--headingFont": "var(--montserrat), var(--bodyFont)",
         }}
       >
         <SiteNav />
