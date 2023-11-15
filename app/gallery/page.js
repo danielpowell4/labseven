@@ -29,11 +29,10 @@ export async function generateMetadata() {
   const mostRecentProject = rows[0];
 
   if (mostRecentProject) {
-    const imgUrl = mostRecentProject?.primary_blob_url;
-    const resizedImg = `https://labseven.co/_next/image?url==${encodeURIComponent(
+    const imgUrl = mostRecentProject.primary_blob_url;
+    const resizedImg = `https://www.labseven.co/_next/image?url=${encodeURIComponent(
       imgUrl
-    )}&w=400&q=75`;
-
+    )}&q=75&w=384`;
     images = {
       "og:image": resizedImg,
       "twitter:image": resizedImg,
