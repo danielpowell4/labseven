@@ -1,5 +1,7 @@
 "use client";
 
+import * as React from "react";
+
 import styles from "./Contact.module.css";
 import utilStyles from "/styles/utils.module.css";
 
@@ -17,18 +19,25 @@ const STORE_HOURS = [
   { label: "Sunday", wDay: 0, open: [0, 0], close: [0, 0] },
 ];
 
+const DEFAULT_TIME_ZONE = "America/Denver";
+
 function getUserTimeZone() {
   try {
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     return timeZone;
   } catch (error) {
     console.error("Error retrieving user time zone:", error);
-    return "America/Denver"; // Fallback to Mountain Time
+    return DEFAULT_TIME_ZONE; // Fallback to Mountain Time
   }
 }
 
 const HoursTable = () => {
-  const userZone = getUserTimeZone();
+  // update user time zone on mount, start in Mountain Time
+  const [userZone, setUserZone] = React.useState(DEFAULT_TIME_ZONE);
+  React.useEffect(() => {
+    setUserZone(getUserTimeZone());
+  }, []);
+
   const currentTime = new Date();
   const userCurrentTime = new Date(
     currentTime.toLocaleString("en-US", { timeZone: userZone })
