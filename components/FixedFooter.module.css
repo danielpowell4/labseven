@@ -39,6 +39,8 @@
     flex-flow: row wrap;
     align-content: center;
     justify-content: center;
+
+    padding-top: 0;
   }
 
   .Nav ul li {
