@@ -33,15 +33,20 @@ const ScrollWatcher = () => {
   React.useEffect(() => {
     if (!hasMounted.current) return; // no document in SSR
 
-    document
-      .querySelector("html")
-      .style.setProperty(
-        "--navTop",
-        navVisible ? "0px" : "calc(0px - var(--navHeight))"
-      );
+    const htmlStyle = document.querySelector("html").style;
+    htmlStyle.setProperty(
+      "--navTop",
+      navVisible ? "0px" : "calc(0px - var(--navHeight))"
+    );
+    htmlStyle.setProperty(
+      "--fixedNavBottom",
+      navVisible ? "0px" : "calc(0px - var(--fixedNavHeight))"
+    );
 
     return () => {
-      document.querySelector("html").style.setProperty("--navTop", "0px");
+      const htmlStyle = document.querySelector("html").style;
+      htmlStyle.setProperty("--navTop", "0px");
+      htmlStyle.setProperty("--fixedNavBottom", "0px");
     };
   }, [navVisible]);
 

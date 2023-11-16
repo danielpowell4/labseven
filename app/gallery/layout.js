@@ -1,4 +1,4 @@
-import { SiteFooter, SiteNav } from "components";
+import { FixedFooter, SiteFooter, SiteNav } from "components";
 
 import { HowToSteps, WaveCta } from "pages/index";
 
@@ -10,6 +10,7 @@ const GalleryLayout = ({ children }) => {
       <HowToSteps title={"Ready to get started?"} titleAccent="get started?" />
       <WaveCta />
       <SiteFooter />
+      <FixedFooter />
     </>
   );
 };

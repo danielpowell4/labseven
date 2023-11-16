@@ -58,6 +58,9 @@ const Layout = ({ children, className, ...rest }) => {
         className={montserrat.variable}
         style={{
           "--navTop": navVisible ? "0px" : "calc(0px - var(--navHeight))",
+          "--fixedNavBottom": navVisible
+            ? "0px"
+            : "calc(0px - var(--fixedNavHeight))",
           "--headingFont": "var(--montserrat), var(--bodyFont)",
         }}
       >

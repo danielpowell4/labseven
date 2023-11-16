@@ -3,6 +3,8 @@
   z-index: 9;
   left: 0;
   bottom: 0;
+  bottom: var(--fixedNavBottom);
+  transition: bottom 0.3s;
   width: 100%;
   height: var(--fixedNavHeight);
   background-color: var(--background);

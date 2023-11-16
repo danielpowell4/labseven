@@ -1,4 +1,4 @@
-import { SiteFooter, SiteNav } from "components";
+import { FixedFooter, SiteFooter, SiteNav } from "components";
 
 import styles from "./admin.module.css";
 import Link from "next/link";
@@ -48,6 +48,7 @@ const AdminLayout = ({ children }) => {
         </div>
       </div>
       <SiteFooter />
+      <FixedFooter />
     </>
   );
 };
