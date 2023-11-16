@@ -64,7 +64,7 @@ const Layout = ({ children, className, ...rest }) => {
         <SiteNav />
         <div
           {...rest}
-          className={`${styles.container}${className ? ` ${className}` : ``}`}
+          className={[styles.container, className].filter(Boolean).join(" ")}
           style={{ paddingTop: `var(--navHeight)` }}
         >
           {children}

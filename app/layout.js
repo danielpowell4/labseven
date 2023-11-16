@@ -6,6 +6,8 @@ import * as React from "react";
 import "styles/globals.css";
 
 import { Montserrat } from "next/font/google";
+
+import ScrollWatcher from "./ScrollWatcher";
 import GoogleAnalytics from "./GoogleAnalytics";
 
 const montserrat = Montserrat({
@@ -32,12 +34,11 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       className={montserrat.variable}
-      style={{
-        "--navTop": "0px", // TODO: incorporate navVisible check
-      }}
+      style={{ "--navTop": "0px" }} // updated by ScrollWatcher
     >
       <body>
         {children}
+        <ScrollWatcher />
         <GoogleAnalytics />
       </body>
     </html>
