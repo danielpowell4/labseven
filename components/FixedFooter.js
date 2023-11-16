@@ -5,7 +5,7 @@ import styles from "./FixedFooter.module.css";
 
 const LINKS = [
   { href: "/", label: "Home" },
-  { href: "/products", label: "Catalog" },
+  { href: "/products", label: "Products" },
   { href: "/services", label: "Services" },
   { href: "/gallery", label: "Our Work" },
   { href: "/contact", label: "Contact" },
