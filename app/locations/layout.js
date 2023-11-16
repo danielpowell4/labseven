@@ -1,4 +1,4 @@
-import { SiteFooter, SiteNav, ServicesReel } from "components";
+import { FixedFooter, SiteFooter, SiteNav, ServicesReel } from "components";
 
 import styles from "./location.module.css";
 
@@ -23,6 +23,7 @@ const LocationLayout = ({ children }) => {
       </div>
       <WaveCta />
       <SiteFooter />
+      <FixedFooter />
     </>
   );
 };
