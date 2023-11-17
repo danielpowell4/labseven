@@ -18,7 +18,8 @@ const FixedFooter = () => {
     <nav className={styles.Nav}>
       <ul>
         {LINKS.map(({ href, label }) => {
-          const isActive = pathname === href;
+          const isActive =
+            href.length === 1 ? pathname === href : pathname.startsWith(href);
 
           return (
             <li key={href} className={isActive ? styles.ActiveItem : ""}>
@@ -26,7 +27,7 @@ const FixedFooter = () => {
             </li>
           );
         })}
-        <li>
+        <li className={styles.AccentItem}>
           <Link href="tel:+13038143389">Call Now</Link>
         </li>
       </ul>

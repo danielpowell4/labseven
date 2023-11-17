@@ -23,13 +23,45 @@
   grid-template-columns: repeat(3, 1fr);
   margin: 0;
   padding: 1rem 1rem 0;
-  gap: 1rem;
   height: 100%;
   width: 100%;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .Nav ul li {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+  width: 100%;
+
+  font-family: var(--headingFont);
+  font-weight: 700;
+
+  border: 1px solid var(--mediumText);
+  border-radius: var(--rounded);
+}
+
+.Nav ul li a {
+  color: var(--mediumText);
+}
+
+.ActiveItem {
+  background-color: var(--hr);
+}
+
+.ActiveItem a {
+  text-decoration: underline;
+}
+
+.AccentItem {
+  border: 2px solid var(--primary);
+}
+
+.Nav .AccentItem a {
+  color: var(--primary);
 }
 
 /* 455 -> desktop items fit on one line */
@@ -37,21 +69,28 @@
   .Nav ul {
     display: flex;
     flex-flow: row wrap;
-    align-content: center;
     justify-content: center;
 
+    gap: 1rem;
     padding-top: 0;
   }
 
   .Nav ul li {
     height: 100%;
-    position: relative;
+    width: unset;
+    font-family: unset;
+    font-weight: unset;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     text-align: left;
+    border: none;
+  }
+
+  .Nav ul li a {
+    color: unset;
   }
 
   .ActiveItem:before {
@@ -63,9 +102,22 @@
     background-color: var(--primary);
   }
 
+  .ActiveItem {
+    background-color: unset;
+  }
+
   .ActiveItem a,
   .ActiveItem a:visited {
     color: var(--primary);
+  }
+
+  .ActiveItem a {
+    text-decoration: none;
+    background-color: inherit;
+  }
+
+  .Nav ul li.AccentItem {
+    display: none;
   }
 }
 
