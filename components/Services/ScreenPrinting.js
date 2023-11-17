@@ -143,7 +143,7 @@ const ScreenPrinting = ({ sectionRef }) => {
               alt={image.alt}
               fill
               style={{ objectFit: "contain" }}
-              sizes="16vw"
+              sizes="(max-width: 1200px) 33vw, 16vw"
             />
           </div>
         ))}

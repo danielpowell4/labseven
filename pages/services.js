@@ -196,11 +196,15 @@ const ServicesPage = () => {
     const sectionLink = container.querySelector(
       `[data-section-id="${activeId}"]`
     );
-    if (sectionLink)
-      setTimeout(
+    let timeout;
+    if (sectionLink) {
+      timeout = setTimeout(
         () => container.scrollTo(sectionLink.offsetLeft - containerOffset, 0),
         scrollToTimeoutMs // wait for scroll to finish
       );
+    }
+
+    return timeout && clearTimeout(timeout);
   }, [activeServiceIndex]);
 
   return (

@@ -41,6 +41,7 @@
 }
 
 .hero__imageContainer {
+  position: relative;
   display: none; /* hide on mobile */
 }
 

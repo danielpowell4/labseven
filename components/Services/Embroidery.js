@@ -44,6 +44,7 @@ const Embroidery = ({ sectionRef }) => {
               src={PuffEmbroidery}
               alt="Amazing example of multi color embroidery on hats"
               fill
+              sizes={"(max-width: 1200px) 50vw, 15vw"}
               style={{ objectFit: "cover", objectPosition: "center" }}
             />
           </div>
@@ -57,6 +58,7 @@ const Embroidery = ({ sectionRef }) => {
               src={DetailEmbroidery}
               alt="Close up example image showcasing precision embroidery"
               fill
+              sizes={"(max-width: 1200px) 50vw, 15vw"}
               style={{ objectFit: "cover", objectPosition: "center" }}
             />
           </div>
