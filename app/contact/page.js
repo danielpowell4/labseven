@@ -4,10 +4,11 @@ import { Layout, LinkButton, RotatingLogo } from "/components";
 
 import styles from "./Contact.module.css";
 
+import Link from "next/link";
 import { WaveCta } from "../../pages";
 import ContactPhone from "./ContactPhone";
 import HoursTable from "./HoursTable";
-import { ThreeDotLoader } from "components";
+import { ClipboardCopy } from "components";
 
 const ContactPage = ({ searchParams }) => {
   return (
@@ -34,11 +35,14 @@ const ContactPage = ({ searchParams }) => {
         <div className={styles.contactMethods}>
           <p>
             Phone:{" "}
-            <React.Suspense fallback={<ThreeDotLoader />}>
+            <React.Suspense fallback={"Loading..."}>
               <ContactPhone locationSlug={searchParams.location} />
             </React.Suspense>
           </p>
-          <p>Email: info@labseven.co</p>
+          <p>
+            Email: <Link href="mailto:info@labseven.co">info@labseven.co</Link>{" "}
+            <ClipboardCopy value={"info@labseven.co"} />
+          </p>
           <LinkButton href="/order/pick-products">Start Order</LinkButton>
         </div>
 
