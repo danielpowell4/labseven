@@ -87,7 +87,7 @@
 
 .sectionNav ul {
   margin: 0;
-  padding: 1rem 5rem 0 1rem;
+  padding: 1rem max(5rem, calc(100vw - 14rem)) 0 1rem;
   display: flex;
   flex-flow: row nowrap;
   overflow: scroll;
