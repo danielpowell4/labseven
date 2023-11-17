@@ -35,6 +35,7 @@
   justify-content: center;
   height: 100%;
   position: relative;
+  padding: 0.5rem 0;
   width: 100%;
 
   font-family: var(--headingFont);
@@ -75,6 +76,7 @@
   .Nav ul li {
     height: 100%;
     width: unset;
+    padding: unset;
     font-family: unset;
     font-weight: unset;
 

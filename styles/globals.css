@@ -51,7 +51,7 @@ li {
   --gridWidth: 1156px;
   --maxWidth: 1800px;
   --navHeight: 65px;
-  --fixedNavHeight: 80px;
+  --fixedNavHeight: 98px;
 }
 
 @media (prefers-contrast: more) {
@@ -64,7 +64,7 @@ li {
 /* mobile Chrome needs more padding at bottom */
 @supports (contain: paint) and (not (-moz-appearance: none)) {
   :root {
-    --fixedNavHeight: 92px;
+    --fixedNavHeight: 110px;
   }
 }
 
