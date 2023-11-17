@@ -3,6 +3,7 @@
   max-width: var(--gridWidth);
   margin: 0.5rem auto;
   padding: 0 10px;
+  white-space: nowrap;
 }
 
 .breadcrumbs a,
@@ -18,6 +19,11 @@
   display: inline-block;
   line-height: 1em;
   margin: 0 0.25rem;
+}
+
+.breadcrumbs a:last-of-type {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pageContainer {
