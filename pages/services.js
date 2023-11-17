@@ -152,6 +152,26 @@ const ServicesPage = () => {
     },
   ];
 
+  React.useEffect(() => {
+    const activeId = [
+      "ScreenPrinting",
+      "Embroidery",
+      "StickersDecals",
+      "VinylBannersSigns",
+      "DigitalHeatTransfer",
+      "PromotionalProducts",
+    ][activeServiceIndex];
+    if (!activeId) return;
+
+    const container = document.getElementById("serviceLinkList");
+    const containerOffset = container.offsetLeft;
+    const sectionLink = container.querySelector(
+      `[data-section-id="${activeId}"]`
+    );
+    if (sectionLink)
+      container.scrollTo(sectionLink.offsetLeft - containerOffset, 0);
+  }, [activeServiceIndex]);
+
   return (
     <Layout>
       <Head>
@@ -196,9 +216,9 @@ const ServicesPage = () => {
       <div className={styles.scrollContainer}>
         <aside className={styles.scrollContainer__aside}>
           <nav className={styles.sectionNav}>
-            <ul>
+            <ul id="serviceLinkList">
               {services.map(({ id, name }, serviceIndex) => (
-                <li key={id}>
+                <li key={id} data-section-id={id}>
                   <Link
                     href={`#${id}`}
                     scroll={false}
