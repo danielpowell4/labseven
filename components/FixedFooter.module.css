@@ -22,7 +22,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 0;
-  padding: 1rem 1rem 0;
+  padding: 1rem;
   height: 100%;
   width: 100%;
   align-items: center;
@@ -41,19 +41,16 @@
   font-weight: 700;
 
   border: 1px solid var(--mediumText);
-  border-radius: var(--rounded);
+  border-radius: var(--babyRound);
 }
 
 .Nav ul li a {
   color: var(--mediumText);
+  font-size: 14px;
 }
 
 .ActiveItem {
   background-color: var(--hr);
-}
-
-.ActiveItem a {
-  text-decoration: underline;
 }
 
 .AccentItem {
@@ -72,7 +69,7 @@
     justify-content: center;
 
     gap: 1rem;
-    padding-top: 0;
+    padding: 0 1rem;
   }
 
   .Nav ul li {
@@ -91,6 +88,7 @@
 
   .Nav ul li a {
     color: unset;
+    font-size: inherit;
   }
 
   .ActiveItem:before {
@@ -112,7 +110,6 @@
   }
 
   .ActiveItem a {
-    text-decoration: none;
     background-color: inherit;
   }
 
