@@ -47,7 +47,7 @@ export default async function ContactPhoneWrapper({ locationSlug }) {
 
     return (
       <>
-        phoneFormatted <ClipboardCopy value={hqPhoneFormatted} />
+        {phoneFormatted} <ClipboardCopy value={hqPhoneFormatted} />
       </>
     );
   }
