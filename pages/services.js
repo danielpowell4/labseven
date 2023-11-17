@@ -204,7 +204,7 @@ const ServicesPage = () => {
       );
     }
 
-    return timeout && clearTimeout(timeout);
+    return () => timeout && clearTimeout(timeout);
   }, [activeServiceIndex]);
 
   return (
