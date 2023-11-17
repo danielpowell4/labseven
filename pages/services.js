@@ -178,7 +178,10 @@ const ServicesPage = () => {
     ][activeServiceIndex];
     if (!activeId) return;
 
+    let scrollToTimeoutMs = 0;
     if (navigatingToRef.current) {
+      scrollToTimeoutMs = 200;
+
       if (navigatingToRef.current === activeId) {
         // made it!
         navigatingToRef.current = null;
@@ -196,7 +199,7 @@ const ServicesPage = () => {
     if (sectionLink)
       setTimeout(
         () => container.scrollTo(sectionLink.offsetLeft - containerOffset, 0),
-        300 // wait for scroll to finish
+        scrollToTimeoutMs // wait for scroll to finish
       );
   }, [activeServiceIndex]);
 
