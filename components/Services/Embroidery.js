@@ -27,7 +27,12 @@ const Embroidery = ({ sectionRef }) => {
           sizes="(max-width: 1200px) 50vw, 100vw"
         />
       </div>
-      <div className={styles.sideBySideGrid}>
+      <div
+        className={[
+          styles.sideBySideGrid,
+          styles.sideBySideGrid__services,
+        ].join(" ")}
+      >
         <div className={styles.productDisplay}>
           <div
             className={[
@@ -39,6 +44,7 @@ const Embroidery = ({ sectionRef }) => {
               src={PuffEmbroidery}
               alt="Amazing example of multi color embroidery on hats"
               fill
+              style={{ objectFit: "cover", objectPosition: "center" }}
             />
           </div>
           <div
@@ -51,6 +57,7 @@ const Embroidery = ({ sectionRef }) => {
               src={DetailEmbroidery}
               alt="Close up example image showcasing precision embroidery"
               fill
+              style={{ objectFit: "cover", objectPosition: "center" }}
             />
           </div>
         </div>

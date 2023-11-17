@@ -407,22 +407,28 @@ const StickersDecals = ({ sectionRef }) => {
             <strong>vinyl transfer decals</strong> (great for windows or company
             vehicles and work truck decals).
           </p>
-          <div className={styles.wideImageContainer}>
+          <div
+            className={styles.wideImageContainer}
+            style={{ marginBottom: "1rem" }}
+          >
             <Image
               src={Van_Wide}
               alt={"Professional sticker on a work truck driver door"}
               fill
-              style={{ objectFit: "contain" }}
+              style={{ objectFit: "cover" }}
               sizes="(max-width: 1200px) 30vw, 80vw"
             />
           </div>
-          <div className={styles.sideBySideImageContainer}>
+          <div
+            className={styles.sideBySideImageContainer}
+            style={{ gap: "1rem" }}
+          >
             <div className={styles.sideBySideImageContainer__frame}>
               <Image
                 src={Waterbottle}
                 alt={"Professional sticker on a work truck driver door"}
                 fill
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "cover" }}
                 sizes="(max-width: 1200px) 10vw, 50vw"
               />
             </div>
@@ -431,7 +437,7 @@ const StickersDecals = ({ sectionRef }) => {
                 src={DiecutGallery}
                 alt={"Professional sticker on a work truck driver door"}
                 fill
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "cover" }}
                 sizes="(max-width: 1200px) 10vw, 50vw"
               />
             </div>

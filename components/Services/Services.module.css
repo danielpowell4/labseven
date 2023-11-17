@@ -178,9 +178,13 @@
   position: relative;
 }
 
+.sideBySideGrid__services {
+  gap: 2rem;
+}
+
 .flyingContainer {
   width: 70%;
-  height: 14vw;
+  height: 15rem;
   position: absolute;
 }
 
@@ -194,6 +198,28 @@
   z-index: 2;
   right: 0;
   top: 0;
+}
+
+@media screen and (min-width: 882px) {
+  .flyingContainer {
+    height: 12rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .flyingContainer {
+    height: 14rem;
+  }
+
+  .flyingContainer__east {
+    left: 0;
+    bottom: 0;
+  }
+
+  .flyingContainer__west {
+    right: 0;
+    top: 0;
+  }
 }
 
 /* START forms */
