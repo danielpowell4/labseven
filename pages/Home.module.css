@@ -435,7 +435,7 @@
 }
 
 .servicesWrap {
-  --servicesHeight: 134rem;
+  --servicesHeight: 102rem;
 
   position: relative;
   min-height: var(--servicesHeight);

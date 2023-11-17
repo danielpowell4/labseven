@@ -138,7 +138,13 @@ const ScreenPrinting = ({ sectionRef }) => {
           },
         ].map((image) => (
           <div key={image.alt} className={styles.imageReel__item}>
-            <Image src={image.src} alt={image.alt} fill sizes="16vw" />
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              objectFit="contain"
+              sizes="16vw"
+            />
           </div>
         ))}
       </div>

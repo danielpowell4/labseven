@@ -35,6 +35,12 @@
   padding: 0 2rem 2rem;
 }
 
+@media screen and (max-width: 415px) {
+  .ServicesReel__carousel {
+    --itemSize: 8rem !important; /* mobile override */
+  }
+}
+
 .ServicesReel__carousel__item {
   height: 180px;
   width: 240px;

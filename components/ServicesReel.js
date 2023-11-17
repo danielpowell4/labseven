@@ -121,8 +121,9 @@ const ServicesReel = ({
               aria-hidden={true}
               style={{
                 position: "absolute",
-                height: itemSize,
-                width: itemSize,
+                height: "100%",
+                width: "100%",
+                objectFit: "cover",
               }}
               height={itemSize}
               width={itemSize}
