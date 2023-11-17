@@ -28,6 +28,7 @@ import styles from "./Services.module.css";
 import homeStyles from "./Home.module.css";
 
 import { SectionDivider } from ".";
+import { useRouter } from "next/router";
 
 const intersectionObsOptions = {
   threshold: [0.05, 0.1, 0.2, 0.25, 0.5, 0.75, 0.8, 0.9, 0.95],
@@ -61,6 +62,20 @@ export const SERVICE_SECTIONS = [
 ];
 
 const ServicesPage = () => {
+  // watch navigation
+  const router = useRouter();
+  const navigatingToRef = React.useRef();
+  React.useEffect(() => {
+    const handleRouteChangeFinish = (pathname) => {
+      const [, navId] = pathname.split("#");
+      navigatingToRef.current = navId;
+    };
+    router.events.on("hashChangeComplete", handleRouteChangeFinish);
+    return () => {
+      router.events.off("hashChangeComplete", handleRouteChangeFinish);
+    };
+  }, [router]);
+
   // section refs
   const screenPrintingRef = React.useRef();
   const embroideryRef = React.useRef();
@@ -163,13 +178,26 @@ const ServicesPage = () => {
     ][activeServiceIndex];
     if (!activeId) return;
 
+    if (navigatingToRef.current) {
+      if (navigatingToRef.current === activeId) {
+        // made it!
+        navigatingToRef.current = null;
+      } else {
+        // skip... on journey to another section
+        return;
+      }
+    }
+
     const container = document.getElementById("serviceLinkList");
     const containerOffset = container.offsetLeft;
     const sectionLink = container.querySelector(
       `[data-section-id="${activeId}"]`
     );
     if (sectionLink)
-      container.scrollTo(sectionLink.offsetLeft - containerOffset, 0);
+      setTimeout(
+        () => container.scrollTo(sectionLink.offsetLeft - containerOffset, 0),
+        300 // wait for scroll to finish
+      );
   }, [activeServiceIndex]);
 
   return (
