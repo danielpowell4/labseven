@@ -53,7 +53,7 @@
   background-color: var(--hr);
 }
 
-.AccentItem {
+.Nav .AccentItem {
   border: 2px solid var(--primary);
 }
 
