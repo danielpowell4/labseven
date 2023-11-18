@@ -220,6 +220,7 @@ export const WaveCta = () => (
 export const HowToSteps = ({
   title = "Your plan for awesome apparel:",
   titleAccent = "Your plan",
+  noBottomOverlay = false,
 }) => {
   const [titleBefore, titleAfter] = title.split(titleAccent);
 
@@ -256,7 +257,14 @@ export const HowToSteps = ({
           <h4>Upload your logo idea</h4>
         </li>
       </ol>
-      <div className={styles.howTo__block}>
+      <div
+        className={[
+          styles.howTo__block,
+          noBottomOverlay && styles.howTo__block__noBottomOverlay,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <div className={styles.howTo__block__text}>
           <h3 className={styles.howTo__block__heading}>
             <span className={styles.Underline2}>That's it!</span>

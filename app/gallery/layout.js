@@ -7,7 +7,11 @@ const GalleryLayout = ({ children }) => {
     <>
       <SiteNav />
       <div style={{ paddingTop: "var(--navHeight)" }}>{children}</div>
-      <HowToSteps title={"Ready to get started?"} titleAccent="get started?" />
+      <HowToSteps
+        title={"Ready to get started?"}
+        titleAccent="get started?"
+        noBottomOverlay
+      />
       <WaveCta />
       <SiteFooter />
       <FixedFooter />

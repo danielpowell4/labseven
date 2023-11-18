@@ -409,6 +409,10 @@
   border-radius: var(--rounded);
 }
 
+.howTo__block__noBottomOverlay {
+  margin-bottom: 6rem;
+}
+
 .howTo__block__heading {
   font-size: 2rem;
 }
