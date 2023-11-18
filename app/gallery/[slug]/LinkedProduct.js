@@ -43,8 +43,6 @@ export default async function LinkedProduct({ project }) {
     project.product_path
   );
 
-  console.log(categoryData);
-
   return (
     <>
       <h3>Printed on {productData.Name}</h3>
