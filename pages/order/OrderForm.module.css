@@ -182,9 +182,9 @@
   font-size: smaller;
 }
 
-.productGrid__item__Select {
+/* .productGrid__item__Select {
   min-width: 100%;
-}
+} */
 
 .productGrid__item__icons {
   display: flex;
