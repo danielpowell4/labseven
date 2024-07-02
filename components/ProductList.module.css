@@ -16,7 +16,16 @@
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  justify-content: center;
   gap: 2rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 1116px) {
+  /* to side-by-side */
+  .NoContentMessage__blurb {
+    text-align: left;
+  }
 }
 
 .NoContentMessage__blurb__disabledText {
