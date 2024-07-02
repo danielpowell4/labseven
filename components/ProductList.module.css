@@ -12,8 +12,25 @@
 }
 
 .NoContentMessage {
-  color: var(--mediumText);
   padding: 4rem;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.NoContentMessage__blurb__disabledText {
+  color: var(--mediumText);
+  font-family: var(--bodyFont);
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.NoContentMessage__blurb__bigText {
+  font-size: 1.5rem;
+  font-family: var(--headingFont);
+  font-weight: var(--headingWeight);
+  margin: 0 0 0.75rem 0;
 }
 
 .MissingRedirect {

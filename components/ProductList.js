@@ -1,10 +1,19 @@
-import Image from "next/legacy/image";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import LegacyImage from "next/legacy/image";
 import Link from "next/link";
 
-import { ColorOption, ErrorAlert, Pagination, ThreeDotLoader } from ".";
+import {
+  CallLink,
+  ColorOption,
+  ErrorAlert,
+  Pagination,
+  ThreeDotLoader,
+} from ".";
+import ShirtlessGuy from "public/assets/Catalog/ShirtlessGuy.svg";
 
 import styles from "./ProductList.module.css";
+import homeStyles from "../pages/Home.module.css";
 
 const LOADING_ADJECTIVES = [
   "Awesome",
@@ -55,6 +64,43 @@ const ProductSkeleton = ({ productIndex }) => {
   );
 };
 
+const NoContentMessage = () => (
+  <div className={styles.NoContentMessage}>
+    <Image
+      aria-hidden={true}
+      src={ShirtlessGuy}
+      className={styles.NoContentMessage__image}
+      alt="Fun, shirtless guy who is unable to find awesome product he is after"
+      quality={100}
+    />
+    <div className={styles.NoContentMessage__blurb}>
+      <h2 className={styles.NoContentMessage__blurb__disabledText}>
+        No Matching Products.
+      </h2>
+      <p>
+        <strong>Can't find what you're looking for?</strong>
+      </p>
+      <p
+        className={[
+          homeStyles.Underline2,
+          styles.NoContentMessage__blurb__bigText,
+        ].join(" ")}
+      >
+        We can still get it!
+      </p>
+      <p>
+        Call to check availability.{" "}
+        <CallLink
+          className="LinkButtonAlternate"
+          style={{ marginLeft: "1rem" }}
+        >
+          Call Now
+        </CallLink>
+      </p>
+    </div>
+  </div>
+);
+
 const ProductCard = ({ product, productIndex, navigateTo }) => {
   if (product.isLoading) return <ProductSkeleton productIndex={productIndex} />;
 
@@ -69,7 +115,7 @@ const ProductCard = ({ product, productIndex, navigateTo }) => {
       <span className={styles.ProductCard__frame} />
       <div className={styles.ProductCard__description}>
         {activeStyle.hasMainImage ? (
-          <Image
+          <LegacyImage
             src={activeStyle.mainImageUrl}
             objectFit="contain"
             objectPosition="center"
@@ -128,7 +174,7 @@ const ProductList = ({ error, products, isLoading, pagination }) => {
   }
 
   if (!products.length) {
-    return <p className={styles.NoContentMessage}>No matching products</p>;
+    return <NoContentMessage />;
   }
 
   return (
