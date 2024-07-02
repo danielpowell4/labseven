@@ -23,6 +23,9 @@
 
 @media screen and (min-width: 1116px) {
   /* to side-by-side */
+  .NoContentMessage {
+    justify-content: left;
+  }
   .NoContentMessage__blurb {
     text-align: left;
   }
