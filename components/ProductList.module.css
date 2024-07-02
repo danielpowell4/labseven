@@ -7,10 +7,6 @@
   padding: 0px 1.25rem 1.375rem;
 }
 
-.PaginationContainer {
-  padding-bottom: 1.375rem;
-}
-
 .ProductListIsLoading {
   opacity: 0.8;
 }
@@ -18,6 +14,11 @@
 .NoContentMessage {
   color: var(--mediumText);
   padding: 4rem;
+}
+
+.MissingRedirect {
+  text-align: center;
+  margin: 1.375rem auto;
 }
 
 .ProductCard {

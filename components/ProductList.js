@@ -1,5 +1,6 @@
 import Image from "next/legacy/image";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import { ColorOption, ErrorAlert, Pagination, ThreeDotLoader } from ".";
 
@@ -149,6 +150,13 @@ const ProductList = ({ error, products, isLoading, pagination }) => {
       <div className={styles.PaginationContainer}>
         <Pagination pagination={pagination} />
         {isLoading && <ThreeDotLoader />}
+      </div>
+      <div className={styles.MissingRedirect}>
+        <p>
+          Can't find the product you're looking for?{" "}
+          <strong>We can still get it!</strong>{" "}
+          <Link href="/contact">Call to check availability.</Link>
+        </p>
       </div>
     </>
   );
