@@ -12,19 +12,23 @@
 }
 
 .NoContentMessage {
-  padding: 4rem;
+  padding: 1.15rem;
   display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
+  flex-flow: column-reverse wrap;
   gap: 2rem;
-  text-align: center;
+}
+
+.NoContentMessage__image {
+  max-width: 66.7%;
+  height: auto;
 }
 
 @media screen and (min-width: 1116px) {
   /* to side-by-side */
   .NoContentMessage {
+    padding: 4rem;
     justify-content: left;
+    flex-flow: row wrap;
   }
   .NoContentMessage__blurb {
     text-align: left;
