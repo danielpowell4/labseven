@@ -317,7 +317,7 @@ const HomePage = () => {
                 <span>your brand proudly.</span>
               </div>
             </h1>
-            <h2>Get Quality Custom Apparel Locally and Affordably.</h2>
+            <h2>Get Quality Custom Apparel in 7 Days.</h2>
             <div className={styles.linkContainer}>
               <LinkButton href="#your-plan" scroll={false}>
                 Start Project
