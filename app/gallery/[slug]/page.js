@@ -1,7 +1,7 @@
 "use server";
 
 import { Suspense } from "react";
-import { sql } from "@vercel/postgres";
+import { getProjectBySlug } from "lib/projects";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -17,8 +17,7 @@ import { ThreeDotLoader } from "components";
 
 export default async function PageWrapper({ params }) {
   const { slug } = await params;
-  const { rows } = await sql`SELECT * from projects WHERE slug = ${slug}`;
-  const project = rows[0];
+  const project = await getProjectBySlug(slug);
   if (!project) {
     return notFound();
   }

@@ -3,17 +3,10 @@
 import { Suspense } from "react";
 import InfiniteScroll from "./InfiniteScroll";
 import styles from "./gallery.module.css";
-import { sql } from "@vercel/postgres";
+import { getProjectsPage, getMostRecentProject } from "lib/projects";
 
 async function GalleryPage() {
-  const origin =
-    process.env.VERCEL_ENV === "development"
-      ? "http://localhost:3000"
-      : "https://labseven.co";
-
-  const firstPage = await fetch(`${origin}/api/project/list`, {
-    next: { tags: ["projects"], revalidate: 3600 },
-  }).then((res) => res.json());
+  const firstPage = await getProjectsPage(null, 9);
 
   if (!firstPage.items.length) {
     return <div>No projects found. Come back soon!</div>;
@@ -24,9 +17,7 @@ async function GalleryPage() {
 
 export async function generateMetadata() {
   let images = {};
-  const { rows } =
-    await sql`SELECT projects.* FROM projects ORDER BY created_at DESC LIMIT 1`;
-  const mostRecentProject = rows[0];
+  const mostRecentProject = await getMostRecentProject();
 
   if (mostRecentProject) {
     const imgUrl = mostRecentProject.primary_blob_url;

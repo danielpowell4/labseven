@@ -1,4 +1,4 @@
-import { sql } from "@vercel/postgres";
+import { getAllProjectsForSitemap } from "lib/projects";
 import { getAllLocationSlugs } from "lib/locations";
 import { getAllProductCategories, getAllProducts } from "lib/products";
 
@@ -23,7 +23,7 @@ export default async function sitemap() {
     { url: `${BASE_URL}/order/pick-products`, priority: 0.7 },
   ];
 
-  const { rows: projects } = await sql`SELECT * FROM projects`;
+  const projects = await getAllProjectsForSitemap();
   const maxUpdatedAt = projects.reduce(
     (max, project) => (max > project.updated_at ? max : project.updated_at),
     projects[0].updated_at

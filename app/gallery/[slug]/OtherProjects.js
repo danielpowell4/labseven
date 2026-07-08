@@ -1,29 +1,13 @@
 "use server";
 
-import { sql } from "@vercel/postgres";
+import { getAdjacentProjects } from "lib/projects";
 import Image from "next/image";
 import Link from "next/link";
 
 import styles from "../gallery.module.css";
 
 export default async function OtherProjects({ project }) {
-  // Fetch up to 3 previous projects
-  const { rows: prevProjects } =
-    await sql`SELECT * FROM projects WHERE id < ${project.id} ORDER BY projects.id DESC LIMIT 3`;
-
-  // Determine how many next projects to fetch
-  const numPrevProjects = prevProjects.length;
-  const numNextProjectsToFetch = 6 - numPrevProjects;
-
-  // Fetch the next projects, number depends on how many previous projects were found
-  const { rows: nextProjects } =
-    await sql`SELECT * FROM projects WHERE id > ${project.id} ORDER BY projects.id ASC LIMIT ${numNextProjectsToFetch}`;
-
-  // If you need them in ascending order
-  prevProjects.reverse();
-
-  // Combine the two arrays
-  const otherProjects = prevProjects.concat(nextProjects);
+  const otherProjects = await getAdjacentProjects(project.id);
 
   return (
     <ul className={styles.otherProjectGallery}>
