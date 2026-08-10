@@ -4,8 +4,8 @@ name: "Denver"
 slug: "denver"
 possessive: "Denver's"
 callCta: "Call Lab Seven Denver"
-phoneFormatted: "(720) 708-6192"
-telLink: "+17207086192"
+phoneFormatted: "(303) 814-3389"
+telLink: "tel:+13038143389"
 position: 2
 ---
 

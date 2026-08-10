@@ -174,7 +174,8 @@
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 3px 15px 0 rgb(0 0 0 / 10%);
-  width: 20rem;
+  width: max-content;
+  right: 0;
 }
 
 .callNow__flyout ul {
@@ -194,18 +195,6 @@
 
 .callNow__flyout li:last-of-type {
   margin-bottom: 0;
-}
-
-.callNow__flyout__label {
-  display: flex;
-  align-items: baseline;
-  text-align: right;
-  color: var(--mediumText);
-}
-
-.callNow__flyout__label__accent {
-  color: var(--primary);
-  margin-left: 0.25rem;
 }
 
 .callNow__flyout__number,

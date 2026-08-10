@@ -5,7 +5,7 @@ slug: "englewood"
 possessive: "Englewood's"
 callCta: "Call Lab Seven Englewood"
 phoneFormatted: "(303) 814-3389"
-telLink: "+13038143389"
+telLink: "tel:+13038143389"
 position: 1
 ---
 

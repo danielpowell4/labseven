@@ -4,8 +4,8 @@ name: "Colorado Springs"
 slug: "colorado-springs"
 possessive: "Colorado Springs'"
 callCta: "Call Our Springs Office"
-phoneFormatted: "(719) 283-3160"
-telLink: "+17192833160"
+phoneFormatted: "(303) 814-3389"
+telLink: "tel:+13038143389"
 position: 5
 ---
 

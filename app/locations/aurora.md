@@ -4,8 +4,8 @@ name: "Aurora"
 slug: "aurora"
 possessive: "Aurora's"
 callCta: "Call Lab Seven Aurora"
-phoneFormatted: "(303) 529-6583"
-telLink: "+13035296583"
+phoneFormatted: "(303) 814-3389"
+telLink: "tel:+13038143389"
 position: 3
 ---
 

@@ -4,8 +4,8 @@ name: "Boulder"
 slug: "boulder"
 possessive: "Boulder's"
 callCta: "Call Lab Seven Boulder"
-phoneFormatted: "(720) 780-1205"
-telLink: "+17207801205"
+phoneFormatted: "(303) 814-3389"
+telLink: "tel:+13038143389"
 position: 4
 ---
 

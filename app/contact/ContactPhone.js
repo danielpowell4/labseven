@@ -20,43 +20,20 @@ export async function getLocationProps() {
   return {
     hqPhoneFormatted: defaultLocation.phoneFormatted,
     hqTelLink: defaultLocation.telLink,
-    metaLocationBySlug: allLocationMeta.reduce((acc, location) => {
-      acc[location.slug] = location;
-      return acc;
-    }, {}),
   };
 }
 
+/**
+ * Every location shares the main Englewood number, so the `location` search
+ * param only affects call tracking, not the number we show.
+ */
 export default async function ContactPhoneWrapper({ locationSlug }) {
-  const { hqPhoneFormatted, hqTelLink, metaLocationBySlug } =
-    await getLocationProps();
-
-  if (locationSlug in metaLocationBySlug) {
-    const locationData = metaLocationBySlug[locationSlug];
-    const { phoneFormatted, telLink } = locationData;
-
-    if (isMobile()) {
-      return (
-        <>
-          <TrackedPhoneLink href={telLink} location={locationSlug}>
-            {phoneFormatted}
-          </TrackedPhoneLink>
-          <ClipboardCopy value={phoneFormatted} />
-        </>
-      );
-    }
-
-    return (
-      <>
-        {phoneFormatted} <ClipboardCopy value={hqPhoneFormatted} />
-      </>
-    );
-  }
+  const { hqPhoneFormatted, hqTelLink } = await getLocationProps();
 
   if (isMobile()) {
     return (
       <>
-        <TrackedPhoneLink href={hqTelLink} location="englewood">
+        <TrackedPhoneLink href={hqTelLink} location={locationSlug || "englewood"}>
           {hqPhoneFormatted}
         </TrackedPhoneLink>
         <ClipboardCopy value={hqPhoneFormatted} />

@@ -4,8 +4,8 @@ name: "Fort Collins"
 possessive: "Fort Collins'"
 callCta: "Call Lab Seven FoCo"
 slug: "fort-collins"
-phoneFormatted: "(720) 730-5435"
-telLink: "+17207305435"
+phoneFormatted: "(303) 814-3389"
+telLink: "tel:+13038143389"
 position: 6
 ---
 

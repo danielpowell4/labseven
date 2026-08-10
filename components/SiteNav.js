@@ -184,17 +184,6 @@ const SiteNav = () => {
                   <div className={styles.callNow__flyout}>
                     <ul>
                       <li>
-                        <Link
-                          href="/locations/englewood"
-                          className={styles.callNow__flyout__label}
-                        >
-                          Englewood
-                          <sub
-                            className={styles.callNow__flyout__label__accent}
-                          >
-                            HQ
-                          </sub>
-                        </Link>
                         <a
                           href="tel:+13038143389"
                           className={styles.callNow__flyout__number}
@@ -208,59 +197,6 @@ const SiteNav = () => {
                           {`(303) 814-3389`}
                         </a>
                       </li>
-                      {[
-                        {
-                          name: "Denver",
-                          slug: "denver",
-                          number: "(720) 708-6192",
-                          telHref: "tel:+17207086192",
-                        },
-                        {
-                          name: "Aurora",
-                          slug: "aurora",
-                          number: "(303) 529-6583",
-                          telHref: "tel:+13035296583",
-                        },
-                        {
-                          name: "Boulder",
-                          slug: "boulder",
-                          number: "(720) 780-1205",
-                          telHref: "tel:+17207801205",
-                        },
-                        {
-                          name: "Colorado Springs",
-                          slug: "colorado-springs",
-                          number: "(719) 283-3160",
-                          telHref: "tel:+17192833160",
-                        },
-                        {
-                          name: "Fort Collins",
-                          slug: "fort-collins",
-                          number: "(720) 730-5435",
-                          telHref: "tel:+17207305435",
-                        },
-                      ].map((location) => (
-                        <li key={location.name}>
-                          <Link
-                            href={`/locations/${location.slug}`}
-                            className={styles.callNow__flyout__label}
-                          >
-                            {location.name}
-                          </Link>
-                          <a
-                            href={location.telHref}
-                            className={styles.callNow__flyout__number}
-                            onClick={() =>
-                              trackEvent("phone_click", {
-                                location: location.name,
-                                phone: location.number,
-                              })
-                            }
-                          >
-                            {location.number}
-                          </a>
-                        </li>
-                      ))}
                     </ul>
                   </div>
                 </li>
